@@ -1,0 +1,695 @@
+\begin{landscape}
+{\section{\mbox{Annex}}{\normalfont\fontsize{14}{16}\bfseries}}
+
+\begin{table}[htbp]
+\resizebox{\linewidth}{150}{%
+\begin{tabular}{|lllllllllllllllllll|}
+\hline
+\multicolumn{19}{|l|}{Process FMEA for Perception based Grasping with STPA extension} \\ \hline
+\multicolumn{1}{|l|}{} &
+  \multicolumn{3}{l|}{Item} &
+  \multicolumn{4}{l|}{Charecteristics of Failure} &
+  \multicolumn{8}{l|}{Current Control} &
+  \multicolumn{3}{l|}{RPN Rating} \\ \hline
+\multicolumn{1}{|l|}{} &
+  \multicolumn{1}{l|}{Process Phase} &
+  \multicolumn{1}{l|}{Process Step} &
+  \multicolumn{1}{l|}{Requirement} &
+  \multicolumn{1}{l|}{Potential Failure Mode} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Potential Effects \\ of Failure\end{tabular}} &
+  \multicolumn{1}{l|}{S} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Potential Cause of Failure/\\ Unsafe Control actions\end{tabular}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Control \\ Prevention\end{tabular}} &
+  \multicolumn{1}{l|}{O} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Reccomendtions to \\ reduce High Occurence\end{tabular}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Reduced \\ O\end{tabular}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Control\\  Detection\end{tabular}} &
+  \multicolumn{1}{l|}{D} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Reccomendtions to \\ reduce High D rating\end{tabular}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Reduced \\ D\end{tabular}} &
+  \multicolumn{1}{l|}{RPN1} &
+  \multicolumn{2}{l|}{RPN2} \\ \hline
+\multicolumn{1}{|l|}{1} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Object and Box \\ Recognition\end{tabular}} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{2}{l|}{} \\ \hline
+\multicolumn{1}{|l|}{1.1} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{Box Detection} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}The Camera should\\ be able to detect the\\ box\end{tabular}} &
+  \multicolumn{1}{l|}{False Positive} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Unintended movement \\ of the robot\end{tabular}} &
+  \multicolumn{1}{l|}{5} &
+  \multicolumn{1}{l|}{RGB-D Camera malfunction} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No current \\ control\\ Prevention\end{tabular}} &
+  \multicolumn{1}{l|}{5} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Predictive maintenance of\\  sensors thus the feature\\ should be allowed once \\ rectifying problems\end{tabular}} &
+  \multicolumn{1}{l|}{2} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No current \\ control\\ Detection\end{tabular}} &
+  \multicolumn{1}{l|}{5} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Usage of redundant\\ sensor data and machine\\ learning algorithms \\ to detect anomalies in sensor\\ behaviour\end{tabular}} &
+  \multicolumn{1}{l|}{2} &
+  \multicolumn{1}{l|}{125} &
+  \multicolumn{2}{l|}{20} \\ \hline
+\multicolumn{1}{|l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Unintended movement \\ of the robot\end{tabular}} &
+  \multicolumn{1}{l|}{5} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}RGB-D Camera calibration\\ error\end{tabular}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No current \\ Control \\ Prevention\end{tabular}} &
+  \multicolumn{1}{l|}{5} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Usage of adaptive\\ algorithms \\ for calibration using \\ redundant\\ sensor inputs\end{tabular}} &
+  \multicolumn{1}{l|}{3} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No current \\ control\\ Detection\end{tabular}} &
+  \multicolumn{1}{l|}{5} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}For detection sensor fusion\\ and calculate the diversions \\ in each sensor to estimate \\ the values. Machine learning \\ algorithms shall be used to \\ train expected calibrated behavior\\ to find out deviation. \\ Redundant system \\ for ground truth comparison.\end{tabular}} &
+  \multicolumn{1}{l|}{2} &
+  \multicolumn{1}{l|}{125} &
+  \multicolumn{2}{l|}{30} \\ \hline
+\multicolumn{1}{|l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Unintended movement \\ of the robot\end{tabular}} &
+  \multicolumn{1}{l|}{5} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Change in Environmental \\ conditions\end{tabular}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No current\\ Control \\ Prevention\end{tabular}} &
+  \multicolumn{1}{l|}{5} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Train users about\\ optimal conditions to\\ use the AI features\\ in the robot and \\ implement \\ noise filters for using\\ adaptive input from\\ redundant sensors\end{tabular}} &
+  \multicolumn{1}{l|}{3} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Detectable\\ by the \\ system when\\ there are c\\ changes in\\ environmental\\ conditions\end{tabular}} &
+  \multicolumn{1}{l|}{3} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Implement more varied data for\\ training\end{tabular}} &
+  \multicolumn{1}{l|}{2} &
+  \multicolumn{1}{l|}{75} &
+  \multicolumn{2}{l|}{30} \\ \hline
+\multicolumn{1}{|l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{False Negative} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}System stuck and \\ compromise in cycle\\ times.\end{tabular}} &
+  \multicolumn{1}{l|}{2} &
+  \multicolumn{1}{l|}{RGB-D camera malfunction} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No current\\ control \\ prevention\end{tabular}} &
+  \multicolumn{1}{l|}{5} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Predictive maintenance of\\  sensors thus the feature\\ should be allowed once \\ rectifying problems\end{tabular}} &
+  \multicolumn{1}{l|}{2} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No current \\ control\\ Detection\end{tabular}} &
+  \multicolumn{1}{l|}{5} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Usage of redundant\\ sensor data and machine\\ learning algorithms \\ to detect anomalies in sensor\\ behaviour\end{tabular}} &
+  \multicolumn{1}{l|}{2} &
+  \multicolumn{1}{l|}{50} &
+  \multicolumn{2}{l|}{8} \\ \hline
+\end{tabular}%
+}
+\caption{Process FMEA table for perception-based grasping Phase 1}
+\end{table}
+
+%\begin{table}[htbp]
+%\resizebox{\linewidth}{150}{%
+%\begin{tabular}{|lllllllllllllllll|}
+%\hline
+%\multicolumn{17}{|l|}{Process FMEA for Perception based Grasping} \\ \hline
+%\multicolumn{1}{|l|}{} &
+ % \multicolumn{5}{l|}{Item} &
+  %\multicolumn{4}{l|}{Charecteristics of failure} &
+  %\multicolumn{3}{l|}{Current Controls} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{1st rating} &
+  %\multicolumn{2}{l|}{Reccomendations} \\ \hline
+%\multicolumn{1}{|l|}{} &
+ % \multicolumn{1}{l|}{Process Phase} &
+  %\multicolumn{1}{l|}{Process Step} &
+  %\multicolumn{3}{l|}{Requirement} &
+  %\multicolumn{1}{l|}{Potential Failure Mode} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Potential Effects \\ of Failure\end{tabular}} &
+  %\multicolumn{1}{l|}{S} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Potential Cause of Failure/ \\ Unsafe Control actions.\end{tabular}} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Control \\ Prevention\end{tabular}} &
+  %\multicolumn{1}{l|}{O} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Control \\ Detection\end{tabular}} &
+  %\multicolumn{1}{l|}{D} &
+  %\multicolumn{1}{l|}{RPN} &
+  %\multicolumn{2}{l|}{} \\ \hline
+%\multicolumn{1}{|l|}{1} &
+ % \multicolumn{1}{l|}{Object and Box Recognition} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{3}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{2}{l|}{} \\ \hline
+%\multicolumn{1}{|l|}{1.1} &
+ % \multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{Box Detection} &
+  %\multicolumn{3}{l|}{\begin{tabular}[c]{@{}l@{}}The camera should \\ be able to detect the box\end{tabular}} &
+  %\multicolumn{1}{l|}{False Positive} &
+  %\multicolumn{1}{l|}{Unintended movement of the robot} &
+  %\multicolumn{1}{l|}{5} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}RGB-D Camera \\ Malfunction\end{tabular}} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No current \\ Control Prevention\end{tabular}} &
+  %\multicolumn{1}{l|}{5} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No current \\ Control Detection\end{tabular}} &
+  %\multicolumn{1}{l|}{5} &
+  %\multicolumn{1}{l|}{125} &
+  %\multicolumn{2}{l|}{\begin{tabular}[c]{@{}l@{}}Usage of redundant sensor data\\ and machine learning algorithms\\ for finding out\\ deviation from expected data\\ predictive maintenance of sensors\\ and fail-safe mechanism \\ when sensor malfunction\\ detected\end{tabular}} \\ \hline
+%\multicolumn{1}{|l|}{} &
+%  \multicolumn{1}{l|}{} &
+%  \multicolumn{1}{l|}{} &
+ % \multicolumn{3}{l|}{} &
+ % \multicolumn{1}{l|}{} &
+ % \multicolumn{1}{l|}{} &
+ % \multicolumn{1}{l|}{} &
+ % \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}RGB-D Camera \\ Calibration Error\end{tabular}} &
+ % \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No control \\ prevention\end{tabular}} &
+ % \multicolumn{1}{l|}{5} &
+ % \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No current \\ detection\end{tabular}} &
+ % \multicolumn{1}{l|}{5} &
+ % \multicolumn{1}{l|}{125} &
+ % \multicolumn{2}{l|}{\begin{tabular}[c]{@{}l@{}}For Control usage of  adaptive\\ calibration algorithms\\ For detection   \\ Sensor fusion and Calculate the\\  diversions   in each sensor to\\  estimate the values. Machine \\ Algorithms can be used to   train\\ expected calibrated behaviour to \\ find out  the deviation in \\ an autonomous system. \\  Also redundant systems\\  for ground truth \\ comparison.\end{tabular}} \\ \hline
+%\multicolumn{1}{|l|}{} &
+ % \multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{3}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Change in Environmental \\ conditions.\end{tabular}} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No Control\\  Prevention\end{tabular}} &
+  %\multicolumn{1}{l|}{5} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Detectably by \\ the system when \\ change in lighting\\ conditions\end{tabular}} &
+  %\multicolumn{1}{l|}{3} &
+  %\multicolumn{1}{l|}{75} &
+  %\multicolumn{2}{l|}{\begin{tabular}[c]{@{}l@{}}Implement Variance in Data\\ Training, and implement \\ noise filters for adaptive use\\  input from\\  redundant sensors sensors.\end{tabular}} \\ \hline
+%\multicolumn{1}{|l|}{} &
+ % \multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+ % \multicolumn{3}{l|}{} &
+  %\multicolumn{1}{l|}{False Negative} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}System Stuck and \\ Compromise in \\ cycle times\end{tabular}} &
+  %\multicolumn{1}{l|}{2} &
+  %\multicolumn{1}{l|}{Sensor Malfunction} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No current \\ control\\ prevention\end{tabular}} &
+  %\multicolumn{1}{l|}{5} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No current \\ control \\ detection\end{tabular}} &
+  %\multicolumn{1}{l|}{5} &
+  %\multicolumn{1}{l|}{50} &
+  %\multicolumn{2}{l|}{\begin{tabular}[c]{@{}l@{}}Usage of redundant sensor data\\ and machine learning algorithms\\ for finding out\\ deviation from expected data\\ predictive maintenance of sensors\\ and fail-safe mechanism \\ when sensor malfunction\\ detected\end{tabular}} \\ \hline
+%\end{tabular}% 
+%}
+%\caption{Process FMEA table for perception-based grasping Phase 1}
+%\end{table}
+
+
+\end{landscape}
+
+\newpage
+\begin{landscape}
+
+\begin{table}[htbp]
+\resizebox{\linewidth}{150}{%
+\begin{tabular}{|lllllllllllllllllll|}
+\hline
+\multicolumn{19}{|l|}{Process FMEA for Perception based Grasping with STPA extension} \\ \hline
+\multicolumn{1}{|l|}{} &
+  \multicolumn{3}{l|}{Item} &
+  \multicolumn{4}{l|}{Charecteristics of Failure} &
+  \multicolumn{8}{l|}{Current Control} &
+  \multicolumn{3}{l|}{RPN Rating} \\ \hline
+\multicolumn{1}{|l|}{} &
+  \multicolumn{1}{l|}{Process Phase} &
+  \multicolumn{1}{l|}{Process Step} &
+  \multicolumn{1}{l|}{Requirement} &
+  \multicolumn{1}{l|}{Potential Failure Mode} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Potential Effects \\ of Failure\end{tabular}} &
+  \multicolumn{1}{l|}{S} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Potential Cause of Failure/\\ Unsafe Control actions\end{tabular}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Control \\ Prevention\end{tabular}} &
+  \multicolumn{1}{l|}{O} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Reccomendtions to \\ reduce High Occurence\end{tabular}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Reduced \\ O\end{tabular}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Control\\  Detection\end{tabular}} &
+  \multicolumn{1}{l|}{D} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Reccomendtions to \\ reduce High D rating\end{tabular}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Reduced \\ D\end{tabular}} &
+  \multicolumn{1}{l|}{RPN1} &
+  \multicolumn{2}{l|}{RPN2} \\ \hline
+\multicolumn{1}{|l|}{5} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Human Intervention\\ for replacing\\ boxes\end{tabular}} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{2}{l|}{} \\ \hline
+\multicolumn{1}{|l|}{5.1} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Robot slows \\ down detecting\\ human in \\ maximum space\end{tabular}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Robot shall \\ slow down as\\ soon as it \\ detects human\\ presence in\\ maximum space\end{tabular}} &
+  \multicolumn{1}{l|}{False Negative} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Injury or Fatality\\ \\ of Human Operator\end{tabular}} &
+  \multicolumn{1}{l|}{5} &
+  \multicolumn{1}{l|}{Sensor malfunction} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No current \\ control\\ Prevention\end{tabular}} &
+  \multicolumn{1}{l|}{5} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Implement Fail-Safe \\ mechanism for human \\ detection sensors and \\ Planned Safety rather than \\ proactive safety in close \\ human robot collaboration\end{tabular}} &
+  \multicolumn{1}{l|}{2} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No current \\ control\\ Detection\end{tabular}} &
+  \multicolumn{1}{l|}{5} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Usage of redundant\\ sensor data and machine\\ learning algorithms \\ to detect anomalies in sensor\\ behaviour\end{tabular}} &
+  \multicolumn{1}{l|}{2} &
+  \multicolumn{1}{l|}{125} &
+  \multicolumn{2}{l|}{20} \\ \hline
+\multicolumn{1}{|l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Injury or Fatality\\ \\ of Human Operator\end{tabular}} &
+  \multicolumn{1}{l|}{5} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Communication breakdown\\ between the sensors and \\ the system\end{tabular}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No current \\ Control \\ Prevention\end{tabular}} &
+  \multicolumn{1}{l|}{5} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Real time operating system \\ allowing inputs from \\ redundant sensor inputs.\\ \\ Implementation of output\\ according to sensor\\ fusion data.\end{tabular}} &
+  \multicolumn{1}{l|}{2} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No current \\ control\\ Detection\end{tabular}} &
+  \multicolumn{1}{l|}{5} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}implementation of heartbeat \\ signals to monitor communica\\ tion break down.\end{tabular}} &
+  \multicolumn{1}{l|}{2} &
+  \multicolumn{1}{l|}{125} &
+  \multicolumn{2}{l|}{30} \\ \hline
+\multicolumn{1}{|l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Injury or Fatality\\ \\ of Human Operator\end{tabular}} &
+  \multicolumn{1}{l|}{5} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Presence of contaminants\\ in sensor surface\end{tabular}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No current\\ Control \\ Prevention\end{tabular}} &
+  \multicolumn{1}{l|}{5} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Implementing fail-safe \\ when proper sensor inputs are not\\ possible.\end{tabular}} &
+  \multicolumn{1}{l|}{2} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No current\\  control\\  detection\end{tabular}} &
+  \multicolumn{1}{l|}{5} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Modelling abnormal behavior\\ of the sensor when contam\\ inants are present thus, \\detection is  possible.\end{tabular}} &
+  \multicolumn{1}{l|}{2} &
+  \multicolumn{1}{l|}{125} &
+  \multicolumn{2}{l|}{30} \\ \hline
+\end{tabular}%
+}
+\caption{Process FMEA table for perception-based grasping: Phase 5.1}
+\end{table}
+
+\end{landscape}
+%\begin{table}[htbp]
+%\resizebox{\linewidth}{150}{%
+%\begin{tabular}{|lllllllllllllllll|}
+%\hline
+%\multicolumn{17}{|l|}{Process FMEA for Perception based Grasping} \\ \hline
+%\multicolumn{1}{|l|}{} &
+  %\multicolumn{5}{l|}{Item} &
+  %\multicolumn{4}{l|}{Charecteristics of failure} &
+  %\multicolumn{3}{l|}{Current Controls} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{1st rating} &
+ % \multicolumn{2}{l|}{Reccomendations} \\ \hline
+%\multicolumn{1}{|l|}{} &
+  %\multicolumn{1}{l|}{Process Phase} &
+  %\multicolumn{1}{l|}{Process Step} &
+  %\multicolumn{3}{l|}{Requirement} &
+  %\multicolumn{1}{l|}{Potential Failure Mode} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Potential Effects \\ of %Failure\end{tabular}} &
+  %\multicolumn{1}{l|}{S} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Potential Cause of Failure/ \\ Unsafe Control actions.\end{tabular}} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Control \\ Prevention\end{tabular}} &
+  %\multicolumn{1}{l|}{O} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Control \\ Detection\end{tabular}} &
+  %\multicolumn{1}{l|}{D} &
+  %\multicolumn{1}{l|}{RPN} &
+ % \multicolumn{2}{l|}{} \\ \hline
+%\multicolumn{1}{|l|}{5} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Human intervention\\ for replacing boxes\end{tabular}} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{3}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+ % \multicolumn{2}{l|}{} \\ \hline
+%\multicolumn{1}{|l|}{5.1} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Robot slows \\ down detecting\\ human in maximum\\ space\end{tabular}} &
+  %\multicolumn{3}{l|}{\begin{tabular}[c]{@{}l@{}}Robot shall slow down\\  as soon \\ as it detects\\  human presence \\ in  maximum space\end{tabular}} &
+  %\multicolumn{1}{l|}{False Negative} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Injury or Fatality of\\  Human Operator\end{tabular}} &
+  %\multicolumn{1}{l|}{5} &
+  %\multicolumn{1}{l|}{Sensor Malfunction} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No current\\ control Prevention\end{tabular}} &
+ % \multicolumn{1}{l|}{5} &
+  
+%\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No current \\ control detection\end{tabular}} &
+  %\multicolumn{1}{l|}{5} &
+  %\multicolumn{1}{l|}{125} &
+ % \multicolumn{2}{l|}{\begin{tabular}[c]{@{}l@{}}Implementation of\\ Fail-safe mechanism \\ for human detection\\ sensors.\\ Implementation of \\ Planned safety \\ rather than \\ proactive safety.\end{tabular}} \\ \hline
+%\multicolumn{1}{|l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{3}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Injury or Fatality of\\  Human Operator\end{tabular}} &
+  %\multicolumn{1}{l|}{5} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Communication breakdown\\  between the sensor\\ s and the system\end{tabular}} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No current \\ control prevention\end{tabular}} &
+  %\multicolumn{1}{l|}{5} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No current\\  control detection\end{tabular}} &
+  %\multicolumn{1}{l|}{5} &
+  %\multicolumn{1}{l|}{125} &
+ % \multicolumn{2}{l|}{\begin{tabular}[c]{@{}l@{}}Real Time Operating\\  system allowing\\  inputs from all the \\ sensors and implementing \\ outputs according to\\ sensor fusion\\ data\end{tabular}} \\ \hline
+%\multicolumn{1}{|l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{3}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Injury or Fatality of\\  Human Operator\end{tabular}} &
+  %\multicolumn{1}{l|}{5} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Presence of \\ contaminants in \\ sensor  surface\end{tabular}} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No control \\ prevention\end{tabular}} &
+  %\multicolumn{1}{l|}{5} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No current \\ control detection\end{tabular}} &
+  %\multicolumn{1}{l|}{5} &
+  %\multicolumn{1}{l|}{125} &
+  %\multicolumn{2}{l|}{\begin{tabular}[c]{@{}l@{}}Modeling abnormal \\ %behavior of the \\ sensor when\\  there are contaminants \\ on the sensor %surface and \\ implementing fail-safe\end{tabular}} \\ \hline
+%\end{tabular}
+%
+%}
+%\caption{Process FMEA table for perception-based grasping: Phase 5.1}
+%\end{table}
+
+
+\newpage
+\begin{landscape}
+
+\begin{table}[htbp]
+\resizebox{\linewidth}{150}{%
+\begin{tabular}{|lllllllllllllllllll|}
+\hline
+\multicolumn{19}{|l|}{Process FMEA for Perception based Grasping with STPA extension} \\ \hline
+\multicolumn{1}{|l|}{} &
+  \multicolumn{3}{l|}{Item} &
+  \multicolumn{4}{l|}{Charecteristics of Failure} &
+  \multicolumn{8}{l|}{Current Control} &
+  \multicolumn{3}{l|}{RPN Rating} \\ \hline
+\multicolumn{1}{|l|}{} &
+  \multicolumn{1}{l|}{Process Phase} &
+  \multicolumn{1}{l|}{Process Step} &
+  \multicolumn{1}{l|}{Requirement} &
+  \multicolumn{1}{l|}{Potential Failure Mode} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Potential Effects \\ of Failure\end{tabular}} &
+  \multicolumn{1}{l|}{S} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Potential Cause of Failure/\\ Unsafe Control actions\end{tabular}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Control \\ Prevention\end{tabular}} &
+  \multicolumn{1}{l|}{O} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Reccomendtions to \\ reduce High Occurence\end{tabular}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Reduced \\ O\end{tabular}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Control\\  Detection\end{tabular}} &
+  \multicolumn{1}{l|}{D} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Reccomendtions to \\ reduce High D rating\end{tabular}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Reduced \\ D\end{tabular}} &
+  \multicolumn{1}{l|}{RPN1} &
+  \multicolumn{2}{l|}{RPN2} \\ \hline
+\multicolumn{1}{|l|}{5} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Human Intervention\\ for replacing\\ boxes\end{tabular}} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{2}{l|}{} \\ \hline
+\multicolumn{1}{|l|}{5.3} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Robot stops\\  detecting\\ human in \\ protective\\  space\end{tabular}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Robot shall \\ stop as\\ soon as it \\ detects human\\ presence in\\ protective \\ space\end{tabular}} &
+  \multicolumn{1}{l|}{False Negative} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Injury or Fatality\\ of Human Operator\end{tabular}} &
+  \multicolumn{1}{l|}{5} &
+  \multicolumn{1}{l|}{Sensor malfunction} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No current \\ control\\ Prevention\end{tabular}} &
+  \multicolumn{1}{l|}{5} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Implement Fail-Safe \\ mechanism for human \\ detection sensors and \\ Planned Safety rather than \\ proactive safety in close \\ human robot collaboration\end{tabular}} &
+  \multicolumn{1}{l|}{2} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No current \\ control\\ Detection\end{tabular}} &
+  \multicolumn{1}{l|}{5} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Usage of redundant\\ sensor data and machine\\ learning algorithms \\ to detect anomalies in sensor\\ behaviour\end{tabular}} &
+  \multicolumn{1}{l|}{2} &
+  \multicolumn{1}{l|}{125} &
+  \multicolumn{2}{l|}{20} \\ \hline
+\multicolumn{1}{|l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Injury or Fatality\\ of Human Operator\end{tabular}} &
+  \multicolumn{1}{l|}{5} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Communication breakdown\\ between the sensors and \\ the system\end{tabular}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No current \\ Control \\ Prevention\end{tabular}} &
+  \multicolumn{1}{l|}{5} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Real time operating system \\ allowing inputs from \\ redundant sensor inputs.\\ \\ Implementation of output\\ according to sensor\\ fusion data.\end{tabular}} &
+  \multicolumn{1}{l|}{2} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No current \\ control\\ Detection\end{tabular}} &
+  \multicolumn{1}{l|}{5} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}implementation of heartbeat \\ signals to monitor communica\\ tion break down.\end{tabular}} &
+  \multicolumn{1}{l|}{2} &
+  \multicolumn{1}{l|}{125} &
+  \multicolumn{2}{l|}{30} \\ \hline
+\multicolumn{1}{|l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Injury or Fatality\\ of Human Operator\end{tabular}} &
+  \multicolumn{1}{l|}{5} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Presence of contaminants\\ in sensor surface\end{tabular}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No current\\ Control \\ Prevention\end{tabular}} &
+  \multicolumn{1}{l|}{5} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Implementing fail-safe \\ when proper inputs are not\\ possible.\end{tabular}} &
+  \multicolumn{1}{l|}{2} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No current\\  control\\  detection\end{tabular}} &
+  \multicolumn{1}{l|}{5} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Modelling abnormal behavior\\ of the sensor when contam\\ inants are present.\end{tabular}} &
+  \multicolumn{1}{l|}{2} &
+  \multicolumn{1}{l|}{125} &
+  \multicolumn{2}{l|}{20} \\ \hline
+\multicolumn{1}{|l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Delayed Human\\ Detection\end{tabular}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Injury or fatality \\ of Human Operator\end{tabular}} &
+  \multicolumn{1}{l|}{5} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Delay in communication\\ between sensor and system\end{tabular}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Hardware acceleration\\ using GPU for \\ faster processing\end{tabular}} &
+  \multicolumn{1}{l|}{3} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Implement robot stop , if \\ the processing time is \\ very high.\end{tabular}} &
+  \multicolumn{1}{l|}{3} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No current\\  control\\  detection\end{tabular}} &
+  \multicolumn{1}{l|}{5} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Monitor processing time and \\ implement detection of longer \\ time.\end{tabular}} &
+  \multicolumn{1}{l|}{2} &
+  \multicolumn{1}{l|}{75} &
+  \multicolumn{2}{l|}{30} \\ \hline
+\multicolumn{1}{|l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Uncertainty in human\\ position\end{tabular}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Injury or fatality of\\ Human Operator\end{tabular}} &
+  \multicolumn{1}{l|}{5} &
+  \multicolumn{1}{l|}{Occlusion} &
+  \multicolumn{1}{l|}{No control prevention} &
+  \multicolumn{1}{l|}{5} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Usage of Sensor fusion data\\ to compensate occlusion \\ from one sensor and implem\\ entation of planned safety\end{tabular}} &
+  \multicolumn{1}{l|}{2} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No control \\ detection\end{tabular}} &
+  \multicolumn{1}{l|}{5} &
+  \multicolumn{1}{l|}{No current recommendations} &
+  \multicolumn{1}{l|}{5} &
+  \multicolumn{1}{l|}{125} &
+  \multicolumn{2}{l|}{50} \\ \hline
+\end{tabular}%
+}
+\caption{Process FMEA table for perception-based grasping: Phase 5.3}
+\end{table}
+    
+
+%\begin{table}[htbp]
+%\resizebox{\linewidth}{150}{%
+%\begin{tabular}{|lllllllllllllllll|}
+%\hline
+%\multicolumn{17}{|l|}{Process FMEA for Perception based Grasping} \\ \hline
+%\multicolumn{1}{|l|}{} &
+ % \multicolumn{5}{l|}{Item} &
+  %\multicolumn{4}{l|}{Charecteristics of failure} &
+  %\multicolumn{3}{l|}{Current Controls} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{1st rating} &
+  %\multicolumn{2}{l|}{Reccomendations} \\ \hline
+%\multicolumn{1}{|l|}{} &
+ % \multicolumn{1}{l|}{Process Phase} &
+  %\multicolumn{1}{l|}{Process Step} &
+  %\multicolumn{3}{l|}{Requirement} &
+  %\multicolumn{1}{l|}{Potential Failure Mode} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Potential Effects \\ of Failure\end{tabular}} &
+  %\multicolumn{1}{l|}{S} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Potential Cause of Failure/ \\ Unsafe Control actions.\end{tabular}} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Control \\ Prevention\end{tabular}} &
+  %\multicolumn{1}{l|}{O} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Control \\ Detection\end{tabular}} &
+  %\multicolumn{1}{l|}{D} &
+  %\multicolumn{1}{l|}{RPN} &
+  %\multicolumn{2}{l|}{} \\ \hline
+%\multicolumn{1}{|l|}{5} &
+ % \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Human intervention\\ for replacing boxes\end{tabular}} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{3}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{2}{l|}{} \\ \hline
+%\multicolumn{1}{|l|}{5.3} &
+ % \multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Robot stops detecting\\ human in protective \\ space\end{tabular}} &
+  %\multicolumn{3}{l|}{\begin{tabular}[c]{@{}l@{}}Robot shall stop as soon \\ as it detects human presence \\ in  protective area\end{tabular}} &
+  %\multicolumn{1}{l|}{False Negative} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Injury or Fatality of\\  Human Operator\end{tabular}} &
+  %\multicolumn{1}{l|}{5} &
+  %\multicolumn{1}{l|}{Sensor Malfunction} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No current\\ control Prevention\end{tabular}} &
+  %\multicolumn{1}{l|}{5} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No current \\ control detection\end{tabular}} &
+  %\multicolumn{1}{l|}{5} &
+  %\multicolumn{1}{l|}{125} &
+  %\multicolumn{2}{l|}{\begin{tabular}[c]{@{}l@{}}Implementation of\\ Fail-safe mechanism \\ for human detection\\ sensors.\\ Implementation of \\ Planned safety \\ rather than \\ proactive safety.\end{tabular}} \\ \hline
+%\multicolumn{1}{|l|}{} &
+ % \multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{3}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Injury or Fatality of\\  Human Operator\end{tabular}} &
+  %\multicolumn{1}{l|}{5} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Communication breakdown\\  between the sensor\\ s and the system\end{tabular}} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No current \\ control prevention\end{tabular}} &
+  %\multicolumn{1}{l|}{5} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No current\\  control detection\end{tabular}} &
+  %\multicolumn{1}{l|}{5} &
+  %\multicolumn{1}{l|}{125} &
+  %\multicolumn{2}{l|}{\begin{tabular}[c]{@{}l@{}}Real Time Operating\\  system allowing\\  inputs from all the \\ sensors and implementing \\ outputs according to\\ sensor fusion\\ data\end{tabular}} \\ \hline
+%\multicolumn{1}{|l|}{} &
+ % \multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{3}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Injury or Fatality of\\  Human Operator\end{tabular}} &
+  %\multicolumn{1}{l|}{5} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Presence of \\ contaminants in \\ sensor  surface\end{tabular}} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No control \\ prevention\end{tabular}} &
+  %\multicolumn{1}{l|}{5} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No current \\ control detection\end{tabular}} &
+  %\multicolumn{1}{l|}{5} &
+  %\multicolumn{1}{l|}{125} &
+  %\multicolumn{2}{l|}{\begin{tabular}[c]{@{}l@{}}Modeling abnormal \\ behavior of the \\ sensor when\\  there are contaminants \\ on the sensor surface and \\ implementing fail-safe\end{tabular}} \\ \hline
+%\multicolumn{1}{|l|}{} &
+ % \multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{3}{l|}{} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Delayed Human detection\\ in protective space.\end{tabular}} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Injury or Fatality of\\  Human Operator\end{tabular}} &
+  %\multicolumn{1}{l|}{5} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Delay in \\ communication between \\ the sensor and system\end{tabular}} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Hardware acceleration\\  using GPU for \\ faster processing\end{tabular}} &
+  %\multicolumn{1}{l|}{2} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No current control \\ detection\end{tabular}} &
+  %\multicolumn{1}{l|}{5} &
+  %\multicolumn{1}{l|}{50} &
+  %\multicolumn{2}{l|}{\begin{tabular}[c]{@{}l@{}}If there is a \\ high processing\\ time robot should stop.\end{tabular}} \\ \hline
+%\multicolumn{1}{|l|}{} &
+ % \multicolumn{1}{l|}{} &
+  %\multicolumn{1}{l|}{} &
+  %\multicolumn{3}{l|}{} &
+  %\multicolumn{1}{l|}{Uncertainty in position} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Injury or Fatality of\\  Human Operator\end{tabular}} &
+  %\multicolumn{1}{l|}{5} &
+  %\multicolumn{1}{l|}{Occlusion} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No control \\ prevention.\end{tabular}} &
+  %\multicolumn{1}{l|}{5} &
+  %\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}No  current \\ detection\end{tabular}} &
+  %\multicolumn{1}{l|}{5} &
+  %\multicolumn{1}{l|}{125} &
+  %\multicolumn{2}{l|}{\begin{tabular}[c]{@{}l@{}}Sensor fusion data and \\ Implementation of\\ planned safety.\end{tabular}} \\ \hline
+%\end{tabular}
+%}
+%\caption{Process FMEA table for perception-based grasping: Phase 5.3}
+%\end{table}
+
+\end{landscape}
+
+
+
+
+

@@ -1,0 +1,40 @@
+{\section{Conclusion and Future Prospects}{{\normalfont\fontsize{14}{16}\bfseries}}
+
+The integration of artificial intelligence (AI) into robotics has significantly contributed to the automation of industries, playing a pivotal role in the 4th Industrial Revolution. This transformative technology is rapidly advancing toward fully autonomous robots, yet the standards governing their operations are still evolving. A comprehensive examination of EN ISO 10218-1:2011, EN ISO 10218-2:2011  and ISO/TS 15066 revealed a gap in specifying do's and don'ts and system requirements for AI-powered robots.
+
+In response to this gap, our thesis delved into the identification and quantification of risks associated with AI failures in robotics, utilizing Failure Mode Effect Analysis (FMEA) as a powerful tool. Following guidelines from EN IEC 60812, we assessed the severity, occurrence, and detectability of different failure modes, calculating Risk Priority Numbers (RPNs) to prioritize and address potential risks. We also studied the interaction of AI functionalities with other control functionalities of the robot.
+
+
+
+In the system relying solely on FMEA could be challenging. At the same time, System Theory Process Analysis is a tool mentioned in ISO 21448 that offers a top-down approach for the structural analysis of control commands which supports a comprehensive assessment of the intelligent system. The integration of STPA in an industrial use case may be challenging thus we did the FMEA- STPA which is an extension of FMEA using system theory process analysis, on one of the industrial use cases, where the robot picks and places machined parts from a bin to a conveyor. The perception system integrated into the robot, and the interactions inside the system between each component are also studied for this risk analysis. The individual failures of the system components are studied, also the failure of the system as a whole due to the dangerous success of the individual components contributing to the system working is studied in the risk assessment
+
+We found out the potential failures in the integration of artificial intelligence in robots given perception and sensing. The severe failures could be false negatives from human detection, and the highly occurring failure would be the wrong orientation of the object in grasp.    These failures could lead to risks. The risks can be from damage in the parts being handled to the fatality of the operator. Some of the failures could lead to damage to the robots themselves, which would lead to system shutdown and loss due to the shutdown.
+
+ Proposals were made for improved hardware specifications, emphasizing sensors, cameras, and processors. Architectural enhancements for AI algorithms were recommended to improve overall system reliability.
+
+ Guidelines were outlined for the development of monitoring algorithms to enhance real-time risk assessment and intervention. Recommendations were made for safe human interventions, including proper robot and AI functionalities documentation to prevent misuse. A generic safety framework for AI in robotics was formulated, serving as a foundational guide for safe practices.
+
+ We also recommend collaboration with the AI community to establish industry standards for risk assessment, the need for shared practices is also one of our recommendations for a future safety standard for AI-driven robots. Thus a collaborative effort is essential for addressing the multidimensional challenges.
+
+ As mentioned in the beginning of the thesis, it tries to address the following research questions 
+ 
+ 1) What are the potential  safety risks associated with AI-Integration in human-robot collaborative environments? This question is answered by breaking down the perception based grasping as 4 major phases and then substeps and identifying  the potential failure modes from this. This is identified in the Chapter 3 Methodology and mentioned under the heading Failure Modes, section 3.2.3. Risk Assessment using FMEA-STPA.
+
+ 2) How do AI-driven systems interact with other robotic functionalities, and what are the implications for overall system performance? This is answered under the heading Control Analysis,in the section 3.2.3 in the chapter 3, Methodology.
+ 
+ 3) What could be a risk analysis technique for AI-integrated robotic systems? This is also mentioned in the chapter Methodology, how the risk assessment of the AI integrated human robot collaboration can be done and the results of this risk assessment method is mentioned in Chapter 4, Reults and Discussions.
+
+4)What measures can be taken to ensure seamless integration of AI into lightweight cobots?
+This is answered in Chapter 4, Results and Discussions and this is derived from the FMEA-STPA table given in annex as well as from the literature review.
+
+As FMEA-STPA is a qualitative analysis method and  in this thesis we researched on the failures from the sensors and if it went unidentified what could be the RPN and what measures should be done to reduce the risk priority number.  For the quantification of the uncertainty of risks from AI algorithms while integrating in human robot collaborative environments, development of a machine learning algorithm as mentioned in the Results, which can assess the risks in the output according to the changes in the input is the next important step to be done.
+
+Acknowledging the limitations of the study, we advocate for the continual refinement of risk assessments on the complex AI systems with dynamic data and potential biases with unforeseen risk using additional tools similar to SOTIF analysis used in the Automotive Industry for diverse AI functionalities. Achieving transparent decision-making in AI-integrated robots improves the trust in the AI-integrated robotic systems involves providing clarity about the robot's actions and the reasoning behind those actions.  Implementing planned safety complementing active safety is also one of the suggestions from the result of the thesis. This can be the future development in the field of safety and building trust for AI integration in robotics.
+
+
+The focus of our FMEA-STPA was on perception-based grasping, providing a starting point for a broader safety framework. Future endeavors could extend this analysis to different scenarios, AI functionalities (e.g., NLP and perception, gesture control), and robot types, fostering an iterative process to enhance safety comprehensively. We envision that our research lays the foundation for the safer deployment of AI and robotics not only in industrial settings but also in Autonomous Guided Vehicles and humanoid robots. This contribution marks a crucial step towards ensuring the responsible and secure integration of evolving technologies into our daily lives.
+
+
+
+
+

@@ -1,0 +1,184 @@
+{\section {Results And Discussions}{{\normalfont\fontsize{14}{16}\bfseries}}
+
+The research questions answered through this thesis are what are the potential safety risks associated with AI integration in a human-robot collaborative environment? How do AI-driven systems interact with other robotic functionalities and what are the implications for overall system performance? What could be a risk analysis technique for AI-integrated robotic systems? What measures can be taken to ensure seamless integration of AI into lightweight cobots? We try to implement FMEA -STPA as a risk analysis method for the particular use case in which Artificial intelligence is integrated into the human-robot collaborative environment, which was used to find out the potential risk due to AI integration in the human-robot collaborative environment. We also compared the risks with the risks emerging from autonomous driving systems. Some of the uncertain failures were found using this data. The FMEA-STPA, risk analysis method also answers how the interaction of the AI functionalities and the other robotic functionalities takes place since STPA, analyses the interaction of different control interactions in the system. The ultimate goal of the thesis is to identify and integrate the requirements for the system and the human practices for making the lightweight robots operate beside the humans in a collaborative manner and not in the cage, by making use of the artificial intelligence technologies available. The safety requirements and measures are discussed in this chapter.
+
+
+{\subsection{FMEA-STPA Results }}
+
+The FMEA-STPA table is the result of the whole Failure mode analysis and the system theory process analysis we did on the process. This table is a summary of the FMEA-STPA which has the requirement of the process done, the potential failure mode, the effect of the failure mode, the failure mechanism, provision of control action, occurrence of the potential failure, detectability of this potential failure all noted down.  
+Thus this table allows to determine the actual status of failure prevention and failure detection mechanisms in the control system and the improvements that can be made. .  The risk priority number is calculated as the product of( severity x occurrence x detectability) is also added in this table. This table allows us to monitor the optimization actions and the assignees of the work.
+
+This table in addition have a second RPN number which is calculated after introducing the recommendations to reduce high RPN failure modes. Thus showing the possible risk reduction by introducing methods to reduce occurence and increase detection by the control system.
+
+The probability of occurrence is based on the control action provided for the potential failure modes. The quantification of control action is done according to the efficiency and time of the control action.
+
+The whole process is studied and the failures associated with AI functionalities and the post-processing of the AI signals are illustrated in this table. The process phases like object recognition, grasp estimation, pick and place, robot movement to the look-up point, and human intervention are presented. The important parts of the table is added as an annex to the thesis.
+
+The signals sent and the control actions are studied based on the table. Where the AI functionalities are used and according to their failures.
+The  progress of work from the assignees can be monitored and improvements can be done in an iterative method. 
+
+The justification and the improvement methods for high-risk process failures are listed below based on the table which is attached annex and the major  
+
+When the AI system was studied severe failures were found as false negatives in human detection, uncertainty in the position of the human detection, or time delay in detecting the human presence in the working space of the robot. These failures have severity of 5 in a scale of 1 to 5 for the severity. Where 5 is the most severe failure. Since the potential effect of this is fatality or injury to the operator. The potential causes for these failures are sensor malfunction, algorithmic errors communication delays, or longer processing time, The presence of contaminants on the sensor surface can also cause the problem.
+
+For severe failure mode False negatives in human detection which has a severity of 5,
+in current control, we do not have a sensor fail-safe mechanism for sensor malfunction thus the probability of control of this severe failure due to this failure mode is very low, thus having a high Occurrence rating of 5.  The probability of detection for this is also low, thus it also has a very high rating for detectability as 5. Thus when calculated the RPN number= 125 is the highest for this failure mode and its effect.
+
+Recommendations are given for precautions to avoid the severity of this failure, to model the behavior of the sensor, and to detect the anomalies in the behavior of these sensors, implementing a predictive maintenance algorithm for the sensors. Using redundant sensors and monitoring the inputs from these sensors are also recommended for using the sensor fusion data. 
+
+The fail-safe mechanism for the human detection sensors would stop the robot from working if the sensor is damaged or has errors until and unless the sensors are replaced or repaired. The usage of robust machine learning algorithms for predictive maintenance and sensor fusion data could improve the controllability and the detectability of sensor malfunction. The graphical user interface can give output to the user asking for sensor replacement and validation.
+
+A second failure cause for this severe failure is the presence of contaminants on the sensor surface, which limits the sensor to detect human presence. There is no current control for this cause, and the detectability is very low for this. Usage of sensor fusion data can improve in detecting failure due to this cause.
+
+The algorithm modeling the ideal behavior of the sensors and the abnormal behavior when contaminants are present could be used to find out the anomalies in the expected behavior of the system and then fail-safe is suggested to improve detectability. To control the accumulation of contaminants on the sensor surfaces, the sensor should be placed in protective spaces, which can prevent moisture and dust from accumulating on the surface.
+
+The change in environmental conditions is another cause of failure for this failure mode of false negative in human detection, which does not have any current control and could not be detected using Sensor fusion data. The RPN value is calculated as 75 which is high. Recommendations given by the experts for reducing the high RPN number of this failure mode are the following.
+
+Robust data training should be done to overcome the environmental changes, for example, the lighting conditions, the system should be taught with the identification of the obstacles in different lighting conditions should be used.
+
+A different cause of failure for the severe failure mode of not detecting human presence in the workspace of the robot is due to the loss of calibration of sensors. The probability of detection of calibration loss of the sensor is very low and there are very less controls to prevent this from happening, thus this is also a failure cause with a high occurrence and detection rating. making the RPN number high.
+
+The calibration of the sensors could have errors arising from longer periods of usage. The sensors should have auto-calibration capacity, as per their experience from trained data also, the machine learning algorithm should be able to detect problems in the calibration. Redundant sensors and sensor fusion data should also be used for this, these are the recommendations came up for reducing RPN for this cause of failure.
+
+Another severe failure mode in the phase of Human intervention for box replacement in this process is the robot can detect the human presence but is not able to find the exact position, there is uncertainty in the human position, This has a severity of 5, the most common cause of this is occlusion of the human presence in the sensor, which has no current controls as of now, but could use the sensor fusion data to overcome the problem of occlusion. Planned safety is another approach recommended to overcome this failure mode, thus there is an understanding between the robot and the user about the next actions.
+
+Delayed human detection is one of the most severe failure modes in this phase of the operation.
+Communication breakdown and delay in communication are potential failure cause for this. The recommendations for improving the control and detection for this were implementing heartbeat signals, between the sensors and the processor, thus the robot will not work if there are communication breakdowns between the components. The heartbeat signals between the sensors, processor, and robot controller are all monitored. The communication breakdown can be easily detected by the system.
+
+The communication failure between the system components due to delay in the processing of the signals can be controlled by Hardware acceleration using GPUs for overcoming processing delays. optimizing the algorithms is also recommended, so the processing times are lowered.
+
+The next severe failures arose from the object recognition phase, different failure modes identified are false positives, false negatives, misidentification, scale and orientation misinterpretation of the bin and the workpiece, and wrong grasp estimation.
+
+Mostly the effects of these failures are workpiece or robot damage or compromise in the cycle times, when one of the boundary conditions is the cycle time, the system should try not to compromise on it. The damage to robot eventually leads to a system shutdown or a more severe failure which should be prevented. The damage to the workpieces causes loss in production. The potential causes for these failures are the RGB-D Camera malfunctioning, RGB-D camera calibration error, change in environmental conditions, Algorithmic errors like under-segmentation and over-segmentation, and Failure to understand variety of objects. When considering the severity of these failures it ranges from 1-3.
+
+The False positives in Box detection can cause damage to the robot, which can also cause the unintended movement of the robot causing damage to the robot or even a threat to the operators thus the severity for this is 5. 
+Potential causes for this failure could be error output from the RGB-D camera. There is no current control for unintended motion due to sensor malfunction, the detection of the RGB-D camera malfunction is also very low by the system the detection rating is very high as 5.
+Thus the RPN number for this mode of failure due to this cause is calculated as 125 .
+The recommendation from experts was the usage of the redundant sensor for object detection and the implementation of machine learning algorithms to find out the deviation from the actual sensor working and malfunctioning. thus fail-safe mode can be implemented.
+
+A second cause for this failure mode could be the calibration errors. Currently, we do not have control over the loss of calibration of the sensors due to prolonged usage and the detectability for this is also very low.
+
+Enabling autocalibration of the RGB-D camera is one of the controls recommended for this. The usage of redundant sensors and robust algorithms to compare the inputs from these sensors The predictive analysis of the variation of the environmental conditions and the response of the sensors and the system should be studied. Implementing the machine learning algorithm based on this would be recommended to enhance the performance in variable environmental conditions. This could also enhance the detectability of the failure mode.
+
+Another important cause for this failure mode would be a change in environmental conditions. This can be easily controlled in our system because of the robust algorithms we use and the change in the environment is easily detectable by the system.
+
+The experts made recommendations to improve the algorithms by using more data to train, thus operations in diverse environments are possible.
+
+
+False Negatives in Box Identification is a failure mode, which can impact the cycle execution times. This is not a severe failure, but this should be addressed since this is an important boundary condition for the process.
+
+In the object recognition phase, another severe failure was identified as object misidentification, this could lead to effects like picking two or three objects together, which may exceed the robot's payload, and can cause damage to the robot.
+
+The over-segmentation and under-segmentation could lead to object misidentification and object scale and orientation misidentification. The severity could be in the range of 2-3 as this can cause damage to the robot if the robot tries to pick 2 or 3 objects in one grasp due to under-segmentation. This could be prevented by analyzing the connected components in the pixel and finding out if these are very big components and then implementing a corrective action or feedback to the operator thus dangerous success of pick can be avoided.  Similarly for the over-segmentation, a check can be done if the connected components are very small or if the number of connected components is high.
+
+For Grasp estimation, the system should be able to calculate the pose and the coordinates of the objects identified using the inputs from the RGB-D camera. Identifying the object also helps in calculating the grasping force that should be used.
+
+Wrong Grasp estimation is one of the failure modes identified in the object recognition phase which can have different failure effects. 
+
+This failure mode can lead to a failure effect where the workpiece may fall while the robot is in motion holding the workpiece due to less force applied which has a higher severity of around 4. This can cause damage to the workpiece and injury to a human operator, this can be controlled by picking the object in the correct orientation and force we can control this in our system and we have a good detectability for this. The efficiency of the grasp is very high in our system
+
+To avoid this effect the scaling and orientation of the object are checked before the pick. Improvement in these algorithms is suggested for increasing the reliability of pick as the implementation of tactile sensors in the end effector. Usage of the fusion data from the RGB-D camera and the tactile sensor for understanding the orientation of the object. Thus the controllability and the detectability of this failure can be increased thus the RPN values can be reduced. In addition to the fusion data the implementation of real-time feedback and correction is also suggested for improvements in this.
+
+Object variability may not be a problem for this application, since we have only one type of object to pick in this application, but it is important in a broader autonomous robotic system. Training using more robust data with a variety of objects at different environmental conditions is suggested. The type of learning that should be implemented for this is under our research.   Learning specifically each object needs very large data instead training with different classes of objects is more a suitable way for training recommended for improving the performance of the application.
+
+
+
+
+
+
+{\subsection{Safe Practices and Safe System Requirements}}
+
+While a robot integrated with an AI system is used for collaborative applications the following practices and system shall have these features in addition to the ISO standards and specifications for the robots and the integrated workspace for the robots. These requirements are formulated as a result of the risk assessment done on the Human-robot interaction application which was illustrated in the methodology, where the robot uses its perception to pick, place and identify objects and sense humans in the workspace. Additionally the informations gathered using the research for this is also used to formulate the requirements and practices for safe operation of the robot and integration into industrial collaborative environment.
+
+These requirements are essential for diversifying the usage of robots for production, the robot should be adaptable to different payloads and working envelopes.
+To enhance the performance of the robot in collaborative applications, which is now low performance due to the complexity of the safety systems which separates and limits the human-robot collaboration.
+The lack of a systematic hazard assessment for HRC is also a cause for the low-level performance of collaborative applications of robots.
+
+{\subsubsection{Safe Practices}}
+
+The safe practices are useful to increase the acceptance of the robot by operators for collaborative operations.
+
+1. A clear definition of the task undertaken by the robotic system and the environment is essential for the safe integration of the AI robot system into collaborative applications for the integrators. This includes the lighting conditions of the workspace, whether the environment is dynamic or static, the frequency of human intervention in the process, the type of human-robot collaboration, etc. Therefore, the most crucial step in determining the scope of system development is to precisely define the intended function of the system by developing comprehensive descriptions of the ideas, functions, and constraints of the cognitive and judgment technologies that make up the system. Specifically, "Operator Misuse," which refers to incorrect operation and mistakes made by the robot operator while running the robot system, may also be taken into consideration, much as the consideration of driver misuse in autonomous vehicles.
+The definition of the task is important for determining the interaction level and collaboration strategies.
+
+2. Ensure the operators follow the Standard Operating procedure for the operation thus maximum uncertain risks are avoided. Include the operators who are going to interact with the robot and include their concerns and inputs while formulating the Standard Operating Procedure.
+
+3. Examine the triggering event, which is a risk action factor, to determine the sensor or controller's algorithmic constraints as well as the circumstances that could result in a safety objective violation. This is the result of a lengthy procedure that involves defining and analyzing the triggering event.
+
+4. Ensuring robust cybersecurity to protect the robot from unauthorized use. 
+
+5. Training for the users on how to interact with the robot and tackle uncertain failures. Also educating the users about the limitations of the robot.
+
+6. Educate users about the system's capabilities and limitations.
+
+7. Collaborate with domain experts and other stakeholders to ensure that the decision-making process aligns with ethical standards and societal values. Seek input from experts to enhance transparency and address potential biases.
+
+8. Proper maintenance and validation of the sensors and the other hardware in the system as a whole. Re-calibration of the robot and the sensors if there are errors. Keeping the maintenance record for the sensors and keeping a check on the errors.
+
+9. Training the operators to make use of the planned safety and responsibility building
+
+
+
+
+
+{\subsubsection{Safe System Requirements}}
+
+These requirements would enhance the safety of the AI systems in robots and would be helpful to build trust for the users.
+
+1. Integrated redundant and diverse sensors for taking in different measurements, to find out the presence of humans and obstacles, to monitor and diagnose the status of the robot itself. 
+In a broader view when we have to roll out real collaborative applications using the robot the sensor and processors must be also capable of supporting this. Instead of only detecting and sending the signal to digital inputs, A processing algorithm should work to process the sensor inputs and accelerate the collaborative applications of the robot.
+
+2. Online motion planning according to the inputs from Sensor Data after estimating the confidence of all the sensor data. Also, use of the reflex in motion planning to avoid collision and even after a collision to limit the damage to the robot and the object. This would also help in attaining the time limit of the cycle execution.
+
+3. Provide visual feedback to users about the robot's perception of the environment, including detected objects, obstacles, and the robot's planned actions. Use visual indicators to communicate the robot's intent and decision logic. Integrating this into the user interface could improve the user experience and safety
+
+4.Ability execute planned safety\cite{author35} by the system. There is reactive safety in robots integrated with artificial intelligence, which is common in automation systems. where the robots stop or slow down when human is in the safe region or restricted region which may lead to larger cycle times. If the autonomous robotic system wants human intervention, for example, if an object falls down from the robot's end effector while moving, it might have to be picked up by a human. The robot can send signals for the intervention and when the operator is in the perimeter, the robot can throw visual feedback, that it is going to continue executing the cycle but in a different orientation or motion, if the operator agrees on this he can give input from his side and then the robot can execute the replanned action and the operator can put the piece in place. Thus the cycle time is not compromised and the robot and the operator can make their decisions and communicate with each other and the process is done flawlessly. Planned safety is an alternative for active safety which has less concurrency and needs more complex monitoring system.
+
+5. The addition of visual cues for communication is a requirement for the system to execute planned safety. The introduction of a Universal visual cue system for robot-human communication would greatly accelerate the planned safety for collaborative applications.
+
+6. A system for reporting errors or uncertainties in the robot's decision-making.
+Provision of visual signals when the robot encounters situations it cannot handle or where its confidence is low and needs human intervention for the further process.  Integrate human-in-the-loop systems that enable human operators to intervene or override the robot's decisions when necessary. Communicate when the system is operating autonomously and when human intervention is required. A generic feedback system should be developed for this.
+
+7. Implement interactive communication mechanisms that allow users to query the robot about its decisions. Enable the robot to provide additional information or clarification upon user request.
+
+8. Definition of the confidence levels at which the robot takes certain actions. Clearly explain how the robot's confidence influences its behavior.
+
+9. Redundant task planners and task evaluators should be present in the system for the task planning and verification of the task according to the inputs of AI functionalities.
+
+%In the context of this framework, several prerequisites need to be satisfied for a set of object detectors, grasp planners, and grasp evaluators to effectively function. Firstly, each object detector should provide a confidence estimate in detecting at least one object representation (oi ∈ O). Additionally, it should be capable of estimating conditional probabilities (P(di|O)), indicating how likely it is to state a particular level of confidence given the correctness of each possible object representation.
+
+%Secondly, a grasp planner must be able to propose a set of potential grasps, forming a pool of grasps (g) for subsequent evaluation. This step is crucial for generating a range of potential grasping strategies.
+
+%Thirdly, each grasp evaluator should be able to assess a given grasp's viability. Using at least one object representation (o ∈ O), the grasp evaluator must produce a numerical evaluation of how well the grasp will perform, assuming the object representation is correct. Moreover, the grasp evaluator should estimate, based on actual grasp data, the likelihood of success (P(ek|O, S)) associated with the evaluation, as well as the likelihood of the same evaluation being linked to an unsuccessful grasp.
+
+%In summary, these requirements ensure that the object detectors, grasp planners, and grasp evaluators in the framework possess the necessary capabilities to detect objects accurately, propose diverse grasps, and evaluate their effectiveness based on realistic data, contributing to the overall success of the robotic system.
+
+10. Establish a feedback loop for continuous improvement based on user feedback and real-world performance. Use user feedback to identify areas for improvement in transparency and decision-making.
+
+11. The system should be able to periodically assess the dynamic surroundings to evaluate the change in the dynamic environment. This helps in adapting to the changes that may occur.
+
+12. The processing and control unit must possess robust computational power to efficiently process the extensive data from vision sensors. This should ensure the uninterrupted and timely execution of the actions based on the real-time data.
+
+13. Integrated predictive maintenance in the system which allows the system to notify the operator about the status of the system components including the robot, sensors, and output devices based on the data for vision and other sensors according to the historical performance data, calibration data, Image quality, pattern recognition performance, dust and contamination, system alignment and performance. For robot, output vibrations, temperature, friction parameters current used, and the torque in the motor, as well as accuracy and precision of the robot operations.  
+
+
+14. The addition of robotic skin and extra sensing modules for the high-load robot is a suggestion from researchers, for making the high payload industrial robots collaborative.
+
+15. An algorithm which can assess the changes in the environment , for assessing the criticality of the changes in this output. Quantification of the risk using this algorithms. Thus not only uncertain hardware failures are taken into account, machine learning algorithmic failures can also be monitored.
+
+
+\begin{flushleft}
+In situations where the human-robot collaboration is very low and the autonomy is low, where the robot will do only repetitive tasks in a cage,  operators have substantial control, and operations are comparatively safe. The responsibility often falls on the operator to promptly control the system and correct any errors.
+In high-level autonomy for robots which are now being introduced into the market, where both perception tasks and safety responsibilities rest primarily with the robotic system, the ability of the perception system to self-identify errors becomes paramount. These requirements for the system and practices establish a standardized protocol and enhance common terminology in robotic system function and safety aspects to promote interoperability in the field of collaborative robotics.
+\end{flushleft}
+
+
+
+
+
+
+
+
+
+
+
