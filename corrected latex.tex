@@ -1,0 +1,275 @@
+\documentclass[12pt]{report}
+\usepackage{graphicx}
+\usepackage[a4paper, top=2.5cm, bottom=2.5cm, left=3cm, right=2cm]{geometry}
+\usepackage[english, german]{babel}
+\usepackage{float}
+\usepackage{ragged2e}
+\usepackage{rotating}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{lscape}
+\graphicspath{{figures/}}
+\usepackage{array}
+\usepackage{eso-pic,xcolor}
+\usepackage{hyperref}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{wrapfig}
+\usepackage{transparent}
+
+% Set line spacing in the preamble
+\linespread{1.5} 
+
+% Custom commands
+\newcommand\AtPageUpperRight[1]{\AtPageUpperLeft{\makebox[\paperwidth][r]{#1}}}
+
+\begin{document}
+
+% Add background image
+\AddToShipoutPictureBG*{%
+  \AtPageUpperRight{\raisebox{-\height}{
+        \transparent{0.2}\includegraphics[width=8cm]{th-deggendorf.png}}}}
+
+\begin{titlepage}
+    \begin{center}
+        \textbf{Master Thesis}
+       
+        \vspace{0.7cm}
+        
+        Deggendorf Institute of Technology, Deggendorf
+        
+        \vspace{0.5cm}
+        Faculty of Mechanical and Mechatronics Engineering
+        
+        \vspace{0.5 cm}
+        
+        Master Mechatronics and Cyberphysical Systems
+        
+        \vspace{4.0 cm}
+       
+        Framework für die sichere und zuverlässige Integration von künstlicher Intelligenz in Leichtbauroboter
+        
+        \vspace{0.5 cm}
+        
+        \textbf{Framework for the Safe and Reliable Integration
+    of Artificial Intelligence in Lightweight Robots}
+        
+        \vspace{0.5 cm}
+        
+        Master Thesis to obtain Academic Degree
+        
+        \vspace{0.5cm}
+        
+        \textbf{Master of Engineering (M.Eng)}
+        
+        \vspace{1.5 cm}
+        
+        submitted by: Abraham Varghese, 22101532
+        
+        \vspace{0.5 cm}
+        
+        first examiner: Prof. Dr.-Ing, Peter Firsching
+        
+        \vspace{1.5 cm}
+    
+        Deggendorf, 08.05.2024
+     
+     \end{center}
+\end{titlepage}
+
+% Confidential Disclosure Agreement Title Page
+\newpage
+\AddToShipoutPictureBG*{%
+  \AtPageUpperRight{\raisebox{-\height}{
+        \transparent{0.2}\includegraphics[width=8cm]{th-deggendorf.png}}}}
+
+\begin{center}
+    \textbf{Confidential Disclosure Agreement}
+       
+    \vspace{0.5 cm}
+        
+    between
+       
+    \vspace{0.5 cm}
+       
+    \textbf{Deggendorf Institute of Technology}
+       
+    \vspace{0.2 cm}
+       
+    Campus Deggendorf
+       
+    \vspace{0.2 cm}
+       
+    Dieter-Görlitz-Platz 1,
+       
+    \vspace{0.2 cm}
+        
+    94469, Deggendorf
+       
+    \vspace{2.5 cm}
+        
+    Faculty of Mechanical Engineering and Mechatronics \\
+    Major: Mechatronics and Cyberphysical Systems
+    
+    \vspace{0.5 cm}
+    
+    Prof. Dr.-Ing, Peter Firsching
+    
+    \vspace{0.5 cm}
+    
+    (in the following "Deggendorf Institute of Technology")
+    
+    \vspace{0.5 cm}
+         
+    and
+    
+    \vspace{0.5 cm}
+    
+    Abraham Varghese
+    
+    \vspace{0.5 cm}
+    
+    (in the following "NEURA Robotics GmbH")
+         
+    \vspace{0.5 cm}
+    
+    (singularly and jointly "Contractual Partner")
+    
+\end{center}
+
+\vspace{1.5 cm}
+         
+\raggedright
+\textbf{Preamble}
+
+\vspace{0.5 cm}
+         
+The Deggendorf Institute of Technology supervises an examination paper with the topic of \textbf{Framework for the Safe and Reliable Integration of Artificial Intelligence in Lightweight Robots}
+
+\vspace{0.5cm}
+         
+\mbox{}
+
+\vspace{0.5cm}
+\begin{center}
+    (in the following "examination paper"), in which, among other things, confidential 
+    information of the company is processed. Simultaneously, confidential information 
+    is also shared with the company in the context of supervision by the Deggendorf Institute of Technology.
+\end{center}
+
+\newpage
+\raggedright
+\section*{Declaration}
+
+\noindent
+Name of the Student: Abraham Varghese\\
+Name of the first Examiner: Prof. Dr.-Ing, Peter Firsching\\
+
+\vspace{1 cm}
+
+Title of master thesis:\\
+Framework for the Safe and Reliable Integration of Artificial Intelligence in Lightweight Robots
+
+\vspace{1.5 cm}
+
+I hereby declare that I have written this thesis independently. I have not submitted it for any other examination purposes. I have not used other references or material than mentioned in the bibliography and I have marked all literal analogous citations.
+
+\vspace{1.5 cm}
+\raggedright
+Deggendorf, 08.05.2024
+
+\hspace{4 cm}
+Signature of the student: \rule{6cm}{0.5pt} % Added signature line
+
+\pagenumbering{roman}
+\newpage
+
+% Begin main document content
+\tableofcontents
+\newpage
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Figures}
+\newpage
+\listoftables
+\addcontentsline{toc}{chapter}{List of Tables}
+\newpage
+\raggedright
+\addcontentsline{toc}{chapter}{Acknowledgement}
+\begin{center}
+    \textbf{Acknowledgement}
+\end{center}
+\raggedright
+
+I am highly indebted to NEURA Robotics GmbH, Metzingen for their guidance and constant supervision as well as for providing necessary information and resources for the Master thesis and for the support in completing the report
+
+\vspace{1cm}
+    
+I express my special gratitude to Mavarick Ho, Head of Software Strategy, and Sagar Kasrung, Functional Safety Expert, for instructing, providing information about how tasks are to be done and the flow of work, and guiding me for the thesis. Besides that, I also thank all the members for their guidance and keen support at various stages of my thesis.
+
+\vspace{1cm}
+
+I am very thankful to my Academic guide Prof. Dr.-Ing, Peter Firsching for his full support and encouragement. I owe him for his timely guidance, suggestions, and very constructive criticism which contributed immensely to the evolution of my thesis.
+    
+\vspace{1.5 cm}
+        
+\raggedleft
+Abraham Varghese
+
+\newpage
+
+\begin{abstract}
+{\normalfont\fontsize{14}{16}\selectfont
+The infusion of artificial intelligence (AI) into robotics has been instrumental in automating industries, ushering in the era of the 4th Industrial Revolution. Despite the rapid advancements, the absence of specific standards guiding the operations of AI-driven robots poses inherent risks. This study examines EN ISO 10218-1,2:2011 and ISO/TS 15066, revealing a need for more explicit directives on operational dos and don'ts and system requirements for AI in robotics.
+
+To address this gap, we employ Failure Mode Effect Analysis (FMEA) as a systematic tool to analyze failure modes in AI-integrated robotics. FMEA extended with STPA provides a comprehensive approach to identify hazards related to components and subsystems. Following EN IEC 60812:2018 guidelines, we assess severity, occurrence, and detectability of the failure modes, culminating in calculating Risk Priority Numbers (RPNs) for prioritizing risks and their subsequent mitigation.
+
+While our primary focus was on perception-based grasping, our vision extends to broader applications, AI functionalities, and varied scenarios. This iterative process aims to provide a comprehensive safety framework for AI in robotics. The study contributes to the safer integration of AI in an ever-evolving technological landscape, providing a foundation for future advancements.
+}
+\end{abstract}
+\addcontentsline{toc}{chapter}{Abstract} 
+
+\newpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\raggedright
+
+% Chapter Inputs
+\chapter{Introduction}
+% \input{Chapters/Introduction}
+This is the introduction.
+
+\newpage
+\chapter{Literature Review}
+% \input{Chapters/Literature_Review}
+This is the literature review.
+
+\newpage
+\chapter{Methodology}
+% \input{Chapters/Methodology}
+This is the methodology.
+
+\newpage
+\chapter{Results}
+% \input{Chapters/Result}
+This is the results section.
+
+\newpage
+\chapter{Conclusion and Future Prospects}
+% \input{Chapters/Conclusion_and_Future_Prospects}
+This is the conclusion and future prospects.
+
+\newpage
+\addcontentsline{toc}{chapter}{References}
+\begin{thebibliography}{9}
+\bibitem{latexcompanion} 
+Michel Goossens, Frank Mittelbach, and Alexander Samarin. 
+\textit{The \LaTeX\ Companion}. 
+Addison-Wesley, Reading, Massachusetts, 1993.
+\end{thebibliography}
+% \input{Chapters/Reference}
+\newpage
+\chapter{Annex}
+% \input{Chapters/Annex}
+This is the annex.
+
+\end{document}
