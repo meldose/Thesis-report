@@ -253,7 +253,17 @@ A robot's job in robotic conveyor tracking is to follow and retrieve goods from 
 
 \subsection{Photoneo Camera}
 \begin{justify}
-The main Vision camera we have used to track the moving object's motion through the conveyor belt is a Photoneocamera (MotionCam 3D M+), which has advanced settings that can capture and detect the object's position. The photoneo camera mainly consists of 3D sensing technology, which contains parallel structured light that helps provide the light source to detect the objects. Using this camera, the camera can capture accurate point clouds and a standard intensity image of the object. Its foundation is a specialized CMOS image sensor that uses Photoneo's patented Parallel Structured Light technology. The camera's carbon fiber body is lightweight and guarantees the same degree of stiffness as scanners. Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU that acts as the brains behind intelligent applications. A sequential structured light, which is utilized in numerous meteorological applications, is the primary technological driver in the first group. One well-suited representative of this category is the 3D scanner range from Photoneo. This technique is not appropriate for dynamic scenes because it uses sequential (multi-frame) capturing. This section is the source of the parallel structured light.
+The main Vision camera we have used to track the moving object's motion through the conveyor belt is a Photoneocamera (MotionCam 3D M+), which has advanced settings that can capture and detect the object's position. The photoneo camera mainly consists of 3D sensing technology, which contains parallel structured light that helps provide the light source to detect the objects. Using this camera, the camera can capture accurate point clouds and a standard intensity image of the object.
+Its foundation is a specialized CMOS image sensor that uses Photoneo's patented Parallel Structured Light technology.\\\\
+
+\begin{center}
+    \vspace{-1cm} % Adjust this value if you want to move the image up or down
+    \includegraphics[width=5cm]{Thesis-report/Figures/camera.jpeg} % Centered image
+    \vspace{1cm} % Space after the image
+\end{center}
+
+
+The camera's carbon fiber body is lightweight and guarantees the same degree of stiffness as scanners. Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU that acts as the brains behind intelligent applications. A sequential structured light, which is utilized in numerous meteorological applications, is the primary technological driver in the first group. One well-suited representative of this category is the 3D scanner range from Photoneo. This technique is not appropriate for dynamic scenes because it uses sequential (multi-frame) capturing. This section is the source of the parallel structured light.
 
 \subsubsection{Time fo Flight}
 The time it takes for light to travel from an illumination source to a scene and back is measured by time-of-flight. The speed of light itself is the primary obstacle in this situation. Usually, the phase shift of a modulated signal is used to measure time. High pixel modulation frequencies must be used in order to achieve a respectable level of depth accuracy. The primary drawback in this case is physics since a greater frequency results in less charge transfer, which lowers contrast and SNR. The restriction clearly suggests an accuracy level that TOF systems can achieve. Usually, it falls within the centimeter range. Another issue is interreflections, which can significantly bend the surface.
@@ -292,19 +302,61 @@ Parallel Structured Light parallelizes the sequential structured light using a s
 \newpage
 
 \chapter{\section{\mbox{Working Principle }}{{\normalfont\fontsize{14}{16}\bfseries}}
+
 \subsubsection{Photoneo Camera}
-The main Vision camera we have used to track the moving object's motion through the conveyor belt is a Photoneocamera (MotionCam 3D M+), which has advanced settings that can capture and detect the object's position. The photoneo camera mainly consists of 3D sensing technology, which contains parallel structured light that helps provide the light source to detect the objects. Using this camera, the camera can capture accurate point clouds and a standard intensity image of the object. Its foundation is a specialized CMOS image sensor that uses Photoneo's patented Parallel Structured Light technology. The camera's carbon fiber body is lightweight and guarantees the same degree of stiffness as scanners. Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU that acts as the brains behind intelligent applications. A sequential structured light, which is utilized in numerous meteorological applications, is the primary technological driver in the first group. One well-suited representative of this category is the 3D scanner range from Photoneo. This technique is not appropriate for dynamic scenes because it uses sequential (multi-frame) capturing. This section is the source of the parallel structured light.
+The main Vision camera we have used to track the moving object's motion through the conveyor belt is a Photoneocamera (MotionCam 3D M+), which has advanced settings that can capture and detect the object's position. The photoneo camera mainly consists of 3D sensing technology, which contains parallel structured light that helps provide the light source to detect the objects. Using this camera, the camera can capture accurate point clouds and a standard intensity image of the object. \\\
+
+
+\begin{center}
+    \vspace{-1cm} % Adjust this value if you want to move the image up or down
+    \includegraphics[width=5cm]{Thesis-report/Figures/camera.jpeg} % Centered image
+    \vspace{1cm} % Space after the image
+\end{center}
+
+Its foundation is a specialized CMOS image sensor that uses Photoneo's patented Parallel Structured Light technology. The camera's carbon fiber body is lightweight and guarantees the same degree of stiffness as scanners. Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU that acts as the brains behind intelligent applications. A sequential structured light, which is utilized in numerous meteorological applications, is the primary technological driver in the first group. One well-suited representative of this category is the 3D scanner range from Photoneo. This technique is not appropriate for dynamic scenes because it uses sequential (multi-frame) capturing. This section is the source of the parallel structured light.\\\\
+
+
 
 \subsubsection{6-Axis Cobot-Delta}
-The cobot that we have used for the conveyor tracking system is a 6-axis cobot called a Delta robot. The robot mainly moves towards its target position by getting the values from the camera in the form of quaternion values.
+The cobot that we have used for the conveyor tracking system is a 6-axis cobot called a Delta robot. The robot mainly moves towards its target position by getting the values from the camera in the form of quaternion values.\\\\
+\begin{center}
+    \vspace{-1cm} % Adjust this value if you want to move the image up or down
+    \includegraphics[width=5cm]{Thesis-report/Figures/robot.jpeg} % Centered image
+    \vspace{1cm} % Space after the image
+\end{center}
 \subsubsection{VGC10-Gripper}
-The OnRobot VGC10 electrical compact vacuum gripper offers unlimited customization and suction cup options, making it suitable for tight environments and lifting small, odd-shaped, and heavy objects. It features two independently controlled air channels, increasing efficiency and reducing cycle time. With no compressor or air supply, it's easy to move and redeploy. Once the robot gets near the object, the suction gripper is activated, thereby providing suction to the object and helping to pick up the object and place it in the target box.
+The OnRobot VGC10 electrical compact vacuum gripper offers unlimited customization and suction cup options, making it suitable for tight environments and lifting small, odd-shaped, and heavy objects. It features two independently controlled air channels, increasing efficiency and reducing cycle time.\\\\
+\begin{center}
+    \vspace{-1cm} % Adjust this value if you want to move the image up or down
+    \includegraphics[width=5cm]{Thesis-report/Figures/gripper.jpeg} % Centered image
+    \vspace{1cm} % Space after the image
+\end{center}
+With no compressor or air supply, it's easy to move and redeploy. Once the robot gets near the object, the suction gripper is activated, thereby providing suction to the object and helping to pick up the object and place it in the target box.
+
+
 \subsubsection{Objects for picking}
-The objects that we have used for conveyor tracking include a trapezoid, pipe socket, and circle ball.
+The objects that we have used for conveyor tracking include a trapezoid, pipe socket, and circle ball.\\
+\subsubsection{Socket-pipe} The socket pipe is: \\\\
+\begin{center}
+    \vspace{-1cm} % Adjust this value if you want to move the image up or down
+    \includegraphics[width=5cm]{Thesis-report/Figures/pipe.png} % Centered image
+    \vspace{1cm} % Space after the image
+\end{center}
+\subsubsection{Trapezoid}
+The trapezoid  is: \\\\
+
+\begin{center}
+    \vspace{-1cm} % Adjust this value if you want to move the image up or down
+    \includegraphics[width=5cm]{Thesis-report/Figures/trapezoid.png} % Centered image
+    \vspace{1cm} % Space after the image
+\end{center}
 \subsubsection{Conveyor Belt}
-The conveyor belt is the main belt where we have to place the object, thereby putting the object into dynamic mode.
+The conveyor belt is the main belt where we have to place the object, thereby putting the object into dynamic mode.\\
+
 
 \label{Literature}
+
+\subsection{Photoneo Camera-Web Interface}
 
 \newpage
 
