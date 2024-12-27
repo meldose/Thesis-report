@@ -241,6 +241,7 @@ This thesis explores the technical aspects of conveyor tracking with cobots, hig
 
 The experimental work involves establishing a collaborative environment of cobots for conveyor tracking experiments using a vision camera. The primary objective is to enhance the tracking accuracy of objects and capture various shapes on the conveyor belt. The experimental setup includes two cobots, a conveyor belt, two grippers, and objects of different shapes. As the conveyor belt moves these objects, the vision camera captures their images and poses, along with their part coordinate system (PCS). This information is relayed to the first robot, which sorts the objects based on shape. The second robot then synchronizes with the sorted objects in a designated capture zone, picking them up and placing them into user-defined target boxes. Once filled, the boxes are removed via the conveyor or another transport mechanism.
 }
+
 \newpage
 \chapter{\section{\mbox{Introduction}}{\normalfont\fontsize{14}{16}\bfseries}}
 \label{introduction}
@@ -275,7 +276,8 @@ By projecting a synthetic texture onto an object, active stereo addresses the un
 A spatially encoded pattern is used in structured patterns/dots technology to encode depth disparity information into pattern patches, which are usually projected through a laser diffraction grating in the form of a carefully planned dot collection. The camera must be able to see enough of the patch to reassemble the coding and accurately record the depth information. This produces artifacts on surfaces' edges and tiny objects. The Nyquist-Shannon theorem requires an order of magnitude higher camera resolution to reconstruct individual dots in the projection (and hence 3D measurements). Modern systems use about 25 camera pixels for each 3D measurement, producing about 70k 3D points.
 
 \subsubsection{Parallel Structured Light}
-Parallel Structured Light parallelizes the sequential structured light using a sophisticated sensor design, which enables it to record the scene illuminated by various patterns simultaneously. In addition to sharing many of the sequential structured light's benefits, such as resolution and accuracy, it also overcomes one of its main drawbacks: the inability to capture a dynamic environment. By simultaneously projecting and capturing numerous encoded patterns, Photoneo's Parallel Structured Light gets around the restriction. Pixel modulations within our proprietary CMOS sensor are used to accomplish this. Multiple groups of separately modified pixels make up the sensor itself. A control unit that operates in tandem with the projection is in charge of these groups. The coded patterns are inserted into the groups rather than changing the projection itself. The sensor may generate over 20 distinct virtual representations of the scene illuminated by the coded patterns injected at the end of the frame. The method is universal and may be modified on the fly to accommodate various materials and light sources by using any type of pattern typically used for sequential structured light.
+Parallel Structured Light parallelizes the sequential structured light using a sophisticated sensor design, which enables it to record the scene illuminated by various patterns simultaneously. In addition to sharing many of the sequential structured light's benefits, such as resolution and accuracy, it also overcomes one of its main drawbacks: the inability to capture a dynamic environment. By simultaneously projecting and capturing numerous encoded patterns, Photoneo's Parallel Structured Light gets around the restriction. Pixel modulations within our proprietary CMOS sensor are used to accomplish this. Multiple groups of separately modified pixels make up the sensor itself. \\\\ 
+\newpage A control unit that operates in tandem with the projection is in charge of these groups. The coded patterns are inserted into the groups rather than changing the projection itself. The sensor may generate over 20 distinct virtual representations of the scene illuminated by the coded patterns injected at the end of the frame. The method is universal and may be modified on the fly to accommodate various materials and light sources by using any type of pattern typically used for sequential structured light.
 
 \newpage
 
@@ -289,6 +291,82 @@ Parallel Structured Light parallelizes the sequential structured light using a s
 \subsection{Software Codes}
 \subsubsection{Servo-X}
 \subsubsection{Servo-J}
+\subsubsection{Calibration for camera for Workspace}\\\\
+The camera calibration is performed through an extrinsic method in which the camera is fixed in a position and the calibration ball is fixed at the end of the robot TCP.\\\\
+
+\begin{center}
+    \vspace{-1cm} % Adjust this value if you want to move the image up or down
+    \includegraphics[width=16cm]{Thesis-report/Figures/calibration.jpeg} % Centered image
+    \vspace{1cm} % Space after the image
+\end{center} \\\\ 
+The above figure shows how the calibration is happening by adding the point by fixing the point where the robot Coordinates [X, Y, Z] with its rotation values will save the points by saving the points (represented as green point). Here we need to add 9 points to get the calibration workspace. After the calibration, the average value from the 9 points is taken into consideration.
+\newpage
+
+\subsubsection{Calibration of Conveyor Belt}.\\\\
+
+The conveyor belt calibration can be done as follows:\\
+
+\begin{center}
+    \vspace{-1cm} % Adjust this value if you want to move the image up or down
+    \includegraphics[width=16cm]{Thesis-report/Figures/conveyor_belt with cmaera.jpg} % Centered image
+    \vspace{1cm} % Space after the image
+\end{center} \\\\
+The above figure consists of the Inputs and outputs, where inputs include:\
+\begin{itemize}
+\item Scan request\\
+The Sacn request consists of a  Python code that is used to send a request to the camera, which is then taken by the vision controller or the vision control box that helps trigger the camera.
+ \item Trigger scan\\
+ The trigger scan can be of the SW or HW method, where the output is hardware or Software method.
+ \newpage
+\item Trigger \\\\
+Initially, the scan request is given to the Vision controller, creating a trigger scan that helps the camera trigger. \\
+The output section includes the: \\
+\end{itemize}
+\begin{itemize}
+\item Coordinates of localized object\\
+The coordinates of the localized object consist of the object [X, Y, Z, Rx, Ry, Rz, and W], where X, Y, and Z include the object coordinates and [Rx, Ry, Rz, and W] include the quaternion values (rotation values), which are identified by the vision camera.
+\item Scan\\
+Once the trigger commands reach the camera, the scan will start to take place and take the objects as mentioned above.
+\item Final position \\ 
+The final position is considered as the location where the object coordinates, along with the calibration offset and traveled distance.
+\end{itemize}
+
+
+1. \textbf{Calculate the pick pose:} \\\\
+2. \textbf{Components of the pick pose calculation:} 
+Coordinates from localization in marker space (calculate the transformation matrix from camera space to marker space to calibrate the marker pattern)
+\newpage
+
+Possible triggers for the distance traveled from acquisition to the beginning of picking in conveyor tracking mode include:\\\\
+The scan request function pho_wait_for_req_completion() in SW HW-HW output of the trigger\\\\
+
+\textbf{Calibration Distance:}
+The distance between the marker pattern positions for the camera calibration and custom workspace calibration (the linear transformation between the camera and the custom WS origin) is known as the calibration distance.
+
+\textbf{Localized posture minus calibration distance plus traveled distance from the scan is the formula.} \\\\
+
+\begin{center}
+    \vspace{-1cm} % Adjust this value if you want to move the image up or down
+    \includegraphics[width=16cm]{Thesis-report/Figures/conveyor_belt.jpg} % Centered image
+    \vspace{1cm} % Space after the image
+\end{center}  \\\\
+
+In the above figure, we can see the conveyor belt having the calibration board, that is used for the Calibration which determines the X, Y, and Z coordinates of the object along with the conveyor belt, where MSD means marker space displacement, TD means travel distance, and TSc means trigger to scan completion in meters where the target position is the T[X, Y, Z, Rx, Ry, Rz], which represents the quaternion value of the object that need to be converted into Euler values that are used to move the robot to that location. \\\\
+
+\begin{center}
+    \vspace{-1cm} % Adjust this value if you want to move the image up or down
+    \includegraphics[width=16cm]{Thesis-report/Figures/coordinates.png} % Centered image
+    \vspace{1cm} % Space after the image
+\end{center}  \\\\
+In the above figure, the number represents the coordinates of the object after the scanning of the object done after the trigger. Once these quaternion values are attained, these values are then sent to the robotic controller for the robot to move to the required target position.\\\\
+Calibration of the marker pattern from the camera to the conveyor belt, which is the common origin \\\\
+1. Attach the appropriate calibration pattern to the conveyor belt. \\\\
+2. Use PhoXi Control's marker pattern to save calibration \\\\
+You can use it as a custom scanning profile in VS Space by adding a triggering item for the sensor at the marker pattern export photo's origin.
+Robot to conveyor belt: The robot moves the conveyor belt from a shared origin, but the marker pattern stays in place according to the conveyor belt. This allows the robot to reach the marker pattern, calibrate the custom coordinate space in the robot track, and save the "calibration" encoder value, which synchronizes the robot and conveyor.
+
+
+
 
 \newpage
 
@@ -322,17 +400,25 @@ The OnRobot VGC10 electrical compact vacuum gripper offers unlimited customizati
     \includegraphics[width=5cm]{Thesis-report/Figures/gripper.jpeg} % Centered image
     \vspace{1cm} % Space after the image
 \end{center}
-With no compressor or air supply, it's easy to move and redeploy. Once the robot gets near the object, the suction gripper is activated, thereby providing suction to the object and helping to pick up the object and place it in the target box.
-
+With no compressor or air supply, it's easy to move and redeploy. Once the robot gets near the object, the suction gripper is activated, thereby providing suction to the object and helping to pick up the object and place it in the target box.\\\\
 
 \subsubsection{Objects for picking}
 The objects that we have used for conveyor tracking include a trapezoid, pipe socket, and circle ball.\\
 \subsubsection{Socket-pipe} The socket pipe is: \\\\
 \begin{center}
     \vspace{-1cm} % Adjust this value if you want to move the image up or down
-    \includegraphics[width=5cm]{Thesis-report/Figures/pipe.png} % Centered image
+    \includegraphics[width=3cm]{Thesis-report/Figures/pipe.png} % Centered image
     \vspace{1cm} % Space after the image
-\end{center}
+\end{center} \\\\
+
+
+\begin{center}
+    \vspace{-1cm} % Adjust this value if you want to move the image up or down
+    \includegraphics[width=12cm]{Thesis-report/Figures/pipe_stl.jpg} % Centered image
+    \vspace{1cm} % Space after the image
+\end{center} \\\\
+The figure above shows the STL file of the pipe, which is used to pick up the object.\\\\
+
 \subsubsection{Trapezoid}
 The trapezoid  is: \\\\
 
@@ -340,7 +426,16 @@ The trapezoid  is: \\\\
     \vspace{-1cm} % Adjust this value if you want to move the image up or down
     \includegraphics[width=5cm]{Thesis-report/Figures/trapezoid.png} % Centered image
     \vspace{1cm} % Space after the image
-\end{center}
+\end{center}\\\\
+
+\begin{center}
+    \vspace{-1cm} % Adjust this value if you want to move the image up or down
+    \includegraphics[width=12cm]{Thesis-report/Figures/trapezoid_stl.jpg} % Centered image
+    \vspace{1cm} % Space after the image
+\end{center} \\\\
+The above figure shows the STL file of the trapezoid,hich is used to pick up the object.\\\\
+
+
 \subsubsection{Conveyor Belt}
 The conveyor belt is the main belt where we have to place the object, thereby putting the object into dynamic mode.\\
 
@@ -351,10 +446,17 @@ The conveyor belt is the main belt where we have to place the object, thereby pu
 The web interface includes: \\\\
 \begin{center}
     \vspace{-1cm} % Adjust this value if you want to move the image up or down
-    \includegraphics[width=8cm]{Thesis-report/Figures/web interface.jpeg} % Centered image
+    \includegraphics[width=12cm]{Thesis-report/Figures/web interface.jpeg} % Centered image
     \vspace{1cm} % Space after the image
-\end{center}
+\end{center}\\\\
 
+
+\begin{center}
+    \vspace{-1cm} % Adjust this value if you want to move the image up or down
+    \includegraphics[width=16cm]{Thesis-report/Figures/new.jpeg} % Centered image
+    \vspace{1cm} % Space after the image
+\end{center}\\\\
+ The above figure represents the web interface that includes the camera triggering the object placed in the workspace. The green section represents the area for the workspace, and the red colored is the object to be picked up by the Robot.
 \newpage
 
 \chapter{\section{\mbox{Results and Discussions }}{{\normalfont\fontsize{14}{16}\bfseries}}
