@@ -413,6 +413,13 @@ Robot to conveyor belt: The robot moves the conveyor belt from a shared origin, 
 \newpage
 
 \chapter{\section{\mbox{Working Principle }}{{\normalfont\fontsize{14}{16}\bfseries}}
+\subsubsection{Steps for Conveyor Tracking Visual System:}\\
+Two steps are necessary for conveyor visual tracking: \\
+\begin{itemize}
+\item Item detection\\
+\item Object tracking.\\
+\end{itemize}\\
+There are several ways to identify items. Some potential methods include color information-based recognition, self-organizing maps, template matching, and the temporal difference of two consecutive image samples. Due to their slowness, self-organizing maps cannot function in real time. Template matching requires prior knowledge of object information in order to match objects. Unfortunately, because of the necessary computational load, this method cannot be used in real-time. The color information solution overcomes the first two limitations, however it is not compatible with binary images. The object recognition method that leverages the difference between two photographs can be useful when the environment does not change quickly over time.
 
 \subsubsection{Photoneo Camera}
 The main Vision camera we have used to track the moving object's motion through the conveyor belt is a Photoneocamera (MotionCam 3D M+), which has advanced settings that can capture and detect the object's position. The photoneo camera mainly consists of 3D sensing technology, which contains parallel structured light that helps provide the light source to detect the objects. Using this camera, the camera can capture accurate point clouds and a standard intensity image of the object. \\\
