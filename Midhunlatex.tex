@@ -306,14 +306,18 @@ Pseudo-inverse is used to solve the joint:\\
 \]
 
 velocity for the linear velocity in Cartesian space. First, FK is used to determine the manipulator pose. Next, the IK solver uses a pseudo-inverse calculation to update the joint angles. Until the end tip reaches the desired posture with an acceptable error, these two stages are repeated. If the starting value and changing rate are appropriately calibrated, the dynamic gain causes the speed to reach its maximum and minimum quickly. Joint angles have an impact on the inaccuracy during the iteration process. Inappropriate angles cause the gain to drop dynamically, and vice versa.\\
+
+\subsection{Position of Camera}\\
+When mounting a camera for vision operation, it is best to keep it stable and as close to the robot's work envelope as feasible, without interfering with or restricting the movement of the robot arm. The longer the part must travel from the camera's location into the robot's reachable workspace, the more errors the encoder counts will produce since the accuracy of conveyor tracking with vision depends on the coordinate transformation between the camera's picture-taking location and the robot's work envelope (See Figure 4). The camera must be oriented downwards since the components are positioned on the conveyor belt's surface and vision recognition is done on the parts' upper surface. For the camera's 25 mm lens to cover the entire visible portion of the conveyor belt, a camera fixture was constructed to hold the camera directly above the upstream sensor. The upstream sensor is also used to activate the camera to take a photo when parts are presented at this point, so the picture-taking location is placed at the top of the upstream sensor. Following their placement in fixed locations, the camera and conveyor must be calibrated using the calibration program on the robot controller to configure the camera's properties and determine how the locations of the camera and conveyor relate to the robot's world coordinate.
+
 \subsection{Trajectory Planning}\\
 Using a set of predetermined points, trajectory planning aims to produce stable and fluid motion in world coordinates. A few characteristics, such as the maximum velocity, acceleration, and jerk, will be taken into account to demonstrate the continuous motion of the robot arm. The constant context of temporal movement is unique. Additionally, this function has a first derivative and a second derivative. In addition to increasing wear on the mechanism, jerky action frequently causes vibration in the robot manipulator.\\
-\newpage
+
 The fundamental path interpolation functions, such as linear and point-to-point movement, are carried out when the precondition parameters have been addressed. Interpolation, which is determined by previous factors, will produce the path segments. 
 \subsection{Traking Method}\\
 In the preceding part, the picking procedure was put into practice. With some dynamic adjustments, the situation is now more challenging. The robot should be updated with the object's information when it begins to move on the conveyor to use the tracing talent. The tracking technique presents certain difficulties when using a visual control system. First, we must use real-time frame-by-frame image processing to track the objects. Next, we use the average of the previous ten frames as a guide. Second, we must specify the gripper's position about the moving object. We came up with one method for determining the objects' positions. Kinects that can recognize objects can also provide us with depth information in addition to the target's color. Next, using the information gathered, we devise a method to obtain 3D coordinates and calibrate the scale to the y and z-axes while taking into account the depth frame, which is the x-axis under Kinect view. Finally, the robot's reaction will complete the grabbing maneuver by following the updated data. Our tracking strategy is divided into three subsections. By calibrating the y and z axes, we may create a prospective viewpoint to enhance object location after obtaining the past 10 frames as a reference to compare with the present frame. The tracker would ultimately follow the target by the predicted trajectory after we had the position of the tracker and the target.\\\\
 Initially obtain the tracker's (gripper) and the target's (workpiece) instantaneous positions independently once the camera has determined the outlines of objects. First, the contour is the difference between the color frame and the reference and current frames. The coordinates of the items in the depth frame are then obtained. The situation along the x and z axes in the depth frame and the y and z axes from the Kinect color frame are among the desired data. \\
-\newpage\\
+
 The tracker and target belong to different x-y planes; thus, we may utilize a threshold regarding the data along the z-axis in the color frame in Kinect view to separate the objects. It is referred to as the robot palm if the coordinate along the z-axis item is more than the threshold; if not, it is the industrial component. 
 \subsection{Position Calibration}\\
 Static pose recognition will end when the tracking approach is activated. The end-effector and object positions on the conveyor are among the data. The workpiece will proceed through the conveyor in a straight line. Therefore, only the workpieces' positions will be changed, and their orientation will remain unchanged. It is important to note that the end-effector might follow the subsequent instructions based on the tracking approach. This doesn't assist with grabbing articles, though. The gripper should take aim-off into account when doing object tracking to ensure that the entire gripping process is complete. Thus, proper gripping position by tracking method turns out to be the important point. Without additional indication, the arm might not be aware of some issues that arise on the conveyor. A webcam is set aside for the best gripping. The difference between frames will be recorded as the robot is instructed to begin tracking by the control center. Verify the gripper's direction first. The webcam then captures the image when the gripper is grasping. Finally, a version that includes the gripping stance and orientation will be saved. If the system detects the same object again, it will update the subsequent pose and orientation.
@@ -324,12 +328,7 @@ The trajectory follows the instructions produced from trajectory planning and ey
 r = x\cos\theta + y\sin\theta
 \end{equation}
 
-
-
-
-
-
-
+\newpage
 \subsection{Software Codes}
 \subsubsection{Servo-X}
 \subsubsection{Servo-J}
@@ -377,7 +376,6 @@ The final position is considered as the location where the object coordinates, a
 1. \textbf{Calculate the pick pose:} \\\\
 2. \textbf{Components of the pick pose calculation:} 
 Coordinates from localization in marker space (calculate the transformation matrix from camera space to marker space to calibrate the marker pattern)
-\newpage
 
 Possible triggers for the distance traveled from acquisition to the beginning of picking in conveyor tracking mode include:\\\\
 The scan request function pho_wait_for_req_completion() in SW HW-HW output of the trigger\\\\
@@ -422,7 +420,7 @@ Two steps are necessary for conveyor visual tracking: \\
 There are several ways to identify items. Some potential methods include color information-based recognition, self-organizing maps, template matching, and the temporal difference of two consecutive image samples. Due to their slowness, self-organizing maps cannot function in real time. Template matching requires prior knowledge of object information in order to match objects. Unfortunately, because of the necessary computational load, this method cannot be used in real-time. The color information solution overcomes the first two limitations, however it is not compatible with binary images. The object recognition method that leverages the difference between two photographs can be useful when the environment does not change quickly over time.
 
 \subsubsection{Photoneo Camera}
-The main Vision camera we have used to track the moving object's motion through the conveyor belt is a Photoneocamera (MotionCam 3D M+), which has advanced settings that can capture and detect the object's position. The photoneo camera mainly consists of 3D sensing technology, which contains parallel structured light that helps provide the light source to detect the objects. Using this camera, the camera can capture accurate point clouds and a standard intensity image of the object. \\\
+The main Vision camera we have used to track the moving object's motion through the conveyor belt is a Photoneocamera (MotionCam 3D M+), which has advanced settings that can capture and detect the object's position.\\\\ The photoneo camera mainly consists of 3D sensing technology, which contains parallel structured light that helps provide the light source to detect the objects. Using this camera, the camera can capture accurate point clouds and a standard intensity image of the object. \\\
 
 
 \begin{center}
@@ -431,9 +429,9 @@ The main Vision camera we have used to track the moving object's motion through 
     \vspace{1cm} % Space after the image
 \end{center}
 
-Its foundation is a specialized CMOS image sensor that uses Photoneo's patented Parallel Structured Light technology. The camera's carbon fiber body is lightweight and guarantees the same degree of stiffness as scanners. Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU that acts as the brains behind intelligent applications. A sequential structured light, which is utilized in numerous meteorological applications, is the primary technological driver in the first group. One well-suited representative of this category is the 3D scanner range from Photoneo. This technique is not appropriate for dynamic scenes because it uses sequential (multi-frame) capturing. This section is the source of the parallel structured light.\\\\
+Its foundation is a specialized CMOS image sensor that uses Photoneo's patented Parallel Structured Light technology. The camera's carbon fiber body is lightweight and guarantees the same degree of stiffness as scanners. Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU that acts as the brains behind intelligent applications. A sequential structured light, which is utilized in numerous meteorological applications, is the primary technological driver in the first group. One well-suited representative of this category is the 3D scanner range from Photoneo. This technique is not appropriate for dynamic scenes because it uses sequential (multi-frame) capturing. This section is the source of the parallel structured light.\\
 
-
+\newpage
 
 \subsubsection{6-Axis Cobot-Delta}
 The cobot that we have used for the conveyor tracking system is a 6-axis cobot called a Delta robot. The robot mainly moves towards its target position by getting the values from the camera in the form of quaternion values.\\\\
