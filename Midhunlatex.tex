@@ -235,12 +235,7 @@ Signature of the student:
 \begin{abstract}{\normalfont\fontsize{14}{16}\bfseries}
 \raggedright
 
-Conveyor tracking using collaborative robots equipped with vision cameras represents a significant advancement in modern production. This innovative approach enables cobots to interact dynamically with moving goods on conveyor belts, thereby enhancing efficiency, precision, and adaptability. By utilizing vision cameras, cobots can accurately detect, locate, and track objects in real-time, accommodating changes in shape, speed, and orientation. The integration of vision technology allows cobots to perform tasks such as sorting, assembly, and pick-and-place operations with minimal human intervention. \\
-
-This thesis explores the technical aspects of conveyor tracking with cobots, highlighting the role of vision systems in improving automation capabilities, reducing error rates, and enabling flexible manufacturing environments. It also addresses the challenges of synchronizing cobot actions with fast-moving conveyors and discusses the potential benefits for industries such as logistics, packaging, and electronics assembly. \\
-
-The experimental work involves establishing a collaborative environment of cobots for conveyor tracking experiments using a vision camera. The primary objective is to enhance the tracking accuracy of objects and capture various shapes on the conveyor belt. The experimental setup includes two cobots, a conveyor belt, two grippers, and objects of different shapes. As the conveyor belt moves these objects, the vision camera captures their images and poses, along with their part coordinate system (PCS). This information is relayed to the first robot, which sorts the objects based on shape. The second robot then synchronizes with the sorted objects in a designated capture zone, picking them up and placing them into user-defined target boxes. Once filled, the boxes are removed via the conveyor or another transport mechanism.
-}
+Conveyor tracking using collaborative robots equipped with vision cameras represents a significant advancement in modern production. This innovative approach enables cobots to interact dynamically with moving goods on conveyor belts, thereby enhancing efficiency, precision, and adaptability. By utilizing vision cameras, cobots can accurately detect, locate, and track objects in real time, accommodating changes in shape, speed, and orientation. The integration of vision technology allows robots to perform tasks such as sorting, assembly, and pick-and-place operations with minimal human intervention. This thesis explores the technical aspects of conveyor tracking with cobots, highlighting the role of vision systems in improving automation capabilities, reducing error rates, and enabling flexible manufacturing environments. It also addresses the challenges of synchronizing cobot actions with fast-moving conveyors and discusses the potential benefits for industries such as logistics, packaging, and electronics assembly. The experimental work involves establishing a collaborative environment of cobots for conveyor tracking experiments using a vision camera. The primary objective is to enhance the tracking accuracy of objects and capture various shapes on the conveyor belt. The experimental setup includes a cobot, a conveyor belt, one gripper, and objects of different shapes. As the conveyor belt moves these objects, the vision camera captures their images and poses, along with their part coordinate system (PCS). The robot then synchronizes with the objects in a designated capture zone, picking them up and placing them into user-defined target boxes. 
 
 \newpage
 \chapter{\section{\mbox{Introduction}}{\normalfont\fontsize{14}{16}\bfseries}}
@@ -277,7 +272,23 @@ A spatially encoded pattern is used in structured patterns/dots technology to en
 
 \subsubsection{Parallel Structured Light}
 Parallel Structured Light parallelizes the sequential structured light using a sophisticated sensor design, which enables it to record the scene illuminated by various patterns simultaneously. In addition to sharing many of the sequential structured light's benefits, such as resolution and accuracy, it also overcomes one of its main drawbacks: the inability to capture a dynamic environment. By simultaneously projecting and capturing numerous encoded patterns, Photoneo's Parallel Structured Light gets around the restriction. Pixel modulations within our proprietary CMOS sensor are used to accomplish this. Multiple groups of separately modified pixels make up the sensor itself. \\\\ 
-\newpage A control unit that operates in tandem with the projection is in charge of these groups. The coded patterns are inserted into the groups rather than changing the projection itself. The sensor may generate over 20 distinct virtual representations of the scene illuminated by the coded patterns injected at the end of the frame. The method is universal and may be modified on the fly to accommodate various materials and light sources by using any type of pattern typically used for sequential structured light.
+\newpage A control unit that operates in tandem with the projection is in charge of these groups. The coded patterns are inserted into the groups rather than changing the projection itself. The sensor may generate over 20 distinct virtual representations of the scene illuminated by the coded patterns injected at the end of the frame. The method is universal and may be modified on the fly to accommodate various materials and light sources by using any type of pattern typically used for sequential structured light.\\
+
+\subsubsection{Vision Controller}\\
+The figure below shows the vision controller connected to the photoneo camera and the robotic controller using Ethernet (IPV4 address). The vision controller is connected to a PC to get the Web interface to trigger the camera and see the Web interface for communication.\\
+
+\begin{center}
+    \vspace{-1cm} % Adjust this value if you want to move the image up or down
+    \includegraphics[width=5cm]{Thesis-report/Figures/vision controller.png} % Centered image
+    \vspace{1cm} % Space after the image
+\end{center}\\
+\subsubsection{Marker Pattern}\\
+The figure below shows the Board that helps calibrate the conveyor belt, which aligns the coordinates of the object with the conveyor belt for objects passing through the belt.\\
+\begin{center}
+    \vspace{-1cm} % Adjust this value if you want to move the image up or down
+    \includegraphics[width=5cm]{Thesis-report/Figures/marker_pattern.png} % Centered image
+    \vspace{1cm} % Space after the image
+\end{center}\\
 
 \newpage
 
