@@ -521,7 +521,12 @@ The Robot module functions as a TCP client, while the vision controller establis
     \includegraphics[width=14cm]{Thesis-report/Figures/channel.png} % Centered image
     \vspace{1cm} % Space after the image
 \end{center}\\
-
+\subsubsection{Network (EC, HC) }\\
+The robot interface (and robot controller IP) and the Vision controller's 3D sensor interface must be properly configured for the Vision controller to communicate with both the robot and the 3D sensor. This is not required for marker space calibration.\\
+\subsubsection{Vision }\\
+It is necessary to thoroughly configure the visual system that will be calibrated. Make sure the following vision system parameters are set up correctly before beginning the calibration:
+● Scanner ID: This vision system uses a 3D sensor. The linked 3D sensors will appear in the drop-down list of available 3D sensors if the scanner interface is set up properly.
+The calibration space and scanner position specify the 3D sensor's mount point and, consequently, the calibration type. The scanner model is automatically calculated based on the selected 3D sensor.\\
 \subsubsection{6-Axis Cobot-Delta}
 The cobot that we have used for the conveyor tracking system is a 6-axis cobot called a Delta robot. The robot mainly moves towards its target position by getting the values from the camera in the form of quaternion values.\\\\
 \begin{center}
