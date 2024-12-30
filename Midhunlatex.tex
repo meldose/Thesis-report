@@ -249,7 +249,14 @@ A robot's job in robotic conveyor tracking is to follow and retrieve goods from 
 
 \subsection{Photoneo Camera}
 \begin{justify}
-The main Vision camera we have used to track the moving object's motion through the conveyor belt is a Photoneocamera (MotionCam 3D M+), which has advanced settings that can capture and detect the object's position. The photoneo camera mainly consists of 3D sensing technology, which contains parallel structured light that helps provide the light source to detect the objects. Using this camera, the camera can capture accurate point clouds and a standard intensity image of the object.
+The main Vision camera we have used to track the moving object's motion through the conveyor belt is a Photoneocamera (MotionCam 3D M+), which has advanced settings that can capture and detect the object's position. The photoneo camera mainly consists of 3D sensing technology, which contains parallel structured light that helps provide the light source to detect the objects.\\\\
+\begin{center}
+    \vspace{-1cm} % Adjust this value if you want to move the image up or down
+    \includegraphics[width=5cm]{Thesis-report/Figures/CAMERA.png} % Centered image
+    \vspace{1cm} % Space after the image
+\end{center}
+
+Using this camera, the camera can capture accurate point clouds and a standard intensity image of the object.
 Its foundation is a specialized CMOS image sensor that uses Photoneo's patented Parallel Structured Light technology.\\\\
 
 \begin{center}
@@ -257,8 +264,6 @@ Its foundation is a specialized CMOS image sensor that uses Photoneo's patented 
     \includegraphics[width=5cm]{Thesis-report/Figures/camera.jpeg} % Centered image
     \vspace{1cm} % Space after the image
 \end{center}
-
-
 The camera's carbon fiber body is lightweight and guarantees the same degree of stiffness as scanners. Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU that acts as the brains behind intelligent applications. A sequential structured light, which is utilized in numerous meteorological applications, is the primary technological driver in the first group. One well-suited representative of this category is the 3D scanner range from Photoneo. This technique is not appropriate for dynamic scenes because it uses sequential (multi-frame) capturing. This section is the source of the parallel structured light.
 
 \subsubsection{Time fo Flight}
