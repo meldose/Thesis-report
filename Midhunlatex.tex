@@ -474,11 +474,32 @@ The main Vision camera we have used to track the moving object's motion through 
 
 Its foundation is a specialized CMOS image sensor that uses Photoneo's patented Parallel Structured Light technology. The camera's carbon fiber body is lightweight and guarantees the same degree of stiffness as scanners. Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU that acts as the brains behind intelligent applications. A sequential structured light, which is utilized in numerous meteorological applications, is the primary technological driver in the first group. One well-suited representative of this category is the 3D scanner range from Photoneo. This technique is not appropriate for dynamic scenes because it uses sequential (multi-frame) capturing. This section is the source of the parallel structured light.\\
 
+\subsubsection{Communication of Robot With Vision Camera}\\
+The robot interface on the vision controller and the robot module operating on the robot controller enable communication between the vision controller and the robot controller.\\\\
+
+\begin{center}
+    \vspace{-1cm} % Adjust this value if you want to move the image up or down
+    \includegraphics[width=14cm]{Thesis-report/Figures/communication.png} % Centered image
+    \vspace{1cm} % Space after the image
+\end{center}\\
+
+ \subsubsection{Protocol TCP/IP}\\
+The robot controller and the vision controller communicate via the TCP/IP protocol. Network connectivity is an optional feature that some robot controllers do not come with by default. All prerequisites for the full installation of the Robot module are listed in the Robot integration guides' Prerequisites section.\\
+
+\subsubsection{Channel of communication}\\
+The Robot module functions as a TCP client, while the vision controller establishes a TCP server. The client is called the Action Request Client, while the server is called the Action Request Server. The Action Request Client communicates with the Action Request Server over this channel. After receiving the action request, the vision controller carries it out and replies to the robotic controller.\\\\
+
+\begin{center}
+    \vspace{-1cm} % Adjust this value if you want to move the image up or down
+    \includegraphics[width=14cm]{Thesis-report/Figures/channel.png} % Centered image
+    \vspace{1cm} % Space after the image
+\end{center}\\
+
 \subsubsection{6-Axis Cobot-Delta}
 The cobot that we have used for the conveyor tracking system is a 6-axis cobot called a Delta robot. The robot mainly moves towards its target position by getting the values from the camera in the form of quaternion values.\\\\
 \begin{center}
     \vspace{-1cm} % Adjust this value if you want to move the image up or down
-    \includegraphics[width=5cm]{Thesis-report/Figures/robot.jpeg} % Centered image
+    \includegraphics[width=3cm]{Thesis-report/Figures/robot.jpeg} % Centered image
     \vspace{1cm} % Space after the image
 \end{center}
 \subsubsection{VGC10-Gripper}
