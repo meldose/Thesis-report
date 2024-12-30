@@ -378,12 +378,22 @@ r = x\cos\theta + y\sin\theta
 \subsubsection{Calibration for camera for Workspace}\\\\
 The camera calibration is performed through an extrinsic method in which the camera is fixed in a position and the calibration ball is fixed at the end of the robot TCP.\\\\
 
+
 \begin{center}
     \vspace{-1cm} % Adjust this value if you want to move the image up or down
     \includegraphics[width=16cm]{Thesis-report/Figures/calibration.jpeg} % Centered image
     \vspace{1cm} % Space after the image
 \end{center} \\
-The above figure shows how the calibration is happening by adding the point by fixing the point where the robot Coordinates [X, Y, Z] with its rotation values will save the points by saving the points (represented as green point). Here we need to add 9 points to get the calibration workspace. After the calibration, the average value from the 9 points is taken into consideration.
+The above figure shows how the calibration is happening by adding the point by fixing the point where the robot Coordinates [X, Y, Z ]coordinates rotation values will save the points by saving the points (represented as green point). Here we need to add 9 points to get the calibration workspace. After the calibration, the average value from the 9 points is taken into consideration.\\
+
+The below figure shows the calibration method used in this study (Extrinsic Calibration) (EC), where the camera is fixed at location and 9 points are taken into consideration where the average value is finally taken as the value for the calibration.\\
+\begin{center}
+    \vspace{-1cm} % Adjust this value if you want to move the image up or down
+    \includegraphics[width=16cm]{Thesis-report/Figures/extrinsic.png} % Centered image
+    \vspace{1cm} % Space after the image
+\end{center} \\
+
+
 \newpage
 
 \subsubsection{Calibration of Conveyor Belt}.
