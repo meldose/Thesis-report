@@ -461,19 +461,82 @@ The distance between the marker pattern positions for the camera calibration and
     \vspace{1cm} % Space after the image
 \end{center}  \\\\
 
+
 In the above figure, we can see the conveyor belt having the calibration board, that is used for the Calibration which determines the X, Y, and Z coordinates of the object along with the conveyor belt, where MSD means marker space displacement, TD means travel distance, and TSc means trigger to scan completion in meters where the target position is the T[X, Y, Z, Rx, Ry, Rz], which represents the quaternion value of the object that need to be converted into Euler values that are used to move the robot to that location. \\\\
+
 
 \begin{center}
     \vspace{-1cm} % Adjust this value if you want to move the image up or down
     \includegraphics[width=16cm]{Thesis-report/Figures/coordinates.png} % Centered image
     \vspace{1cm} % Space after the image
 \end{center}  \\\\
+
+
+
 In the above figure, the number represents the coordinates of the object after the scanning of the object done after the trigger. Once these quaternion values are attained, these values are then sent to the robotic controller for the robot to move to the required target position.\\\\
 Calibration of the marker pattern from the camera to the conveyor belt, which is the common origin \\\\
 1. Attach the appropriate calibration pattern to the conveyor belt. \\\\
 2. Use PhoXi Control's marker pattern to save calibration \\\\
 You can use it as a custom scanning profile in VS Space by adding a triggering item for the sensor at the marker pattern export photo's origin.
-Robot to conveyor belt: The robot moves the conveyor belt from a shared origin, but the marker pattern stays in place according to the conveyor belt. This allows the robot to reach the marker pattern, calibrate the custom coordinate space in the robot track, and save the "calibration" encoder value, which synchronizes the robot and conveyor.
+Robot to conveyor belt: The robot moves the conveyor belt from a shared origin, but the marker pattern stays in place according to the conveyor belt. This allows the robot to reach the marker pattern, calibrate the custom coordinate space in the robot track, and save the "calibration" encoder value, which synchronizes the robot and conveyor.\\
+
+\subsection{Conditions for Conveyor Belt:}
+While setting up the conveyor belt with a Vision Camera , we need to follow certain conditions:
+
+1. Matching robot speed with the conveyor belt: In order for the robot to pick up the object from the conveyor belt, the robot`s end effector should move at the same speed as that of the conveyor belt speed.\\
+
+\[
+V_c = V_r
+\]
+
+where \( V_c \) represents the velocity of the conveyor belt and \( V_r \) represents the velocity of the robot.\\
+
+2. Target Position Calculation: The final position of the robot is calculated by:\\
+
+\[
+\text{Target} = TX + AMS \cdot \theta + TD
+\]
+
+\text{where } TX \text{ is the initial detected position, } AMS \text{ is the Marker Space Displacement, and } TD \text{ is the Tracked Distance.}\\
+
+3. Marker Space Displacement(AMS):\\
+
+\[
+AMS \cdot \theta = TX - \text{Marker Pattern Origin}
+\]
+
+\text{where } TX \text{ is the initial detected position, } AMS \text{ helps in getting the relative position to this reference, and the Marker Pattern Origin is the reference
+
+4. Tracked Distance:\\
+
+\[
+TD = \Delta TSC + \Delta CTO
+\]
+
+where:
+
+- \( \Delta TSC \) is the \textbf{Target Scan Completion Distance}, which is the distance moved by the conveyor while scanning is completed.
+- \( \Delta CTO \) is the \textbf{Conveyor Tracking Offset}, which is the distance moved while waiting for the robot to reach the pick position.
+
+5.Target Scan completion Distance: (TSC):\\
+
+\begin{center}
+    \[
+    TSC = V_c \times t_s
+    \]
+\end{center}
+
+6. Final Adjusted position:\\
+
+After considering the conveyor motion and processing delays, the final position will be the place where the robot should pick the object.\\
+
+\[
+\text{Target} = TX + (TX - \text{Marker Pattern Origin}) + (V_c \times t_s) + (V_c \times t_r)
+\]
+
+
+
+
 
 
 
