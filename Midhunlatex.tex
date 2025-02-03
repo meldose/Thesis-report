@@ -562,8 +562,76 @@ The figure below illustrates the connection between joint space and Cartesian sp
     \includegraphics[width=10cm]{Thesis-report/Figures/fk.png} % Centered image
     \vspace{1cm} % Space after the image
 \end{center}
+Finding the joint variables that allow a robot to be manipulated into the required position requires an understanding of its inverse kinematics. This is used to control the robot's position, motion, and other features. This study presents a detailed explanation and comparison of two popular approaches for manipulating robots: Jacobian inverse techniques and inverse kinematics.
+Sixteen alternatives are available for a general six DOF robot as shown below and it lists the quantity of analytical solutions for robots with varying degrees of freedom. Therefore, an accurate set of solutions among several inverse kinematic solutions is needed for continuous motion of a robot. Jacobian inverse is another technique for resolving IK problems [5, 6]. In [7, 8], the numerical approach to solve the Jacobian matrix's inverse was introduced. In [9], the inverse kinematics problem for a six-DOF robot manipulator is solved analytically. The benefit of analytical expression is that it provides formulas for the connection between link parameters and joint angle. The robotics controller can directly incorporate these relationships.\\
+\documentclass{article}
+\usepackage{booktabs}
 
+\begin{table}[h]
+    \centering
+    \begin{tabular}{cc}
+        \toprule
+        \textbf{DOF} & \textbf{Number of Solutions} \\
+        \midrule
+        6 (6R, 5RP) & 8 \\
+        6R (intersecting wrist)
+Greater than 6 & 16\\
+        (Redundant manipulator) & ∞\\
+        \bottomrule
+    \end{tabular}
+    \caption{DOF vs. Number of Solutions}
+    \label{tab:dof_solutions}
+\end{table}
 
+\subsection{Jacobian inverse method}:\\
+The time derivative of the kinematic equations that connect the end-effector's velocity to the joint rates is known as the Jacobian in robotics. The following is the phrase for the Jacobian.
+\[
+\omega_e = J_{\omega} \theta, \quad v_e = J_v \theta
+\]
+where the 3x6 matrices J ω and J v relate the joint velocities or rates θ to the end-effector angular velocity ω e and velocity v e, respectively. Also, J ω and J v are where J  J (JJ) is the function of θ and the pseudo-inverse of J matrix. It is possible to rewrite as:\\
+\[
+\Delta x_e = J \Delta \theta
+\]
+where,
+\[
+\begin{bmatrix} 
+\Delta \phi \\ \Delta \theta \\ \Delta \psi \\ \Delta x \\ \Delta y \\ \Delta z 
+\end{bmatrix}^T
+=
+J
+\begin{bmatrix} 
+\Delta \theta_1 \\ \Delta \theta_2 \\ \Delta \theta
+\end{bmatrix}
+
+The change in the end-effector's pose that corresponds to the change in joint angles θ is denoted by the word x e. The recursive relationship between the angular velocity and linear velocities for a 6R manipulator yields the Jacobian J, which is the 6×6 matrix for a 6-DOF robot. It is provided as \\
+
+\[
+J =
+\begin{bmatrix}
+1 & e_1 \times a_1 & e_1 \\
+e_6 & e_6 \times a_6 & e_6
+\end{bmatrix}
+\]
+
+where a 1 is the joint axis direction of joint 1 and e is the vector as seen in Figure 2 (a). Likewise, direction and (12) e 1 is the joint axis a 2, e is the EE's location from joint 2, and so forth. The differential rotation and translation vectors that correspond to the differential change in the joint rates make up each column of the Jacobian. The Jacobian inverse provides the joint variation for the desired increment at the kth point pose as follows:\\
+\[
+\Delta \theta_k = J_k^{-1} \Delta x_e
+\]
+where x e represents the required increase in the EE's posture. In [13], the effective method for determining the increment was provided. Joint angles needed to get to the kth point are comparable to the joint angle's first-order Taylor series expansion, which is calculated as: \\
+
+\[
+\theta_k = \theta_{k-1} + J_k \Delta x_e
+\]
+\[
+
+In general, \theta_k = \theta_{k-1} + J^{\dagger} \Delta x + (I - J^{\dagger} J) \Delta \phi
+\]
+
+where \[
+J = J (JJ)
+\]
+ is the null space of J with ⁄φ as the objective function, and J = J (JJ)^-1 is the pseudo inverse of J matrix.
+Since the Jacobian matrix is square and invertible, (14) is utilized in this case for the manipulator with DOF=6.
 \newpage
 \textbf{ROBOT COORDINATE SYSTEM} 
 
