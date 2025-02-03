@@ -462,7 +462,7 @@ The distance between the marker pattern positions for the camera calibration and
 \end{center}  \\\\
 
 
-In the above figure, we can see the conveyor belt having the calibration board, that is used for the Calibration which determines the X, Y, and Z coordinates of the object along with the conveyor belt, where MSD means marker space displacement, TD means travel distance, and TSc means trigger to scan completion in meters where the target position is the T[X, Y, Z, Rx, Ry, Rz], which represents the quaternion value of the object that need to be converted into Euler values that are used to move the robot to that location. \\\\
+In the above figure, we can see the conveyor belt having the calibration board that is used for the calibration, which determines the X, Y, and Z coordinates of the object along with the conveyor belt, where MSD means marker space displacement, TD means travel distance, and TSc means trigger to scan completion in meters where the target position is the T[X, Y, Z, Rx, Ry, Rz], which represents the quaternion value of the object that needs to be converted into Euler values that are used to move the robot to that location. \\\\
 
 
 \begin{center}
@@ -497,7 +497,7 @@ where \( V_c \) represents the velocity of the conveyor belt and \( V_r \) repre
 \text{Target} = TX + AMS \cdot \theta + TD
 \]
 
-\text{where } TX \text{ is the initial detected position, } AMS \text{ is the Marker Space Displacement, and } TD \text{ is the Tracked Distance.}\\
+\text{where } TX \text{ is the initial detected position, } AMS \text{ is the marker space displacement, and } TD \text{ is the tracked distance.}\\
 
 3. Marker Space Displacement(AMS):\\
 
@@ -518,7 +518,7 @@ where:
 - \( \Delta TSC \) is the \textbf{Target Scan Completion Distance}, which is the distance moved by the conveyor while scanning is completed.
 - \( \Delta CTO \) is the \textbf{Conveyor Tracking Offset}, which is the distance moved while waiting for the robot to reach the pick position.
 
-5.Target Scan completion Distance: (TSC):\\
+5. Target Scan Completion Distance (TSC):(\\
 
 \begin{center}
     \[
@@ -526,7 +526,7 @@ where:
     \]
 \end{center}
 
-6. Final Adjusted position:\\
+6. Final Adjusted Position:\\
 
 After considering the conveyor motion and processing delays, the final position will be the place where the robot should pick the object.\\
 
@@ -563,7 +563,7 @@ The figure below illustrates the connection between joint space and Cartesian sp
     \vspace{1cm} % Space after the image
 \end{center}
 Finding the joint variables that allow a robot to be manipulated into the required position requires an understanding of its inverse kinematics. This is used to control the robot's position, motion, and other features. This study presents a detailed explanation and comparison of two popular approaches for manipulating robots: Jacobian inverse techniques and inverse kinematics.
-Sixteen alternatives are available for a general six DOF robot as shown below and it lists the quantity of analytical solutions for robots with varying degrees of freedom. Therefore, an accurate set of solutions among several inverse kinematic solutions is needed for continuous motion of a robot. Jacobian inverse is another technique for resolving IK problems [5, 6]. In [7, 8], the numerical approach to solve the Jacobian matrix's inverse was introduced. In [9], the inverse kinematics problem for a six-DOF robot manipulator is solved analytically. The benefit of analytical expression is that it provides formulas for the connection between link parameters and joint angle. The robotics controller can directly incorporate these relationships.\\
+Sixteen alternatives are available for a general six DOF robot, as shown below, and it lists the quantity of analytical solutions for robots with varying degrees of freedom. Therefore, an accurate set of solutions among several inverse kinematic solutions is needed for the continuous motion of a robot. Jacobian inverse is another technique for resolving IK problems [5, 6]. In [7, 8], the numerical approach to solve the Jacobian matrix's inverse was introduced. In [9], the inverse kinematics problem for a six-DOF robot manipulator is solved analytically. The benefit of analytical expression is that it provides formulas for the connection between link parameters and joint angle. The robotics controller can directly incorporate these relationships.\\
 \documentclass{article}
 \usepackage{booktabs}
 
@@ -630,8 +630,8 @@ In general, \theta_k = \theta_{k-1} + J^{\dagger} \Delta x + (I - J^{\dagger} J)
 where \[
 J = J (JJ)
 \]
- is the null space of J with ⁄φ as the objective function, and J = J (JJ)^-1 is the pseudo inverse of J matrix.
-Since the Jacobian matrix is square and invertible, (14) is utilized in this case for the manipulator with DOF=6.
+ is the null space of J with ⁄φ as the objective function, and J = J (JJ) -1 is the pseudo-inverse of the matrix J.x J.
+Since the Jacobian matrix is square and invertible, (14) is utilized in this case for the manipulator with DOF = 6.
 \newpage
 \textbf{ROBOT COORDINATE SYSTEM} 
 
