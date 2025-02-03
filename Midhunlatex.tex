@@ -547,7 +547,7 @@ After considering the conveyor motion and processing delays, the final position 
 
 \chapter{\section{\mbox{Inverse Kinematics }}{{\normalfont\fontsize{14}{16}\bfseries}}
 We look at the system model that includes a nonredundant robot manipulator with n degrees of freedom and a conveyor belt system. The following attributes are presumed to be present in the system model:\\
-1) The conveyor belt system runs at constant velocity, and the
+1) The conveyor belt system runs at a constant velocity, and the
 part is stationary with respect to the conveyor belt system.\\
 2) The orientation of the robot hand is aligned with the part
 initially and kept fixed while the robot tracks the part.\\
@@ -659,7 +659,7 @@ This refers to the workpiece or tracked objects that travel along the conveyor b
  \textbf{Tool Coordinate System (TCS):} \\
  This refers to the location of the robot's end-tool tip. As you can see, a robotic hand typically has a mechanism attached to the end, either a vacuum or a gripper. When referring to the robot base frame, this typically requires a little amount of offset and aids the robot in completing its responsibilities.\\
  \textbf{ Coordinate Transformation Matrix:}  \\
- In essence, the coordinate transformation matrix is a matrix that depicts how a coordinate system's orientation changes from one frame to another. It describes rotation transformation and translation transformation and is composed of a 3x3 rotation matrix and a 3x1 displacement vector. In the case of three dimensions, the matrix is 4x4. A more common and widely used name for this matrix is the homogeneous transformation matrix. Remember that this matrix can be applied to any coordinate transformation situation, including regular coordinate transformation operations and forward-kinematics derivations.\\\\
+ In essence, the coordinate transformation matrix is a matrix that depicts how a coordinate system's orientation changes from one frame to another. It describes rotation transformation and translation transformation and is composed of a 3x3 rotation matrix and a 3x1 displacement vector. In the case of three dimensions, the matrix is 4x4. A more common and widely used name for this matrix is the homogeneous transformation matrix. Remember that this matrix can be applied to any coordinate transformation situation, including regular coordinate transformation operations and forward kinematics derivations.\\\\
 
 \begin{figure}[h]
     \centering
@@ -667,7 +667,7 @@ This refers to the workpiece or tracked objects that travel along the conveyor b
     \caption{Homogenous transform}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-\textbf{ OPERATIONS NEEDED to DEVELOP THE TRACKING SYSTEM:} \\
+\textbf{ Operations Needed to Develop the Tracking System:} \\
 The tracking system's pillars are composed of three primary components. The interactions and transformations required between the tracking system's components are literally represented by these parts. Only a scenario including a camera, a belt conveyor, and a robot will be covered in this post. It is certainly possible to expand the tracking system by including additional robots and cameras. Although more intricate procedures will be required to make up for the additional components, the fundamentals will remain the same.\\\\
 1. \textbf{ Conveyor Belt to Camera Conversion (B1):} \\
 The orientation of the conveyor belt coordinates and the camera origin coordinates deviate from one another. The origin of a camera is the upper left corner of its field of vision (FOV), where the values of its pixels start at (0, 0). This origin is set in stone and cannot be altered. For the conveyor belt, we can freely provide the origin's location, but the standard procedure is to first specify the picking window's dimensions (it's square), taking into account the robot's picking range limit, and then place the origin at the center of the window's bottom.\\
@@ -681,7 +681,7 @@ The orientation of the conveyor belt coordinates and the camera origin coordinat
 As can be seen from the above image, to match the conveyor belt origin, we must perform translation transformation in both the X and Y axes. We must do a rotation transformation for the Z-axis since the belt origin faces the other direction from the camera origin. In summary, this section contains two transformations: Rotation transformation, Rot(x, 180°); AND Translation in the X-axis and Y-axis, Trans(ΔX, ΔY, 0). Observe that both the Y and Z axes changed their facing directions when we rotated the X axis. For this section, some offset will be required.\\
 
 2. \textbf{ Conveyor belt (B1) to conveyor belt (B2) transformation:} \\
-For this part, it is quite simple. This transformation is about the movement of the conveyor belt from the Camera’s Field of view to the Robot’s Workspace/Pick range. The only value that changes in this transformation is only the X-axis value. As mentioned in the introduction, we also include the encoder’s reading to help us track how much the distance has the conveyor belt covered.\\
+For this part, it is quite simple. This transformation is about the movement of the conveyor belt from the Camera’s Field of view to the Robot’s Workspace/Pick range. The only value that changes in this transformation is only the X-axis value. As mentioned in the introduction, we also include the encoder’s reading to help us track how much the distance the conveyor belt covered.\\
 
 \begin{figure}[h]
     \centering
@@ -760,7 +760,7 @@ The robot interface on the vision controller and the robot module operating on t
 \end{figure}
 
 The Vision Controller's scanner port is directly attached to a single Photoneo 3D sensor. 
-● The Vision Controller's network port is directly connected to a desktop PC for remote control.
+● The vision controller's network port is directly connected to a desktop PC for remote control.
 ● The robot controller is directly attached to the vision controller's robot port.\\\\
 
 \begin{figure}[h]
@@ -931,7 +931,7 @@ The future of conveyor tracking is poised to be shaped by continued technologica
 
 \item Customization and Modular Designs: Future conveyor tracking systems will offer greater customization and modularity, allowing businesses to tailor systems to their specific needs without extensive redesigns. Modular components can be easily added, removed, or reconfigured to adapt to changing operational requirements.
 
-\item Enhanced Cybersecurity Measures: As conveyor tracking systems become more connected and reliant on digital technologies, ensuring robust cybersecurity will be critical. Future developments will focus on implementing advanced security protocols, encryption methods, and intrusion detection systems to protect against cyber threats.
+\item Enhanced cybersecurity measures: As conveyor tracking systems become more connected and reliant on digital technologies, ensuring robust cybersecurity will be critical. Future developments will focus on implementing advanced security protocols, encryption methods, and intrusion detection systems to protect against cyber threats.
 \end{itemize}
 
 \newpage
