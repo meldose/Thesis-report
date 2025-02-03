@@ -250,20 +250,22 @@ A robot's job in robotic conveyor tracking is to follow and retrieve goods from 
 \subsection{Photoneo Camera}
 \begin{justify}
 The main Vision camera we have used to track the moving object's motion through the conveyor belt is a Photoneocamera (MotionCam 3D M+), which has advanced settings that can capture and detect the object's position. The photoneo camera mainly consists of 3D sensing technology, which contains parallel structured light that helps provide the light source to detect the objects.\\\\
-\begin{center}
-    \vspace{-1cm} % Adjust this value if you want to move the image up or down
-    \includegraphics[width=5cm]{Thesis-report/Figures/CAMERA.png} % Centered image
-    \vspace{1cm} % Space after the image
-\end{center}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=5cm]{Thesis-report/Figures/CAMERA.png}
+    \caption{Photoneo Camera}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
 
 Using this camera, the camera can capture accurate point clouds and a standard intensity image of the object.
 Its foundation is a specialized CMOS image sensor that uses Photoneo's patented Parallel Structured Light technology.\\\\
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=5cm]{Thesis-report/Figures/camera.jpeg}
+    \caption{Camera mounted steup}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
 
-\begin{center}
-    \vspace{-1cm} % Adjust this value if you want to move the image up or down
-    \includegraphics[width=5cm]{Thesis-report/Figures/camera.jpeg} % Centered image
-    \vspace{1cm} % Space after the image
-\end{center}
 The camera's carbon fiber body is lightweight and guarantees the same degree of stiffness as scanners. Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU that acts as the brains behind intelligent applications. A sequential structured light, which is utilized in numerous meteorological applications, is the primary technological driver in the first group. One well-suited representative of this category is the 3D scanner range from Photoneo. This technique is not appropriate for dynamic scenes because it uses sequential (multi-frame) capturing. This section is the source of the parallel structured light.
 
 \subsubsection{Time fo Flight}
@@ -285,18 +287,22 @@ To set up the network interface that the vision controller uses to connect to th
 IPv6 connections are better than IPv4 ones. However, the IPv4 address is used if the IPv6 connection is banned or fails.Consequently, having a legitimate IPv4 network configuration is advised.
 The interface can be set up to operate a DHCP server or to utilize any random static IP address. Use the appropriate IP address settings on the sensor side through the PhoXi Control program in both situations.\\
 
-\begin{center}
-    \vspace{-1cm} % Adjust this value if you want to move the image up or down
-    \includegraphics[width=5cm]{Thesis-report/Figures/vision controller.png} % Centered image
-    \vspace{1cm} % Space after the image
-\end{center}\\
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=5cm]{Thesis-report/Figures/vision controller.png}
+    \caption{Vision Controller}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
+
 \subsubsection{Marker Pattern}\\
 The figure below shows the Board that helps calibrate the conveyor belt, which aligns the coordinates of the object with the conveyor belt for objects passing through the belt.\\
-\begin{center}
-    \vspace{-1cm} % Adjust this value if you want to move the image up or down
-    \includegraphics[width=5cm]{Thesis-report/Figures/marker_pattern.png} % Centered image
-    \vspace{1cm} % Space after the image
-\end{center}\\
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=5cm]{Thesis-report/Figures/marker_pattern.png}
+    \caption{Marker Pattern}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
 
 \newpage
 
@@ -335,11 +341,13 @@ The STL file is uploaded to the Web interface, thereby helping the camera to ide
 \subsection{Trajectory Planning}\\
 Using a set of predetermined points, trajectory planning aims to produce stable and fluid motion in world coordinates. A few characteristics, such as the maximum velocity, acceleration, and jerk, will be taken into account to demonstrate the continuous motion of the robot arm. The constant context of temporal movement is unique. Additionally, this function has a first derivative and a second derivative. In addition to increasing wear on the mechanism, jerky action frequently causes vibration in the robot manipulator.\\
 The fundamental path interpolation functions, such as linear and point-to-point movement, are carried out when the precondition parameters have been addressed. Interpolation, which is determined by previous factors, will produce the path segments. A self-defined function is crucial to the creation of path segments in Cartesian space. Joint command and linear command can both follow the point-to-point movement. Every joint's present condition is indicated in the joint space.\\
-\begin{center}
-    \vspace{-1cm} % Adjust this value if you want to move the image up or down
-    \includegraphics[width=5cm]{Thesis-report/Figures/new.png} % Centered image
-    \vspace{1cm} % Space after the image
-\end{center}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=5cm]{Thesis-report/Figures/new.png}
+    \caption{Coordinate system}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
 
 All joints will arrive simultaneously before approaching targets since the velocity is zero at the target point.In contrast to point-to-point motion, linear movement at the end-effector makes it easy to demonstrate the condition from the reference coordinate. Fig. 6 displays the current position of the end point in the reference coordinate. The motion will only be linked to one DoF during variation if the current velocity point toward the target position is specified. To execute gripping operations, the robot arm will thereafter alter its motion via path segments.Manipulators can grab a stationary workpiece with the aid of trajectory planning and object recognition algorithms.
 
@@ -386,42 +394,45 @@ r = x\cos\theta + y\sin\theta
 \subsubsection{Calibration for camera for Workspace}\\\\
 The camera calibration is performed through an extrinsic method in which the camera is fixed in a position and the calibration ball is fixed at the end of the robot TCP.\\\\
 
-
-\begin{center}
-    \vspace{-1cm} % Adjust this value if you want to move the image up or down
-    \includegraphics[width=16cm]{Thesis-report/Figures/calibration.jpeg} % Centered image
-    \vspace{1cm} % Space after the image
-\end{center} \\
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=16cm]{Thesis-report/Figures/calibration.jpeg}
+    \caption{Web interface for Photoneo}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
 The above figure shows how the calibration is happening by adding the point by fixing the point where the robot Coordinates [X, Y, Z ]coordinates rotation values will save the points by saving the points (represented as green point). Here we need to add 9 points to get the calibration workspace. After the calibration, the average value from the 9 points is taken into consideration.\\
 
 The below figure shows the calibration method used in this study (Extrinsic Calibration) (EC), where the camera is fixed at location and 9 points are taken into consideration where the average value is finally taken as the value for the calibration.\\
-\begin{center}
-    \vspace{-1cm} % Adjust this value if you want to move the image up or down
-    \includegraphics[width=11cm]{Thesis-report/Figures/extrinsic.png} % Centered image
-    \vspace{1cm} % Space after the image
-\end{center} 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=11cm]{Thesis-report/Figures/extrinsic.png}
+    \caption{Extrinsic Calibration}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
 This kind of calibration is employed in configurations where the 3D sensor is fixedly positioned within the robotic cell, often above the bin. The 3D sensor does not have to be stationary concerning the robotic cell itself; it just needs to be stationary concerning the robot's foundation. The calibration matrix will become invalid and the entire calibration process will need to be restarted if there is a change in the relative position between the 3D sensor and the robot after the calibration. In other words, after the system has been calibrated, the 3D sensor cannot be changed concerning the robot.The calibration matrix specifies the transformation straight to the robot base coordinate system because the 3D sensor is fixed.With this configuration, the robot's mobility is unrestricted, and it doesn't need to halt during the scan acquisition, unlike with the hand-eye approach.
 \subsubsection{Calibration Ball}\\\\
 A calibration ball serves as the calibration object. It is also feasible to use a bespoke ball with the right characteristics in place of the calibration ball that Photoneo provides; the ball needs to be exactly round and composed of a surface that is good for scanning (smooth and not extremely reflective). The ball needs to be attached to the gripper or the flange, which are the robot's endpoints. During the calibration process, make sure the ball is securely attached and stays in place. Verify that the ball can be seen clearly by the 3D sensor.\\\\
 
-\begin{center}
-    \vspace{-1cm} % Adjust this value if you want to move the image up or down
-    \includegraphics[width=5cm]{Thesis-report/Figures/ball.png} % Centered image
-    \vspace{1cm} % Space after the image
-\end{center} 
-
-
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=5cm]{Thesis-report/Figures/ball.png}
+    \caption{Callibration ball}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
 \newpage
 
 \subsubsection{Calibration of Conveyor Belt}.
 
 The conveyor belt calibration can be done as follows:\\
 
-\begin{center}
-    \vspace{-1cm} % Adjust this value if you want to move the image up or down
-    \includegraphics[width=16cm]{Thesis-report/Figures/conveyor_belt with cmaera.jpg} % Centered image
-    \vspace{1cm} % Space after the image
-\end{center} \\\\
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=16cm]{Thesis-report/Figures/conveyor_belt with cmaera.jpg} 
+    \caption{Coveyor tracking setup}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
+\newpage
 The above figure consists of the Inputs and outputs, where inputs include:\
 \begin{itemize}
 \item Scan request\\
@@ -455,23 +466,20 @@ The distance between the marker pattern positions for the camera calibration and
 
 \textbf{Localized posture minus calibration distance plus traveled distance from the scan is the formula.} \\\\
 
-\begin{center}
-    \vspace{-1cm} % Adjust this value if you want to move the image up or down
-    \includegraphics[width=16cm]{Thesis-report/Figures/conveyor_belt.jpg} % Centered image
-    \vspace{1cm} % Space after the image
-\end{center}  \\\\
-
-
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=16cm]{Thesis-report/Figures/conveyor_belt.jpg} 
+    \caption{Coveyor Belt setup}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
 In the above figure, we can see the conveyor belt having the calibration board that is used for the calibration, which determines the X, Y, and Z coordinates of the object along with the conveyor belt, where MSD means marker space displacement, TD means travel distance, and TSc means trigger to scan completion in meters where the target position is the T[X, Y, Z, Rx, Ry, Rz], which represents the quaternion value of the object that needs to be converted into Euler values that are used to move the robot to that location. \\\\
 
-
-\begin{center}
-    \vspace{-1cm} % Adjust this value if you want to move the image up or down
-    \includegraphics[width=16cm]{Thesis-report/Figures/coordinates.png} % Centered image
-    \vspace{1cm} % Space after the image
-\end{center}  \\\\
-
-
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=16cm]{Thesis-report/Figures/coordinates.png} 
+    \caption{Coordinates of object}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
 
 In the above figure, the number represents the coordinates of the object after the scanning of the object done after the trigger. Once these quaternion values are attained, these values are then sent to the robotic controller for the robot to move to the required target position.\\\\
 Calibration of the marker pattern from the camera to the conveyor belt, which is the common origin \\\\
@@ -479,6 +487,8 @@ Calibration of the marker pattern from the camera to the conveyor belt, which is
 2. Use PhoXi Control's marker pattern to save calibration \\\\
 You can use it as a custom scanning profile in VS Space by adding a triggering item for the sensor at the marker pattern export photo's origin.
 Robot to conveyor belt: The robot moves the conveyor belt from a shared origin, but the marker pattern stays in place according to the conveyor belt. This allows the robot to reach the marker pattern, calibrate the custom coordinate space in the robot track, and save the "calibration" encoder value, which synchronizes the robot and conveyor.\\
+
+\newpage
 
 \subsection{Conditions for Conveyor Belt:}
 While setting up the conveyor belt with a Vision Camera , we need to follow certain conditions:
@@ -544,11 +554,13 @@ part is stationary with respect to the conveyor belt system.\\
 initially and kept fixed during the robot tracks the part.\\
 3) The robot tracks the part along a straight line path over the
 conveyor belt system.\\\\
-\begin{center}
-    \vspace{-1cm} % Adjust this value if you want to move the image up or down
-    \includegraphics[width=10cm]{Thesis-report/Figures/ik.jpeg} % Centered image
-    \vspace{1cm} % Space after the image
-\end{center}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=10cm]{Thesis-report/Figures/ik.jpeg}  
+    \caption{Kinematics}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
 The robot motion to be designed must meet certain conditions in order to maximize the manipulator's useable performance on conveyor tracking. These requirements can be multiplied as follows to create a single differential equation.\\
 
 
@@ -557,11 +569,13 @@ The robot motion to be designed must meet certain conditions in order to maximiz
 3) Settling time: As the robot rapidly reaches the steady state, the amount of time required for the task is decreased. The settling time should be kept to a minimum while taking into account the robot's torque and smoothness limitations, the conveyor belt's speed, and the initial positions of the robot and the part.\\
 The joint variables in the forward kinematics issue establish the end-effecter's position and orientation in Cartesian space, also known as the work space. For rotational joints, the joint variables are the angles between the links; for prismatic joints, they are the link extension. On the other hand, the inverse kinematics challenge is determining the values of the joint variables that enable the manipulator to arrive at the specified location given a desired end-effecter position and orientation.
 The figure below illustrates the connection between joint space and Cartesian space, as well as the relationship between forward and inverse kinematics.\\\\
-\begin{center}
-    \vspace{-1cm} % Adjust this value if you want to move the image up or down
-    \includegraphics[width=10cm]{Thesis-report/Figures/fk.png} % Centered image
-    \vspace{1cm} % Space after the image
-\end{center}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=10cm]{Thesis-report/Figures/fk.png}  
+    \caption{Forward and Inverse Kinematics}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
 Finding the joint variables that allow a robot to be manipulated into the required position requires an understanding of its inverse kinematics. This is used to control the robot's position, motion, and other features. This study presents a detailed explanation and comparison of two popular approaches for manipulating robots: Jacobian inverse techniques and inverse kinematics.
 Sixteen alternatives are available for a general six DOF robot, as shown below, and it lists the quantity of analytical solutions for robots with varying degrees of freedom. Therefore, an accurate set of solutions among several inverse kinematic solutions is needed for the continuous motion of a robot. Jacobian inverse is another technique for resolving IK problems [5, 6]. In [7, 8], the numerical approach to solve the Jacobian matrix's inverse was introduced. In [9], the inverse kinematics problem for a six-DOF robot manipulator is solved analytically. The benefit of analytical expression is that it provides formulas for the connection between link parameters and joint angle. The robotics controller can directly incorporate these relationships.\\
 \documentclass{article}
@@ -582,7 +596,7 @@ Greater than 6 & 16\\
     \caption{DOF vs. Number of Solutions}
     \label{tab:dof_solutions}
 \end{table}
-
+\newpage
 \subsection{Jacobian inverse method}:\\
 The time derivative of the kinematic equations that connect the end-effector's velocity to the joint rates is known as the Jacobian in robotics. The following is the phrase for the Jacobian.
 \[
@@ -647,30 +661,34 @@ referring to the workpiece or tracked objects that travel along the conveyor bel
  \textbf{ Coordinate Transformation Matrix:}  \\
   In essence, the coordinate transformation matrix is a matrix that depicts how a coordinate system's orientation changes from one frame to another. It describes rotation transformation and translation transformation and is composed of a 3x3 rotation matrix and a 3x1 displacement vector. In the case of three dimensions, the matrix is 4x4.A more common and widely used name for this matrix is the homogeneous transformation matrix. Remember that this matrix can be applied to any coordinate transformation situation, including regular coordinate transformation operations and forward-kinematics derivations.\\\\
 
-  \begin{center}
-    \vspace{-1cm} % Adjust this value if you want to move the image up or down
-    \includegraphics[width=15cm]{Thesis-report/Figures/transform.png} % Centered image
-    \vspace{1cm} % Space after the image
-\end{center}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=15cm]{Thesis-report/Figures/transform.png} 
+    \caption{Homogenous transform}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
 \textbf{ OPERATIONS NEEDED to DEVELOP THE TRACKING SYSTEM:} \\
 The tracking system's pillars are composed of three primary components. The interactions and transformations required between the tracking system's components are literally represented by these parts. Only a scenario including a camera, a belt conveyor, and a robot will be covered in this post. It is certainly possible to expand the tracking system by including additional robots and cameras. Although more intricate procedures will be required to make up for the additional components, the fundamentals will remain the same.\\\\
 1. \textbf{ Conveyor Belt to Camera Conversion (B1):} \\
 The orientation of the conveyor belt coordinate and the camera origin coordinate deviate from one another. The origin for a camera is the upper left corner of its field of vision (FOV), where the values of its pixels start at (0, 0). This origin is set in stone and cannot be altered. For the conveyor belt, we can freely provide the origin's location, but the standard procedure is to first specify the picking window's dimensions (it's a square), taking into account the robot's picking range limit, and then place the origin at the center of the window's bottom.\\
-  \begin{center}
-    \vspace{-1cm} % Adjust this value if you want to move the image up or down
-    \includegraphics[width=15cm]{Thesis-report/Figures/camera to conveyor.png} % Centered image
-    \vspace{1cm} % Space after the image
-\end{center}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=15cm]{Thesis-report/Figures/camera to conveyor.png}
+    \caption{Conveyor to camera conversion}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
 As can be seen from the above image, in order to match the conveyor belt origin, we must perform translation transformation in both the X and Y axes. We must do a rotation transformation for the Z-axis since the belt origin faces the other direction from the camera origin. In summary, this section contains two transformations: Rotation transformation, Rot(x, 180°); AND Translation in X-axis and Y-axis, Trans(ΔX, ΔY, 0). Observe that both the Y and Z axes changed their facing directions when we rotated the X axis. For this section, some offset will be required.\\
 
 2. \textbf{ Conveyor belt (B1) to conveyor belt (B2) transformation:} \\
 For this part, it is quite simple. This transformation is about the movement of the conveyor belt from the Camera’s Field of view to the Robot’s Workspace/Pick range. The only value that change in this transformation is only the X-axis value. As per mentioned in the introduction, we also include the encoder’s reading to helps us track how much the distance has the conveyor belt covered.\\
 
-  \begin{center}
-    \vspace{-1cm} % Adjust this value if you want to move the image up or down
-    \includegraphics[width=15cm]{Thesis-report/Figures/cam to conv.png} % Centered image
-    \vspace{1cm} % Space after the image
-\end{center}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=12cm]{Thesis-report/Figures/cam to conv.png}
+    \caption{Conveyor belt b1 to b2 conversion}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
 
 3. \textbf{ The robot transformation conveyor belt (B2):} \\
 Please be patient with me while I go through this lengthy and complicated section. The "3-Points Calibration Method" must be used in order to obtain a homogenous transformation matrix between the robot frame and the conveyor belt (B2). This approach is regarded reliable and is frequently utilized in belt tracking systems. The remaining information on this approach may be found here and here. In essence, when the robot points toward three distinct spots on the conveyor belt, you must record the coordinate values of the robot base frame.\\
@@ -682,9 +700,7 @@ Jog the robot end-tool tip by hand to the workpiece's grasping/sucking position.
 3)Until Workpiece 1 reaches the end of the robot's picking range, restart the conveyor belt. To get to Workpiece 1, halt the conveyor belt and jog the robot by hand. Note the robot's P2 coordinate values..\\
 4) Workpiece 1 should be removed, and Workpiece 2 should be placed on the other side of Workpiece 1 .When Workpiece 2 reaches the center of the robot's workplace, start the conveyor belt..\\
 5) To get to Workpiece 2, halt the conveyor belt and jog the robot by hand. Note down the robot's coordinates, P3.\\
-
-
-
+\newpage
 \subsubsection{Encoder offset}
 Types and Technologies of Encoders
 Although encoders come in a wide variety of forms, they essentially fall into two primary sensing categories. These include:
@@ -731,31 +747,30 @@ There are several ways to identify items. Some potential limitations are, howeve
 \subsubsection{Photoneo Camera}
 The main Vision camera we have used to track the moving object's motion through the conveyor belt is a Photoneocamera (MotionCam 3D M+), which has advanced settings that can capture and detect the object's position.\\\\ The photoneo camera mainly consists of 3D sensing technology, which contains parallel structured light that helps provide the light source to detect the objects. .\newpage  Using this camera, the camera can capture accurate point clouds and a standard intensity image of the object. \\\
 
-
-\begin{center}
-    \vspace{-1cm} % Adjust this value if you want to move the image up or down
-    \includegraphics[width=4cm]{Thesis-report/Figures/camera.jpeg} % Centered image
-    \vspace{1cm} % Space after the image
-\end{center}
-
 Its foundation is a specialized CMOS image sensor that uses Photoneo's patented Parallel Structured Light technology. The camera's carbon fiber body is lightweight and guarantees the same degree of stiffness as scanners. Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU that acts as the brains behind intelligent applications. A sequential structured light, which is utilized in numerous meteorological applications, is the primary technological driver in the first group. One well-suited representative of this category is the 3D scanner range from Photoneo. This technique is not appropriate for dynamic scenes because it uses sequential (multi-frame) capturing. This section is the source of the parallel structured light.\\
 
 \subsubsection{Communication of Robot With Vision Camera}\\
 The robot interface on the vision controller and the robot module operating on the robot controller enables communication between the vision controller and the robot controller.\\\\
 
-\begin{center}
-    \vspace{-1cm} % Adjust this value if you want to move the image up or down
-    \includegraphics[width=14cm]{Thesis-report/Figures/communication.png} % Centered image
-    \vspace{1cm} % Space after the image
-\end{center}\\
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=14cm]{Thesis-report/Figures/communication.png}
+    \caption{Communication with camera}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
+
 The Vision Controller's scanner port is directly attached to a single Photoneo 3D Sensor.
 ● The Vision Controller's network port is directly connected to a desktop PC for remote control.
 ● The Robot controller is directly attached to the Vision Controller's Robot port.\\\\
-\begin{center}
-    \vspace{-1cm} % Adjust this value if you want to move the image up or down
-    \includegraphics[width=10cm]{Thesis-report/Figures/connection.png} % Centered image
-    \vspace{1cm} % Space after the image
-\end{center}\\
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=10cm]{Thesis-report/Figures/connection.png}
+    \caption{Whole camera with Robotic controller setup}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
+
 
  \subsubsection{Protocol TCP/IP}\\
 The robot controller and the vision controller communicate via the TCP/IP protocol. Network connectivity is an optional feature that some robot controllers do not come with by default. All prerequisites for the full installation of the Robot module are listed in the Robot integration guides' Prerequisites section.\\
@@ -763,11 +778,14 @@ The robot controller and the vision controller communicate via the TCP/IP protoc
 \subsubsection{Channel of communication}\\
 The Robot module functions as a TCP client, while the vision controller establishes a TCP server. The client is called the Action Request Client, while the server is called the Action Request Server. The Action Request Client communicates with the Action Request Server over this channel. After receiving the action request, the vision controller carries it out and replies to the robotic controller.\\\\
 
-\begin{center}
-    \vspace{-1cm} % Adjust this value if you want to move the image up or down
-    \includegraphics[width=14cm]{Thesis-report/Figures/channel.png} % Centered image
-    \vspace{1cm} % Space after the image
-\end{center}\\
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=14cm]{Thesis-report/Figures/channel.png}
+    \caption{Channel Communication}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
+
 \subsubsection{Network (EC, HC) }\\
 The robot interface (and robot controller IP) and the Vision controller's 3D sensor interface must be properly configured for the Vision controller to communicate with both the robot and the 3D sensor. This is not required for marker space calibration.\\
 \subsubsection{Vision }\\
@@ -776,51 +794,64 @@ It is necessary to thoroughly configure the visual system that will be calibrate
 The calibration space and scanner position specify the 3D sensor's mount point and, consequently, the calibration type. The scanner model is automatically calculated based on the selected 3D sensor.\\
 \subsubsection{6-Axis Cobot-Delta}
 The cobot that we have used for the conveyor tracking system is a 6-axis cobot called a Delta robot. The robot mainly moves towards its target position by getting the values from the camera in the form of quaternion values.\\\\
-\begin{center}
-    \vspace{-1cm} % Adjust this value if you want to move the image up or down
-    \includegraphics[width=3cm]{Thesis-report/Figures/robot.jpeg} % Centered image
-    \vspace{1cm} % Space after the image
-\end{center}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=3cm]{Thesis-report/Figures/robot.jpeg}
+    \caption{Delta Robot}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
+
 \subsubsection{VGC10-Gripper}
 The OnRobot VGC10 electrical compact vacuum gripper offers unlimited customization and suction cup options, making it suitable for tight environments and lifting small, odd-shaped, and heavy objects. It features two independently controlled air channels, increasing efficiency and reducing cycle time.\\\\
-\begin{center}
-    \vspace{-1cm} % Adjust this value if you want to move the image up or down
-    \includegraphics[width=5cm]{Thesis-report/Figures/gripper.jpeg} % Centered image
-    \vspace{1cm} % Space after the image
-\end{center}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=5cm]{Thesis-report/Figures/gripper.jpeg}
+    \caption{VGC10 Gripper}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
+
 With no compressor or air supply, it's easy to move and redeploy. Once the robot gets near the object, the suction gripper is activated, thereby providing suction to the object and helping to pick up the object and place it in the target box.\\\\
 
 \subsubsection{Objects for picking}
 The objects that we have used for conveyor tracking include a trapezoid, pipe socket, and circle ball.\\
 \subsubsection{Socket-pipe} The socket pipe is: \\\\
-\begin{center}
-    \vspace{-1cm} % Adjust this value if you want to move the image up or down
-    \includegraphics[width=3cm]{Thesis-report/Figures/pipe.png} % Centered image
-    \vspace{1cm} % Space after the image
-\end{center} \\\\
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=2cm]{Thesis-report/Figures/pipe.png}
+    \caption{Pipe object}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
 
-\begin{center}
-    \vspace{-1cm} % Adjust this value if you want to move the image up or down
-    \includegraphics[width=12cm]{Thesis-report/Figures/pipe_stl.jpg} % Centered image
-    \vspace{1cm} % Space after the image
-\end{center} \\\\
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=10cm]{Thesis-report/Figures/pipe_stl.jpg}
+    \caption{STL file for Pipe object}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
 The figure above shows the STL file of the pipe, which is used to pick up the object.\\\\
 \newpage
 \subsubsection{Trapezoid}
 The trapezoid  is: \\\\
 
-\begin{center}
-    \vspace{-1cm} % Adjust this value if you want to move the image up or down
-    \includegraphics[width=5cm]{Thesis-report/Figures/trapezoid.png} % Centered image
-    \vspace{1cm} % Space after the image
-\end{center}\\\\
 
-\begin{center}
-    \vspace{-1cm} % Adjust this value if you want to move the image up or down
-    \includegraphics[width=12cm]{Thesis-report/Figures/trapezoid_stl.jpg} % Centered image
-    \vspace{1cm} % Space after the image
-\end{center} \\\\
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=5cm]{Thesis-report/Figures/trapezoid.png} 
+    \caption{Trapezoid object}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=12cm]{Thesis-report/Figures/trapezoid_stl.jpg} 
+    \caption{STL file for Trapezoid object}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
+
+
 The above figure shows the STL file of the trapezoid,hich is used to pick up the object.\\\\
 
 
@@ -832,18 +863,20 @@ The conveyor belt is the main belt where we have to place the object, thereby pu
 \newpage
 \subsection{Photoneo Camera-Web Interface}\\
 The web interface shows the image of the object being detected; initially, we load the STL file of the object to be captured by the robot. The red color indicates the object, and once the object turns green, the object coordinate will be indicated as quaternion values. After getting the quaternion values, these are transferred to the Robotic controller which helps the robot to get into the desired target position.\\\\
-\begin{center}
-    \vspace{-1cm} % Adjust this value if you want to move the image up or down
-    \includegraphics[width=12cm]{Thesis-report/Figures/web interface.jpeg} % Centered image
-    \vspace{1cm} % Space after the image
-\end{center}\\\\
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=12cm]{Thesis-report/Figures/web interface.jpeg} 
+    \caption{Camera web interface}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
 
-\begin{center}
-    \vspace{-1cm} % Adjust this value if you want to move the image up or down
-    \includegraphics[width=16cm]{Thesis-report/Figures/new.jpeg} % Centered image
-    \vspace{1cm} % Space after the image
-\end{center}\\\\
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=12cm]{Thesis-report/Figures/new.jpeg}
+    \caption{object detection with pipe }
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
  The above figure represents the web interface that includes the camera triggering the object placed in the workspace. The green section represents the area for the workspace, and the red colored is the object to be picked up by the Robot.
 \newpage
 
