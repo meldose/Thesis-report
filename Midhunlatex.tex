@@ -572,17 +572,18 @@ The figure below illustrates the connection between joint space and Cartesian sp
 
 
 \newpage
-ROBOT COORDINATE SYSTEM \\
+\textbf{ROBOT COORDINATE SYSTEM} 
+
 We must first gain a fundamental understanding of the Robot Coordinate System before delving deeper into the tracking system's operation. Generally speaking, robotic systems are Cartesian coordinate systems with three members: the X, Y, and Z axes. Additionally, there is the Rotation Coordinate System, which describes the robot's degree of rotation motion and joint function. However, as this format is more widely used in the business and simpler to use and comprehend, we shall solely investigate the Cartesian coordinate system. For getting the robot coordinates we should be  aware of the following terms used in the system:\\
-System of World Coordinates (WCS):\\
+ \textbf{System of World Coordinates (WCS):} \\
 A coordinate system is often specified by the user or developer, but it can exist anywhere in the world. As long as WCS makes it simpler to explain the locations of other things or items in that specific area, you can basically put it anywhere in your room or factory. Origin placement is typically done at the edge of a group or at a room's corner.\\
-Machine Coordinate System (MCS):\\
+ \textbf{Machine Coordinate System (MCS):} \\
 Robot Base Frame Coordinate System is another name for Machine Coordinate System (MCS).All other coordinate systems will be compared to this most significant coordinate system. Where developers and programmers would implement their codes based on this coordinate system is equally crucial. MCS is typically positioned near the robot's base for the point of origin, though it's important to remember that different robot types have different bases. For instance, the base of a SCARA robot is at the bottom, whereas the base of a Delta robot is in the upper center.\\
-Coordinate System for Parts and Workpieces (PCS):\\
+ \textbf{Coordinate System for Parts and Workpieces (PCS):} \\
 referring to the workpiece or tracked objects that travel along the conveyor belt. In certain applications, part orientation plays a crucial role in assembly procedures. In our application, we just want to choose or suction the foreign objects, independent of their orientation; thus, this isn't accurate.\\
-Tool Coordinate System (TCS):\\
+ \textbf{Tool Coordinate System (TCS):} \\
  This refers to the location of the robot's end-tool tip. As you can see, a robotic hand typically has a mechanism attached to the end, either a vacuum or a gripper. When referring to the robot base frame, this typically requires a little amount of offset and aids the robot in completing its responsibilities.\\
- Coordinate Transformation Matrix:\\
+ \textbf{ Coordinate Transformation Matrix:}  \\
   In essence, the coordinate transformation matrix is a matrix that depicts how a coordinate system's orientation changes from one frame to another. It describes rotation transformation and translation transformation and is composed of a 3x3 rotation matrix and a 3x1 displacement vector. In the case of three dimensions, the matrix is 4x4.A more common and widely used name for this matrix is the homogeneous transformation matrix. Remember that this matrix can be applied to any coordinate transformation situation, including regular coordinate transformation operations and forward-kinematics derivations.\\\\
 
   \begin{center}
@@ -592,7 +593,7 @@ Tool Coordinate System (TCS):\\
 \end{center}
 OPERATIONS NEEDED to DEVELOP THE TRACKING SYSTEM:\\
 The tracking system's pillars are composed of three primary components. The interactions and transformations required between the tracking system's components are literally represented by these parts. Only a scenario including a camera, a belt conveyor, and a robot will be covered in this post. It is certainly possible to expand the tracking system by including additional robots and cameras. Although more intricate procedures will be required to make up for the additional components, the fundamentals will remain the same.\\
-1. Conveyor Belt to Camera Conversion (B1):\\
+1. \textbf{ Conveyor Belt to Camera Conversion (B1):} \\
 The orientation of the conveyor belt coordinate and the camera origin coordinate deviate from one another. The origin for a camera is the upper left corner of its field of vision (FOV), where the values of its pixels start at (0, 0). This origin is set in stone and cannot be altered. For the conveyor belt, we can freely provide the origin's location, but the standard procedure is to first specify the picking window's dimensions (it's a square), taking into account the robot's picking range limit, and then place the origin at the center of the window's bottom.\\
   \begin{center}
     \vspace{-1cm} % Adjust this value if you want to move the image up or down
@@ -601,7 +602,7 @@ The orientation of the conveyor belt coordinate and the camera origin coordinate
 \end{center}
 As can be seen from the above image, in order to match the conveyor belt origin, we must perform translation transformation in both the X and Y axes. We must do a rotation transformation for the Z-axis since the belt origin faces the other direction from the camera origin. In summary, this section contains two transformations: Rotation transformation, Rot(x, 180°); AND Translation in X-axis and Y-axis, Trans(ΔX, ΔY, 0). Observe that both the Y and Z axes changed their facing directions when we rotated the X axis. For this section, some offset will be required.\\
 
-2. Conveyor belt (B1) to conveyor belt (B2) transformation:\\
+2. \textbf{ Conveyor belt (B1) to conveyor belt (B2) transformation:} \\
 For this part, it is quite simple. This transformation is about the movement of the conveyor belt from the Camera’s Field of view to the Robot’s Workspace/Pick range. The only value that change in this transformation is only the X-axis value. As per mentioned in the introduction, we also include the encoder’s reading to helps us track how much the distance has the conveyor belt covered.\\
 
   \begin{center}
@@ -610,7 +611,7 @@ For this part, it is quite simple. This transformation is about the movement of 
     \vspace{1cm} % Space after the image
 \end{center}
 
-3. The robot transformation conveyor belt (B2):\\
+3. \textbf{ The robot transformation conveyor belt (B2):} \\
 Please be patient with me while I go through this lengthy and complicated section. The "3-Points Calibration Method" must be used in order to obtain a homogenous transformation matrix between the robot frame and the conveyor belt (B2). This approach is regarded reliable and is frequently utilized in belt tracking systems. The remaining information on this approach may be found here and here. In essence, when the robot points toward three distinct spots on the conveyor belt, you must record the coordinate values of the robot base frame.\\
 The procedure can be done as follows:\\
 1)Two workpieces must be placed on the conveyor belt before we can continue. As long as the workpiece is something the robot can pick up or follow, it can be anything. The ideal workpiece for this project is anything little that can replicate the actual foreign object.\\
