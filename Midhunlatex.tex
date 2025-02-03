@@ -144,7 +144,7 @@
     
     \vspace{0.5 cm}
      
-     The Deggendorf Institute of Technology supervises an examination paper with the topic of\textbf{ Tracking conveyor belt with robot using a machine 3D vision camera}
+     The Deggendorf Institute of Technology supervises an examination paper with the topic of\textbf{ Tracking conveyor belt with Robot using a machine 3D vision camera}
 
      \vspace{0.5cm}
      
@@ -181,7 +181,7 @@
 Tracking conveyor belt with robot using a machine vision camera
 \vspace{1.5 cm}
 
- I hereby declare that I have written this thesis independently. I have not submitted it for any other examination purposes. I have not used other references or material than mentioned in the bibliography and I have marked all literal analogous citations.
+ I hereby declare that I have written this thesis independently. I have not submitted it for any other examination purposes. I have not used other references or material than mentioned in the bibliography, and I have marked all literal analogous citations.
 
  \vspace{1.5 cm}
 \raggedright
@@ -262,14 +262,14 @@ Its foundation is a specialized CMOS image sensor that uses Photoneo's patented 
 \begin{figure}[h]
     \centering
     \includegraphics[width=5cm]{Thesis-report/Figures/camera.jpeg}
-    \caption{Camera mounted steup}
+    \caption{Camera-mounted steup}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 
 The camera's carbon fiber body is lightweight and guarantees the same degree of stiffness as scanners. Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU that acts as the brains behind intelligent applications. A sequential structured light, which is utilized in numerous meteorological applications, is the primary technological driver in the first group. One well-suited representative of this category is the 3D scanner range from Photoneo. This technique is not appropriate for dynamic scenes because it uses sequential (multi-frame) capturing. This section is the source of the parallel structured light.
 
 \subsubsection{Time fo Flight}
-The time it takes for light to travel from an illumination source to a scene and back is measured by time-of-flight. The speed of light itself is the primary obstacle in this situation. Usually, the phase shift of a modulated signal is used to measure time. High pixel modulation frequencies must be used in order to achieve a respectable level of depth accuracy. The primary drawback in this case is physics since a greater frequency results in less charge transfer, which lowers contrast and SNR. The restriction clearly suggests an accuracy level that TOF systems can achieve. Usually, it falls within the centimeter range. Another issue is interreflections, which can significantly bend the surface.
+The time it takes for light to travel from an illumination source to a scene and back is measured by time of flight. The speed of light itself is the primary obstacle in this situation. Usually, the phase shift of a modulated signal is used to measure time. High pixel modulation frequencies must be used in order to achieve a respectable level of depth accuracy. The primary drawback in this case is physics since a greater frequency results in less charge transfer, which lowers contrast and SNR. The restriction clearly suggests an accuracy level that TOF systems can achieve. Usually, it falls within the centimeter range. Another issue is interreflections, which can significantly bend the surface.
 
 \subsubsection{Active stereo}
 By projecting a synthetic texture onto an object, active stereo addresses the unreliable passive stereo. Nevertheless, it still has to resolve the computationally demanding picture correspondence matching problem. Given the complexity of the matching problem, the projected texture can be either high frequency, which can satisfy a higher resolution but usually has poor reliability, or low frequency, which typically uses random laser dots and can offer higher reliability but poor resolution (the features are sparse).
@@ -282,8 +282,8 @@ Parallel Structured Light parallelizes the sequential structured light using a s
 A control unit that operates in tandem with the projection is in charge of these groups. The coded patterns are inserted into the groups rather than changing the projection itself. The sensor may generate over 20 distinct virtual representations of the scene illuminated by the coded patterns injected at the end of the frame. The method is universal and may be modified on the fly to accommodate various materials and light sources by using any type of pattern typically used for sequential structured light.\\
 
 \subsubsection{Vision Controller}\\
-The figure below shows the vision controller connected to the photoneo camera and the robotic controller using Ethernet (IPV4 address). The vision controller is connected to a PC to get the Web interface to trigger the camera and see the Web interface for communication.Gigabit Ethernet cables (Cat5e or higher) are needed to connect the 3D sensor. A gigabit switch can be used to connect several 3D sensors. The Ethernet connection from the switch or 3D sensor is linked to the Scanner's physical network port in both scenarios.To visualize 3D scans, calibrate robot cameras, and establish localization settings, a well-connected connection to the 3D Sensor is required.
-To set up the network interface that the vision controller uses to connect to the Photoneo 3D Sensor(s), go to the Network page and select the Scanner interface section.Both a fixed IPv6 link-local address and a programmable IPv4 address are features of Photoneo 3D Sensors.
+The figure below shows the vision controller connected to the photoneo camera and the robotic controller using Ethernet (IPV4 address). The vision controller is connected to a PC to get the Web interface to trigger the camera and see the Web interface for communication.Gigabit Ethernet cables (Cat5e or higher) are needed to connect the 3D sensor. A gigabit switch can be used to connect several 3D sensors. The Ethernet connection from the switch or 3D sensor is linked to the scanner's physical network port in both scenarios. To visualize 3D scans, calibrate robot cameras and establish localization settings, a well-connected connection to the 3D sensor is required.
+To set up the network interface that the vision controller uses to connect to the Photoneo 3D sensor(s), go to the Network page and select the Scanner interface section. Both a fixed IPv6 link-local address and a programmable IPv4 address are features of Photoneo 3D sensors. 
 IPv6 connections are better than IPv4 ones. However, the IPv4 address is used if the IPv6 connection is banned or fails.Consequently, having a legitimate IPv4 network configuration is advised.
 The interface can be set up to operate a DHCP server or to utilize any random static IP address. Use the appropriate IP address settings on the sensor side through the PhoXi Control program in both situations.\\
 
@@ -365,7 +365,7 @@ The main method for defining robot movements about a conveyor belt is to model t
 \[
 \text{DEFBELT} \, \% \text{belt-variable} = \text{nominal-trans}, \, \text{scale factor}
 \]
-Where: scale factor is a calibrating constant that specifies the ratio between the elementary displacement of the belt and one pulse of the encoder; nominal-trans is the value in R6 of the (simple or composed) relative transformation that defines the position and orientation of the conveyor belt, and belt-variable is the name of the belt variable to be defined. The nominal transformation specifies a position (X, Y, Z) that points to the approximate center of the belt concerning the robot's base frame, the X axis of the nominal transformation indicates the direction of motion of the belt; and the XY plane defined by this transformation is parallel to the conveyor belt surface.\\
+Where scale factor is a calibrating constant that specifies the ratio between the elementary displacement of the belt and one pulse of the encoder; nominal-trans is the value in R6 of the (simple or composed) relative transformation that defines the position and orientation of the conveyor belt; and belt-variable is the name of the belt variable to be defined. The nominal transformation specifies a position (X, Y, Z) that points to the approximate center of the belt concerning the robot's base frame; the X axis of the nominal transformation indicates the direction of motion of the belt; and the XY plane defined by this transformation is parallel to the conveyor belt surface.\\
 \[
 \text{XYZ-instantaneous} =
 \text{XYZ-nominal} + \text{belt-distance} \cdot \text{vers}(X_{l,\sim,\text{minal\_rrarrv}})
@@ -375,11 +375,11 @@ Where: scale factor is a calibrating constant that specifies the ratio between t
 \text{with} \quad \text{belt-distance} =
 (\text{encoder-count} - \text{encoder-offset}) \cdot \text{scale-factor}
 \]
-Where encoder-count is the encoder's read contents and encoder-offset is used to determine the belt's reference frame's instantaneous location (x,, y, ) about its nominal location (x,!, y, ). Specifically, a displacement carried out by the conveyor can be nullified by using the offset of the belt (by setting the offset value to the current value of the encoder's counter). The conveyor's visual robot tracking system takes into consideration fluctuating belt offsets, which are often altered by software operations.\\
+Where encoder-count is the encoder's read contents and encoder-offset is used to determine the belt's reference frame's instantaneous location (x, y) about its nominal location (x,!, y). Specifically, a displacement carried out by the conveyor can be nullified by using the offset of the belt (by setting the offset value to the current value of the encoder's counter). The conveyor's visual robot tracking system takes into consideration fluctuating belt offsets, which are often altered by software operations.\\
 \[
 \text{SETBELT} \ \% \text{belt-variable} = \text{expression}
 \]
-For picking-on-the-fly robot tasks, a fast digital-input interrupt line that detects the occurrence of an external event of the type "an object has completely entered the Conveyor Belt Window" (and hence is completely visible) will initiate the dynamic robot-vision synchronization based on the "Look-and-Move" cooperation principle. A photocell detects this event and uses it to determine whether to take an image of the moving item.\\
+For picking-on-the-fly robot tasks, a fast digital-input interrupt line that detects the occurrence of an external event of the type "an object has completely entered the conveyor belt window" (and hence is completely visible) will initiate the dynamic robot-vision synchronization based on the "look-and-move" cooperation principle. A photocell detects this event and uses it to determine whether to take an image of the moving item.\\
 \subsection{Moving Calibration through Conveyor belt}\\
 The trajectory follows the instructions produced from trajectory planning and eye-in-hand vision each time the robot arm's palm begins to perform a moving task. The border of the conveyor will show up on the top side of the image when viewed through a camera. Because the conveyor's moving path is linear, the robot's motion can be corrected by following the conveyor's edge's slope. There are numerous image processing options available for searching a graph in a picture. The Hough transform, also referred to as object detection, is one easy technique. In camera view, the item is just a collection of colored points beneath the background. A specific point or high-dimensional plane will be mapped to those point sets. This can produce a parametric equation that represents every scenario that could be used to characterize the pattern's feature. Additionally, look for the extreme value to determine the pattern's location. Finally, group all of the spots that are comparable to show the workpiece feature.The line equation in polar coordinates to determine the conveyor's line edge. The polar parametric form has the advantage of having no singular condition in the domain of sinusoidal functions.\\
 
@@ -433,12 +433,12 @@ The conveyor belt calibration can be done as follows:\\
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 \newpage
-The above figure consists of the Inputs and outputs, where inputs include:\
+The above figure consists of the inputs and outputs, where inputs include:\
 \begin{itemize}
 \item Scan request\\
 The Sacn request consists of a  Python code that is used to send a request to the camera, which is then taken by the vision controller or the vision control box that helps trigger the camera.
  \item Trigger scan\\
- The trigger scan can be of the SW or HW method, where the output is hardware or Software method.
+ The trigger scan can be of the SW or HW method, where the output is hardware or software.
 
 \item Trigger \\\\
 Initially, the scan request is given to the Vision controller, creating a trigger scan that helps the camera trigger. \\
@@ -693,7 +693,7 @@ For this part, it is quite simple. This transformation is about the movement of 
 3. \textbf{ The robot transformation conveyor belt (B2):} \\
 Please be patient with me while I go through this lengthy and complicated section. The "3-Points Calibration Method" must be used in order to obtain a homogenous transformation matrix between the robot frame and the conveyor belt (B2). This approach is regarded reliable and is frequently utilized in belt tracking systems. The remaining information on this approach may be found here and here. In essence, when the robot points toward three distinct spots on the conveyor belt, you must record the coordinate values of the robot base frame.\\
 The procedure can be done as follows:\\
-1)Two workpieces must be placed on the conveyor belt before we can continue. As long as the workpiece is something the robot can pick up or follow, it can be anything. The ideal workpiece for this project is anything little that can replicate the actual foreign object.\\
+1) Two workpieces must be placed on the conveyor belt before we can continue. As long as the workpiece is something the robot can pick up or follow, it can be anything. The ideal workpiece for this project is anything little that can replicate the actual foreign object.\\
 2)Workpiece 1 should be positioned on the edge of one conveyor belt side. Start the conveyor belt and wait for Workpiece 1 to enter the robot's operating area. Put the conveyor belt on hold.
 Jog the robot end-tool tip by hand to the workpiece's grasping/sucking position. Note the robot's P1 coordinate values.\\
 
@@ -729,7 +729,7 @@ Capacitive
 
 The controller receives counts as the encoder rotates. Assume that the count range is between 0 and 10,000.We know that a complete rotation of the shaft registers a count of 10,000, but the precise position is unknown because this is an incremental encoder.The object will be placed on the conveyor, and the current encoder count will be recorded as soon as the object is detected by the entry photo-eye sensor. Assume that 5232 is the number.
 
-After the object leaves and is picked up by the exit photo-eye, we will record the count. We'll use 6311 as the number. Therefore, we will deduct 5232 from 6311 to get the count of the entire voyage, which comes out to be 1079 counts.
+After the object leaves and is picked up by the exit photoeye, we will record the count. We'll use 6311 as the number. Therefore, we will deduct 5232 from 6311 to get the count of the entire voyage, which comes out to be 1079 counts.
 
 It is clear from this example that we just know that there are 1079 journeys from the entrance to the exit, not the precise location of the object.\\
 
@@ -760,9 +760,9 @@ The robot interface on the vision controller and the robot module operating on t
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 
-The Vision Controller's scanner port is directly attached to a single Photoneo 3D Sensor.
+The Vision Controller's scanner port is directly attached to a single Photoneo 3D sensor. 
 ● The Vision Controller's network port is directly connected to a desktop PC for remote control.
-● The Robot controller is directly attached to the Vision Controller's Robot port.\\\\
+● The robot controller is directly attached to the vision controller's robot port.\\\\
 
 \begin{figure}[h]
     \centering
@@ -773,7 +773,7 @@ The Vision Controller's scanner port is directly attached to a single Photoneo 3
 
 
  \subsubsection{Protocol TCP/IP}\\
-The robot controller and the vision controller communicate via the TCP/IP protocol. Network connectivity is an optional feature that some robot controllers do not come with by default. All prerequisites for the full installation of the Robot module are listed in the Robot integration guides' Prerequisites section.\\
+The robot controller and the vision controller communicate via the TCP/IP protocol. Network connectivity is an optional feature that some robot controllers do not come with by default. All prerequisites for the full installation of the robot module are listed in the robot integration guides' Prerequisites section.\\
 
 \subsubsection{Channel of communication}\\
 The Robot module functions as a TCP client, while the vision controller establishes a TCP server. The client is called the Action Request Client, while the server is called the Action Request Server. The Action Request Client communicates with the Action Request Server over this channel. After receiving the action request, the vision controller carries it out and replies to the robotic controller.\\\\
@@ -862,7 +862,7 @@ The conveyor belt is the main belt where we have to place the object, thereby pu
 \label{Literature}
 \newpage
 \subsection{Photoneo Camera-Web Interface}\\
-The web interface shows the image of the object being detected; initially, we load the STL file of the object to be captured by the robot. The red color indicates the object, and once the object turns green, the object coordinate will be indicated as quaternion values. After getting the quaternion values, these are transferred to the Robotic controller which helps the robot to get into the desired target position.\\\\
+The web interface shows the image of the object being detected; initially, we load the STL file of the object to be captured by the robot. The red color indicates the object, and once the object turns green, the object coordinate will be indicated as quaternion values. After getting the quaternion values, these are transferred to the Robotic controller, which helps the robot to get into the desired target position.\\\\
 
 \begin{figure}[h]
     \centering
@@ -926,13 +926,13 @@ The future of conveyor tracking is poised to be shaped by continued technologica
 
 \item Sustainability and Green Technologies: Future conveyor systems will increasingly incorporate sustainable practices, such as the use of renewable energy sources, recyclable materials, and energy-efficient designs. Innovations aimed at reducing waste and minimizing the environmental impact will become paramount.
 
-\item Enhanced User Interfaces and Human-Machine Interaction: The development of more intuitive and user-friendly interfaces will improve the interaction between operators and conveyor tracking systems. Voice-controlled interfaces, touchless controls, and advanced visualization tools will make system management more accessible and efficient.
+\item Enhanced user interfaces and human-machine interaction: The development of more intuitive and user-friendly interfaces will improve the interaction between operators and conveyor tracking systems. Voice-controlled interfaces, touchless controls, and advanced visualization tools will make system management more accessible and efficient.
 
 \item Edge Computing and Enhanced Processing Capabilities: Implementing edge computing will allow data processing to occur closer to the source, reducing latency and improving the responsiveness of conveyor tracking systems. This will be particularly beneficial for real-time applications and environments with limited connectivity.
 
 \item Customization and Modular Designs: Future conveyor tracking systems will offer greater customization and modularity, allowing businesses to tailor systems to their specific needs without extensive redesigns. Modular components can be easily added, removed, or reconfigured to adapt to changing operational requirements.
 
-\item Enhanced Cybersecurity Measures: As conveyor tracking systems become more connected and reliant on digital technologies, ensuring robust cybersecurity will be critical. Future developments will focus on implementing advanced security protocols, encryption methods, and intrusion detection systems to protect against cyber threats.
+\item Enhanced cybersecurity measures: As conveyor tracking systems become more connected and reliant on digital technologies, ensuring robust cybersecurity will be critical. Future developments will focus on implementing advanced security protocols, encryption methods, and intrusion detection systems to protect against cyber threats.
 \end{itemize}
 
 \newpage
