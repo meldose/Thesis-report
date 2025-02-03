@@ -534,13 +534,6 @@ After considering the conveyor motion and processing delays, the final position 
 \text{Target} = TX + (TX - \text{Marker Pattern Origin}) + (V_c \times t_s) + (V_c \times t_r)
 \]
 
-
-
-
-
-
-
-
 \newpage
 
 \chapter{\section{\mbox{Inverse Kinematics }}{{\normalfont\fontsize{14}{16}\bfseries}}
@@ -591,8 +584,8 @@ referring to the workpiece or tracked objects that travel along the conveyor bel
     \includegraphics[width=15cm]{Thesis-report/Figures/transform.png} % Centered image
     \vspace{1cm} % Space after the image
 \end{center}
-OPERATIONS NEEDED to DEVELOP THE TRACKING SYSTEM:\\
-The tracking system's pillars are composed of three primary components. The interactions and transformations required between the tracking system's components are literally represented by these parts. Only a scenario including a camera, a belt conveyor, and a robot will be covered in this post. It is certainly possible to expand the tracking system by including additional robots and cameras. Although more intricate procedures will be required to make up for the additional components, the fundamentals will remain the same.\\
+\textbf{ OPERATIONS NEEDED to DEVELOP THE TRACKING SYSTEM:} \\
+The tracking system's pillars are composed of three primary components. The interactions and transformations required between the tracking system's components are literally represented by these parts. Only a scenario including a camera, a belt conveyor, and a robot will be covered in this post. It is certainly possible to expand the tracking system by including additional robots and cameras. Although more intricate procedures will be required to make up for the additional components, the fundamentals will remain the same.\\\\
 1. \textbf{ Conveyor Belt to Camera Conversion (B1):} \\
 The orientation of the conveyor belt coordinate and the camera origin coordinate deviate from one another. The origin for a camera is the upper left corner of its field of vision (FOV), where the values of its pixels start at (0, 0). This origin is set in stone and cannot be altered. For the conveyor belt, we can freely provide the origin's location, but the standard procedure is to first specify the picking window's dimensions (it's a square), taking into account the robot's picking range limit, and then place the origin at the center of the window's bottom.\\
   \begin{center}
