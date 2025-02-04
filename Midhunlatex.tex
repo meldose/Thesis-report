@@ -336,7 +336,7 @@ Velocity for the linear velocity in Cartesian space. First, FK is used to determ
 When mounting a camera for vision operation, it is best to keep it stable and as close to the robot's work envelope as feasible, without interfering with or restricting the movement of the robot arm. The longer the part must travel from the camera's location into the robot's reachable workspace, the more errors the encoder counts will produce since the accuracy of conveyor tracking with vision depends on the coordinate transformation between the camera's picture-taking location and the robot's work envelope (see Figure 4). The camera must be oriented downwards since the components are positioned on the conveyor belt's surface and vision recognition is done on the parts' upper surface. For the camera's 25 mm lens to cover the entire visible portion of the conveyor belt, a camera fixture was constructed to hold the camera directly above the upstream sensor. The upstream sensor is also used to activate the camera to take a photo when parts are presented at this point, so the picture-taking location is placed at the top of the upstream sensor. Following their placement in fixed locations, the camera and conveyor must be calibrated using the calibration program on the robot controller to configure the camera's properties and determine how the locations of the camera and conveyor relate to the robot's world coordinate.\\
 
 \subsection{Object Identification}\\
-The STL file is uploaded to the Web interface, thereby helping the camera to identify the object in the moving conveyor belt tracking system. Once the object is detected the camera is detected, getting the object's position and its quaternion values.
+The STL file is uploaded to the Web interface, thereby helping the camera to identify the object in the moving conveyor belt tracking system. Once the object is detected, the camera is detected, getting the object's position and its quaternion values.
 
 \subsection{Trajectory Planning}\\
 Using a set of predetermined points, trajectory planning aims to produce stable and fluid motion in world coordinates. A few characteristics, such as the maximum velocity, acceleration, and jerk, will be taken into account to demonstrate the continuous motion of the robot arm. The constant context of temporal movement is unique. Additionally, this function has a first derivative and a second derivative. In addition to increasing wear on the mechanism, jerky action frequently causes vibration in the robot manipulator.\\
@@ -547,9 +547,9 @@ After considering the conveyor motion and processing delays, the final position 
 \newpage
 
 \chapter{\section{\mbox{Inverse Kinematics }}{{\normalfont\fontsize{14}{16}\bfseries}}
-We look at the system model that includes a nonredundant robot manipulator with n degrees of freedom and a conveyor belt system. The following attributes are presumed to be present in the system model:\\
-1) The conveyor belt system runs at a constant velocity, and the
-part is stationary with respect to the conveyor belt system.\\
+We look at the system model, which includes a nonredundant robot manipulator with n degrees of freedom and a conveyor belt system. The following attributes are presumed to be present in the system model:\\
+1) The conveyor belt system runs at constant velocity, and the
+part is stationary concerning the conveyor belt system.\\
 2) The orientation of the robot hand is aligned with the part
 initially and kept fixed while the robot tracks the part.\\
 3) The robot tracks the part along a straight line path over the
@@ -618,7 +618,7 @@ J
 \Delta \theta_1 \\ \Delta \theta_2 \\ \Delta \theta
 \end{bmatrix}
 
-The change in the end-effector's pose that corresponds to the change in joint angles θ is denoted by the word x e. The recursive relationship between the angular velocity and linear velocities for a 6R manipulator yields the Jacobian J, which is the 6×6 matrix for a 6-DOF robot. It is provided as \\
+The change in the end-effector's pose that corresponds to the change in joint angles θ is denoted by the word x. The recursive relationship between the angular velocity and linear velocities for a 6R manipulator yields the Jacobian J, which is the 6×6 matrix for a 6-DOF robot. It is provided as \\
 
 \[
 J =
@@ -852,7 +852,7 @@ The trapezoid  is: \\\\
 \end{figure}
 
 
-The above figure shows the STL file of the trapezoid,hich is used to pick up the object.\\\\
+The above figure shows the STL file of the trapezoid, which is used to pick up the object.\\\\
 
 
 \subsubsection{Conveyor Belt}
