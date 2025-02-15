@@ -826,7 +826,7 @@ The Robotic movement can be with 3 methods called Servo X , ServoJ and Movelinea
 2. \textbf{ServoJ:} In the servo J , the move of the robot is with the joint movements, instead of cartesian. The object coordinates that we get from the camera are in Cartesian, they need to be converted into joint form and given as the target position. When giving the target position, the final orientation values of the coordinates will not be the same as that of the TCP coordinates of the robot. In order to set this, we have to implement the method inverse kinematics.\\\\
 3. \textbf{Movelinear:}
 The Movelinear is the method where the target postion for the robot to pick up the object is directly given as the quaternion values provided by the camera by scanning the objects.
-
+\newpage
 \subsection{Euler Angles:}\\
 Euler angles can be used to parameterize the space of orientations. A universal orientation is expressed as a sequence of rotations along three mutually orthogonal axes in space when Euler angles are applied. In a Cartesian coordinate system, the x, y, and z axes are typically utilized. The rotations are frequently referred to as x-, y-, and z-rolls.In order to solve differential equations, Euler initially created Euler angles. The most popular technique for parameterizing the space of orientations is now the use of later Euler angles.Euler angles can be used to parameterize the space of rotations if we decide to think of a rotation as the activity carried out to achieve a specific orientation. The rotation angles about the x, y, and z axes are denoted as { 1, { 2, and { 3, respectively.\\
 \subsubsection{Rotation matrices}\\
