@@ -814,8 +814,25 @@ The OnRobot VGC10 electrical compact vacuum gripper offers unlimited customizati
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 
-With no compressor or air supply, it's easy to move and redeploy. Once the robot gets near the object, the suction gripper is activated, thereby providing suction to the object and helping to pick up the object and place it in the target box.\\\\
+With no compressor or air supply, it's easy to move and redeploy. Once the robot gets near the object, the suction gripper is activated, thereby providing suction to the object and helping to pick up the object and place it in the target box.\\
+\section{Robotic Movement:}
+The Robotic movement can be with 3 methods called Servo X , ServoJ and Movelinear method.\\
+\begin{itemize}
+    \item ServoX
+    \item Servo J
+    \item Movelinear
+\end{itemize}\\
+1. ServoX: In the Servo X motion, we move the robot in cartesian motion, where the coordinates that we get from the camera are in quaternion poses [X, Y, Z, Qx, Qy, Qy, W]. These are already in the cartesian poses, which can be directly passed to the robotic controller and give these values as the target position and move the robot to the desired location. During the servoX , the coordiantes that got from the camera were not in the correct order as that of the robotic movement, so initially had to change the target position as in this form [X, Y, Z, W, Qx, Qy, Qy]\\\\
+2. ServoJ: In the servo J , the move of the robot is with the joint movements, instead of cartesian. The object coordinates that we get from the camera are in Cartesian, they need to be converted into joint form and given as the target position. When giving the target position, the final orientation values of the coordinates will not be the same as that of the TCP coordinates of the robot. In order to set this, we have to implement the method inverse kinematics.\\
 
+\subsection{Euler Angles:}\\
+Euler angles can be used to parameterize the space of orientations. A universal orientation is expressed as a sequence of rotations along three mutually orthogonal axes in space when Euler angles are applied. In a Cartesian coordinate system, the x, y, and z axes are typically utilized. The rotations are frequently referred to as x-, y-, and z-rolls.In order to solve differential equations, Euler initially created Euler angles. The most popular technique for parameterizing the space of orientations is now the use of later Euler angles.Euler angles can be used to parameterize the space of rotations if we decide to think of a rotation as the activity carried out to achieve a specific orientation. The rotation angles about the x, y, and z axes are denoted as { 1, { 2, and { 3, respectively.\\
+\subsubsection{Rotation matrices}\\
+Euler angles are usually implemented using rotation matrices. There is an x rotation matrix, a y rotation matrix, and a z rotation matrix for every kind of roll. The position vector for the rotated point is obtained by multiplying the matrices by the position vector for a point in space. Although a rotation matrix is a 3 × 3 matrix, homogeneous 4 × 4 matrices are typically utilized in its place. The three roll-matrices corresponding to the three Euler angles are multiplied to produce a general rotation. The generated matrix can be applied to the locations that need to be rotated and represents the general rotation.In most cases, matrix multiplication is not commutative. The fact that rotations in space do not commute fits in nicely with this.Lastly, it should be mentioned that the only implementation that effectively incorporates all common transformations—translation, scaling, shearing, and different projection transformations—is the use of homogeneous transformation matrices.
+\subsection{Qaternions:}\\
+The second rotational modality uses quaternions and is defined by Euler's theorem. Given the lack of a comprehensive overview of the field and the fact that quaternions are not nearly as well-known as transformation matrices, we will first provide a historical perspective before delving deeply into quaternion mathematics.\\
+
+\newpage
 \subsubsection{Objects for picking}
 The objects that we have used for conveyor tracking include a trapezoid, pipe socket, and circle ball.\\
 \subsubsection{Socket-pipe} The socket pipe is: \\\\
