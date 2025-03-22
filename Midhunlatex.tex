@@ -550,12 +550,12 @@ After considering the conveyor motion and processing delays, the final position 
 \subsection{Manual Calibration}
 This method can also be used to get the Conveyor belt to be calibrated. The steps include :
 \begin{enumerate}
-    \item First step: Place the picking / triggering object in the field of view of the camera and trigget the camera , then get the object pose whcih include the [X1,Y1, and Z1] respectively
-    \item Second step: Switch on the conveyor belt and ge the farest postion where the camera trigger the object and get the coordinates which include the [X2,Y2 and Z3] respectively.
-    \item Third step: While triggering the camera in the first and final positon we also try to capture the timestamps of the camera, which calculates the time taken by the camera to trigger.
-    \item Fourth step: In this step , we need to caculate the change in the position for the X,Y and Y repsectively which includes ($\Delta X$, $\Delta Y$, and $\Delta Z$ ) respectively. In addition to that we need to get the change in the time also  ($\Delta t$).
-    \item Fifth step: In this step we need to find the custom velocity by diving the change in the postion by the change in the time.
-    \item Sixth step: Finally we need to mutiply the custom velocity with the time and changes in postion along the X postion, which will help in getting change in the position as linear motion and transfered to the robtoic controller that helps the robot to pick the itmes from the conveyor belt.
+    \item \textbf{First step:}  Place the picking / triggering object in the field of view of the camera and trigget the camera , then get the object pose whcih include the [X1,Y1, and Z1] respectively
+    \item \textbf{Second step:} Switch on the conveyor belt and ge the farest postion where the camera trigger the object and get the coordinates which include the [X2,Y2 and Z3] respectively.
+    \item \textbf{Third step:} While triggering the camera in the first and final positon we also try to capture the timestamps of the camera, which calculates the time taken by the camera to trigger.
+    \item \textbf{Fourth step:}  In this step , we need to caculate the change in the position for the X,Y and Y repsectively which includes ($\Delta X$, $\Delta Y$, and $\Delta Z$ ) respectively. In addition to that we need to get the change in the time also  ($\Delta t$).
+    \item \textbf{Fifth step:}  In this step we need to find the custom velocity by diving the change in the postion by the change in the time.
+    \item \textbf{Sixth step:} Finally we need to mutiply the custom velocity with the time and changes in postion along the X postion, which will help in getting change in the position as linear motion and transfered to the robtoic controller that helps the robot to pick the itmes from the conveyor belt.
 \end{enumerate}
 
 \newpage
