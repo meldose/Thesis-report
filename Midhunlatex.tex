@@ -828,6 +828,10 @@ The OnRobot VGC10 electrical compact vacuum gripper offers unlimited customizati
 \end{figure}
 
 With no compressor or air supply, it's easy to move and redeploy. Once the robot gets near the object, the suction gripper is activated, thereby providing suction to the object and helping to pick up the object and place it in the target box.
+
+\subsubsection{RobotiQ 140 Gripper:}
+The RobotiQ 140 gripper is an two finger gripper that are mainly working under the principle of Modbus Communication. This gripper's 85 mm stroke, 230 N maximum gripping force, and 5 kg maximum payload make it the perfect choice for anyone looking for a flexible, all-purpose end-of-arm tool. This gripper is perfect for low-volume, high-changeover settings since it can efficiently grasp a broad range of workpiece sizes and forms.\\
+
 \section{Robotic Movement:}
 The Robotic movement can be with 3 methods called Servo X , ServoJ and Movelinear method.\\
 \begin{itemize}
@@ -839,7 +843,7 @@ The Robotic movement can be with 3 methods called Servo X , ServoJ and Movelinea
 2. \textbf{ServoJ:} In the servo J , the move of the robot is with the joint movements, rather than the Cartesian. The object coordinates that we get from the camera are in Cartesian form, they need to be converted into joint form and given as the target position. When giving the target position, the final orientation values of the coordinates will not be the same as that of the TCP coordinates of the robot. In order to set this, we have to implement the method inverse kinematics.\\\\
 3. \textbf{Movelinear:}
 The Movelinear is the method in which the target position for the robot to pick up the object is directly given as the quaternion values provided by the camera by scanning the objects. Here we define the maximum velocity, acceleration . The movement of the robot happens in an servo interface where passing the quaternion values to the robot as the target postion which helps the robot to the required postion.
-\newpage
+
 \subsection{Static Picking:}\\
 Static pick-up is the process of picking items from the conveyor belt when it is not moving. Initially we keep the object in the conveyor belt and then trigger the camera that helps in getting the object coordinates to the robotic controller. When the robot receives the data, the robot moves to the target position to pick the required target position.
 \subsection{Dynamic Picking:}\\
@@ -847,10 +851,8 @@ The Dynamic Pick involves the process of picking the items from the moving conve
 
 The working happens in Dynamic can be as follows:\\
 
-Initally we pass the pobject through the running conveyor belt and trigger the camera , where we get thr intinal and final coordinates. We also calcualte the timestamps also to get the chanegs in the time also. Then we need to find the custom velocity , which can be calculated by dividing the change in the positon and changes in time .\\
-
+Initally we pass the pobject through the running conveyor belt and trigger the camera , where we get thr intinal and final coordinates. We also calcualte the timestamps also to get the chanegs in the time also. Then we need to find the custom velocity , which can be calculated by dividing the change in the positon and changes in time .
 When we pass the object through the conveyor belt , there is change in position in the X axis as this is an linear motion of movement . The change in the postion of the object need to be trasnfered to the robot , so that robot can understand where should i need to come and pick the item from the conveyor belt. This can be cacualtes by using the following equtaion:
-
 \[
 X_0 = X + v \cdot t
 \]
@@ -859,8 +861,6 @@ wherer X is the intial postion of the object where the object gets triggered\\
 v si the velocity / calibrated custom velocity\\
 t is change in time \\
 
-\newpage
-
 \subsection{Euler Angles:}\\
 Euler angles can be used to parameterize the space of orientations. A universal orientation is expressed as a sequence of rotations along three mutually orthogonal axes in space when Euler angles are applied. In a Cartesian coordinate system, the x, y, and z axes are typically utilized. The rotations are frequently referred to as x-, y-, and z-rolls.In order to solve differential equations, Euler initially created Euler angles. The most popular technique for parameterizing the space of orientations is now the use of later Euler angles.Euler angles can be used to parameterize the space of rotations if we decide to think of a rotation as the activity carried out to achieve a specific orientation. The rotation angles about the x, y, and z axes are denoted as { 1, { 2, and { 3, respectively.\\
 \subsubsection{Rotation matrices}\\
@@ -868,7 +868,6 @@ Euler angles are usually implemented using rotation matrices. There is an x rota
 \subsection{Qaternions:}\\
 The second rotational modality uses quaternions and is defined by Euler's theorem. Given the lack of a comprehensive overview of the field and the fact that quaternions are not nearly as well-known as transformation matrices, we will first provide a historical perspective before delving deeply into quaternion mathematics.\\
 
-\newpage
 \subsection{Objects for picking}
 The objects that we have used for conveyor tracking include a trapezoid, pipe socket, and circle ball.\\
 \subsubsection{Socket-pipe} The socket pipe is: \\\\
