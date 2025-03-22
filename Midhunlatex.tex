@@ -333,7 +333,7 @@ Velocity for the linear velocity in Cartesian space. First, FK is used to determ
 When mounting a camera for vision operation, it is best to keep it stable and as close to the robot's work envelope as feasible, without interfering with or restricting the movement of the robot arm. The longer the part must travel from the camera's location into the robot's reachable workspace, the more errors the encoder counts will produce since the accuracy of conveyor tracking with vision depends on the coordinate transformation between the camera's picture-taking location and the robot's work envelope (see Figure 4). The camera must be oriented downwards since the components are positioned on the conveyor belt's surface and vision recognition is done on the parts' upper surface. For the camera's 25 mm lens to cover the entire visible portion of the conveyor belt, a camera fixture was constructed to hold the camera directly above the upstream sensor. The upstream sensor is also used to activate the camera to take a photo when parts are presented at this point, so the picture-taking location is placed at the top of the upstream sensor. Following their placement in fixed locations, the camera and conveyor must be calibrated using the calibration program on the robot controller to configure the camera's properties and determine how the locations of the camera and conveyor relate to the robot's world coordinate.\
 
 \subsection{Object Identification}\\
-The STL file is uploaded to the Web interface, thereby helping the camera to identify the object in the moving conveyor belt tracking system. Once the object is detected, the camera is detected, getting the object's position and its quaternion values.
+The STL file is uploaded to the Web interface, thereby helping the camera to identify the object in the moving conveyor belt tracking system. Once the object is detected, the camera helps in getting the object's position and its quaternion values.
 
 \subsection{Trajectory Planning}\\
 Using a set of predetermined points, trajectory planning aims to produce stable and fluid motion in world coordinates. A few characteristics, such as the maximum velocity, acceleration, and jerk, will be taken into account to demonstrate the continuous motion of the robot arm. The constant context of temporal movement is unique. Additionally, this function has a first derivative and a second derivative. In addition to increasing wear on the mechanism, jerky action frequently causes vibration in the robot manipulator.\\
@@ -431,7 +431,7 @@ The conveyor belt calibration can be done as follows:\\
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=16cm]{Thesis-report/Figures/conveyor_belt with cmaera.jpg} 
+    \includegraphics[width=13cm]{Thesis-report/Figures/conveyor_belt with cmaera.jpg} 
     \caption{Coveyor tracking setup}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
@@ -442,7 +442,7 @@ The above figure consists of the inputs and outputs, where inputs include:\
 The Sacn request consists of a  Python code that is used to send a request to the camera, which is then taken by the vision controller or the vision control box that helps trigger the camera.
  \item \textbf{Trigger scan}\\
  The trigger scan can be of the SW or HW method, where the output is hardware or software.
-\newpage
+
 \item \textbf{Trigger }\\
 Initially, the scan request is given to the Vision controller, creating a trigger scan that helps the camera trigger. \\
 The output section includes the:
@@ -530,7 +530,7 @@ Where:
 
 - \( \Delta TSC \) is the \textbf{Target Scan Completion Distance}, which is the distance moved by the conveyor while scanning is completed.
 - \( \Delta CTO \) is the \textbf{Conveyor Tracking Offset}, which is the distance moved while waiting for the robot to reach the pick position.
-\newpage
+
 5. Target Scan Completion Distance (TSC):
 
 \begin{center}
@@ -546,7 +546,8 @@ After considering the conveyor motion and processing delays, the final position 
 \[
 \text{Target} = TX + (TX - \text{Marker Pattern Origin}) + (V_c \times t_s) + (V_c \times t_r)
 \]
-\subsection{Manual Calibration }
+\newpage
+\subsection{Manual Calibration}
 This method can also be used to get the Conveyor belt to be calibrated. The steps include :
 \begin{enumerate}
     \item First step: Place the picking / triggering object in the field of view of the camera and trigget the camera , then get the object pose whcih include the [X1,Y1, and Z1] respectively
