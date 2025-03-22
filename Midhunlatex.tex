@@ -838,6 +838,10 @@ The Robotic movement can be with 3 methods called Servo X , ServoJ and Movelinea
 3. \textbf{Movelinear:}
 The Movelinear is the method where the target postion for the robot to pick up the object is directly given as the quaternion values provided by the camera by scanning the objects.
 \newpage
+\subsection{Static Picking:}\\
+The static picking is the process of picking the items from the conveyor belt when it is not moving. Initially we keep the object in the conveyor belt, then trigger the camera that helps in getting the object coordinates to the robotic controller. When the robot recieves the data , the robot move to the target position for picking the item required target postion.
+\subsection{Dynamic Picking:}\\
+The Dynamic picking involves the process of picking the items from the moving conveyor belt . Here the object is passed through the moving conveyor bet where the camera get object poses that are passed to the robotic controller, that helps the robot to move to the required positon.
 \subsection{Euler Angles:}\\
 Euler angles can be used to parameterize the space of orientations. A universal orientation is expressed as a sequence of rotations along three mutually orthogonal axes in space when Euler angles are applied. In a Cartesian coordinate system, the x, y, and z axes are typically utilized. The rotations are frequently referred to as x-, y-, and z-rolls.In order to solve differential equations, Euler initially created Euler angles. The most popular technique for parameterizing the space of orientations is now the use of later Euler angles.Euler angles can be used to parameterize the space of rotations if we decide to think of a rotation as the activity carried out to achieve a specific orientation. The rotation angles about the x, y, and z axes are denoted as { 1, { 2, and { 3, respectively.\\
 \subsubsection{Rotation matrices}\\
