@@ -407,7 +407,9 @@ The below figure shows the calibration method used in this study (Extrinsic Cali
     \caption{Extrinsic Calibration}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
+
 This kind of calibration is employed in configurations where the 3D sensor is fixedly positioned within the robotic cell, often above the bin. The 3D sensor does not have to be stationary concerning the robotic cell itself; it just needs to be stationary concerning the robot's foundation. The calibration matrix will become invalid, and the entire calibration process will need to be restarted if there is a change in the relative position between the 3D sensor and the robot after the calibration. In other words, after the system has been calibrated, the 3D sensor cannot be changed concerning the robot. The calibration matrix specifies the transformation straight to the robot base coordinate system because the 3D sensor is fixed. With this configuration, the robot's mobility is unrestricted, and it doesn't need to halt during the scan acquisition, unlike with the hand-eye approach.
+\newpage
 \subsubsection{Calibration Ball}\\\\
 A calibration ball serves as the calibration object. It is also feasible to use a bespoke ball with the right characteristics in place of the calibration ball that Photoneo provides; the ball needs to be exactly round and composed of a surface that is good for scanning (smooth and not extremely reflective). The ball needs to be attached to the gripper or the flange, which are the robot's endpoints. During the calibration process, make sure the ball is securely attached and stays in place. Verify that the ball can be seen clearly by the 3D sensor.\\
 
