@@ -833,15 +833,32 @@ The Robotic movement can be with 3 methods called Servo X , ServoJ and Movelinea
     \item Servo J
     \item Movelinear
 \end{itemize}\\
-1. \textbf{ServoX:} In the Servo X motion, we move the robot in cartesian motion, where the coordinates that we get from the camera are in quaternion poses [X, Y, Z, Qx, Qy, Qy, W]. These are already in the cartesian poses, which can be directly passed to the robotic controller and give these values as the target position and move the robot to the desired location. During the servoX , the coordiantes that got from the camera were not in the correct order as that of the robotic movement, so initially had to change the target position as in this form [X, Y, Z, W, Qx, Qy, Qy]\\\\
-2. \textbf{ServoJ:} In the servo J , the move of the robot is with the joint movements, instead of cartesian. The object coordinates that we get from the camera are in Cartesian, they need to be converted into joint form and given as the target position. When giving the target position, the final orientation values of the coordinates will not be the same as that of the TCP coordinates of the robot. In order to set this, we have to implement the method inverse kinematics.\\\\
+1. \textbf{ServoX:} In the Servo X motion, we move the robot in cartesian motion, where the coordinates that we get from the camera are in quaternion poses [X, Y, Z, Qx, Qy, Qy, W]. These are already in the Cartesian poses, which can be directly passed to the robotic controller, giving these values as the target position, and moving the robot to the desired location. During servoX, the coordinates that came from the camera were not in the correct order as that of the robotic movement, so initially the target position had to be changed as in this form [X, Y, Z, W, Qx, Qy, Qy]\\\\
+2. \textbf{ServoJ:} In the servo J , the move of the robot is with the joint movements, rather than the Cartesian. The object coordinates that we get from the camera are in Cartesian form, they need to be converted into joint form and given as the target position. When giving the target position, the final orientation values of the coordinates will not be the same as that of the TCP coordinates of the robot. In order to set this, we have to implement the method inverse kinematics.\\\\
 3. \textbf{Movelinear:}
-The Movelinear is the method where the target postion for the robot to pick up the object is directly given as the quaternion values provided by the camera by scanning the objects.
+The Movelinear is the method in which the target position for the robot to pick up the object is directly given as the quaternion values provided by the camera by scanning the objects. Here we define the maximum velocity, acceleration . The movement of the robot happens in an servo interface where passing the quaternion values to the robot as the target postion which helps the robot to the required postion.
 \newpage
 \subsection{Static Picking:}\\
-The static picking is the process of picking the items from the conveyor belt when it is not moving. Initially we keep the object in the conveyor belt, then trigger the camera that helps in getting the object coordinates to the robotic controller. When the robot recieves the data , the robot move to the target position for picking the item required target postion.
+Static pick-up is the process of picking items from the conveyor belt when it is not moving. Initially we keep the object in the conveyor belt and then trigger the camera that helps in getting the object coordinates to the robotic controller. When the robot receives the data, the robot moves to the target position to pick the required target position.
 \subsection{Dynamic Picking:}\\
-The Dynamic picking involves the process of picking the items from the moving conveyor belt . Here the object is passed through the moving conveyor bet where the camera get object poses that are passed to the robotic controller, that helps the robot to move to the required positon.
+The Dynamic Pick involves the process of picking the items from the moving conveyor belt. Here the object is passed through the moving conveyor bet where the camera gets object poses that are passed to the robotic controller, which helps the robot move to the required position.\\
+
+The working happens in Dynamic can be as follows:\\
+
+Initally we pass the pobject through the running conveyor belt and trigger the camera , where we get thr intinal and final coordinates. We also calcualte the timestamps also to get the chanegs in the time also. Then we need to find the custom velocity , which can be calculated by dividing the change in the positon and changes in time .\\
+
+When we pass the object through the conveyor belt , there is change in position in the X axis as this is an linear motion of movement . The change in the postion of the object need to be trasnfered to the robot , so that robot can understand where should i need to come and pick the item from the conveyor belt. This can be cacualtes by using the following equtaion:
+
+\[
+X_0 = X + v \cdot t
+\]
+where the X0 is the change in the postion of the object \\
+wherer X is the intial postion of the object where the object gets triggered\\
+v si the velocity / calibrated custom velocity\\
+t is change in time \\
+
+\newpage
+
 \subsection{Euler Angles:}\\
 Euler angles can be used to parameterize the space of orientations. A universal orientation is expressed as a sequence of rotations along three mutually orthogonal axes in space when Euler angles are applied. In a Cartesian coordinate system, the x, y, and z axes are typically utilized. The rotations are frequently referred to as x-, y-, and z-rolls.In order to solve differential equations, Euler initially created Euler angles. The most popular technique for parameterizing the space of orientations is now the use of later Euler angles.Euler angles can be used to parameterize the space of rotations if we decide to think of a rotation as the activity carried out to achieve a specific orientation. The rotation angles about the x, y, and z axes are denoted as { 1, { 2, and { 3, respectively.\\
 \subsubsection{Rotation matrices}\\
