@@ -175,7 +175,7 @@
 
 \vspace{0.5 cm}
 
-Tracking conveyor belt with robot using a machine vision camera
+Object Tracking using 3D Machine Vision Camera for Industrial Robots
 \vspace{1.5 cm}
 
  I hereby declare that I have written this thesis independently. I have not submitted it for any other examination purposes. I have not used other references or material than mentioned in the bibliography, and I have marked all literal analogous citations.
@@ -387,6 +387,7 @@ r = x\cos\theta + y\sin\theta
 \newpage
 \subsection{Software Codes}
 \subsubsection{Servo-X}
+The servoX is the motion of the robot in Cartesian space, where we need to define the max velocity, max accelerationa and its servoX propotional gain. Initially the coordinates that we get from the camera space as Quaternion values that include [X,Y,Z ,ex,ey,ez] as the target values for the robot to move that particular position and pick up the object. Since we have calibrated camera with respect to the Robot frame, the coordinates that we get the from the object will be with the respect to the robot frame.
 \subsubsection{Calibration for camera for Workspace}\\\\
 The camera calibration is performed through an extrinsic method in which the camera is fixed in a position and the calibration ball is fixed at the end of the robot TCP.\\\\
 
@@ -540,6 +541,16 @@ After considering the conveyor motion and processing delays, the final position 
 \[
 \text{Target} = TX + (TX - \text{Marker Pattern Origin}) + (V_c \times t_s) + (V_c \times t_r)
 \]
+\subsection{Manual Calibration }
+This method can also be used to get the Conveyor belt to be calibrated. The steps include :
+\begin{enumerate}
+    \item First step: Place the picking / triggering object in the field of view of the camera and trigget the camera , then get the object pose whcih include the [X1,Y1, and Z1] respectively
+    \item Second step: Switch on the conveyor belt and ge the farest postion where the camera trigger the object and get the coordinates which include the [X2,Y2 and Z3] respectively.
+    \item Third step: While triggering the camera in the first and final positon we also try to capture the timestamps of the camera, which calculates the time taken by the camera to trigger.
+    \item Fourth step: In this step , we need to caculate the change in the position for the X,Y and Y repsectively which includes ($\Delta X$, $\Delta Y$, and $\Delta Z$ ) respectively. In addition to that we need to get the change in the time also  ($\Delta t$).
+    \item Fifth step: In this step we need to find the custom velocity by diving the change in the postion by the change in the time.
+    \item Sixth step: Finally we need to mutiply the custom velocity with the time and changes in postion along the X postion, which will help in getting change in the position as linear motion and transfered to the robtoic controller that helps the robot to pick the itmes from the conveyor belt.
+\end{enumerate}
 
 \newpage
 
@@ -810,7 +821,7 @@ The OnRobot VGC10 electrical compact vacuum gripper offers unlimited customizati
 \begin{figure}[h]
     \centering
     \includegraphics[width=5cm]{Thesis-report/Figures/gripper.jpeg}
-    \caption{VGC10 Gripper}
+    \caption{RobotiQ 140 Gripper}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 
