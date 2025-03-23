@@ -394,15 +394,33 @@ r = x\cos\theta + y\sin\theta
 \subsubsection{Servo-X}
 The servoX is the motion of the robot in Cartesian space, where we need to define the max velocity, max accelerationa and its servoX propotional gain. Initially the coordinates that we get from the camera space as Quaternion values that include [X,Y,Z ,ex,ey,ez] as the target values for the robot to move that particular position and pick up the object. Since we have calibrated camera with respect to the Robot frame, the coordinates that we get the from the object will be with the respect to the robot frame.
 \subsubsection{Calibration for camera for Workspace}\\\\
-The camera calibration is performed through an extrinsic method in which the camera is fixed in a position and the calibration ball is fixed at the end of the robot TCP.\\\\
 
+Go to the Calibration page within the solution to begin the calibration.  The following details are displayed along with a list of all defined vision systems:
+\begin{enumerate}
+    \item ● ID: the Vision system's ID
+    \item ● Name: the Vision system's name 
+    \item ● Scanner ID: the ID of the 3D sensor used by the Vision system
+    \item ● Scanner status: the current state of the 3D sensor used by the Vision system
+    \item ● Scanner model: the model of the 3D sensor used by the Vision system 
+    \item ● Calibration type: the type of calibration based on the selected 3D sensor mount position
+    \item ● Calibrated: whether the Vision system has already been calibrated
+    \item ● Accuracy of calibration [mm]: the precision of any prior calibration    
+\end{enumerate}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=13.5cm]{Thesis-report/Figures/calib.png}
+    \caption{Calibration}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
+The camera calibration is performed through an extrinsic method in which the camera is fixed in a position and the calibration ball is fixed at the end of the robot TCP.\\
 \begin{figure}[h]
     \centering
     \includegraphics[width=13.5cm]{Thesis-report/Figures/calibration.jpeg}
     \caption{Calibration for camera with respect to Robot frame}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-The above figure shows how the calibration is happening by adding the point by fixing the point where the robot Coordinates [X, Y, Z] rotation values will save the points by saving the points (represented as a green point). Here we need to add 9 points to get the calibration workspace. After the calibration, the average value from the 9 points is taken into consideration.\\
+The below figure shows how the calibration is happening by adding the point by fixing the point where the robot Coordinates [X, Y, Z] rotation values will save the points by saving the points (represented as a green point). Here we need to add 9 points to get the calibration workspace. After the calibration, the average value from the 9 points is taken into consideration.\\
 
 The below figure shows the calibration method used in this study (Extrinsic Calibration) (EC), where the camera is fixed at the location and 9 points are taken into consideration where the average value is finally taken as the value for the calibration.\\
 
@@ -414,9 +432,8 @@ The below figure shows the calibration method used in this study (Extrinsic Cali
 \end{figure}
 
 This kind of calibration is employed in configurations where the 3D sensor is fixedly positioned within the robotic cell, often above the bin. The 3D sensor does not have to be stationary concerning the robotic cell itself; it just needs to be stationary concerning the robot's foundation. The calibration matrix will become invalid, and the entire calibration process will need to be restarted if there is a change in the relative position between the 3D sensor and the robot after the calibration. In other words, after the system has been calibrated, the 3D sensor cannot be changed concerning the robot. The calibration matrix specifies the transformation straight to the robot base coordinate system because the 3D sensor is fixed. With this configuration, the robot's mobility is unrestricted, and it doesn't need to halt during the scan acquisition, unlike with the hand-eye approach.
-\newpage
+
 \subsubsection{Calibration Ball}\\\\
-A calibration ball serves as the calibration object. It is also feasible to use a bespoke ball with the right characteristics in place of the calibration ball that Photoneo provides; the ball needs to be exactly round and composed of a surface that is good for scanning (smooth and not extremely reflective). The ball needs to be attached to the gripper or the flange, which are the robot's endpoints. During the calibration process, make sure the ball is securely attached and stays in place. Verify that the ball can be seen clearly by the 3D sensor.\\
 
 \begin{figure}[h]
     \centering
@@ -425,6 +442,7 @@ A calibration ball serves as the calibration object. It is also feasible to use 
     \label{fig1.Photoneo Cmaera}
 \end{figure} 
 
+A calibration ball serves as the calibration object. It is also feasible to use a bespoke ball with the right characteristics in place of the calibration ball that Photoneo provides; the ball needs to be exactly round and composed of a surface that is good for scanning (smooth and not extremely reflective). The ball needs to be attached to the gripper or the flange, which are the robot's endpoints. During the calibration process, make sure the ball is securely attached and stays in place. Verify that the ball can be seen clearly by the 3D sensor.\\
 \newpage
 
 \subsubsection{Calibration of Conveyor Belt}.
