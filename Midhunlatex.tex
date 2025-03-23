@@ -676,7 +676,7 @@ Robot Base Frame Coordinate System is another name for Machine Coordinate System
 This refers to the workpiece or tracked objects that travel along the conveyor belt. In certain applications, part orientation plays a crucial role in assembly procedures. In our application, we just want to choose or suction the objects, independent of their orientation; thus, this isn't accurate.\\
 
  \textbf{Tool Coordinate System (TCS):} \\
- This refers to the location of the robot's end-tool tip. As you can see, a robotic hand typically has a mechanism attached to the end, either a vacuum or a gripper. When referring to the robot base frame, this typically requires a little amount of offset and aids the robot in completing its responsibilities.\\
+ This refers to the location of the robot's end-tool tip. As you can see, a robotic hand typically has a mechanism attached to the end, either a vacuum or a gripper. When referring to the robot base frame, this typically requires a little amount of offset and aids the robot in completing its responsibilities.\\\\
  \textbf{ Coordinate Transformation Matrix:}  \\
  In essence, the coordinate transformation matrix is a matrix that depicts how a coordinate system's orientation changes from one frame to another. It describes rotation transformation and translation transformation and is composed of a 3x3 rotation matrix and a 3x1 displacement vector. In the case of three dimensions, the matrix is 4x4. A more common and widely used name for this matrix is the homogeneous transformation matrix. Remember that this matrix can be applied to any coordinate transformation situation, including regular coordinate transformation operations and forward kinematics derivations.\\\\
 
@@ -688,7 +688,7 @@ This refers to the workpiece or tracked objects that travel along the conveyor b
 \end{figure}
 \textbf{ Operations Needed to Develop the Tracking System:} \\
 The tracking system's pillars are composed of three primary components. The interactions and transformations required between the tracking system's components are literally represented by these parts. Only a scenario including a camera, a belt conveyor, and a robot will be covered in this post. It is certainly possible to expand the tracking system by including additional robots and cameras. Although more intricate procedures will be required to make up for the additional components, the fundamentals will remain the same.\\\\
-\newpage
+
 1. \textbf{ Conveyor Belt to Camera Conversion (B1):} \\
 The orientation of the conveyor belt coordinates and the camera origin coordinates deviate from one another. The origin of a camera is the upper left corner of its field of vision (FOV), where the values of its pixels start at (0, 0). This origin is set in stone and cannot be altered. For the conveyor belt, we can freely provide the origin's location, but the standard procedure is to first specify the picking window's dimensions (it's square), taking into account the robot's picking range limit, and then place the origin at the center of the window's bottom.\\
 
@@ -971,7 +971,7 @@ The web interface shows the image of the object being detected; initially, we lo
 \end{figure}
  The below figure represents the web interface that includes the camera triggering the object placed in the workspace. The green section represents the area for the workspace, and the red colored is the object to be picked up by the Robot. Using an TCP/IP client request connection in which the robot and camera connection is being established. For setting up the connection the Robotic controller`s and camera IP address (subnet) are made into same , which helps in communication through web interface.
 
-The below figure shows the volume/area in which the Photoneo Camera is possible to scan the items and get the object poses. The top view shows the maximum FOV where the camera can reach the object to get the object coordinates, this includes 15m.
+.
 
 \begin{figure}[h]
     \centering
@@ -980,7 +980,7 @@ The below figure shows the volume/area in which the Photoneo Camera is possible 
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 
- 
+ The above figure shows the volume/area in which the Photoneo Camera is possible to scan the items and get the object poses. The top view shows the maximum FOV where the camera can reach the object to get the object coordinates, this includes 15m.
 \newpage
 
 \chapter{\section{\mbox{Results and Discussions }}{{\normalfont\fontsize{14}{16}\bfseries}}
