@@ -975,7 +975,18 @@ For running the Solution request , after verifying that the environment complies
     \caption{Solution Deployment}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-Runtime requests from action clients are received and executed following the deployment of a defined solution.  The Action Request Client (Robot main software) and Photoneo 3D Sensors (vision systems) connection statuses can be viewed by the user.Additionally, it provides the ability to call a Scan request and Get object request, as well as to halt or resume the deployed solution.
+Runtime requests from action clients are received and executed following the deployment of a defined solution.  The Action Request Client (Robot main software) and Photoneo 3D Sensors (vision systems) connection statuses can be viewed by the user.Additionally, it provides the ability to call a Scan request and Get object request, as well as to halt or resume the deployed solution.\\
+The deployment page shows console logs that provide information about previous actions and occurrences, along with a visualiser that presents the following data:\\
+
+○	Real-time visualization of the captured 3D point cloud
+○	Localized objects rendered in colors corresponding to their status
+\begin{enumerate}
+    \item Localized \colorbox{green}\\ 
+    \item Being picked \colorbox{blue}\\
+    \item Rejected \colorbox{red}\\
+\end{enumerate}
+
+○	Inspector tool for diagnostics of every localized object
 
 The web interface shows the image of the object being detected; initially, we load the STL file of the object to be captured by the robot. The red color indicates the object, and once the object turns green, the object coordinate will be indicated as quaternion values. After getting the quaternion values, these are transferred to the Robotic controller, which helps the robot to get into the desired target position.\\\\
 
