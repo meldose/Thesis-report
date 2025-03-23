@@ -725,28 +725,26 @@ Jog the robot end-tool tip by hand to the workpiece's grasping/sucking position.
 Types and Technologies of Encoders
 Although encoders come in a wide variety of forms, they essentially fall into two primary sensing categories. These include:
 
-- Linear
-
-Rotating
+\begin{enumerate}
+    \item  Linear
+    \item Rotating
+    
+\end{enumerate}
 
 There are various encoder measuring types within those categories, including:
-
-- Complete
-
-Gradual
-
+\begin{enumerate}
+    \item Complete
+    \item Gradual
+\end{enumerate}
 Additionally, there are several electromechanical technologies, including:
-
-Magnetism
-
-Optical
-
-Inductive
-
-Capacitive
-
-- Laser 
-
+\begin{enumerate}
+    \item Magnetism
+    \item Optical
+    \item Inductive
+    \item Capacitive
+    \item Laser \\\
+\end{enumerate}
+    
 The controller receives counts as the encoder rotates. Assume that the count range is between 0 and 10,000. We know that a complete rotation of the shaft registers a count of 10,000, but the precise position is unknown because this is an incremental encoder. The object will be placed on the conveyor, and the current encoder count will be recorded as soon as the object is detected by the entry photo-eye sensor. Assume that 5232 is the number.
 
 After the object leaves and is picked up by the exit photo eye, we will record the count. We'll use 6311 as the number. Therefore, we will deduct 5232 from 6311 to get the count of the entire voyage, which comes out to be 1079 counts.It is clear from this example that we just know that there are 1079 journeys from the entrance to the exit, not the precise location of the object.\\
