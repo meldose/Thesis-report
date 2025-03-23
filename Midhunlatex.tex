@@ -282,6 +282,7 @@ A control unit that operates in tandem with the projection is in charge of these
 The figure below shows the vision controller connected to the photoneo camera and the robotic controller using Ethernet (IPV4 address). The vision controller is connected to a PC to get the Web interface to trigger the camera and see the Web interface for communication. Gigabit Ethernet cables (Cat5e or higher) are needed to connect the 3D sensor. A gigabit switch can be used to connect several 3D sensors. The Ethernet connection from the switch or 3D sensor is linked to the scanner's physical network port in both scenarios. To visualize 3D scans, calibrate robot cameras and establish localization settings, a well-connected connection to the 3D sensor is required.
 To set up the network interface that the vision controller uses to connect to the Photoneo 3D sensor(s), go to the Network page and select the Scanner interface section. Both a fixed IPv6 link-local address and a programmable IPv4 address are features of Photoneo 3D sensors. 
 IPv6 connections are better than IPv4 ones. However, the IPv4 address is used if the IPv6 connection is banned or fails. Consequently, having a legitimate IPv4 network configuration is advised.
+\newpage
 The interface can be set up to operate a DHCP server or to utilize any random static IP address. Use the appropriate IP address settings on the sensor side through the PhoXi Control program in both situations.\\
 
 \begin{figure}[h]
