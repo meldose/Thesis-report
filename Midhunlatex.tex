@@ -441,7 +441,29 @@ This kind of calibration is employed in configurations where the 3D sensor is fi
 \end{figure} 
 
 A calibration ball serves as the calibration object. It is also feasible to use a bespoke ball with the right characteristics in place of the calibration ball that Photoneo provides; the ball needs to be exactly round and composed of a surface that is good for scanning (smooth and not extremely reflective). The ball needs to be attached to the gripper or the flange, which are the robot's endpoints. During the calibration process, make sure the ball is securely attached and stays in place. Verify that the ball can be seen clearly by the 3D sensor.\\
-\newpage
+
+The following components make up the calibration interface:
+\begin{enumerate}
+    \item  ● Visualization: You can alternate between the Texture and Verification tabs. ● Texture image (Texture tab)
+ The last scan acquisition produced the texture image.
+ If the localized calibration ball was successfully located for the extrinsic calibration, it is indicated with a green highlight.  On the other hand, that portion of texture will be highlighted in red if there is insufficient ball surface visible or if another item with a similar shape is found.
+ \item  ● 3D visualizer (Verification tab) 
+ \item ● The visualizer shows the point cloud and 3D sensors from all vision systems.
+ The following items appear once the necessary number of calibration points has been added:
+\item ● Add calibration point: a button for manually adding a calibration point\\
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=12cm]{Thesis-report/Figures/calibration_procedure.png}
+    \caption{Callibration using the calibration ball}
+    \label{fig1.Photoneo Cmaera}
+\end{figure} 
+
+\item  ● Trigger scan: a button for starting a new scan, typically used to obtain the current point cloud for verification purposes
+\item  ● List of calibration points: a list of all successfully added calibration points with individual accuracies and the option to delete a point.The outcome of the calibration process is the calibration matrix.
+\item  ● Accuracy of calibration: overall calibration accuracy 
+\item ● Finish and save result: button to complete the calibration process and save the calibration matrix result into the vision system
+
+\end{enumerate}
 
 \subsubsection{Calibration of Conveyor Belt}.
 
@@ -509,8 +531,6 @@ Calibration of the marker pattern from the camera to the conveyor belt, which is
  For the setting we can use it as a custom scanning profile in VS Space by adding a triggering item for the sensor at the marker pattern export photo's origin.
 Robot to conveyor belt: The robot moves the conveyor belt from a shared origin, but the marker pattern stays in place according to the conveyor belt. This allows the robot to reach the marker pattern, calibrate the custom coordinate space in the robot track, and save the "calibration" encoder value, which synchronizes the robot and conveyor.\\
 
-\newpage
-
 \subsection{Conditions for Conveyor Belt:}
 While setting up the conveyor belt with a Vision Camera, we need to follow certain conditions:
 
@@ -564,7 +584,7 @@ After considering the conveyor motion and processing delays, the final position 
 \[
 \text{Target} = TX + (TX - \text{Marker Pattern Origin}) + (V_c \times t_s) + (V_c \times t_r)
 \]
-\newpage
+
 \subsection{Manual Calibration}
 Initally before we start the calibration we need to set the camera to an specific profile setup to Marker Space according to calibration setup and save the profile as given below:
 
@@ -586,8 +606,6 @@ This method can also be used to get the Conveyor belt to be calibrated. The step
     \item \textbf{Sixth step:} Finally we need to mutiply the custom velocity with the time and changes in postion along the X postion, which will help in getting change in the position as linear motion and transfered to the robtoic controller that helps the robot to pick the itmes from the conveyor belt.
 \end{enumerate}
 
-\newpage
-
 \chapter{\section{\mbox{Inverse Kinematics }}{{\normalfont\fontsize{14}{16}\bfseries}}
 We look at the system model, which includes a nonredundant robot manipulator with n degrees of freedom and a conveyor belt system. The following attributes are presumed to be present in the system model:\\
 1) The conveyor belt system runs at constant velocity, and the
@@ -599,7 +617,7 @@ conveyor belt system.\\\\
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=10cm]{Thesis-report/Figures/ik.jpeg}  
+    \includegraphics[width=8cm]{Thesis-report/Figures/ik.jpeg}  
     \caption{Kinematics}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
@@ -618,7 +636,9 @@ The figure below illustrates the connection between joint space and Cartesian sp
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 Finding the joint variables that allow a robot to be manipulated into the required position requires an understanding of its inverse kinematics. This is used to control the robot's position, motion, and other features. This study presents a detailed explanation and comparison of two popular approaches for manipulating robots: Jacobian inverse techniques and inverse kinematics.
-Sixteen alternatives are available for a general six DOF robot, as shown below, and it lists the number of analytical solutions for robots with varying degrees of freedom. Therefore, an accurate set of solutions among several inverse kinematic solutions is needed for the continuous motion of a robot. The benefit of analytical expression is that it provides formulas for the connection between link parameters and joint angle. The robotics controller can directly incorporate these relationships.\\
+Sixteen alternatives are available for a general six DOF robot, as shown below, and it lists the number of analytical solutions for robots with varying degrees of freedom. Therefore, an accurate set of solutions among several inverse kinematic solutions is needed for the continuous motion of a robot.
+\newpage
+\\ The benefit of analytical expression is that it provides formulas for the connection between link parameters and joint angle. The robotics controller can directly incorporate these relationships.\\
 \documentclass{article}
 \usepackage{booktabs}
 
@@ -639,9 +659,6 @@ Greater than 6 & 16\\
 \end{table}
 \newpage
 \subsection{SNS inverse Kinematics:}
-
-
-
 
 \newpage
 \subsection{Jacobian inverse method}:\\
@@ -1133,6 +1150,12 @@ The future of conveyor tracking is poised to be shaped by continued technologica
 \input{Chapters/Reference}
 \newpage
 \input{Chapters/Annex}
+
+
+
+
+
+ 
 
 
 
