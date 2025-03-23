@@ -897,10 +897,11 @@ Euler angles are usually implemented using rotation matrices. There is an x rota
 
 \subsection{Qaternions:}\\
 The second rotational modality uses quaternions and is defined by Euler's theorem. Given the lack of a comprehensive overview of the field and the fact that quaternions are not nearly as well-known as transformation matrices, we will first provide a historical perspective before delving deeply into quaternion mathematics.\\
+\newpage
 
 \subsection{Objects for picking}
 The objects that we have used for conveyor tracking include a trapezoid, pipe socket, and circle ball.\\
-\subsubsection{Socket-pipe} The socket pipe is: \\\\
+\subsubsection{Socket-pipe} The socket pipe is: \\
 
 \begin{figure}[h]
     \centering
@@ -937,8 +938,6 @@ The trapezoid  is: \\\\
 
 
 The above figure shows the STL file of the trapezoid, which is used to pick up the object.\\\\
-
-\newpage
 
 \subsubsection{Conveyor Belt}
 The conveyor belt is the main belt where we have to place the object, thereby putting the object into dynamic mode.\\
@@ -1024,7 +1023,6 @@ The web interface shows the image of the object being detected; initially, we lo
 \end{figure}
 \newpage
  The above figure represents the web interface that includes the camera triggering the object placed in the workspace. The green section represents the area for the workspace, and the red colored is the object to be picked up by the Robot. Using an TCP/IP client request connection in which the robot and camera connection is being established. For setting up the connection the Robotic controller`s and camera IP address (subnet) are made into same , which helps in communication through web interface.
- \newpage
 
 \begin{figure}[h]
     \centering
@@ -1032,6 +1030,7 @@ The web interface shows the image of the object being detected; initially, we lo
     \caption{Scanning Volume}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
+\newpage
  The above figure shows the volume/area in which the Photoneo Camera is possible to scan the items and get the object poses. The top view shows the maximum FOV where the camera can reach the object to get the object coordinates, this includes 15m.
 \newpage
 \chapter{\section{\mbox{Results and Discussions }}{{\normalfont\fontsize{14}{16}\bfseries}}
