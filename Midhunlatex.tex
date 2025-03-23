@@ -811,6 +811,16 @@ The Robot module functions as a TCP client, while the vision controller establis
     \label{fig1.Photoneo Camera}
 \end{figure}
 
+The robot connection status is currently indicated by the following indicator:
+
+ Action Request Client: the state of the Action Request Communication Channel connection between the Action Request Server and Action Request Client.  It may exist in one of two states:
+ \begin{enumerate}
+     \item  \textbf{CONNECTED:} The Action Request Client is able to send requests since it is connected to the Action Request Server.\\ 
+      \item   \textbf{DISCONNECTED:}  The Action Request Server is awaiting a fresh connection as the Action Request Client is not connected to it.
+
+ \end{enumerate}
+ \newpage
+
 \subsubsection{Network (EC, HC) }\\
 The robot interface (and robot controller IP) and the Vision controller's 3D sensor interface must be properly configured for the Vision controller to communicate with both the robot and the 3D sensor. This is not required for marker space calibration.
 \subsubsection{Vision }\\
