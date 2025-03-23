@@ -454,17 +454,42 @@ The following components make up the calibration interface:
 \begin{figure}[h]
     \centering
     \includegraphics[width=12cm]{Thesis-report/Figures/calibration_procedure.png}
-    \caption{Callibration using the calibration ball}
+    \caption{Calibration using the calibration ball}
     \label{fig1.Photoneo Cmaera}
 \end{figure} 
 
 \item  ● Trigger scan: a button for starting a new scan, typically used to obtain the current point cloud for verification purposes
 \item  ● List of calibration points: a list of all successfully added calibration points with individual accuracies and the option to delete a point.The outcome of the calibration process is the calibration matrix.
 \item  ● Accuracy of calibration: overall calibration accuracy 
-\item ● Finish and save result: button to complete the calibration process and save the calibration matrix result into the vision system
-
+\item ● Finish and save result: button to complete the calibration process and save the calibration matrix result into the vision system\\
 \end{enumerate}
 
+The 3D sensor must record the calibration ball in several locations throughout the entire region of interest during the extrinsic calibration process.  In a similar vein, the 3D sensor must record the marker plate from multiple perspectives during the hand-eye calibration.  As a result, move the robot in a variety of positions with as many different joint orientations as you can, and in each position, add a new calibration point.
+
+Either a new calibration point is introduced:
+\begin{enumerate}
+    \item The Add calibration point button in the calibration web interface can be manually pressed by the operator.
+    \item The Add calibration point request can be called by the robot.
+\end{enumerate}
+
+ A scan acquisition is initiated and the calibration tool (ball/pattern) is detected upon the addition of a new calibration point.  A flash message alerting the user to the successful outcome appears if the detection is successful.  A permanent error notice that explains the reason and how to fix the mistake will appear if the calibration point was not inserted.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=12cm]{Thesis-report/Figures/point.png}
+    \caption{Calibration point saved}
+    \label{fig1.Photoneo Cmaera}
+\end{figure} 
+
+Three calibration sites are needed for both the hand-eye and extrinsic calibration.  The resulting calibration matrix and calibration accuracy information are only available once the necessary number of calibration points has been added.
+ 
+ Position of 3D sensors and point clouds
+ The model of the 3D sensor of the currently calibrated vision system begins to reflect the pose of the real 3D sensor when the 4th point is added during the extrinsic calibration and the Lth point is added during the hand-eye calibration.  The point cloud is shown simultaneously.
+
+
+
+
+\newpage
 \subsubsection{Calibration of Conveyor Belt}.
 
 The conveyor belt calibration can be done as follows:\\
@@ -637,7 +662,7 @@ The figure below illustrates the connection between joint space and Cartesian sp
 \end{figure}
 Finding the joint variables that allow a robot to be manipulated into the required position requires an understanding of its inverse kinematics. This is used to control the robot's position, motion, and other features. This study presents a detailed explanation and comparison of two popular approaches for manipulating robots: Jacobian inverse techniques and inverse kinematics.
 Sixteen alternatives are available for a general six DOF robot, as shown below, and it lists the number of analytical solutions for robots with varying degrees of freedom. Therefore, an accurate set of solutions among several inverse kinematic solutions is needed for the continuous motion of a robot.
-\newpage
+
 \\ The benefit of analytical expression is that it provides formulas for the connection between link parameters and joint angle. The robotics controller can directly incorporate these relationships.\\
 \documentclass{article}
 \usepackage{booktabs}
