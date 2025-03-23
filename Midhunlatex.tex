@@ -230,10 +230,11 @@ Signature of the student:
 \newpage
 
 \begin{abstract}{\normalfont\fontsize{14}{16}\bfseries}
-\raggedright
+
+\begin{flusleft}
 
 The tracking of the conveyor using collaborative robots equipped with vision cameras represents a significant advancement in modern production. This innovative approach enables robots to dynamically interact with moving goods on conveyor belts, enhancing efficiency, precision, and adaptability. Using vision cameras, cobots can accurately detect, locate, and track objects in real-time, accommodating changes in shape, speed, and orientation. The integration of vision technology allows robots to perform tasks such as sorting, assembly, and pick-and-place operations with minimal human intervention. This thesis explores the technical aspects of cobot conveyor tracking, highlighting the role of vision systems in improving automation capabilities, reducing error rates, and enabling flexible manufacturing environments. It also addresses the challenges of synchronizing cobot actions with fast-moving conveyors and discusses the potential benefits for industries such as logistics, packaging, and electronics assembly. The experimental work involves establishing a collaborative environment of cobots for conveyor tracking experiments using a vision camera. The primary objective is to enhance the tracking accuracy of objects and capture various shapes on the conveyor belt. The experimental setup includes a cobot, a conveyor belt, one gripper, and objects of different shapes. As the conveyor belt moves these objects, the vision camera captures their images and poses, along with their part coordinate system (PCS). The robot then synchronizes with the objects in a designated capture zone, picking them up and placing them into user-defined target boxes. 
-
+\end{flusleft}
 \newpage
 \chapter{\section{\mbox{Introduction}}{\normalfont\fontsize{14}{16}\bfseries}}
 \label{introduction}
@@ -253,7 +254,7 @@ The main Vision camera we have used to track the moving object's motion through 
     \caption{Photoneo Camera}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-
+\newpage
 Using this camera, the camera can capture accurate point clouds and a standard intensity image of the object.
 Its foundation is a specialized CMOS image sensor that uses Photoneo's patented Parallel Structured Light technology.\\\\
 \begin{figure}[h]
