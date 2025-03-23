@@ -966,6 +966,17 @@ Function: During operation, the rubber feet help absorb vibrations and stabilise
 \end{figure}
 
 \subsection{Photoneo Camera-Web Interface}\\
+
+For running the Solution request , after verifying that the environment complies with all necessary safety rules, Button Deploy launches the solution.\\
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=6cm]{Thesis-report/Figures/deploy.jpg}
+    \caption{Solution Deployment}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
+Runtime requests from action clients are received and executed following the deployment of a defined solution.  The Action Request Client (Robot main software) and Photoneo 3D Sensors (vision systems) connection statuses can be viewed by the user.Additionally, it provides the ability to call a Scan request and Get object request, as well as to halt or resume the deployed solution.
+
 The web interface shows the image of the object being detected; initially, we load the STL file of the object to be captured by the robot. The red color indicates the object, and once the object turns green, the object coordinate will be indicated as quaternion values. After getting the quaternion values, these are transferred to the Robotic controller, which helps the robot to get into the desired target position.\\\\
 
 \begin{figure}[h]
@@ -981,6 +992,7 @@ The web interface shows the image of the object being detected; initially, we lo
     \caption{Object detection with pipe }
     \label{fig1.Photoneo Cmaera}
 \end{figure}
+\newpage
  The above figure represents the web interface that includes the camera triggering the object placed in the workspace. The green section represents the area for the workspace, and the red colored is the object to be picked up by the Robot. Using an TCP/IP client request connection in which the robot and camera connection is being established. For setting up the connection the Robotic controller`s and camera IP address (subnet) are made into same , which helps in communication through web interface.
 
 .
