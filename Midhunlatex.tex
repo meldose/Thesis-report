@@ -912,9 +912,10 @@ The robot interface (and robot controller IP) and the Vision controller's 3D sen
 It is necessary to thoroughly configure the visual system that will be calibrated. Make sure the following vision system parameters are set up correctly before beginning the calibration:
 ● Scanner ID: This vision system uses a 3D sensor. The linked 3D sensors will appear in the drop-down list of available 3D sensors if the scanner interface is set up properly.
 The calibration space and scanner position specifies the 3D sensor's mount point and, consequently, the calibration type. The scanner model is automatically calculated based on the selected 3D sensor.\\
-\subsubsection{6-Axis Cobot-Delta}
-The cobot that we have used for the conveyor tracking system is a 6-axis cobot called a Delta robot. The robot mainly moves towards its target position by getting the values from the camera in the form of quaternion values.\\\\
 
+
+\subsubsection{6-Axis Cobot-Delta}
+The cobot that we have used for the conveyor tracking system is a 6-axis cobot called a Delta robot. The robot mainly moves towards its target position by getting the values from the camera in the form of quaternion values.\
 \begin{figure}[h]
     \centering
     \includegraphics[width=3cm]{Thesis-report/Figures/robot.jpeg}
@@ -922,21 +923,10 @@ The cobot that we have used for the conveyor tracking system is a 6-axis cobot c
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 
-\subsubsection{VGC10-Gripper}
-The OnRobot VGC10 electrical compact vacuum gripper offers unlimited customization and suction cup options, making it suitable for tight environments and lifting small, odd-shaped, and heavy objects. It features two independently controlled air channels, increasing efficiency and reducing cycle time.\\\\
-
-With no compressor or air supply, it's easy to move and redeploy. Once the robot gets near the object, the suction gripper is activated, thereby providing suction to the object and helping to pick up the object and place it in the target box.
-
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=5cm]{Thesis-report/Figures/gripper.jpeg}
-    \caption{OnRobot Suction Gripper}
-    \label{fig1.Photoneo Cmaera}
-\end{figure}
-
-
+\newpage
 \subsubsection{RobotiQ 140 Gripper:}
+The RobotiQ 140 gripper is an two finger gripper that are mainly working under the principle of Modbus Communication. This gripper's 85 mm stroke, 230 N maximum gripping force, and 5 kg maximum payload make it the perfect choice for anyone looking for a flexible, all-purpose end-of-arm tool. This gripper is perfect for low-volume, high-changeover settings since it can efficiently grasp a broad range of workpiece sizes and forms.
+
 \begin{figure}[h]
     \centering
     \includegraphics[width=5cm]{Thesis-report/Figures/cobot_gripper_2F_85-ezgif.com-webp-to-jpg-converter.jpg}
@@ -944,7 +934,6 @@ With no compressor or air supply, it's easy to move and redeploy. Once the robot
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 
-The RobotiQ 140 gripper is an two finger gripper that are mainly working under the principle of Modbus Communication. This gripper's 85 mm stroke, 230 N maximum gripping force, and 5 kg maximum payload make it the perfect choice for anyone looking for a flexible, all-purpose end-of-arm tool. This gripper is perfect for low-volume, high-changeover settings since it can efficiently grasp a broad range of workpiece sizes and forms.
 
 \section{Robotic Movement:}
 The Robotic movement can be with 3 methods called Servo X , ServoJ and Movelinear method.\
