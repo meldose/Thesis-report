@@ -913,7 +913,6 @@ It is necessary to thoroughly configure the visual system that will be calibrate
 ● Scanner ID: This vision system uses a 3D sensor. The linked 3D sensors will appear in the drop-down list of available 3D sensors if the scanner interface is set up properly.
 The calibration space and scanner position specifies the 3D sensor's mount point and, consequently, the calibration type. The scanner model is automatically calculated based on the selected 3D sensor.\\
 
-
 \subsubsection{6-Axis Cobot-Delta}
 The cobot that we have used for the conveyor tracking system is a 6-axis cobot called a Delta robot. The robot mainly moves towards its target position by getting the values from the camera in the form of quaternion values.\
 \begin{figure}[h]
@@ -971,27 +970,10 @@ Euler angles are usually implemented using rotation matrices. There is an x rota
 
 \subsection{Qaternions:}\\
 The second rotational modality uses quaternions and is defined by Euler's theorem. Given the lack of a comprehensive overview of the field and the fact that quaternions are not nearly as well-known as transformation matrices, we will first provide a historical perspective before delving deeply into quaternion mathematics.\\
-\newpage
 
 \subsection{Objects for picking}
 The objects that we have used for conveyor tracking include a trapezoid, pipe socket, and circle ball.\\
-\subsubsection{Socket-pipe} The socket pipe is: \\
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=2cm]{Thesis-report/Figures/pipe.png}
-    \caption{Pipe object}
-    \label{fig1.Photoneo Cmaera}
-\end{figure}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=8cm]{Thesis-report/Figures/pipe_stl.jpg}
-    \caption{STL file for Pipe object}
-    \label{fig1.Photoneo Cmaera}
-\end{figure}
-The figure above shows the STL file of the pipe, which is used to pick up the object.
-\newpage
 \subsubsection{Trapezoid}
 The trapezoid  is: \\\\
 
