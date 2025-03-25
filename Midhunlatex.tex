@@ -431,7 +431,7 @@ This kind of calibration is employed in configurations where the 3D sensor is fi
 \end{figure}
 \\ The calibration matrix will become invalid, and the entire calibration process will need to be restarted if there is a change in the relative position between the 3D sensor and the robot after the calibration. In other words, after the system has been calibrated, the 3D sensor cannot be changed concerning the robot.\\
 \newpage
-The calibration matrix specifies the transformation straight to the robot base coordinate system because the 3D sensor is fixed. With this configuration, the robot's mobility is unrestricted, and it doesn't need to halt during the scan acquisition, unlike with the hand-eye approach.
+The calibration matrix specifies the transformation straight to the robot base coordinate system because the 3D sensor is fixed. With this configuration, the robot's mobility is unrestricted, and it doesn't need to halt during the scan acquisition, unlike with the hand-eye approach.\\\\
 
 \begin{figure}[h]
     \centering
@@ -451,7 +451,7 @@ The calibration matrix specifies the transformation straight to the robot base c
     \label{fig1.Photoneo Cmaera}
 \end{figure} 
 
-A calibration ball serves as the calibration object. It is also feasible to use a bespoke ball with the right characteristics in place of the calibration ball that Photoneo provides; the ball needs to be exactly round and composed of a surface that is good for scanning (smooth and not extremely reflective). The ball needs to be attached to the gripper or the flange, which are the robot's endpoints. During the calibration process, make sure the ball is securely attached and stays in place. Verify that the ball can be seen clearly by the 3D sensor.\\
+A calibration ball serves as the calibration object. It is also feasible to use a bespoke ball with the right characteristics in place of the calibration ball,the ball needs to be exactly round and composed of a surface that is good for scanning (smooth and not extremely reflective). The ball needs to be attached to the gripper or the flange, which are the robot's endpoints. During the calibration process, make sure the ball is securely attached and stays in place. Verify that the ball can be seen clearly by the 3D sensor.\\
 
 The following components make up the calibration interface:
 \begin{enumerate}
@@ -461,7 +461,7 @@ The following components make up the calibration interface:
  \item  ● 3D visualizer (Verification tab) 
  \item ● The visualizer shows the point cloud and 3D sensors from all vision systems.
  The following items appear once the necessary number of calibration points has been added:
-\item ● Add calibration point: a button for manually adding a calibration point\\
+\item ● Add calibration point: a button for manually adding a calibration point
 \begin{figure}[h]
     \centering
     \includegraphics[width=12cm]{Thesis-report/Figures/calibration_procedure.png}
@@ -497,9 +497,7 @@ Three calibration sites are needed for both the hand-eye and extrinsic calibrati
  Position of 3D sensors and point clouds
  The model of the 3D sensor of the currently calibrated vision system begins to reflect the pose of the real 3D sensor when the 4th point is added during the extrinsic calibration and the Lth point is added during the hand-eye calibration.  The point cloud is shown simultaneously.\\
  Every calibration point that has been successfully inserted has an ID and a unique accuracy score that is measured in millimeters.  The confidence level in correctness increases as the accuracy score decreases.  The Delete option can be used to eliminate a point from the dataset if its accuracy score is excessively high.\\\\
- The total calibration accuracy score, reported in millimeters, is a measure of calibration quality.  Aim for the lowest possible score at all times.  Numerous elements, including the size of the robotic arm, the quality of the calibration ball, scanning parameters, lighting circumstances, and the 3D sensor, all have an impact on the value.  It is OK to have an accuracy value of a few millimeters.\\
-
- The calibration accuracy value is used to confirm the quality of the calibration.
+ The total calibration accuracy score, reported in millimeters, is a measure of calibration quality.  Aim for the lowest possible score at all times.  Numerous elements, including the size of the robotic arm, the quality of the calibration ball, scanning parameters, lighting circumstances, and the 3D sensor, all have an impact on the value.  It is OK to have an accuracy value of a few millimeters.The calibration accuracy value is used to confirm the quality of the calibration.
 
  Additionally, by assessing the location of the 3D sensor and the point cloud in the picture, the roughly accurate result (without accounting for precision) may be verified.
  The scene's origin is found in the coordinate frame of the robotic controller that was used for the calibration process.  That usually refers to the robot base's origin.  Then, the relative positions of the actual 3D sensor and the robot base in reality should be comparable to or identical to those of the model of the 3D sensor and the scene origin.
@@ -552,7 +550,7 @@ The scan request function pho_wait_for_req_completion() in SW-HW output of the t
 \textbf{Calibration Distance:}
 The distance between the marker pattern positions for the camera calibration and custom workspace calibration (the linear transformation between the camera and the custom WS origin) is known as the calibration distance.
 
-\textbf{Localized posture minus calibration distance plus traveled distance from the scan is the formula.} \\\\
+\textbf{Localized posture minus calibration distance plus traveled distance from the scan is the formula.} \\
 
 \begin{figure}[h]
     \centering
@@ -560,7 +558,7 @@ The distance between the marker pattern positions for the camera calibration and
     \caption{Coveyor Belt setup}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-In the above figure, we can see the conveyor belt having the calibration board that is used for the calibration, which determines the X, Y, and Z coordinates of the object along with the conveyor belt, where MSD means marker space displacement, TD means travel distance, and TSc means trigger to scan completion in meters where the target position is the T[X, Y, Z, Rx, Ry, Rz], which represents the quaternion value of the object that needs to be converted into Euler values that are used to move the robot to that specified location \\\\
+In the below figure, we can see the conveyor belt having the calibration board that is used for the calibration, which determines the X, Y, and Z coordinates of the object along with the conveyor belt, where MSD means marker space displacement, TD means travel distance, and TSc means trigger to scan completion in meters where the target position is the T[X, Y, Z, Rx, Ry, Rz], which represents the quaternion value of the object that needs to be converted into Euler values that are used to move the robot to that specified location \\
 
 \begin{figure}[h]
     \centering
@@ -569,13 +567,15 @@ In the above figure, we can see the conveyor belt having the calibration board t
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 
-In the above figure, the number represents the coordinates of the object after the scanning of the object done after the trigger. Once these quaternion values are attained, these values are then sent to the robotic controller for the robot to move to the required target position.\\\\
-Calibration of the marker pattern from the camera to the conveyor belt, which is the common origin \\\\
-1. Attach the appropriate calibration pattern to the conveyor belt. \\\\
-2. Use PhoXi Control's marker pattern to save calibration \\\\
- For the setting we can use it as a custom scanning profile in VS Space by adding a triggering item for the sensor at the marker pattern export photo's origin.
-Robot to conveyor belt: The robot moves the conveyor belt from a shared origin, but the marker pattern stays in place according to the conveyor belt. This allows the robot to reach the marker pattern, calibrate the custom coordinate space in the robot track, and save the "calibration" encoder value, which synchronizes the robot and conveyor.\\
+In the below figure, the number represents the coordinates of the object after the scanning of the object done after the trigger. Once these quaternion values are attained, these values are then sent to the robotic controller for the robot to move to the required target position.\\\\
+Calibration of the marker pattern from the camera to the conveyor belt, which is the common origin:
+\begin{enumerate}
+    \item Attach the appropriate calibration pattern to the conveyor belt. 
+    \item Use PhoXi Control's marker pattern to save calibration. We can use this setting as a custom scanning profile in VS Space by adding a triggering item for the sensor at the marker pattern export photo's origin.
+    \item Robot to conveyor belt: The robot moves the conveyor belt from a shared origin, but the marker pattern stays in place according to the conveyor belt. This allows the robot to reach the marker pattern, calibrate the custom coordinate space in the robot track, and save the "calibration" encoder value, which synchronizes the robot and conveyor.\\
+\end{enumerate}
 
+\newpage
 \subsection{Conditions for Conveyor Belt:}
 While setting up the conveyor belt with a Vision Camera, we need to follow certain conditions:
 
@@ -587,7 +587,7 @@ V_c = V_r
 
 where \( V_c \) represents the velocity of the conveyor belt and \( V_r \) represents the velocity of the robot.\\
 
-2. Target Position Calculation: The final position of the robot is calculated by:\\
+2. Target Position Calculation: The final position of the robot is calculated by:
 
 \[
 \text{Target} = TX + AMS \cdot \theta + TD
@@ -603,7 +603,7 @@ AMS \cdot \theta = TX - \text{Marker Pattern Origin}
 
 \text{where } TX \text{ is the initial detected position, } AMS \text{ helps in getting the relative position to this reference, and the Marker Pattern Origin is the reference
 
-4. Tracked Distance:\\
+4. Tracked Distance:
 
 \[
 TD = \Delta TSC + \Delta CTO
@@ -1183,8 +1183,8 @@ The future of conveyor tracking is poised to be shaped by continued technologica
 
 
 
- 
 
+ 
 
 
 
