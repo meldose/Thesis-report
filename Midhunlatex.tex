@@ -698,7 +698,23 @@ Greater than 6 & 16\\
 \end{table}
 \newpage
 \subsection{Working Flowchart:}
-
+\begin{enumerate}
+    \item Start
+    \item Initially check if the operation type is OBJECT POSE
+    \item If not assert an issue showing that there is an unexpected issue.
+    \item If yes: Receive object pose data
+    \item Then unpack the object pose and set them as ([X,Y,Z.ex.ey.ez])
+    \item Convert the first three elements to meters ([X.Y, Z])
+    \item Set the velocity and timeout for picking
+    \item Record the start time
+    \item Calculate the current time and update the position X with the equation ([X=X0 + velocity *t])
+    \item Create the target position with the quaternion values that received form the camera
+    \item Check he condition where the object needs to be picked, if distance is less that 700 then dot the motion of move linear ()
+    \item If not success:  break the loop and print the target is too far
+    \item Get the current joint angles and TCP Pose and calculate the distance to the object.
+    \item If the distance to the object is less than 5, then send the signal to the gripper and pick the object.
+    \item If the timeout to pick is greater as compared to the given input, then break the loop.
+\end{enumerate}
 \newpage
 \subsection{Jacobian inverse method}:\\
 The time derivative of the kinematic equations that connect the end-effector's velocity to the joint rates is known as the Jacobian in robotics. The following is the phrase for the Jacobian.
