@@ -718,7 +718,6 @@ Greater than 6 & 16\\
 \newpage
 The below figure
 
-\newpage
 \subsection{Jacobian inverse method}:\\
 The time derivative of the kinematic equations that connect the end-effector's velocity to the joint rates is known as the Jacobian in robotics. The following is the phrase for the Jacobian.
 \[
@@ -869,6 +868,16 @@ There are two subsections in this section:
  The Action Request Communication Channel is used to facilitate communication between the vision controller and the robotic controller, as explained in the Robot communication.  The robotic controller connects to the TCP server created by the vision controller and transmits requests to it.
  It is advised to keep the Action Request Server port section empty and use the default port for this TCP server.  It is necessary to use the same port on the robot side when a custom port is defined.
 
+\subsubsection{Vision controller Interface:}\\
+Gigabit Ethernet cables (Cat5e or higher category) are needed to connect the 3D sensor.  A gigabit switch can be used to connect several 3D sensors.  In all situations, the switch or 3D sensor's Ethernet connection is attached to the Scanner network port.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=3.5cm]{Thesis-report/Figures/scanner_interface.jpeg}
+    \caption{Robot Network Interface}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
+
+ Setting up localization settings, calibrating the robot camera, and seeing 3D scans all require a well configured connection to the 3D Sensor.
 
 \subsubsection{Communication of Robot With Vision Camera}\\
 The robot interface on the vision controller and the robot module operating on the robot controller enable communication between the vision controller and the robot controller.\\
