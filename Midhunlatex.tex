@@ -807,11 +807,10 @@ For this part, it is quite simple. This transformation is about the movement of 
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=12cm]{Thesis-report/Figures/cam to conv.png}
+    \includegraphics[width=10cm]{Thesis-report/Figures/cam to conv.png}
     \caption{Conveyor belt b1 to b2 conversion}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-
 \subsubsection{Encoder offset}
 Types and Technologies of Encoders
 Although encoders come in a wide variety of forms, they essentially fall into two primary sensing categories. These include:
@@ -985,11 +984,7 @@ The Dynamic Pick involves the process of picking the items from the moving conve
 The working happens in Dynamic can be as follows:\\
 
 Initally we pass the pobject through the running conveyor belt and trigger the camera , where we get thr intinal and final coordinates. We also calcualte the timestamps also to get the chanegs in the time also. Then we need to find the custom velocity , which can be calculated by dividing the change in the positon and changes in time .
-When we pass the object through the conveyor belt , there is change in position in the X axis as this is an linear motion of movement . The change in the postion of the object need to be trasnfered to the robot , so that robot can understand where should i need to come and pick the item from the conveyor belt. This can be cacualtes by using the following equtaion:
-\[
-X_0 = X + v \cdot t
-\]
-where the X0 is the change in the postion of the object \\
+When we pass the object through the conveyor belt , there is change in position in the X axis as this is an linear motion of movement . The change in the postion of the object need to be trasnfered to the robot , so that robot can understand where should i need to come and pick the item from the conveyor belt. This can be compensated by using the following equation: \[ X_0 = X + v \cdot t \] where X0 is the change in the position of the object. \\
 wherer X is the intial postion of the object where the object gets triggered\\
 v si the velocity / calibrated custom velocity in m/s\\
 t is change in time 
