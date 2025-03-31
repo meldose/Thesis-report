@@ -716,7 +716,7 @@ Greater than 6 & 16\\
     \item If the timeout to pick is greater as compared to the given input, then break the loop.
 \end{enumerate}
 \newpage
-The below figure
+The below figure shows the flowchart for the Dynamic Picking:
 
 \subsection{Jacobian inverse method}:\\
 The time derivative of the kinematic equations that connect the end-effector's velocity to the joint rates is known as the Jacobian in robotics. The following is the phrase for the Jacobian.
@@ -877,7 +877,13 @@ Gigabit Ethernet cables (Cat5e or higher category) are needed to connect the 3D 
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 
- Setting up localization settings, calibrating the robot camera, and seeing 3D scans all require a well configured connection to the 3D Sensor.
+ Setting up localization settings, calibrating the robot camera, and seeing 3D scans all require a well configured connection to the 3D Sensor.\\
+
+ To set up the network interface that the vision controller uses to connect to the Photoneo 3D Sensor(s), go to the Network page and select the Scanner interface section.\\
+
+ Both a fixed IPvL link-local address and a programmable IPv4 address are features of Photoneo 3D Sensors.IPvL connections are better than IPv4 ones.  Nevertheless, the IPv4 address is used in the event that the IPvL connection is banned or fails.  Consequently, having a legitimate IPv4 network configuration is advised.\\
+
+ The interface can be set up to operate a DHCP server or to utilize any random static IP address.  Use the appropriate IP address settings on the sensor side through the PhoXi Control program in both situations.\\
 
 \subsubsection{Communication of Robot With Vision Camera}\\
 The robot interface on the vision controller and the robot module operating on the robot controller enable communication between the vision controller and the robot controller.\\
