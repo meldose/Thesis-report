@@ -854,8 +854,24 @@ The main Vision camera we have used to track the moving object's motion through 
 
 Its foundation is a specialized CMOS image sensor that uses Photoneo's patented Parallel Structured Light technology. The camera's carbon fiber body is lightweight and guarantees the same degree of stiffness as scanners. Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU that acts as the brains behind intelligent applications. A sequential structured light, which is utilized in numerous meteorological applications, is the primary technological driver in the first group. One well-suited representative of this category is the 3D scanner range from Photoneo. This technique is not appropriate for dynamic scenes because it uses sequential (multi-frame) capturing. This section is the source of the parallel structured light.\
 
+\subsubsection{Robot Interface:}\\
+There are two subsections in this section:
+\begin{enumerate}
+    \item  ● Robot interface: utilized to configure the vision controller's Ethernet port on the network.
+    \item  ● Robot controller: utilized to determine the robot controller's IP address.
+\end{enumerate}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=3.5cm]{Thesis-report/Figures/network_interface.jpeg}
+    \caption{Robot Network Interface}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
+ The Action Request Communication Channel is used to facilitate communication between the vision controller and the robotic controller, as explained in the Robot communication.  The robotic controller connects to the TCP server created by the vision controller and transmits requests to it.
+ It is advised to keep the Action Request Server port section empty and use the default port for this TCP server.  It is necessary to use the same port on the robot side when a custom port is defined.
+
+
 \subsubsection{Communication of Robot With Vision Camera}\\
-The robot interface on the vision controller and the robot module operating on the robot controller enable communication between the vision controller and the robot controller.\\\\
+The robot interface on the vision controller and the robot module operating on the robot controller enable communication between the vision controller and the robot controller.\\
 
 \begin{figure}[h]
     \centering
@@ -875,7 +891,7 @@ The Vision Controller's scanner port is directly attached to a single Photoneo 3
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 
-
+\newpage
  \subsubsection{Protocol TCP/IP}\\
 The robot controller and the vision controller communicate via the TCP/IP protocol. Network connectivity is an optional feature that some robot controllers do not come with by default. All prerequisites for the full installation of the robot module are listed in the robot integration guides' Prerequisites section.
 
@@ -934,7 +950,6 @@ The RobotiQ 140 gripper is an two finger gripper that are mainly working under t
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 
-\newpage
 \section{Robotic Movement:}
 The Robotic movement can be with 3 methods called Servo X , ServoJ and Movelinear method.\
 \begin{itemize}
@@ -1095,7 +1110,7 @@ The web interface shows the image of the object being detected; initially, we lo
 \end{figure}
 
  The above figure shows the volume/area in which the Photoneo Camera is possible to scan the items and get the object poses. The top view shows the maximum FOV where the camera can reach the object to get the object coordinates, this includes 15m.
-\newpage
+
 \chapter{\section{\mbox{Results and Discussions }}{{\normalfont\fontsize{14}{16}\bfseries}}
 The below figure shows the results that is obtained while pciking the items in an moving conveyor belt speed (m/s) with respect to Robot speed.\\
 \label{Literature}
@@ -1113,7 +1128,6 @@ The below figure shows the results that are obtained while placing the items in 
     \label{fig1.Photoneo Cmaera}
 \end{figure}\\
 
-\newpage
 The below figure shows the results that are obtained while placing the items in an Avg pick-up time vs. lighting conditions.\
 \begin{figure}[h]
     \centering
