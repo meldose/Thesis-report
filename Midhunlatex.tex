@@ -981,14 +981,27 @@ Static pick-up is the process of picking items from the conveyor belt when it is
 \subsection{Dynamic Picking:}\\
 The Dynamic Pick involves the process of picking the items from the moving conveyor belt. Here the object is passed through the moving conveyor bet where the camera gets object poses that are passed to the robotic controller, which helps the robot move to the required position.\\
 
+For the Dynamic picking a typical construction site is needed, quick real-time modeling is necessary to support decision-making.  Thus, a quick 3D data collection and processing system is required for real-time modeling of a building site.  Only high-quality, rich 3D datasets of static objects are produced using laser scanners; a typical scan has millions of points.  Furthermore, real-time modeling is not practicable due to the slowness of data collecting and processing.  Nevertheless, 3D range cameras provide an additional option by enabling wide-field-of-view, low-cost, automatic tracking and detection of both static and moving objects at frame rates higher than 1Hz (real-time).
 The working happens in Dynamic can be as follows:\\
 
 Initally we pass the pobject through the running conveyor belt and trigger the camera , where we get thr intinal and final coordinates. We also calcualte the timestamps also to get the chanegs in the time also. Then we need to find the custom velocity , which can be calculated by dividing the change in the positon and changes in time .
 When we pass the object through the conveyor belt , there is change in position in the X axis as this is an linear motion of movement . The change in the postion of the object need to be trasnfered to the robot , so that robot can understand where should i need to come and pick the item from the conveyor belt. This can be compensated by using the following equation: \[ X_0 = X + v \cdot t \] where X0 is the change in the position of the object. \\
 wherer X is the intial postion of the object where the object gets triggered\\
 v si the velocity / calibrated custom velocity in m/s\\
-t is change in time 
+t is change in time \\
 
+\subsection{Coordinate Transformation:}
+Many applications in manufacturing, construction, and vehicle automation and autonomy depend on the availability of 3D information.  Time-of-flight (TOF) sensors are getting cheaper and more accessible. They offer depth information at every pixel in addition to intensity.
+The TOF sensor provides spherically-coordinated range data of the environment within its field of view.  As described in the following section, the spherical coordinates are transformed into Cartesian coordinates, with the origin of the coordinate system located at the camera's center.
+ With the origin at a known reference point, the 3D point cloud in the camera coordinate system is converted to the belt coordinate system. \\
+
+ The tests examine the capacity of TOF sensors to provide sensing for a robot tasked with handling goods traveling on a conveyor belt in an indoor scenario.  The range data is utilized to identify and calculate the dimensions of objects traveling along a conveyor belt.  The robot then receives the geometry and recognition data for additional action.  The findings suggest that TOF sensors have immediate potential for automating these kinds of applications.\\
+
+ The coordinate transformation is necessary for two reasons:
+ \begin{enumerate}
+     \item  To enable the robot to be guided by the range camera's measurements, the robot and the camera must agree on a coordinate system.
+ \end{enumerate}
+    \item The z-axis is normal to the belt plane in the belt coordinate system.  By referring points above the belt plane (z > 0) and inside the belt limits, this alignment of the coordinate axis makes it easier to extract item point clouds on the belt.
 \subsection{Euler Angles:}\\
 Euler angles can be used to parameterize the space of orientations. A universal orientation is expressed as a sequence of rotations along three mutually orthogonal axes in space when Euler angles are applied. In a Cartesian coordinate system, the x, y, and z axes are typically utilized. The rotations are frequently referred to as x-, y-, and z-rolls.In order to solve differential equations, Euler initially created Euler angles. The most popular technique for parameterizing the space of orientations is now the use of later Euler angles.Euler angles can be used to parameterize the space of rotations if we decide to think of a rotation as the activity carried out to achieve a specific orientation. The rotation angles about the x, y, and z axes are denoted as { 1, { 2, and { 3, respectively.
 \subsubsection{Rotation matrices}\\
@@ -996,7 +1009,7 @@ Euler angles are usually implemented using rotation matrices. There is an x rota
 
 \subsection{Qaternions:}\\
 The second rotational modality uses quaternions and is defined by Euler's theorem. Given the lack of a comprehensive overview of the field and the fact that quaternions are not nearly as well-known as transformation matrices, we will first provide a historical perspective before delving deeply into quaternion mathematics.
-
+\newpage
 \subsection{Object for picking}
 The objects that we have used for conveyor tracking include a trapezoid, pipe socket, and circle ball.
 
@@ -1078,7 +1091,7 @@ Function: During operation, the rubber feet help absorb vibrations and stabilise
     \caption{Conveyor belt with Dimensions}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-
+\newpage
 \subsection{Photoneo Camera-Web Interface}\\
 
 For running the Solution request , after verifying that the environment complies with all necessary safety rules, Button Deploy launches the solution.\\
