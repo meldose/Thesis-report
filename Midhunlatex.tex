@@ -774,6 +774,7 @@ We must first gain a fundamental understanding of the Robot Coordinate System be
 A coordinate system is often specified by the user or developer, but it can exist anywhere in the world. As long as WCS makes it simpler to explain the locations of other things or items in that specific area, you can put it anywhere in your room or factory. Origin placement is typically done at the edge of a group or a room's corner.\\\\
  \textbf{Machine Coordinate System (MCS):} \\
 Robot Base Frame Coordinate System is another name for Machine Coordinate System (MCS). All other coordinate systems will be compared to this most significant coordinate system. Where developers and programmers would implement their codes based on this coordinate system is equally crucial. MCS is typically positioned near the robot's base for the point of origin, though it's important to remember that different robot types have different bases.\\\\
+\newpage
  \textbf{Coordinate System for Parts and Workpieces (PCS):} \\
 This refers to the workpiece or tracked objects that travel along the conveyor belt. In certain applications, part orientation plays a crucial role in assembly procedures. In our application, we just want to choose or suction the objects, independent of their orientation; thus, this isn't accurate.\\
 
@@ -789,7 +790,7 @@ This refers to the workpiece or tracked objects that travel along the conveyor b
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 \textbf{ Operations Needed to Develop the Tracking System:} \\
-The tracking system's pillars are composed of three primary components. The interactions and transformations required between the tracking system's components are literally represented by these parts. Only a scenario including a camera, a belt conveyor, and a robot will be covered in this post. It is certainly possible to expand the tracking system by including additional robots and cameras. Although more intricate procedures will be required to make up for the additional components, the fundamentals will remain the same.\\\\
+The tracking system's pillars are composed of three primary components. The interactions and transformations required between the tracking system's components are literally represented by these parts. Only a scenario including a camera, a belt conveyor, and a robot will be covered in this post. It is certainly possible to expand the tracking system by including additional robots and cameras. Although more intricate procedures will be required to make up for the additional components, the fundamentals will remain the same.\\
 
 1. \textbf{ Conveyor Belt to Camera Conversion (B1):} \\
 The orientation of the conveyor belt coordinates and the camera origin coordinates deviate from one another. The origin of a camera is the upper left corner of its field of vision (FOV), where the values of its pixels start at (0, 0). This origin is set in stone and cannot be altered. For the conveyor belt, we can freely provide the origin's location, but the standard procedure is to first specify the picking window's dimensions (it's square), taking into account the robot's picking range limit, and then place the origin at the center of the window's bottom.\\
