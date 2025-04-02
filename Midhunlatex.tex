@@ -254,7 +254,7 @@ The main Vision camera we have used to track the moving object's motion through 
 Using this camera, the camera can capture accurate point clouds and a standard intensity image of the object.Its foundation is a specialized CMOS image sensor that uses Photoneo's patented Parallel Structured Light technology.\\
 \begin{figure}[h]
     \centering
-    \includegraphics[width=5cm]{Thesis-report/Figures/camera.jpeg}
+    \includegraphics[width=4cm]{Thesis-report/Figures/camera.jpeg}
     \caption{Camera-mounted setup}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
@@ -275,28 +275,26 @@ Parallel Structured Light parallelizes the sequential structured light using a s
 A control unit that operates in tandem with the projection is in charge of these groups. The coded patterns are inserted into the groups rather than changing the projection itself. The sensor may generate over 20 distinct virtual representations of the scene illuminated by the coded patterns injected at the end of the frame. The method is universal and may be modified on the fly to accommodate various materials and light sources by using any type of pattern typically used for sequential structured light.
 
 \subsubsection{Vision Controller}\\
-The figure below shows the vision controller connected to the photoneo camera and the robotic controller using Ethernet (IPV4 address). The vision controller is connected to a PC to get the Web interface to trigger the camera and see the Web interface for communication. Gigabit Ethernet cables (Cat5e or higher) are needed to connect the 3D sensor. A gigabit switch can be used to connect several 3D sensors. The Ethernet connection from the switch or 3D sensor is linked to the scanner's physical network port in both scenarios. To visualize 3D scans, calibrate robot cameras and establish localization settings, a well-connected connection to the 3D sensor is required.
-To set up the network interface that the vision controller uses to connect to the Photoneo 3D sensor(s), go to the Network page and select the Scanner interface section. Both a fixed IPv6 link-local address and a programmable IPv4 address are features of Photoneo 3D sensors. 
-IPv6 connections are better than IPv4 ones. However, the IPv4 address is used if the IPv6 connection is banned or fails. Consequently, having a legitimate IPv4 network configuration is advised.
-
-The interface can be set up to operate a DHCP server or to utilize any random static IP address. Use the appropriate IP address settings on the sensor side through the PhoXi Control program in both situations.\\
-
+The figure below shows the vision controller connected to the photoneo camera and the robotic controller using Ethernet (IPV4 address).\\
 \begin{figure}[h]
     \centering
-    \includegraphics[width=5cm]{Thesis-report/Figures/vision controller.png}
+    \includegraphics[width=4cm]{Thesis-report/Figures/vision controller.png}
     \caption{Vision Controller}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-
+The vision controller is connected to a PC to get the Web interface to trigger the camera and see the Web interface for communication. Gigabit Ethernet cables (Cat5e or higher) are needed to connect the 3D sensor. A gigabit switch can be used to connect several 3D sensors. The Ethernet connection from the switch or 3D sensor is linked to the scanner's physical network port in both scenarios. To visualize 3D scans, calibrate robot cameras and establish localization settings, a well-connected connection to the 3D sensor is required.\\
+To set up the network interface that the vision controller uses to connect to the Photoneo 3D sensor(s), go to the Network page and select the Scanner interface section. Both a fixed IPv6 link-local address and a programmable IPv4 address are features of Photoneo 3D sensors. 
+IPv6 connections are better than IPv4 ones. However, the IPv4 address is used if the IPv6 connection is banned or fails. Consequently, having a legitimate IPv4 network configuration is advised.The interface can be set up to operate a DHCP server or to utilize any random static IP address. Use the appropriate IP address settings on the sensor side through the PhoXi Control program in both situations.
 \subsubsection{Marker Pattern}\\
-The figure below shows the S30 calibration board that helps calibrate the conveyor belt, which aligns the coordinates of the object with the conveyor belt for objects passing through the belt.\\
-
 \begin{figure}[h]
     \centering
-    \includegraphics[width=5cm]{Thesis-report/Figures/marker_pattern.png}
+    \includegraphics[width=4cm]{Thesis-report/Figures/marker_pattern.png}
     \caption{Marker Pattern}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
+
+The figure below shows the S30 calibration board that helps calibrate the conveyor belt, which aligns the coordinates of the object with the conveyor belt for objects passing through the belt.\\
+
 
 \newpage
 
@@ -1268,7 +1266,6 @@ The future of conveyor tracking is poised to be shaped by continued technologica
 
 
  
-
 
 
 
