@@ -260,7 +260,7 @@ Using this camera, the camera can capture accurate point clouds and a standard i
 \end{figure}
 
 The camera's carbon fiber body is lightweight and guarantees the same degree of stiffness as scanners. Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU that acts as the brains behind intelligent applications. A sequential structured light, which is utilized in numerous meteorological applications, is the primary technological driver in the first group. One well-suited representative of this category is the 3D scanner range from Photoneo. This technique is not appropriate for dynamic scenes because it uses sequential (multi-frame) capturing. This section is the source of the parallel structured light.
-\newpage
+
 \subsubsection{Time fo Flight}
 The time it takes for light to travel from an illumination source to a scene and back is measured by the time of flight. The speed of light itself is the primary obstacle in this situation. Usually, the phase shift of a modulated signal is used to measure time. High pixel modulation frequencies must be used to achieve a respectable level of depth accuracy. The primary drawback in this case is physics since a greater frequency results in less charge transfer, which lowers contrast and SNR. The restriction suggests an accuracy level that TOF systems can achieve. Usually, it falls within the centimeter range. Another issue is interreflections, which can significantly bend the surface.
 
@@ -269,7 +269,7 @@ By projecting a synthetic texture onto an object, active stereo addresses the un
 
 \subsubsection{Structured patterns/dots}
 A spatially encoded pattern is used in structured patterns/dots technology to encode depth disparity information into pattern patches, which are usually projected through a laser diffraction grating in the form of a carefully planned dot collection. The camera must be able to see enough of the patch to reassemble the coding and accurately record the depth information. This produces artifacts on surfaces' edges and tiny objects. The Nyquist-Shannon theorem requires an order of magnitude higher camera resolution to reconstruct individual dots in the projection (and hence 3D measurements). Modern systems use about 25 camera pixels for each 3D measurement, producing about 70k 3D points.
-\newpage
+
 \subsubsection{Parallel Structured Light}
 Parallel Structured Light parallelizes the sequential structured light using a sophisticated sensor design, which enables it to record the scene illuminated by various patterns simultaneously. In addition to sharing many of the sequential structured light's benefits, such as resolution and accuracy, it also overcomes one of its main drawbacks: the inability to capture a dynamic environment. Photoneo's Parallel Structured Light gets around the restriction by projecting and capturing numerous encoded patterns. Pixel modulations within our proprietary CMOS sensor are used to accomplish this. Multiple groups of separately modified pixels make up the sensor itself. \\\\ 
 A control unit that operates in tandem with the projection is in charge of these groups. The coded patterns are inserted into the groups rather than changing the projection itself. The sensor may generate over 20 distinct virtual representations of the scene illuminated by the coded patterns injected at the end of the frame. The method is universal and may be modified on the fly to accommodate various materials and light sources by using any type of pattern typically used for sequential structured light.
@@ -343,7 +343,7 @@ The below figures shows the examples for the object take under the camera settin
     \begin{figure}[h]
     \centering
     \includegraphics[width=6cm]{Thesis-report/Figures/new_EventMap.png}
-    \caption{Grayscale}
+    \caption{EventMap}
     \label{fig1.Photoneo Cmaera}
 \end{figure}\\
 \newpage
@@ -365,7 +365,7 @@ The below figures shows the examples for the object take under the camera settin
     \begin{figure}[h]
     \centering
     \includegraphics[width=6cm]{Thesis-report/Figures/new_ConfidenceMap.png}
-    \caption{Depth Hue}
+    \caption{Confidence Map}
     \label{fig1.Photoneo Cmaera}
 \end{figure}\\
 \newpage
@@ -374,21 +374,21 @@ The below figures shows the examples for the object take under the camera settin
     \begin{figure}[h]
     \centering
     \includegraphics[width=6cm]{Thesis-report/Figures/new_Normals.png}
-    \caption{Grayscale}
+    \caption{Normals}
     \label{fig1.Photoneo Cmaera}
 \end{figure}\\
 7.White:
     \begin{figure}[h]
     \centering
     \includegraphics[width=6cm]{Thesis-report/Figures/new_white.png}
-    \caption{Grayscale}
+    \caption{White}
     \label{fig1.Photoneo Cmaera}
 \end{figure}\\
 8.Color Image:
     \begin{figure}[h]
     \centering
     \includegraphics[width=6cm]{Thesis-report/Figures/new_white_IMG_ColorCameraImage_8Bit.png}
-    \caption{Grayscale}
+    \caption{Color Image}
     \label{fig1.Photoneo Cmaera}
 \end{figure}\\
 \newpage
@@ -1211,7 +1211,7 @@ The web interface shows the image of the object being detected; initially, we lo
     \caption{Scanning Volume}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
- \newpage
+
 \chapter{\section{\mbox{Results and Discussions }}{{\normalfont\fontsize{14}{16}\bfseries}}
 The below figure shows the results that is obtained while picking the items on a moving conveyor belt speed (m/s) concerning the Robot speed.\\
 \label{Literature}
