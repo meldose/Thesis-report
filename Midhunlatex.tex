@@ -328,6 +328,28 @@ Velocity for the linear velocity in Cartesian space. First, FK is used to determ
 \subsection{Position of Camera}\\
 When mounting a camera for vision operation, it is best to keep it stable and as close to the robot's work envelope as feasible, without interfering with or restricting the movement of the robot arm. The longer the part must travel from the camera's location into the robot's reachable workspace, the more errors the encoder counts will produce since the accuracy of conveyor tracking with vision depends on the coordinate transformation between the camera's picture-taking location and the robot's work envelope. The camera must be oriented downwards since the components are positioned on the conveyor belt's surface and vision recognition is done on the parts' upper surface. For the camera's 25 mm lens to cover the entire visible portion of the conveyor belt, a camera fixture was constructed to hold the camera directly above the upstream sensor. The upstream sensor is also used to activate the camera to take a photo when parts are presented at this point, so the picture-taking location is placed at the top of the upstream sensor. Following their placement in fixed locations, the camera and conveyor must be calibrated using the calibration program on the robot controller to configure the camera's properties and determine how the locations of the camera and conveyor relate to the robot's world coordinate.\
 
+\subsection{Camera Examples under different Examples:}\\
+The below figures shows the examples for the object take under the camera settings :
+
+\begin{enumerate}
+    \item Texture:
+    \begin{figure}[h]
+    \centering
+    \includegraphics[width=6cm]{Thesis-report/Figures/new_Texture.png}
+    \caption{Texture}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}\\
+    \item GrayScale:
+    \begin{figure}[h]
+    \centering
+    \includegraphics[width=6cm]{Thesis-report/Figures/new_Depth_Grayscale.png}
+    \caption{Grayscale}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}\\
+\end{enumerate}
+
+
+\newpage
 \subsection{Object Identification}\\
 \begin{figure}[h]
     \centering
