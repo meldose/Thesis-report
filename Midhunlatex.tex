@@ -465,6 +465,8 @@ r = x\cos\theta + y\sin\theta
 \subsection{Software Codes}
 \subsubsection{Servo-X}
 The servoX is the motion of the robot in Cartesian space, where we need to define the max velocity, max acceleration, and its servoX proportional gain. Initially, the coordinates that we get from the camera space as Quaternion values that include [X,Y,Z  ,ex,ey,ez] as the target values for the robot to move to that particular position and pick up the object. Since we have a calibrated camera concerning the Robot frame, the coordinates that we get from the object will be concerning the robot frame.
+\subsection{Move Linear:}\\
+The above method is basically used in dynamic application , where the object coordinates(Quaternion values) [X,Y,Z,Ex,Ey,Ez] these values are passed to the robot controller directly for moving to the target position.Here we need to provide the max acceleration, max velocity for the robotic movement.\\
 \subsubsection{Calibration for camera for Workspace}\\\\
 
 Go to the Calibration page within the solution to begin the calibration.  The following details are displayed along with a list of all defined vision systems:
@@ -504,7 +506,7 @@ This kind of calibration is employed in configurations where the 3D sensor is fi
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 \\ The calibration matrix will become invalid, and the entire calibration process will need to be restarted if there is a change in the relative position between the 3D sensor and the robot after the calibration. In other words, after the system has been calibrated, the 3D sensor cannot be changed concerning the robot.\\
-\newpage
+
 The calibration matrix specifies the transformation straight to the robot base coordinate system because the 3D sensor is fixed. With this configuration, the robot's mobility is unrestricted, and it doesn't need to halt during the scan acquisition, unlike with the hand-eye approach.\\\\
 
 \begin{figure}[h]
