@@ -304,7 +304,11 @@ The figure below shows the S30 calibration board that helps calibrate the convey
 \newpage
 
 \chapter{\section{\mbox{Methodology }}{{\normalfont\fontsize{14}{16}\bfseries}}
-This approach uses an interactive route planning solution for a fixed-based manipulator from an initial to a final configuration, along with a camera system for 3D detection.  Two characteristics of the ideal path should be collision-free and metric minimization.
+This approach uses an interactive route planning solution for a fixed-based manipulator from an initial to a final configuration, along with a camera system for 3D detection.  Two characteristics of the ideal path should be collision-free and metric minimization.\\
+
+Surface imaging and geometry estimation are the two primary subtasks that comprise imaging of the item to be inspected.Basically, there are numerous ways to implement automated optical inspection systems in the field of optical inspection.  A good combination of strategies should be chosen based on the task at hand.Improving the contrast between an object's flawed and perfect areas is crucial for dependable and robust automated detection systems in the field of optical surface inspection.  In particular, the lighting and optics define the contrasts.
+
+
 \label{Literature}
 \subsection{Robotic Movement}\\\\
 Given a point in the world coordinate, the angle of each joint is calculated based on an inverse kinematics (IK) equation. In general, there may be no analytic IK solution from a manipulator for the configurations of each joint. The numerical method is introduced to solve the problem for
@@ -349,7 +353,7 @@ The Event Map helps in capturing objects in fast motion without any blur.It help
     \caption{EventMap}
     \label{fig1.Photoneo Cmaera}
 \end{figure}\\
-\newpage
+
 \textbf{3.DepthMap Grayscale}
 The DepthMap grayscale is needed as it explains in storing the complex 3D coordinates where it consists of Brighter pixels and Darker pixels.
     \begin{figure}[h]
@@ -397,7 +401,7 @@ It provides the visual information, making the object recognition, segmentation 
     \caption{Color Image}
     \label{fig1.Photoneo Cmaera}
 \end{figure}\\
-\newpage
+
 \subsection{Object Identification}\\
 \begin{figure}[h]
     \centering
@@ -453,7 +457,7 @@ Where encoder-count is the encoder's read contents, and encoder-offset is used t
 \[
 \text{SETBELT} \ \% \text{belt-variable} = \text{expression}
 \]
-\newpage
+
 For picking-on-the-fly robot tasks, a fast digital-input interdigital input that detects the occurrence of an external event of the type "an object has completely entered the conveyor belt window" (and hence is completely visible) will initiate the dynamic robot-vision synchronization based on the "look-and-move" cooperation principle. A photocell detects this event and uses it to determine whether to take an image of the moving item.
 \subsection{Moving Calibration through Conveyor belt}\\
 The trajectory follows the instructions produced from trajectory planning and eye-in-hand vision each time the robot arm's palm begins to perform a moving task. The border of the conveyor will show up on the top side of the image when viewed through a camera. Because the conveyor's moving path is linear, the robot's motion can be corrected by following the conveyor's edge slope. The line equation in polar coordinatesis used to determine the conveyor's line edge. The polar parametric form has the advantage of having no singular condition in the domain of sinusoidal functions.
@@ -1351,6 +1355,10 @@ The future of conveyor tracking is poised to be shaped by continued technologica
 \input{Chapters/Annex}
 
 
+
+
+
+ 
 
 
 
