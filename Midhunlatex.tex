@@ -306,7 +306,7 @@ The figure below shows the S30 calibration board that helps calibrate the convey
 \chapter{\section{\mbox{Methodology }}{{\normalfont\fontsize{14}{16}\bfseries}}
 This approach uses an interactive route planning solution for a fixed-based manipulator from an initial to a final configuration, along with a camera system for 3D detection.  Two characteristics of the ideal path should be collision-free and metric minimization.\\
 
-Surface imaging and geometry estimation are the two primary subtasks that comprise imaging of the item to be inspected.Basically, there are numerous ways to implement automated optical inspection systems in the field of optical inspection.  A good combination of strategies should be chosen based on the task at hand.Improving the contrast between an object's flawed and perfect areas is crucial for dependable and robust automated detection systems in the field of optical surface inspection.  In particular, the lighting and optics define the contrasts.
+Surface imaging and geometry estimation are the two primary subtasks that comprise imaging of the item to be inspected. Basically, there are numerous ways to implement automated optical inspection systems in the field of optical inspection.  A good combination of strategies should be chosen based on the task at hand. Improving the contrast between an object's flawed and perfect areas is crucial for dependable and robust automated detection systems in the field of optical surface inspection.  In particular, the lighting and optics define the contrasts.
 
 
 \label{Literature}
@@ -346,7 +346,7 @@ The texture helps in ensuring the details of the object look natural. Moreover, 
     \label{fig1.Photoneo Cmaera}
 \end{figure}\\
 \textbf{2.EventMap:}
-The Event Map helps in capturing objects in fast motion without any blur.It helps in capturing the full frames under a fixed rate.
+The Event Map helps in capturing objects in fast motion without any blur.It helps in capturing the full frames at a fixed rate.
     \begin{figure}[h]
     \centering
     \includegraphics[width=6cm]{Thesis-report/Figures/new_EventMap.png}
@@ -355,7 +355,7 @@ The Event Map helps in capturing objects in fast motion without any blur.It help
 \end{figure}\\
 
 \textbf{3.DepthMap Grayscale}
-The DepthMap grayscale is needed as it explains in storing the complex 3D coordinates where it consists of Brighter pixels and Darker pixels.
+The DepthMap grayscale is needed as it explains in storing the complex 3D coordinates, where it consists of Brighter pixels and Darker pixels.
     \begin{figure}[h]
     \centering
     \includegraphics[width=6cm]{Thesis-report/Figures/new_DepthMap.png}
@@ -460,7 +460,7 @@ Where encoder-count is the encoder's read contents, and encoder-offset is used t
 
 For picking-on-the-fly robot tasks, a fast digital-input interdigital input that detects the occurrence of an external event of the type "an object has completely entered the conveyor belt window" (and hence is completely visible) will initiate the dynamic robot-vision synchronization based on the "look-and-move" cooperation principle. A photocell detects this event and uses it to determine whether to take an image of the moving item.
 \subsection{Moving Calibration through Conveyor belt}\\
-The trajectory follows the instructions produced from trajectory planning and eye-in-hand vision each time the robot arm's palm begins to perform a moving task. The border of the conveyor will show up on the top side of the image when viewed through a camera. Because the conveyor's moving path is linear, the robot's motion can be corrected by following the conveyor's edge slope. The line equation in polar coordinatesis used to determine the conveyor's line edge. The polar parametric form has the advantage of having no singular condition in the domain of sinusoidal functions.
+The trajectory follows the instructions produced from trajectory planning and eye-in-hand vision each time the robot arm's palm begins to perform a moving task. The border of the conveyor will show up on the top side of the image when viewed through a camera. Because the conveyor's moving path is linear, the robot's motion can be corrected by following the conveyor's edge slope. The line equation in polar coordinates is used to determine the conveyor's line edge. The polar parametric form has the advantage of having no singular condition in the domain of sinusoidal functions.
 
 \begin{equation}
 r = x\cos\theta + y\sin\theta
@@ -507,7 +507,7 @@ This kind of calibration is employed in configurations where the 3D sensor is fi
 \begin{figure}[h]
     \centering
     \includegraphics[width=10cm]{Thesis-report/Figures/extrinsic_ball.jpeg}
-    \caption{Calibration for camera concerning Robot frame}
+    \caption{Calibration for the camera concerning the Robot frame}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 \\ The calibration matrix will become invalid, and the entire calibration process will need to be restarted if there is a change in the relative position between the 3D sensor and the robot after the calibration. In other words, after the system has been calibrated, the 3D sensor cannot be changed concerning the robot.\\
