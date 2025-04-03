@@ -306,7 +306,7 @@ The figure below shows the S30 calibration board that helps calibrate the convey
 \chapter{\section{\mbox{Methodology }}{{\normalfont\fontsize{14}{16}\bfseries}}
 This approach uses an interactive route planning solution for a fixed-based manipulator from an initial to a final configuration, along with a camera system for 3D detection.  Two characteristics of the ideal path should be collision-free and metric minimization.\\
 
-Surface imaging and geometry estimation are the two primary subtasks that comprise imaging of the item to be inspected. Basically, there are numerous ways to implement automated optical inspection systems in the field of optical inspection.  A good combination of strategies should be chosen based on the task at hand. Improving the contrast between an object's flawed and perfect areas is crucial for dependable and robust automated detection systems in the field of optical surface inspection.  In particular, the lighting and optics define the contrasts.
+Surface imaging and geometry estimation are the two primary subtasks that comprise imaging of the item to be inspected. There are numerous ways to implement automated optical inspection systems in the field of optical inspection.  A good combination of strategies should be chosen based on the task at hand. Improving the contrast between an object's flawed and perfect areas is crucial for dependable and robust automated detection systems in the field of optical surface inspection.  In particular, the lighting and optics define the contrasts.
 
 
 \label{Literature}
@@ -561,7 +561,7 @@ The 3D sensor must record the calibration ball in several locations throughout t
 Either a new calibration point is introduced:
 \begin{enumerate}
     \item The Add calibration point button in the calibration web interface can be manually pressed by the operator.
-    \item The Add calibration point request can be called by the robot.
+    \item The robot can call the Add calibration point request.
 \end{enumerate}
 
  A scan acquisition is initiated, and the calibration tool (ball/pattern) is detected upon the addition of a new calibration point.  A flash message alerting the user to the successful outcome appears if the detection is successful.  A permanent error notice that explains the reason and how to fix the mistake will appear if the calibration point was not inserted.
