@@ -585,6 +585,7 @@ Three calibration sites are needed for both the hand-eye and extrinsic calibrati
  The model of the 3D sensor of the currently calibrated vision system begins to reflect the pose of the real 3D sensor when the 4th point is added during the extrinsic calibration and the Lth point is added during the hand-eye calibration.  The point cloud is shown simultaneously.\\
  Every calibration point that has been successfully inserted has an ID and a unique accuracy score that is measured in millimeters.  The confidence level in correctness increases as the accuracy score decreases.  The Delete option can be used to eliminate a point from the dataset if its accuracy score is excessively high.
  \subsection{Extrinsic Calibration Results:}
+\scalebox{1.3}{
 \begin{tabular}{|c|c|c|c|}
 \hline
 -0.327147 & -0.736148 & 0.592503 & -1171.593426 \\
@@ -596,7 +597,7 @@ Three calibration sites are needed for both the hand-eye and extrinsic calibrati
 0.000000 & 0.000000 & 0.000000 & 1.000000\\
 \hline
 \end{tabular}\\
-
+}\\\\
  The total calibration accuracy score, reported in millimeters, is a measure of calibration quality.  Aim for the lowest possible score at all times.  Numerous elements, including the size of the robotic arm, the quality of the calibration ball, scanning parameters, lighting circumstances, and the 3D sensor, all have an impact on the value.  It is OK to have an accuracy value of a few millimeters. The calibration accuracy value is used to confirm the quality of the calibration.
 
  Additionally, by assessing the location of the 3D sensor and the point cloud in the picture, the roughly accurate result (without accounting for precision) may be verified.
