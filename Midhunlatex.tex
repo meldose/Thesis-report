@@ -1085,6 +1085,13 @@ The Movelinear is the method in which the target position for the robot to pick 
 
 \subsection{Static Picking:}\\
 Static pick-up is the process of picking items from the conveyor belt when it is not moving. Initially, we keep the object on the conveyor belt and then trigger the camera which helps in getting the object coordinates to the robotic controller. When the robot receives the data, the robot moves to the target position to pick the required target.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=8cm]{Thesis-report/Figures/static.jpeg}
+    \caption{Static Picking}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
+
 
 \subsection{Dynamic Picking:}\\
 The Dynamic Pick involves the process of picking the items from the moving conveyor belt. Here, the object is passed through the moving conveyor belt, where the camera gets object poses that are passed to the robotic controller, which helps the robot move to the required position.\\
@@ -1092,13 +1099,13 @@ The Dynamic Pick involves the process of picking the items from the moving conve
     \centering
     \begin{minipage}{0.45\textwidth}
         \centering
-        \includegraphics[width=4cm]{Thesis-report/Figures/pick.jpeg}
+        \includegraphics[width=5cm]{Thesis-report/Figures/pick.jpeg}
         \label{fig:pick}
     \end{minipage}
     \hfill
     \begin{minipage}{0.45\textwidth}
         \centering
-        \includegraphics[width=5cm]{Thesis-report/Figures/picking.jpeg}
+        \includegraphics[width=6cm]{Thesis-report/Figures/picking.jpeg}
         \label{fig:picking}
     \end{minipage}
     \caption{Dynamic picking}
@@ -1144,7 +1151,7 @@ The objects that we have used for conveyor tracking include a trapezoid, a pipe 
     \caption{Trapezoid and pipe}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-
+\newpage
 \subsubsection{Trapezoid}
 The trapezoid  is:\\
 
@@ -1166,7 +1173,6 @@ The trapezoid  is:\\
 
 The figure above shows the STL file of the trapezoid, which is used to pick up the object. While loading the STL file for the object, we will get the X, Y, and Z coordinates for the object.
 
-\newpage
 \subsubsection{Conveyor Belt}
 The conveyor belt is the main belt where we have to place the object, thereby putting the object into dynamic mode.\\
 
@@ -1184,12 +1190,12 @@ The conveyor belt specification includes:\\
 \begin{figure}[h]
     \centering
 {
-        \includegraphics[width=3cm]{Thesis-report/Figures/CV belt1.jpeg}
+        \includegraphics[width=5cm]{Thesis-report/Figures/CV belt1.jpeg}
         \label{fig:cv_belt1}
     }
     \quad
 {
-        \includegraphics[width=3cm]{Thesis-report/Figures/CV_ belt2.jpeg}
+        \includegraphics[width=5cm]{Thesis-report/Figures/CV_ belt2.jpeg}
         \label{fig:cv_belt2}
     }
     \caption{Images of the conveyor belt}
@@ -1210,7 +1216,7 @@ Function: To stop goods from slipping off during transportation, guardrails are 
 Function: The conveyor belt can move because of the motor's power. It drives the belt directly or via a gearbox and pulleys by converting electrical energy into mechanical energy.\\
 \begin{figure}[h]
     \centering
-    \includegraphics[width=6cm]{Thesis-report/Figures/cv2belt.jpg}
+    \includegraphics[width=cm]{Thesis-report/Figures/cv2belt.jpg}
     \caption{Conveyor belt with Details}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
@@ -1223,7 +1229,7 @@ Function: During operation, the rubber feet help absorb vibrations and stabilise
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=5cm]{Thesis-report/Figures/cvdimension.jpg}
+    \includegraphics[width=8cm]{Thesis-report/Figures/cvdimension.jpg}
     \caption{Conveyor belt with Dimensions}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
