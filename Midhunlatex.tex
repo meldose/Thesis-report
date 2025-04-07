@@ -269,6 +269,10 @@ Using this camera, the camera can capture accurate point clouds and a standard i
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 
+In order to precisely follow the colored area of the RGB marker, we develop and construct a parallel stereo charged coupled device (CCD) camera system.  Additionally, using blob analysis, this ROI was isolated from the picture live stream and triangulated to determine the 3D coordinates in the world coordinate frame.  Robot path and trajectory planning were assessed using the marker's 3D coordinates, which were converted into the robot frame of axis (robot stereo vision coordinate system).  Therefore, in order to choose and position an object, our suggested model calculates the real-time distance the robot must travel along the three axes.
+
+\newpage
+
 The camera's carbon fiber body is lightweight and guarantees the same degree of stiffness as scanners. Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU that acts as the brain behind intelligent applications. A sequential structured light, which is utilized in numerous meteorological applications, is the primary technological driver in the first group. One well-suited representative of this category is the 3D scanner range from Photoneo. This technique is not appropriate for dynamic scenes because it uses sequential (multi-frame) capturing. This section is the source of the parallel structured light.
 
 \subsubsection{Time fo Flight}
