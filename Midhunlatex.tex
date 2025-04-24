@@ -505,7 +505,18 @@ where: cam  Pobj: [u, v, 1]" on the image plane; Pobj: The object point [EX, CY,
 \]
 
 where: base Pobj: The robot base frame's object point; base  Heam: The matrix used to convert the robot base frame from the stereo camera frame
- Finally, the above two equations are combined to give the overall transformation equation for the entire system (i.e., (6)).  For a robotic system with an eye-to-hand arrangement, equation (6) shows the series of coordinate transformations from the image plane to the robot base frame.
+ Finally, the above two equations are combined to give the overall transformation equation for the entire system .For a robotic system with an eye-to-hand arrangement, equation below shows the series of coordinate transformations from the image plane to the robot base frame.\\
+
+ \[
+\text{baseP}_{\text{obj}} = {}^{\text{base}}H_{\text{cam}} \cdot \text{camP}_{\text{obj}}
+\]
+
+\\
+
+ \[
+\text{baseP}_{\text{obj}} = {}^{\text{base}}H_{\text{cam}} \cdot \left( C_Z \cdot K^{-1} \cdot p_{\text{obj}} \right)
+\]
+
 
 \newpage
 \subsection{Software Codes}
