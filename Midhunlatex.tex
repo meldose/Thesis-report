@@ -532,8 +532,7 @@ This kind of calibration is employed in configurations where the 3D sensor is fi
     \caption{Calibration for the camera concerning the Robot frame}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-
-Establishing the transformation relationship between the cameras and the robotic arm is the aim of hand-eye calibration.  The location of an object in the camera frame can be converted into its location in the robot base frame once the transformation connection has been established. The robotic arm will then be able to locate the object and pick it up. Finding the transformation matrix between the robot base and the camera (base H cam) is the aim of an eye-to-hand calibration.\\
+Finding a camera's intrinsic matrix, extrinsic matrix, and distortion coefficients is the aim of camera calibration. The relationship between the camera frame and the chessboard frame is described by the extrinsic matrix, whereas the relationship between the picture plane and the camera frame is described by the intrinsic matrix. The aim of hand-eye calibration is to establish the transformation relationship between the cameras and the robotic arm.  The location of an object in the camera frame can be converted into its location in the robot base frame once the transformation connection has been established. The robotic arm will then be able to locate the object and pick it up. Finding the transformation matrix between the robot base and the camera (base H cam) is the aim of an eye-to-hand calibration.\\
 
 \begin{equation}
 {}^{cam}\!H_{cal} = {}^{cam}\!H_{base} \cdot \left( {}^{base}\!H_{tcp} \cdot {}^{tcp}\!H_{cal} \right) = {}^{cam}\!H_{base} \cdot {}^{base}\!H_{cal}
@@ -699,7 +698,7 @@ Calibration of the marker pattern from the camera to the conveyor belt, which is
     \item Use PhoXi Control's marker pattern to save calibration. We can use this setting as a custom scanning profile in VS Space by adding a triggering item for the sensor at the marker pattern export photo's origin.
     \item Robot to conveyor belt: The robot moves the conveyor belt from a shared origin, but the marker pattern stays in place according to the conveyor belt. This allows the robot to reach the marker pattern, calibrate the custom coordinate space in the robot track, and save the "calibration" encoder value, which synchronizes the robot and conveyor.\\
 \end{enumerate}
-
+\newpage
 \subsection{Conditions for Conveyor Belt:}
 While setting up the conveyor belt with a Vision Camera, we need to follow certain conditions:
 
@@ -753,7 +752,7 @@ After considering the conveyor motion and processing delays, the final position 
 \[
 \text{Target} = TX + (TX - \text{Marker Pattern Origin}) + (V_c \times t_s) + (V_c \times t_r)
 \]
-\newpage
+
 \subsection{Manual Calibration}
 Initially, before we start the calibration, we need to set the camera to a specific profile setup to Marker Space according to the calibration setup and save the profile as given below:
 
@@ -1431,7 +1430,6 @@ The future of conveyor tracking is poised to be shaped by continued technologica
 
 
  
-
 
 
 
