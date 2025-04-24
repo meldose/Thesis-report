@@ -255,6 +255,7 @@ It is more difficult for robotic arms to do complex operations like object pick-
 
 \subsection{Photoneo Camera}
 \begin{justify}
+
 The main Vision camera we have used to track the moving object's motion through the conveyor belt is a Photoneocamera (MotionCam 3D M+), which has advanced settings that can capture and detect the object's position. The photoneo camera mainly consists of 3D sensing technology, which contains parallel structured light that helps provide the light source to detect objects.\\
 \begin{figure}[h]
     \centering
@@ -288,6 +289,16 @@ A spatially encoded pattern is used in structured patterns/dots technology to en
 
 \subsubsection{Parallel Structured Light}
 Parallel Structured Light parallelizes the sequential structured light using a sophisticated sensor design, which enables it to record the scene illuminated by various patterns simultaneously. In addition to sharing many of the sequential structured light's benefits, such as resolution and accuracy, it also overcomes one of its main drawbacks: the inability to capture a dynamic environment. Photoneo's Parallel Structured Light gets around the restriction by projecting and capturing numerous encoded patterns. Pixel modulations within our proprietary CMOS sensor are used to accomplish this. Multiple groups of separately modified pixels make up the sensor itself. \\\\ 
+The Parallel Structured Light's main advantages are:
+\begin{enumerate}
+ \item  Rapid motion scanning: 40 m/s motion is achieved with a single frame acquisition
+\item A more effective depth coding method with accurate, per-pixel measurement that offers ten times greater resolution and accuracy than rival technologies
+ \item No motion blur: exposure time of 10 µs per pixel
+ \item Quick capture of 1068 x 800 point clouds at 60 frames per second
+\item Patent-pending active ambient light rejection technology for outdoor use in direct sunlight
+ \item Active rejection of ambient light through interreflection suppression
+\item Several devices using the same space at the same time\\
+
 A control unit that operates in tandem with the projection is in charge of these groups. The coded patterns are inserted into the groups rather than changing the projection itself. The sensor may generate over 20 distinct virtual representations of the scene illuminated by the coded patterns injected at the end of the frame. The universal method may be modified on the fly to accommodate various materials and light sources by using any type of pattern typically used for sequential structured light.
 
 \subsubsection{Vision Controller}\\
