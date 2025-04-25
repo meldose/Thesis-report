@@ -239,7 +239,11 @@ The tracking of the conveyor using collaborative robots equipped with vision cam
 \begin{justify}
 The tracking of the conveyor is a vital component of robot manipulators in industrial robotic applications. The task grows more complex as the target moves down the production line. Conveyor tracking utilizes a robot to track and retrieve an object from a conveyor belt. Robots require object information, such as position, orientation, velocity, size, etc., to catch items. Applications for using vision sensors to recognize things include military, medical, biology, engineering, education, and factory operations. When a robot is assembling electric parts into a product, it needs to be able to track and reorganize objects on the conveyor belt and correct position errors. The vision sensor can interpret this information rapidly.\\
 
-A robot's job in robotic conveyor tracking is to follow and retrieve goods from a conveyor belt. Robots require information about an object, like its position, orientation, velocity, size, and other characteristics, before they can take it from an automation line. The information that vision sensors can supply about an object on the conveyor belts is more than that of ultrasonic and infrared ray sensors. An object tracking system typically consists of the following steps: capturing an image, identifying an object, and retrieving data regarding the position and orientation of the object. A conveyor system's item tracking procedure needs to be quick enough to accommodate a real-time setting. This article describes a tracking system for robots that makes use of vision data that is taken from consecutive frames of images.\\
+Face tracking, color tracking, and object tracking are just a few of the various engineering applications that have recently made use of tracking video.  In the industrial sector, it was used to track items such as goods, factory workers, and manufacturing clothing.  The object detection techniques and image processing to mono video are the foundation of video tracking.\\
+
+In an industrial production, the vision system is used to inspect the product.  It speeds up product detection and cuts down on time.  It is made up of a camera or vision sensor that uses line or area sensors to send digital images or videos to the host computer.  The digital image or video is analyzed using an image processing technique that allows it to identify defects, shapes, or colors.  Analysis filters are frequently used to differentiate between vision system functions such edge detection, surface defect identification, and light intensity reflected from the product surface.  Compared to image processing algorithms, video processing algorithms are more complex.  To find the merchandise, the tracking video used video processing algorithms.\\
+
+A robot's job in robotic conveyor tracking is to follow and retrieve goods from a conveyor belt. Robots require information about an object, like its position, orientation, velocity, size, and other characteristics, before they can take it from an automation line. The information that vision sensors can supply about an object on the conveyor belts is more than that of ultrasonic and infrared ray sensors. An object tracking system typically consists of the following steps: capturing an image, identifying an object, and retrieving data regarding the position and orientation of the object. A conveyor system's item tracking procedure needs to be quick enough to accommodate a real-time setting. This article describes a tracking system for robots that makes use of vision data that is taken from consecutive frames of images.\\\\
 
 Many applications in manufacturing, construction, and vehicle automation and autonomy depend on the ability to access 3D information.  In addition to intensity, TOF (Time-of-Flight) sensors are becoming more commonly available and more reasonably priced. These sensors also provide depth information at each pixel.  This study looks at how TOF sensors can be used to solve several real-world issues that may arise in automated sorting or assembly applications.  The tests examine the capacity of TOF sensors to provide sensing for a robot tasked with handling goods traveling on a conveyor belt in an indoor scenario. The range data is utilized to identify and calculate the dimensions of objects traveling along a conveyor belt.  The robot then receives the geometry and recognition data for additional action.  The findings suggest that TOF sensors have immediate potential for automating these kinds of applications.\\
 
@@ -272,9 +276,7 @@ Using this camera, the camera can capture accurate point clouds and a standard i
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 
-In order to precisely follow the colored area of the RGB marker, we develop and construct a parallel stereo charged coupled device (CCD) camera system.  Additionally, using blob analysis, this ROI was isolated from the picture live stream and triangulated to determine the 3D coordinates in the world coordinate frame.  Robot path and trajectory planning were assessed using the marker's 3D coordinates, which were converted into the robot frame of axis (robot stereo vision coordinate system).  Therefore, in order to choose and position an object, our suggested model calculates the real-time distance the robot must travel along the three axes.
-
-\newpage
+To precisely follow the colored area of the RGB marker, we develop and construct a parallel stereo charged-coupled device (CCD) camera system.  Using blob analysis, this ROI was also isolated from the picture live stream and triangulated to determine the 3D coordinates in the world coordinate frame.  Robot path and trajectory planning were assessed using the marker's 3D coordinates, which were converted into the robot frame of axis (robot stereo vision coordinate system).  Therefore, in order to choose and position an object, our suggested model calculates the real-time distance the robot must travel along the three axes.
 
 The camera's carbon fiber body is lightweight and guarantees the same degree of stiffness as scanners. Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU that acts as the brain behind intelligent applications. A sequential structured light, which is utilized in numerous meteorological applications, is the primary technological driver in the first group. One well-suited representative of this category is the 3D scanner range from Photoneo. This technique is not appropriate for dynamic scenes because it uses sequential (multi-frame) capturing. This section is the source of the parallel structured light.
 
@@ -311,7 +313,7 @@ The figure below shows the vision controller connected to the photoneo camera an
 \end{figure}
 The vision controller is connected to a PC to get the Web interface to trigger the camera and see the Web interface for communication. Gigabit Ethernet cables (Cat5e or higher) are needed to connect the 3D sensor. A gigabit switch can be used to connect several 3D sensors. The Ethernet connection from the switch or 3D sensor is linked to the scanner's physical network port in both scenarios. To visualize 3D scans, calibrate robot cameras, and establish localization settings, a well-connected connection to the 3D sensor is required.\\
 To set up the network interface that the vision controller uses to connect to the Photoneo 3D sensor(s), go to the Network page and select the Scanner interface section. Both a fixed IPv6 link-local address and a programmable IPv4 address are features of Photoneo 3D sensors. 
-IPv6 connections are better than IPv4 ones. However, the IPv4 address is used if the IPv6 connection is banned or fails. Consequently, having a legitimate IPv4 network configuration is advised. The interface can be set up to operate a DHCP server or to utilize any random static IP address. Use the appropriate IP address settings on the sensor side through the PhoXi Control program in both situations.
+IPv6 connections are better than IPv4 ones. However, the IPv4 address is used if the IPv6 connection is banned or fails.
 \subsubsection{Marker Pattern}\\
 \begin{figure}[h]
     \centering
@@ -319,17 +321,17 @@ IPv6 connections are better than IPv4 ones. However, the IPv4 address is used if
     \caption{Marker Pattern}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-
-
-
-The figure below shows the S30 calibration board that helps calibrate the conveyor belt, which aligns the coordinates of the object with the conveyor belt for objects passing through the belt. The belt can be used to align the object coordinates with respect to the conveyor belt, so that the robot can pick items from the moving conveyor belt.
+The figure above shows the S30 calibration board that helps calibrate the conveyor belt, which aligns the coordinates of the object with the conveyor belt for objects passing through the belt. The belt can be used to align the object coordinates with respect to the conveyor belt, so that the robot can pick items from the moving conveyor belt.
+\subsubsection{Active ambient light rejection:}\\
+The inability of all area-based 3D sensors to function in direct sunshine is a typical problem.  Direct sunshine has a maximum power output of 1120 W/m³.  High-end band-pass filters installed in all of Photoneo's sensors lower ambient light levels to around 15 W/m2.  Although it can oversaturate the image or produce a high shot-noise, this still performs better than the majority of projection systems.
+ Delivering active lighting as a brief pulse, which raises the projection's optical power output and shortens the system's exposure time overall, is one way to lessen the impact of ambient light.  This method has drawbacks, such as limited parts availability, complicated power supply management, hazards to eye safety, or problems with heat control.\\
 \begin{figure}[h]
     \centering
     \includegraphics[width=16cm]{Thesis-report/Figures/scanningdistance.jpg}
     \caption{Point size Vs Scanning Distance}
     \label{fig1.Photoneo Cmaera}
 \end{figure}\\
-
+\newpage
 The figure above shows the scanning distance of various cameras vs their Point size. in this experiment, we have used the M+ Range camera.
 
 \newpage
@@ -1505,8 +1507,6 @@ Germany, 2018
 \input{Chapters/Reference}
 \newpage
 \input{Chapters/Annex}
-
-
 
 
 
