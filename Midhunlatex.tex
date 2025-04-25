@@ -325,13 +325,18 @@ The figure above shows the S30 calibration board that helps calibrate the convey
 \subsubsection{Active ambient light rejection:}\\
 The inability of all area-based 3D sensors to function in direct sunshine is a typical problem.  Direct sunshine has a maximum power output of 1120 W/m³.  High-end band-pass filters installed in all of Photoneo's sensors lower ambient light levels to around 15 W/m2.  Although it can oversaturate the image or produce a high shot-noise, this still performs better than the majority of projection systems.
  Delivering active lighting as a brief pulse, which raises the projection's optical power output and shortens the system's exposure time overall, is one way to lessen the impact of ambient light.  This method has drawbacks, such as limited parts availability, complicated power supply management, hazards to eye safety, or problems with heat control.\\
+
+The patent for Photoneo is pending.  The sensor and projection can cooperate to regulate the light sensitivity of the sensor surface through active ambient light suppression.  Only around 1 percent of the sensor surface may be exposed by the direct reflection of the projection at any given point in time during the acquisition due to geometrical constraints.  The remaining 99 percent of the sensor can be turned off by the camera's control circuit, preventing any photoelectrons from being collected.  Scanning in direct sunshine is made possible by the technology's efficient 1:100 suppression of ambient light from any source (key benefit 5).\\
+
+Internal interreflections between pixels are also suppressed by the same technique at the same 1:100 ratio (key benefit 6).  When two sensors are operating in the same space at the same time, the method rejects the projection of the second scanner in 99 percent of the image, with only 1 percent of the pixels impacted.  Easy identification and filtering of these pixels from the output is possible (key benefit 7).
+ 
 \begin{figure}[h]
     \centering
     \includegraphics[width=16cm]{Thesis-report/Figures/scanningdistance.jpg}
     \caption{Point size Vs Scanning Distance}
     \label{fig1.Photoneo Cmaera}
 \end{figure}\\
-\newpage
+
 The figure above shows the scanning distance of various cameras vs their Point size. in this experiment, we have used the M+ Range camera.
 
 \newpage
@@ -1507,6 +1512,8 @@ Germany, 2018
 \input{Chapters/Reference}
 \newpage
 \input{Chapters/Annex}
+
+
 
 
 
