@@ -241,6 +241,10 @@ The tracking of the conveyor is a vital component of robot manipulators in indus
 
 Face tracking, color tracking, and object tracking are just a few of the various engineering applications that have recently made use of tracking video.  In the industrial sector, it was used to track items such as goods, factory workers, and manufacturing clothing.  The object detection techniques and image processing to mono video are the foundation of video tracking.\\
 
+Autonomous robots rely on intelligent perception systems to handle a variety of tasks.  Furthermore, the kind of sensor and the precision of the sensor data have a greater impact on how well these intelligent systems operate.The camera is the most equipped sensor among these. Because of its low cost and plenty of information, the camera is the most widely utilized sensor among these equipped sensors in the perception system.  RGB and depth cameras are the two broad categories into which camera sensors fall.  RGB is limited to obtaining information about the surrounding environment's appearance; depth cameras can simultaneously obtain texture and depth information; however, because of the influence of environmental changes and disparate depth estimation techniques, the depth information obtained is not reliable and precise.\\
+
+Structured light cameras, time of flight (TOF) cameras, and binocular stereo depth cameras are the three types of depth cameras.  Structured light camera technology is quite mature, with excellent accuracy but restricted measuring range; binocular stereo cameras are inexpensive but highly influenced by the surroundings; and TOF measurement distance is long, ideal for dynamic situations, but the precision is poor (cm).  Structured light cameras have a two to three meter range, but given the wealth of environmental data that can be gathered within this range, this is adequate. Due to its excellent accuracy and great range, Lidar is another sensor that is frequently used in intelligent perception systems.  Since LiDAR's point cloud is less impacted by the surroundings, robot perception systems frequently use it.\\
+
 In an industrial production, the vision system is used to inspect the product.  It speeds up product detection and cuts down on time.  It is made up of a camera or vision sensor that uses line or area sensors to send digital images or videos to the host computer.  The digital image or video is analyzed using an image processing technique that allows it to identify defects, shapes, or colors.  Analysis filters are frequently used to differentiate between vision system functions such edge detection, surface defect identification, and light intensity reflected from the product surface.  Compared to image processing algorithms, video processing algorithms are more complex.  To find the merchandise, the tracking video used video processing algorithms.\\
 
 A robot's job in robotic conveyor tracking is to follow and retrieve goods from a conveyor belt. Robots require information about an object, like its position, orientation, velocity, size, and other characteristics, before they can take it from an automation line. The information that vision sensors can supply about an object on the conveyor belts is more than that of ultrasonic and infrared ray sensors. An object tracking system typically consists of the following steps: capturing an image, identifying an object, and retrieving data regarding the position and orientation of the object. A conveyor system's item tracking procedure needs to be quick enough to accommodate a real-time setting. This article describes a tracking system for robots that makes use of vision data that is taken from consecutive frames of images.\\\\
@@ -281,7 +285,9 @@ To precisely follow the colored area of the RGB marker, we develop and construct
 The camera's carbon fiber body is lightweight and guarantees the same degree of stiffness as scanners. Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU that acts as the brain behind intelligent applications. A sequential structured light, which is utilized in numerous meteorological applications, is the primary technological driver in the first group. One well-suited representative of this category is the 3D scanner range from Photoneo. This technique is not appropriate for dynamic scenes because it uses sequential (multi-frame) capturing. This section is the source of the parallel structured light.
 
 \subsubsection{Time fo Flight}
-The time it takes for light to travel from an illumination source to a scene and back is measured by the time of flight. The speed of light itself is the primary obstacle in this situation. Usually, the phase shift of a modulated signal is used to measure time. High pixel modulation frequencies must be used to achieve a respectable level of depth accuracy. The primary drawback in this case is physics, since a greater frequency results in less charge transfer, which lowers contrast and SNR. The restriction suggests an accuracy level that TOF systems can achieve. Usually, it falls within the centimeter range. Another issue is interreflections, which can significantly bend the surface.
+The time it takes for light to travel from an illumination source to a scene and back is measured by the time of flight. The speed of light itself is the primary obstacle in this situation. Usually, the phase shift of a modulated signal is used to measure time. High pixel modulation frequencies must be used to achieve a respectable level of depth accuracy. The primary drawback in this case is physics, since a greater frequency results in less charge transfer, which lowers contrast and SNR. The restriction suggests an accuracy level that TOF systems can achieve. Usually, it falls within the centimeter range. Another issue is interreflections, which can significantly bend the surface.\\
+
+
 
 \subsubsection{Active stereo}
 By projecting a synthetic texture onto an object, active stereo addresses the unreliable passive stereo. Nevertheless, it still has to resolve the computationally demanding picture correspondence matching problem. Given the complexity of the matching problem, the projected texture can be either high frequency, which can satisfy a higher resolution but usually has poor reliability, or low frequency, which typically uses random laser dots and can offer higher reliability but poor resolution (the features are sparse).
@@ -348,15 +354,17 @@ Internal interreflections between pixels are also suppressed by the same techniq
     \caption{Point size Vs Scanning Distance}
     \label{fig1.Photoneo Cmaera}
 \end{figure}\\
-
+\newpage
 The figure above shows the scanning distance of various cameras vs their Point size. in this experiment, we have used the M+ Range camera.
+
+\newpage
 
 \newpage
 \chapter{\section{\mbox{Literature Review }}{{\normalfont\fontsize{14}{16}\bfseries}}
 
 
 \newpage
-
+\newpage
 \chapter{\section{\mbox{Methodology }}{{\normalfont\fontsize{14}{16}\bfseries}}
 This approach uses an interactive route planning solution for a fixed-based manipulator from an initial to a final configuration, along with a camera system for 3D detection.  Two characteristics of the ideal path should be collision-free and metric minimization.\\
 
