@@ -1095,7 +1095,7 @@ Gigabit Ethernet cables (Cat5e or higher category) are needed to connect the 3D 
 
  Setting up localization settings, calibrating the robot camera, and seeing 3D scans all require a well-configured connection to the 3D Sensor.\\
 
- To set up the network interface that the vision controller uses to connect to the Photoneo 3D Sensor(s), go to the Network page and select the Scanner interface section.\\
+ To set up the network interface that the vision controller uses to connect to the Photoneo 3D Sensor, go to the Network page and select the Scanner interface section.\\
 
  Both a fixed IPv6 link-local address and a programmable IPv4 address are features of Photoneo 3D Sensors.IPv6 connections are better than IPv4 ones.  Nevertheless, the IPv4 address is used if the IPv6 connection is banned or fails.  Consequently, having a legitimate IPv4 network configuration is advised.\\
 
@@ -1227,10 +1227,10 @@ For the Dynamic picking, a typical construction site is needed, and quick, real-
 The working happens in Dynamic can be as follows:\\
 
 Initially, we pass the object through the running conveyor belt and trigger the camera, where we get the initial and final coordinates. We also calculate the timestamps to get the changes in time. Then we need to find the custom velocity, which can be calculated by dividing the change in position by and change in time.
-When we pass the object through the conveyor belt, there is a change in position in the X axis, as this is a linear motion of movement. The change in the position of the object needs to be transferred to the robot, so that the robot can understand where it needs to come and pick the item from the conveyor belt. This can be compensated by using the following equation: \[ X_0 = X + v\cdot t \] where X0 is the change in the position of the object. \\
-where X is the initial position of the object, where the object gets triggered\\
-v si the velocity / calibrated custom velocity in m/s\\
-It is a change in time \\
+When we pass the object through the conveyor belt, there is a change in position in the X axis, as this is a linear motion of movement. The change in the position of the object needs to be transferred to the robot, so that the robot can understand where it needs to come and pick the item from the conveyor belt. This can be compensated by using the following equation: \[ X = X_0 + v\cdot t \] where X0 is the initial position of the object. \\
+where X is the final position of the object\\
+v is the velocity / calibrated custom velocity in m/s\\
+t is a change in time \\
 
 \subsection{Coordinate Transformation:}
 Many applications in manufacturing, construction, and vehicle automation and autonomy depend on the availability of 3D information.  Time-of-flight (TOF) sensors are getting cheaper and more accessible. They offer in-depth information at every pixel in addition to intensity.
@@ -1242,16 +1242,17 @@ The TOF sensor provides spherically-coordinated range data of the environment wi
  The coordinate transformation is necessary for two reasons:
  \begin{enumerate}
      \item  To enable the robot to be guided by the range camera's measurements, the robot and the camera must agree on a coordinate system.
+
+    \item The z-axis is normal to the belt plane in the belt coordinate system.  By referring to points above the belt plane (z greater than 0) and inside the belt limits, this alignment of the coordinate axis makes it easier to extract item point clouds on the belt.
  \end{enumerate}
-    \item The z-axis is normal to the belt plane in the belt coordinate system.  By referring to points above the belt plane (z > 0) and inside the belt limits, this alignment of the coordinate axis makes it easier to extract item point clouds on the belt.
 \subsection{Euler Angles:}\\
-Euler angles can be used to parameterize the space of orientations. A universal orientation is expressed as a sequence of rotations along three mutually orthogonal axes in space when Euler angles are applied. In a Cartesian coordinate system, the x, y, and z axes are typically utilized. The rotations are frequently referred to as x-, y-, and z-rolls.In order to solve differential equations, Euler initially created Euler angles. The most popular technique for parameterizing the space of orientations is now the use of Euler angles. Euler angles can be used to parameterize the space of rotations if we decide to think of a rotation as the activity carried out to achieve a specific orientation. The rotation angles about the x, y, and z axes are denoted as { 1, { 2, and { 3, respectively.
+Euler angles can be used to parameterize the space of orientations. A universal orientation is expressed as a sequence of rotations along three mutually orthogonal axes in space when Euler angles are applied. In a Cartesian coordinate system, the x, y, and z axes are typically utilized. The rotations are frequently referred to as x-, y-, and z-rolls.To solve differential equations, Euler initially created Euler angles. The most popular technique for parameterizing the space of orientations is now the use of Euler angles. Euler angles can be used to parameterize the space of rotations if we decide to think of a rotation as the activity carried out to achieve a specific orientation. The rotation angles about the x, y, and z axes are denoted as { 1, { 2, and { 3, respectively.
 \subsubsection{Rotation matrices}\\
 Euler angles are usually implemented using rotation matrices. There is an x rotation matrix, a y rotation matrix, and a z rotation matrix for every kind of roll. The position vector for the rotated point is obtained by multiplying the matrices by the position vector for a point in space. Although a rotation matrix is a 3 × 3 matrix, homogeneous 4 × 4 matrices are typically utilized in its place. The three roll matrices corresponding to the three Euler angles are multiplied to produce a general rotation. The generated matrix can be applied to the locations that need to be rotated and represents the general rotation. In most cases, matrix multiplication is not commutative. The fact that rotations in space do not commute fits in nicely with this. Lastly, it should be mentioned that the only implementation that effectively incorporates all common transformations—translation, scaling, shearing, and different projection transformations—is the use of homogeneous transformation matrices.
 
 \subsection{Quaternions:}\\
 The second rotational modality uses quaternions and is defined by Euler's theorem. Given the lack of a comprehensive overview of the field and the fact that quaternions are not nearly as well-known as transformation matrices, we will first provide a historical perspective before delving deeply into quaternion mathematics.
-
+\newpage
 \subsection{Object for picking}
 The objects that we have used for conveyor tracking include a trapezoid, a pipe socket, and a circular ball.
 
@@ -1261,7 +1262,7 @@ The objects that we have used for conveyor tracking include a trapezoid, a pipe 
     \caption{Trapezoid and pipe}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-\newpage
+
 \subsubsection{Trapezoid}
 The trapezoid  is:\\
 
@@ -1339,7 +1340,7 @@ Function: During operation, the rubber feet help absorb vibrations and stabilise
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=8cm]{Thesis-report/Figures/cvdimension.jpg}
+    \includegraphics[width=6cm]{Thesis-report/Figures/cvdimension.jpg}
     \caption{Conveyor belt with Dimensions}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
@@ -1447,7 +1448,7 @@ Conveyor tracking systems have become indispensable components in modern industr
 
 \item Sustainability and Energy Efficiency: Advances in conveyor technology have also focused on energy efficiency and sustainability, incorporating energy-saving motors, regenerative braking systems, and eco-friendly materials to reduce the environmental footprint of conveyor operations.
 \end{itemize}
-
+\newpage
 \subsubsection{Future Scope }
 
 The future of conveyor tracking is poised to be shaped by continued technological innovations and evolving industry demands. Potential developments and areas for growth include:
