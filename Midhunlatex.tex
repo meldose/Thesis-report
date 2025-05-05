@@ -787,7 +787,7 @@ Calibration of the marker pattern from the camera to the conveyor belt, which is
 \subsection{Conditions for Conveyor Belt:}
 While setting up the conveyor belt with a Vision Camera, we need to follow certain conditions:
 
-1. Matching robot speed with the conveyor belt: For the robot to pick up the object from the conveyor belt, the robot`s end effector should move at the same speed as that of the conveyor belt.\\
+1. \textbf{Matching the robot speed with the conveyor belt:} For the robot to pick up the object from the conveyor belt, the robot`s end effector should move at the same speed as that of the conveyor belt.\\
 
 \[
 V_c = V_r
@@ -795,7 +795,7 @@ V_c = V_r
 
 where \( V_c \) represents the velocity of the conveyor belt and \( V_r \) represents the velocity of the robot.\\
 
-2. Target Position Calculation: The final position of the robot is calculated by:
+2. \textbf{Target Position Calculation:} The final position of the robot is calculated by:
 
 \[
 \text{Target} = TX + AMS \cdot \theta + TD
@@ -803,7 +803,7 @@ where \( V_c \) represents the velocity of the conveyor belt and \( V_r \) repre
 
 \text{where } TX \text{ is the initial detected position, } AMS \text{ is the marker space displacement, and } TD \text{ is the tracked distance.}\\
 
-3. Marker Space Displacement(AMS):\\
+3. \textbf{Marker Space Displacement(AMS):} \\
 
 \[
 AMS \cdot \theta = TX - \text{Marker Pattern Origin}
@@ -811,7 +811,7 @@ AMS \cdot \theta = TX - \text{Marker Pattern Origin}
 
 \text{where } TX \text{ is the initial detected position, } AMS \text{ helps in getting the relative position to this reference, and the Marker Pattern Origin is the reference
 
-4. Tracked Distance:
+4. \textbf{Tracked Distance:} 
 
 \[
 TD = \Delta TSC + \Delta CTO
@@ -822,7 +822,7 @@ Where:
 - \( \Delta TSC \) is the \textbf{Target Scan Completion Distance}, which is the distance moved by the conveyor while scanning is completed.
 - \( \Delta CTO \) is the \textbf{Conveyor Tracking Offset}, which is the distance moved while waiting for the robot to reach the pick position.
 
-5. Target Scan Completion Distance (TSC):
+5. \textbf{Target Scan Completion Distance (TSC):} 
 
 \begin{center}
     \[
@@ -830,7 +830,7 @@ Where:
     \]
 \end{center}
 
-6. Final Adjusted Position:\\
+6. \textbf{Final Adjusted Position:}\\
 
 After considering the conveyor motion and processing delays, the final position will be the place where the robot should pick the object.\\
 
@@ -856,7 +856,7 @@ This method can also be used to get the Conveyor belt calibrated. The steps incl
     \item \textbf{Third step:} While triggering the camera in the first and final position,n we also try to capture the timestamps of the camera, which calculates the time taken by the camera to trigger.
     \item \textbf{Fourth step:} In this step, we need to calculate the change in the position for the X, Y, and Y, respectively, which includes ($\Delta X$, $\Delta Y$, and $\Delta Z$ ). In addition to that, we need to get the change in time also  ($\Delta t$).
     \item \textbf{Fifth step:} In this step, we need to find the custom velocity by dividing the change in the position by the change in time.
-    \item \textbf{Sixth step:} Finally, we need to mutiply the custom velocity with the time and changes in postion along the X postion, which will help in getting change in the position as linear motion and transfered to the robtoic controller that helps the robot to pick the itmes from the conveyor belt.
+    \item \textbf{Sixth step:} Finally, we need to mutiply the custom velocity with the time and changes in postion along the X position, which will help in getting change in the position as linear motion and transfered to the robotic controller that helps the robot to pick the itmes from the conveyor belt.
 \end{enumerate}
 
 \chapter{\section{\mbox{Inverse Kinematics }}{{\normalfont\fontsize{14}{16}\bfseries}}
@@ -1056,10 +1056,6 @@ Additionally, there are several electromechanical technologies, including:
     \item Laser \\\
 \end{enumerate}
     
-The controller receives counts as the encoder rotates. Assume that the count range is between 0 and 10,000. We know that a complete rotation of the shaft registers a count of 10,000, but the precise position is unknown because this is an incremental encoder. The object will be placed on the conveyor, and the current encoder count will be recorded as soon as the object is detected by the entry photo-eye sensor. Assume that 5232 is the number.
-
-After the object leaves and is picked up by the exit photo eye, we will record the count. We'll use 6311 as the number. Therefore, we will deduct 5232 from 6311 to get the count of the entire voyage, which comes out to be 1079 counts. It is clear from this example that we just know that there are 1079 journeys from the entrance to the exit, not the precise location of the object.
-
 \chapter{\section{\mbox{Working Principle }}{{\normalfont\fontsize{14}{16}\bfseries}}
 \subsubsection{Steps for Conveyor Tracking Visual System:}\\
 Two steps are necessary for conveyor visual tracking: \\
@@ -1071,7 +1067,7 @@ There are several ways to identify items. Some potential limitations are, howeve
 \subsubsection{Photoneo Camera}
 The main Vision camera we have used to track the moving object's motion through the conveyor belt is a Photoneocamera (MotionCam 3D M+), which has advanced settings that can capture and detect the object's position.\\\\ The photoneo camera mainly consists of 3D sensing technology, which contains parallel structured light that helps provide the light source to detect the objects. Using this camera, the camera can capture accurate point clouds and a standard intensity image of the object. \
 
-Its foundation is a specialized CMOS image sensor that uses Photoneo's patented Parallel Structured Light technology. The camera's carbon fiber body is lightweight and guarantees the same degree of stiffness as scanners. Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU that acts as the brain behind intelligent applications. A sequential structured light, which is utilized in numerous meteorological applications, is the primary technological driver in the first group. One well-suited representative of this category is the 3D scanner range from Photoneo. This technique is not appropriate for dynamic scenes because it uses sequential (multi-frame) capturing. This section is the source of the parallel structured light.\
+Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU that acts as the brain behind intelligent applications. A sequential structured light, which is utilized in numerous meteorological applications, is the primary technological driver in the first group. One well-suited representative of this category is the 3D scanner range from Photoneo. This technique is not appropriate for dynamic scenes because it uses sequential (multi-frame) capturing. This section is the source of the parallel structured light.\
 
 \subsubsection{Robot Interface:}\\
 There are two subsections in this section:
