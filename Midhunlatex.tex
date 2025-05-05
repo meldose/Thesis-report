@@ -509,7 +509,7 @@ In the preceding part, the picking procedure was put into practice. With some dy
 By calibrating the y and z axes, we may create a prospective viewpoint to enhance object location after obtaining the past 10 frames as a reference to compare with the present frame. The tracker would ultimately follow the target by the predicted trajectory after we had the position of the tracker and the target.\\\\
 Initially obtain the tracker's (gripper) and the target's (workpiece) instantaneous positions independently once the camera has determined the outlines of objects. First, the contour is the difference between the color frame and the reference and current frames. The coordinates of the items in the depth frame are then obtained. The situation along the x and z axes in the depth frame and the y and z axes from the Kinect color frame are among the desired data. \\
 
-The tracker and target belong to different x-y planes; thus, we may utilize a threshold regarding the data along the z-axis in the color frame in Kinect view to separate the objects. It is referred to as the robot palm if the coordinate along the z-axis item is more than the threshold; if not, it is the industrial component. 
+The tracker and target belong to different x-y planes; thus, we may utilize a threshold regarding the data along the z-axis in the color frame in Kinect view to separate the objects. It is referred to as the robot palm if the coordinate along the z-axis item is more than the threshold.
 \subsection{Position Calibration}\\
 Static pose recognition will end when the tracking approach is activated. The end-effector and object positions on the conveyor are among the data. The workpiece will proceed through the conveyor in a straight line. Therefore, only the workpieces' positions will be changed, and their orientation will remain unchanged. It is important to note that the end-effector might follow the subsequent instructions based on the tracking approach. This doesn't assist with grabbing articles, though. The gripper should take aim-off into account when doing object tracking to ensure that the entire gripping process is complete. Thus, proper gripping position by the tracking method turns out to be an important point. Without additional indication, the arm might not be aware of some issues that arise on the conveyor.\\
 
@@ -552,7 +552,7 @@ To enable the robotic arm to know where to pick and position the target objects,
 
 where: cam  Pobj: [u, v, 1]" on the image plane; Pobj: The object point [EX, CY, CZ]" in the camera frame.
  The calibration of the eye-to-hand stereo camera yields the intrinsic matrix K in above Equation (4), and the estimation of depth based on the disparity is used to determine the depth ° Z.
- The coordinate conversion from the stereo camera frame to the robot base frame is the second operation sequence.  The transformation matrix base Heam, which is determined from the eye-to-hand calibration, is used to do this.  Combining the first and second operation sequences yields equation (5):\\
+ The coordinate conversion from the stereo camera frame to the robot base frame is the second operation sequence.  The transformation matrix base Heam, which is determined from the eye-to-hand calibration, is used to do this.  Combining the first and second operation sequences yields equation:\\
 
  \[
 \text{baseP}_{\text{obj}} = {}^{\text{base}}H_{\text{cam}} \cdot \text{camP}_{\text{obj}}
@@ -576,9 +576,10 @@ where: base Pobj: The robot base frame's object point; base  Heam: The matrix us
 \subsection{Software Codes}
 \subsubsection{Servo-X}
 The servoX is the motion of the robot in Cartesian space, where we need to define the max velocity, max acceleration, and its servoX proportional gain. Initially, the coordinates that we get from the camera space as Quaternion values that include [X,Y,Z,ex,ey,ez] as the target values for the robot to move to that particular position and pick up the object. Since we have a calibrated camera concerning the Robot frame, the coordinates that we get from the object will be concerning the robot frame.
-\subsection{Move Linear:}\\
+\subsubsection{Move Linear:}\\
 The above method is basically used in the dynamic application, where the object coordinates(Quaternion values) [X,Y,Z,Ex,Ey,Ez] these values are passed to the robot controller directly for moving to the target position. Here we need to provide the max acceleration, max velocity for the robotic movement.\\
-\subsubsection{Calibration for camera for Workspace}\\\\
+
+\subsection{Calibration for camera for Workspace}\\\\
 
 Go to the Calibration page within the solution to begin the calibration.  The following details are displayed along with a list of all defined vision systems:
 \begin{enumerate}
@@ -735,7 +736,7 @@ The Scan request consists of a  Python code that is used to send a request to th
  The trigger scan can be of the SW or HW method, where the output is hardware or software.
 
 \item \textbf{Trigger }\\
-Initially, the scan request is given to the Vision controller, creating a trigger scan that helps the camera trigger. \\
+Initially, the scan request is given to the Vision controller, creating a trigger scan that helps the m,öhg   f fcamera trigger. \\
 The output section includes the:
 \end{itemize}
 \begin{itemize}
