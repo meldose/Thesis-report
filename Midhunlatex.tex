@@ -282,7 +282,21 @@ Using this camera, the camera can capture accurate point clouds and a standard i
 
 To precisely follow the colored area of the RGB marker, we develop and construct a parallel stereo charged-coupled device (CCD) camera system.  Using blob analysis, this ROI was also isolated from the picture live stream and triangulated to determine the 3D coordinates in the world coordinate frame.  Robot path and trajectory planning were assessed using the marker's 3D coordinates, which were converted into the robot frame of axis (robot stereo vision coordinate system).  Therefore, in order to choose and position an object, our suggested model calculates the real-time distance the robot must travel along the three axes.
 
-The camera's carbon fiber body is lightweight and guarantees the same degree of stiffness as scanners. Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU that acts as the brain behind intelligent applications. A sequential structured light, which is utilized in numerous meteorological applications, is the primary technological driver in the first group. One well-suited representative of this category is the 3D scanner range from Photoneo. This technique is not appropriate for dynamic scenes because it uses sequential (multi-frame) capturing. This section is the source of the parallel structured light.
+The camera's carbon fiber body is lightweight and guarantees the same degree of stiffness as scanners. Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU that acts as the brain behind intelligent applications. A sequential structured light, which is utilized in numerous meteorological applications, is the primary technological driver in the first group. One well-suited representative of this category is the 3D scanner range from Photoneo. This technique is not appropriate for dynamic scenes because it uses sequential (multi-frame) capturing. This section is the source of the parallel structured light.\\
+
+\subsubsection{3D Scanning}
+The process of 3D scanning involves gathering data from an object's surface and turning it into data points.  These data points are utilized for a digital replication of the scanned object or for a dimension analysis.\\
+
+\subsubsection{Types of 3D scanning}
+
+\subsubsection {Laser Scanning}
+Two devices are often used in laser scanning; one is in charge of directing a laser beam onto a surface, and the other is in charge of recording the precise spot where the object contacts the beam.  Triangulation can be used to calculate the distance between the surface and the scanner as well as the angle of reflection.\\
+
+\subsubsection {Structure Light Scanning}
+This technology projects structured light patterns, such as simple geometric patterns or parallel lines, onto a surface.  It is obvious that the object's shape will cause the patterns to distort.  It is feasible to rebuild the scanned surface by using a camera to analyze these deformations, distinguishing edges, and determining the separation between the item and the scanner.\\
+
+\subsubsection {Photogrammetry}
+Triangulation is used in photogrammetry to intersect particular points within two-dimensional images based on the angles at which those points can be found.  To create an acceptable 3D mode, a lot depends on the size of the item, the quantity of photos, and their quality.\\
 
 \subsubsection{Time fo Flight}
 The time it takes for light to travel from an illumination source to a scene and back is measured by the time of flight. The speed of light itself is the primary obstacle in this situation. Usually, the phase shift of a modulated signal is used to measure time. High pixel modulation frequencies must be used to achieve a respectable level of depth accuracy. The primary drawback in this case is physics, since a greater frequency results in less charge transfer, which lowers contrast and SNR. The restriction suggests an accuracy level that TOF systems can achieve. Usually, it falls within the centimeter range. Another issue is interreflections, which can significantly bend the surface.\\
@@ -340,6 +354,7 @@ IPv6 connections are better than IPv4 ones. However, the IPv4 address is used if
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 The figure above shows the S30 calibration board that helps calibrate the conveyor belt, which aligns the coordinates of the object with the conveyor belt for objects passing through the belt. The belt can be used to align the object coordinates with respect to the conveyor belt, so that the robot can pick items from the moving conveyor belt.
+\newpage
 \subsubsection{Active ambient light rejection:}\\
 The inability of all area-based 3D sensors to function in direct sunshine is a typical problem.  Direct sunshine has a maximum power output of 1120 W/m³.  High-end band-pass filters installed in all of Photoneo's sensors lower ambient light levels to around 15 W/m2.  Although it can oversaturate the image or produce a high shot-noise, this still performs better than the majority of projection systems.
  Delivering active lighting as a brief pulse, which raises the projection's optical power output and shortens the system's exposure time overall, is one way to lessen the impact of ambient light.  This method has drawbacks, such as limited parts availability, complicated power supply management, hazards to eye safety, or problems with heat control.\\
@@ -350,7 +365,7 @@ Internal interreflections between pixels are also suppressed by the same techniq
  
 \begin{figure}[h]
     \centering
-    \includegraphics[width=16cm]{Thesis-report/Figures/scanningdistance.jpg}
+    \includegraphics[width=12cm]{Thesis-report/Figures/scanningdistance.jpg}
     \caption{Point size Vs Scanning Distance}
     \label{fig1.Photoneo Cmaera}
 \end{figure}\\
