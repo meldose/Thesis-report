@@ -736,12 +736,12 @@ The Scan request consists of a  Python code that is used to send a request to th
  The trigger scan can be of the SW or HW method, where the output is hardware or software.
 
 \item \textbf{Trigger }\\
-Initially, the scan request is given to the Vision controller, creating a trigger scan that helps the m,öhg   f fcamera trigger. \\
-The output section includes the:
+Initially, the scan request is given to the Vision controller, creating a trigger scan that helps the camera trigger. 
+The output section includes the following:
 \end{itemize}
 \begin{itemize}
 \item \textbf{Coordinates of localized object}\\
-The coordinates of the localized object consist of the object [X, Y, Z, Rx, Ry, Rz, and W], where X, Y, and Z include the object coordinates and [Rx, Ry, Rz, and W] include the quaternion values (rotation values), which are identified by the vision camera.
+The coordinates of the localized object consist of the object [X, Y, Z, Rx, Ry, Rz, and W], where X, Y and Z include the coordinates of the object and [Rx, Ry, Rz, and W] include the quaternion values (rotation values), which are identified by the vision camera.
 \item \textbf{ Scan}\\
 Once the trigger commands reach the camera, the scan will start to take place and take the objects as mentioned above.
 \item \textbf{Final position} \\ 
