@@ -581,36 +581,36 @@ The above method is basically used in the dynamic application, where the object 
 
 \subsection{Calibration for camera for Workspace}\\\\
 
-Go to the Calibration page within the solution to begin the calibration.  The following details are displayed along with a list of all defined vision systems:
+Go to the Calibration page within the solution to begin the calibration.  The following details are displayed along with a list of all defined vision systems: [2]
 \begin{enumerate}
-    \item ● ID: the Vision system's ID
-    \item ● Name: the Vision system's name 
-    \item ● Scanner ID: the ID of the 3D sensor used by the Vision system
-    \item ● Scanner status: the current state of the 3D sensor used by the Vision system
-    \item ● Scanner model: the model of the 3D sensor used by the Vision system 
-    \item ● Calibration type: the type of calibration based on the selected 3D sensor mount position
-    \item ● Calibrated: whether the Vision system has already been calibrated
-    \item ● Accuracy of calibration [mm]: the precision of any prior calibration    
+    \item ● ID: the Vision system's ID[2]
+    \item ● Name: the Vision system's name [2]
+    \item ● Scanner ID: the ID of the 3D sensor used by the Vision system [2]
+    \item ● Scanner status: the current state of the 3D sensor used by the Vision system[2]
+    \item ● Scanner model: the model of the 3D sensor used by the Vision system [2]
+    \item ● Calibration type: the type of calibration based on the selected 3D sensor mount position [2]
+    \item ● Calibrated: whether the Vision system has already been calibrated[2]
+    \item ● Accuracy of calibration [mm]: the precision of any prior calibration   [2] 
 \end{enumerate}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=13.5cm]{Thesis-report/Figures/calib.png}
-    \caption{Calibration}
+    \caption{Calibration} [2]
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 The camera calibration is performed through an extrinsic method in which the camera is fixed in a position and the calibration ball is fixed at the end of the robot TCP.\\
 \begin{figure}[h]
     \centering
     \includegraphics[width=13.5cm]{Thesis-report/Figures/calibration.jpeg}
-    \caption{Calibration for camera with respect to Robot frame}
+    \caption{Calibration for camera with respect to Robot frame} [2]
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-The below figure shows how the calibration is happening by adding the point by fixing the point where the robot Coordinates [X, Y, Z] rotation values will save the points by saving the points (represented as a green point). Here, we need to add 9 points to get the calibration workspace. After the calibration, the average value from the 9 points is taken into consideration.(The lesser the value better the accuracy)\\
+The below figure shows how the calibration is happening by adding the point by fixing the point where the robot Coordinates [X, Y, Z] rotation values will save the points by saving the points (represented as a green point). Here, we need to add 9 points to get the calibration workspace. After the calibration, the average value from the 9 points is taken into consideration.(The lesser the value better the accuracy) [2]\\ 
 
-The below figure shows the calibration method used in this study (Extrinsic Calibration) (EC), where the camera is fixed at the location, and 9 points are taken into consideration, where the average value is finally taken as the value for the calibration.\\
+The below figure shows the calibration method used in this study (Extrinsic Calibration) (EC), where the camera is fixed at the location, and 9 points are taken into consideration, where the average value is finally taken as the value for the calibration. [2]\\
 
-This kind of calibration is employed in configurations where the 3D sensor is fixedly positioned within the robotic cell, often above the bin. The 3D sensor does not have to be stationary concerning the robotic cell itself; it just needs to be stationary concerning the robot's foundation.
+This kind of calibration is employed in configurations where the 3D sensor is fixedly positioned within the robotic cell, often above the bin. The 3D sensor does not have to be stationary concerning the robotic cell itself; it just needs to be stationary concerning the robot's foundation.[2]
 \begin{figure}[h]
     \centering
     \includegraphics[width=10cm]{Thesis-report/Figures/extrinsic_ball.jpeg}
@@ -632,7 +632,7 @@ The calibration matrix specifies the transformation straight to the robot base c
 \begin{figure}[h]
     \centering
     \includegraphics[width=13cm]{Thesis-report/Figures/extrinsic.png}
-    \caption{Extrinsic Calibration}
+    \caption{Extrinsic Calibration} [2] 
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 
@@ -641,21 +641,21 @@ The calibration matrix specifies the transformation straight to the robot base c
 \begin{figure}[h]
     \centering
     \includegraphics[width=5cm]{Thesis-report/Figures/ball.png}
-    \caption{Callibration ball}
+    \caption{Callibration ball} [2]
     \label{fig1.Photoneo Cmaera}
 \end{figure} 
 
-A calibration ball serves as the calibration object. It is also feasible to use a bespoke ball with the right characteristics in place of the calibration ball, the ball needs to be exactly round and composed of a surface that is good for scanning (smooth and not extremely reflective). The ball needs to be attached to the gripper or the flange, which are the robot's endpoints. During the calibration process, make sure the ball is securely attached and stays in place. Verify that the ball can be seen clearly by the 3D sensor.\\
+A calibration ball serves as the calibration object. It is also feasible to use a bespoke ball with the right characteristics in place of the calibration ball, the ball needs to be exactly round and composed of a surface that is good for scanning (smooth and not extremely reflective). The ball needs to be attached to the gripper or the flange, which are the robot's endpoints. During the calibration process, make sure the ball is securely attached and stays in place. Verify that the ball can be seen clearly by the 3D sensor.[2] \\
 
 The following components make up the calibration interface:
 \begin{enumerate}
     \item  ● Visualization: You can alternate between the Texture and Verification tabs. ● Texture image (Texture tab)
  The last scan acquisition produced the texture image.
- If the localized calibration ball was successfully located for the extrinsic calibration, it is indicated with a green highlight.  On the other hand, that portion of the texture will be highlighted in red if there is insufficient ball surface visible or if another item with a similar shape is found.
+ If the localized calibration ball was successfully located for the extrinsic calibration, it is indicated with a green highlight.  On the other hand, that portion of the texture will be highlighted in red if there is insufficient ball surface visible or if another item with a similar shape is found.[2]
  \item  ● 3D visualizer (Verification tab) 
 The visualizer shows the point cloud and 3D sensors from all vision systems.
- The following items appear once the necessary number of calibration points has been added:
-\item ● Add calibration point: a button for manually adding a calibration point
+ The following items appear once the necessary number of calibration points has been added: [2]
+\item ● Add calibration point: a button for manually adding a calibration point [2]
 \begin{figure}[h]
     \centering
     \includegraphics[width=12cm]{Thesis-report/Figures/calibration_procedure.png}
@@ -663,21 +663,21 @@ The visualizer shows the point cloud and 3D sensors from all vision systems.
     \label{fig1.Photoneo Cmaera}
 \end{figure} 
 
-\item  ● Trigger scan: a button for starting a new scan, typically used to obtain the current point cloud for verification purposes
-\item  ● List of calibration points: a list of all successfully added calibration points with individual accuracies and the option to delete a point. The outcome of the calibration process is the calibration matrix.
+\item  ● Trigger scan: a button for starting a new scan, typically used to obtain the current point cloud for verification purposes [2]
+\item  ● List of calibration points: a list of all successfully added calibration points with individual accuracies and the option to delete a point. The outcome of the calibration process is the calibration matrix. [2]
 \item  ● Accuracy of calibration: overall calibration accuracy 
-\item ● Finish and save result: button to complete the calibration process and save the calibration matrix result into the vision system\\
+\item ● Finish and save result: button to complete the calibration process and save the calibration matrix result into the vision system [2]\\
 \end{enumerate}
 
-The 3D sensor must record the calibration ball in several locations throughout the entire region of interest during the extrinsic calibration process.  In a similar vein, the 3D sensor must record the marker plate from multiple perspectives during the hand-eye calibration.  As a result, move the robot in a variety of positions with as many different joint orientations as you can, and in each position, add a new calibration point.
+The 3D sensor must record the calibration ball in several locations throughout the entire region of interest during the extrinsic calibration process.  In a similar vein, the 3D sensor must record the marker plate from multiple perspectives during the hand-eye calibration.  As a result, move the robot in a variety of positions with as many different joint orientations as you can, and in each position, add a new calibration point.[2]
 
 Either a new calibration point is introduced:
 \begin{enumerate}
-    \item The Add calibration point button in the calibration web interface can be manually pressed by the operator.
-    \item The robot can call the Add calibration point request.
+    \item The Add calibration point button in the calibration web interface can be manually pressed by the operator.[2]
+    \item The robot can call the Add calibration point request.[2]
 \end{enumerate}
 
- A scan acquisition is initiated, and the calibration tool (ball/pattern) is detected upon the addition of a new calibration point.  A flash message alerting the user to the successful outcome appears if the detection is successful.  A permanent error notice that explains the reason and how to fix the mistake will appear if the calibration point was not inserted.
+ A scan acquisition is initiated, and the calibration tool (ball/pattern) is detected upon the addition of a new calibration point.  A flash message alerting the user to the successful outcome appears if the detection is successful.  A permanent error notice that explains the reason and how to fix the mistake will appear if the calibration point was not inserted.[2]
 
 \begin{figure}[h]
     \centering
@@ -686,7 +686,7 @@ Either a new calibration point is introduced:
     \label{fig1.Photoneo Cmaera}
 \end{figure} 
 
-Three calibration sites are needed for both the hand-eye and extrinsic calibration. Once the necessary number of calibration points has been added, the resulting calibration matrix and calibration accuracy information are only available.
+Three calibration sites are needed for both the hand-eye and extrinsic calibration. Once the necessary number of calibration points has been added, the resulting calibration matrix and calibration accuracy information are only available.[2]
  
  Position of 3D sensors and point clouds
  The model of the 3D sensor of the currently calibrated vision system begins to reflect the pose of the real 3D sensor when the 4th point is added during the extrinsic calibration and the Lth point is added during the hand-eye calibration.  The point cloud is shown simultaneously.\\
@@ -694,6 +694,7 @@ Three calibration sites are needed for both the hand-eye and extrinsic calibrati
  \subsection{Extrinsic Calibration Results:}
 \begin{table}[h!]
 \centering
+
 
 \label{tab:transformation_matrix}
 \scalebox{1.3}{
@@ -716,7 +717,7 @@ Three calibration sites are needed for both the hand-eye and extrinsic calibrati
 
  Additionally, by assessing the location of the 3D sensor and the point cloud in the picture, the roughly accurate result (without accounting for precision) may be verified.
  The scene's origin is found in the coordinate frame of the robotic controller that was used for the calibration process.  That usually refers to the robot base's origin.  Then, the relative positions of the actual 3D sensor and the robot base in reality should be comparable to or identical to those of the model of the 3D sensor and the scene origin.
-\newpage
+
 \subsubsection{Calibration of Conveyor Belt}.
 
 The conveyor belt calibration can be done as follows:\\
@@ -839,7 +840,7 @@ After considering the conveyor motion and processing delays, the final position 
 \]
 
 \subsection{Manual Calibration}
-Initially, before we start the calibration, we need to set the camera to a specific profile setup to Marker Space according to the calibration setup and save the profile as given below:
+Initially, before we start the calibration, we need to set the camera to a specific profile setup to Marker Space according to the calibration setup and save the profile as given below: [2]
 
 \begin{figure}[h]
     \centering
@@ -851,12 +852,12 @@ Initially, before we start the calibration, we need to set the camera to a speci
 
 This method can also be used to get the Conveyor belt calibrated. The steps include :
 \begin{enumerate}
-    \item \textbf{First step:}  Place the picking / triggering object in the field of view of the camera and trigger the camera, then get the object pose, which includes the [X1, Y1, and Z1] respectively
-    \item \textbf{Second step:} Switch on the conveyor belt and get the farthest position where the camera triggers the object, and get the coordinates which include the [X2, Y2, and Z3] respectively.
-    \item \textbf{Third step:} While triggering the camera in the first and final position,n we also try to capture the timestamps of the camera, which calculates the time taken by the camera to trigger.
-    \item \textbf{Fourth step:} In this step, we need to calculate the change in the position for the X, Y, and Y, respectively, which includes ($\Delta X$, $\Delta Y$, and $\Delta Z$ ). In addition to that, we need to get the change in time also  ($\Delta t$).
-    \item \textbf{Fifth step:} In this step, we need to find the custom velocity by dividing the change in the position by the change in time.
-    \item \textbf{Sixth step:} Finally, we need to mutiply the custom velocity with the time and changes in postion along the X position, which will help in getting change in the position as linear motion and transfered to the robotic controller that helps the robot to pick the itmes from the conveyor belt.
+    \item \textbf{First step:}  Place the picking / triggering object in the field of view of the camera and trigger the camera, then get the object pose, which includes the [X1, Y1, and Z1] respectively [2]
+    \item \textbf{Second step:} Switch on the conveyor belt and get the farthest position where the camera triggers the object, and get the coordinates which include the [X2, Y2, and Z3] respectively.[2]
+    \item \textbf{Third step:} While triggering the camera in the first and final position,n we also try to capture the timestamps of the camera, which calculates the time taken by the camera to trigger.[2]
+    \item \textbf{Fourth step:} In this step, we need to calculate the change in the position for the X, Y, and Y, respectively, which includes ($\Delta X$, $\Delta Y$, and $\Delta Z$ ). In addition to that, we need to get the change in time also  ($\Delta t$).[2]
+    \item \textbf{Fifth step:} In this step, we need to find the custom velocity by dividing the change in the position by the change in time.[2]
+    \item \textbf{Sixth step:} Finally, we need to mutiply the custom velocity with the time and changes in postion along the X position, which will help in getting change in the position as linear motion and transfered to the robotic controller that helps the robot to pick the itmes from the conveyor belt.[2]
 \end{enumerate}
 
 \chapter{\section{\mbox{Inverse Kinematics }}{{\normalfont\fontsize{14}{16}\bfseries}}
@@ -1072,77 +1073,77 @@ Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Sh
 \subsubsection{Robot Interface:}\\
 There are two subsections in this section:
 \begin{enumerate}
-    \item  ● Robot interface: utilized to configure the vision controller's Ethernet port on the network.
-    \item  ● Robot controller: utilized to determine the robot controller's IP address.
+    \item  ● Robot interface: utilized to configure the vision controller's Ethernet port on the network.[2]
+    \item  ● Robot controller: utilized to determine the robot controller's IP address.[2]
 \end{enumerate}
 \begin{figure}[h]
     \centering
     \includegraphics[width=5cm]{Thesis-report/Figures/network_interface.jpeg}
-    \caption{Robot Network Interface}
+    \caption{Robot Network Interface}[2]
     \label{fig1.Photoneo Cmaera}
 \end{figure}
- The Action Request Communication Channel is used to facilitate communication between the vision controller and the robotic controller, as explained in the Robot Communication.  The robotic controller connects to the TCP server created by the vision controller and transmits requests to it.
- It is advised to keep the Action Request Server port section empty and use the default port for this TCP server.  It is necessary to use the same port on the robot side when a custom port is defined.
+ The Action Request Communication Channel is used to facilitate communication between the vision controller and the robotic controller, as explained in the Robot Communication.  The robotic controller connects to the TCP server created by the vision controller and transmits requests to it.[2]
+ It is advised to keep the Action Request Server port section empty and use the default port for this TCP server.  It is necessary to use the same port on the robot side when a custom port is defined.[2]
 
 \subsubsection{Vision controller Interface:}\\
-Gigabit Ethernet cables (Cat5e or higher category) are needed to connect the 3D sensor.  A gigabit switch can be used to connect several 3D sensors.  In all situations, the switch or 3D sensor's Ethernet connection is attached to the scanner's network port.
+Gigabit Ethernet cables (Cat5e or higher category) are needed to connect the 3D sensor.  A gigabit switch can be used to connect several 3D sensors.  In all situations, the switch or 3D sensor's Ethernet connection is attached to the scanner's network port.[2]
 \begin{figure}[h]
     \centering
     \includegraphics[width=5cm]{Thesis-report/Figures/scanner_interface.jpeg}
-    \caption{Robot Network Interface}
+    \caption{Robot Network Interface}[2]
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 
- Setting up localization settings, calibrating the robot camera, and seeing 3D scans all require a well-configured connection to the 3D Sensor.\\
+ Setting up localization settings, calibrating the robot camera, and seeing 3D scans all require a well-configured connection to the 3D Sensor. [2]\\
 
- To set up the network interface that the vision controller uses to connect to the Photoneo 3D Sensor, go to the Network page and select the Scanner interface section.\\
+ To set up the network interface that the vision controller uses to connect to the Photoneo 3D Sensor, go to the Network page and select the Scanner interface section.[2]\\
 
- Both a fixed IPv6 link-local address and a programmable IPv4 address are features of Photoneo 3D Sensors.IPv6 connections are better than IPv4 ones.  Nevertheless, the IPv4 address is used if the IPv6 connection is banned or fails.  Consequently, having a legitimate IPv4 network configuration is advised.\\
+ Both a fixed IPv6 link-local address and a programmable IPv4 address are features of Photoneo 3D Sensors.IPv6 connections are better than IPv4 ones.  Nevertheless, the IPv4 address is used if the IPv6 connection is banned or fails.  Consequently, having a legitimate IPv4 network configuration is advised.[2]\\
 
- The interface can be set up to operate a DHCP server or to utilize any random static IP address.  Use the appropriate IP address settings on the sensor side through the PhoXi Control program in both situations.\\
+ The interface can be set up to operate a DHCP server or to utilize any random static IP address.  Use the appropriate IP address settings on the sensor side through the PhoXi Control program in both situations.[2]\\
 
 \subsubsection{Communication of Robot With Vision Camera}\\
-The robot interface on the vision controller and the robot module operating on the robot controller enable communication between the vision controller and the robot controller.\\
+The robot interface on the vision controller and the robot module operating on the robot controller enable communication between the vision controller and the robot controller.[2]\\
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=14cm]{Thesis-report/Figures/communication.png}
-    \caption{Communication with camera}
+    \caption{Communication with camera}[2]
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 
 The Vision Controller's scanner port is directly attached to a single Photoneo 3D sensor. 
 ● The vision controller's network port is directly connected to a desktop PC for remote control.
-● The robot controller is directly attached to the vision controller's robot port.
+● The robot controller is directly attached to the vision controller's robot port.[2]
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=10cm]{Thesis-report/Figures/connection.png}
-    \caption{Whole camera with Robotic controller setup}
+    \caption{Whole camera with Robotic controller setup}[2]
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 
 \newpage
  \subsubsection{Protocol TCP/IP}\\
-The robot controller and the vision controller communicate via the TCP/IP protocol. Network connectivity is an optional feature that some robot controllers do not come with by default. All prerequisites for the full installation of the robot module are listed in the robot integration guides' Prerequisites section.
+The robot controller and the vision controller communicate via the TCP/IP protocol. Network connectivity is an optional feature that some robot controllers do not come with by default. All prerequisites for the full installation of the robot module are listed in the robot integration guides' Prerequisites section.[2]
 
 \subsubsection{Channel of communication}\\
-The Robot module functions as a TCP client, while the vision controller establishes a TCP server. The client is called the Action Request Client, while the server is called the Action Request Server. The Action Request Client communicates with the Action Request Server over this channel. After receiving the action request, the vision controller carries it out and replies to the robotic controller.\\\\
+The Robot module functions as a TCP client, while the vision controller establishes a TCP server. The client is called the Action Request Client, while the server is called the Action Request Server. The Action Request Client communicates with the Action Request Server over this channel. After receiving the action request, the vision controller carries it out and replies to the robotic controller.[2]\\\\
 
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=14cm]{Thesis-report/Figures/channel.png}
-    \caption{Channel Communication}
+    \caption{Channel Communication}[2]
     \label{fig1.Photoneo Camera}
 \end{figure}
 
 The robot connection status is currently indicated by the following indicator:
 
- Action Request Client: the state of the Action Request Communication Channel connection between the Action Request Server and the Action Request Client.  It may exist in one of two states:
+ Action Request Client: the state of the Action Request Communication Channel connection between the Action Request Server and the Action Request Client.  It may exist in one of two states:[2]
  \begin{enumerate}
-     \item  \textbf{CONNECTED:} The Action Request Client can send requests since it is connected to the Action Request Server.\\ 
-      \item   \textbf{DISCONNECTED:}  The Action Request Server is awaiting a fresh connection as the Action Request Client is not connected to it.
+     \item  \textbf{CONNECTED:} The Action Request Client can send requests since it is connected to the Action Request Server.[2]\\ 
+      \item   \textbf{DISCONNECTED:}  The Action Request Server is awaiting a fresh connection as the Action Request Client is not connected to it.[2]
 
  \end{enumerate}
 
@@ -1150,19 +1151,19 @@ The robot connection status is currently indicated by the following indicator:
 
  \\ Each indicator bears the identification number of the vision system to which it belongs.
   \begin{enumerate}
-  \item  \textbf{CONNECTED:} The vision system 1's 3D sensor is connected.
-  \item   \textbf{DISCONNECTED:}  There is no connection to the 3D sensor linked to vision system 2.
+  \item  \textbf{CONNECTED:} The vision system 1's 3D sensor is connected.[2]
+  \item   \textbf{DISCONNECTED:}  There is no connection to the 3D sensor linked to vision system 2.[2]
  \end{enumerate}
 
 \subsubsection{Network (EC, HC) }\\
-The robot interface (and robot controller IP) and the Vision controller's 3D sensor interface must be properly configured for the Vision controller to communicate with both the robot and the 3D sensor. This is not required for marker space calibration.
+The robot interface (and robot controller IP) and the Vision controller's 3D sensor interface must be properly configured for the Vision controller to communicate with both the robot and the 3D sensor. This is not required for marker space calibration.[2]
 \subsubsection{Vision }\\
 It is necessary to thoroughly configure the visual system that will be calibrated. Make sure the following vision system parameters are set up correctly before beginning the calibration:
 ● Scanner ID: This vision system uses a 3D sensor. The linked 3D sensors will appear in the drop-down list of available 3D sensors if the scanner interface is set up properly.
-The calibration space and scanner position specify the 3D sensor's mount point and, consequently, the calibration type. The scanner model is automatically calculated based on the selected 3D sensor.
+The calibration space and scanner position specify the 3D sensor's mount point and, consequently, the calibration type. The scanner model is automatically calculated based on the selected 3D sensor.[2]
 
 \subsubsection{6-Axis Cobot-Delta}
-The cobot that we have used for the conveyor tracking system is a 6-axis cobot called a Delta robot. The robot mainly moves towards its target position by getting the values from the camera in the form of quaternion values.\
+The cobot that we have used for the conveyor tracking system is a 6-axis cobot called a Delta robot. The robot mainly moves towards its target position by getting the values from the camera in the form of quaternion values.[2]\
 \begin{figure}[h]
     \centering
     \includegraphics[width=4.5cm]{Thesis-report/Figures/robot.jpeg}
@@ -1347,28 +1348,28 @@ Function: During operation, the rubber feet help absorb vibrations and stabilise
 \newpage
 \subsection{Photoneo Camera-Web Interface}\\
 
-For running the Solution request, after verifying that the environment complies with all necessary safety rules, Button Deploy launches the solution.\\
+For running the Solution request, after verifying that the environment complies with all necessary safety rules, Button Deploy launches the solution.[2]\\
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=10cm]{Thesis-report/Figures/deploy.jpg}
-    \caption{Solution Deployment}
+    \caption{Solution Deployment} [2]
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-Runtime requests from action clients are received and executed following the deployment of a defined solution.  The Action Request Client (Robot main software) and Photoneo 3D Sensors (vision systems) connection statuses can be viewed by the user. Additionally, it provides the ability to call a Scan request and a Get object request, as well as to halt or resume the deployed solution.\\
-The deployment page shows console logs that provide information about previous actions and occurrences, along with a visualiser that presents the following data:
+Runtime requests from action clients are received and executed following the deployment of a defined solution.  The Action Request Client (Robot main software) and Photoneo 3D Sensors (vision systems) connection statuses can be viewed by the user. Additionally, it provides the ability to call a Scan request and a Get object request, as well as to halt or resume the deployed solution.[2]\\
+The deployment page shows console logs that provide information about previous actions and occurrences, along with a visualiser that presents the following data:[2]
 
-○	Real-time visualization of the captured 3D point cloud
-○	Localized objects rendered in colors corresponding to their status
+○	Real-time visualization of the captured 3D point cloud[2]
+○	Localized objects rendered in colors corresponding to their status[2]
 \begin{enumerate}
     \item Localized \colorbox{green}\\ 
     \item Being picked \colorbox{blue}\\
     \item Rejected \colorbox{red}\\
 \end{enumerate}
 
-○	Inspector tool for diagnostics of every localized object
+○	Inspector tool for diagnostics of every localized object[2]
 
-The web interface shows the image of the object being detected; initially, we load the STL file of the object to be captured by the robot. The red color indicates the object, and once the object turns green, the object coordinate will be indicated as quaternion values. After getting the quaternion values, these are transferred to the Robotic controller, which helps the robot to get into the desired target position.\
+The web interface shows the image of the object being detected; initially, we load the STL file of the object to be captured by the robot. The red color indicates the object, and once the object turns green, the object coordinate will be indicated as quaternion values. After getting the quaternion values, these are transferred to the Robotic controller, which helps the robot to get into the desired target position.[2]\
 
 \begin{figure}[h]
     \centering
