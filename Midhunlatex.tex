@@ -296,31 +296,31 @@ Two devices are often used in laser scanning; one directs a laser beam onto a su
 This technology projects structured light patterns, such as simple geometric patterns or parallel lines, onto a surface.  The object's shape will cause the patterns to distort.  It is feasible to rebuild the scanned surface by using a camera to analyze these deformations, distinguishing edges, and determining the separation between the item and the scanner.\\
 
 \subsubsection {Photogrammetry}
-Triangulation is used in photogrammetry to intersect particular points within two-dimensional images based on the angles at which those points can be found.  To create an acceptable 3D model, a lot depends on the size of the item, the quantity of photos, and their quality.\\
+Triangulation is used in photogrammetry to intersect particular points within two-dimensional images based on the angles at which those points can be found.  To create an acceptable 3D model, a lot depends on the size of the item, the quantity of photos, and their quality.[15]\\
 
 \subsubsection{Time fo Flight}
-The time it takes for light to travel from an illumination source to a scene and back is measured by the time of flight. The speed of light itself is the primary obstacle in this situation. Usually, the phase shift of a modulated signal is used to measure time. High pixel modulation frequencies must be used to achieve a respectable level of depth accuracy. The primary drawback in this case is physics, since a greater frequency results in less charge transfer, which lowers contrast and SNR. The restriction suggests an accuracy level that TOF systems can achieve. Usually, it falls within the centimeter range. Another issue is interreflections, which can significantly bend the surface.\\
+The time it takes for light to travel from an illumination source to a scene and back is measured by the time of flight. The speed of light itself is the primary obstacle in this situation. Usually, the phase shift of a modulated signal is used to measure time. High pixel modulation frequencies must be used to achieve a respectable level of depth accuracy. The primary drawback in this case is physics, since a greater frequency results in less charge transfer, which lowers contrast and SNR. The restriction suggests an accuracy level that TOF systems can achieve. Usually, it falls within the centimeter range. Another issue is interreflections, which can significantly bend the surface.[15]\\
 
 
 
 \subsubsection{Active stereo}
-By projecting a synthetic texture onto an object, active stereo addresses the unreliable passive stereo. Nevertheless, it still has to resolve the computationally demanding picture correspondence matching problem. Given the complexity of the matching problem, the projected texture can be either high frequency, which can satisfy a higher resolution but usually has poor reliability, or low frequency, which typically uses random laser dots and can offer higher reliability but poor resolution (the features are sparse).
+By projecting a synthetic texture onto an object, active stereo addresses the unreliable passive stereo. Nevertheless, it still has to resolve the computationally demanding picture correspondence matching problem. Given the complexity of the matching problem, the projected texture can be either high frequency, which can satisfy a higher resolution but usually has poor reliability, or low frequency, which typically uses random laser dots and can offer higher reliability but poor resolution (the features are sparse).[15]
 
 \subsubsection{Structured patterns/dots}
-A spatially encoded pattern is used in structured patterns/dots technology to encode depth disparity information into pattern patches, which are usually projected through a laser diffraction grating in the form of a carefully planned dot collection. The camera must be able to see enough of the patch to reassemble the coding and accurately record the depth information. This produces artifacts on surfaces' edges and tiny objects. The Nyquist-Shannon theorem requires an order of magnitude higher camera resolution to reconstruct individual dots in the projection (and hence 3D measurements). Modern systems use about 25 camera pixels for each 3D measurement, producing about 70k 3D points.
+A spatially encoded pattern is used in structured patterns/dots technology to encode depth disparity information into pattern patches, which are usually projected through a laser diffraction grating in the form of a carefully planned dot collection. The camera must be able to see enough of the patch to reassemble the coding and accurately record the depth information. This produces artifacts on surfaces' edges and tiny objects. The Nyquist-Shannon theorem requires an order of magnitude higher camera resolution to reconstruct individual dots in the projection (and hence 3D measurements). Modern systems use about 25 camera pixels for each 3D measurement, producing about 70k 3D points.[15]
 
 \subsubsection{Parallel Structured Light}
-Parallel Structured Light parallelizes the sequential structured light using a sophisticated sensor design, which enables it to record the scene illuminated by various patterns simultaneously. In addition to sharing many of the sequential structured light's benefits, such as resolution and accuracy, it also overcomes one of its main drawbacks: the inability to capture a dynamic environment. Photoneo's Parallel Structured Light gets around the restriction by projecting and capturing numerous encoded patterns. Pixel modulations within our proprietary CMOS sensor are used to accomplish this. Multiple groups of separately modified pixels make up the sensor itself. \\\\ 
+Parallel Structured Light parallelizes the sequential structured light using a sophisticated sensor design, which enables it to record the scene illuminated by various patterns simultaneously. In addition to sharing many of the sequential structured light's benefits, such as resolution and accuracy, it also overcomes one of its main drawbacks: the inability to capture a dynamic environment. Photoneo's Parallel Structured Light gets around the restriction by projecting and capturing numerous encoded patterns. Pixel modulations within our proprietary CMOS sensor are used to accomplish this. Multiple groups of separately modified pixels make up the sensor itself.[15] \\\\ 
 \newpage
 The Parallel Structured Light's main advantages are:
 \begin{enumerate}
- \item  Rapid motion scanning: 40 m/s motion is achieved with a single frame acquisition
-\item A more effective depth coding method with accurate, per-pixel measurement that offers ten times greater resolution and accuracy than rival technologies
- \item No motion blur: exposure time of 10 µs per pixel
- \item Quick capture of 1068 x 800 point clouds at 60 frames per second
-\item Patent-pending active ambient light rejection technology for outdoor use in direct sunlight
- \item Active rejection of ambient light through interreflection suppression
-\item Several devices using the same space at the same time\\
+ \item  Rapid motion scanning: 40 m/s motion is achieved with a single frame acquisition [15]
+\item A more effective depth coding method with accurate, per-pixel measurement that offers ten times greater resolution and accuracy than rival technologies [15]
+ \item No motion blur: exposure time of 10 µs per pixel[15]
+ \item Quick capture of 1068 x 800 point clouds at 60 frames per second[15]
+\item Patent-pending active ambient light rejection technology for outdoor use in direct sunlight[15]
+ \item Active rejection of ambient light through interreflection suppression[15]
+\item Several devices using the same space at the same time[15]\\
 
 A control unit that operates in tandem with the projection is in charge of these groups. The coded patterns are inserted into the groups rather than changing the projection itself. The sensor may generate over 20 distinct virtual representations of the scene illuminated by the coded patterns injected at the end of the frame. The universal method may be modified on the fly to accommodate various materials and light sources by using any type of pattern typically used for sequential structured light.\\
 
@@ -344,7 +344,7 @@ The figure below shows the vision controller connected to the photoneo camera an
     \caption{Vision Controller}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-The vision controller is connected to a PC to get the Web interface to trigger the camera and see the Web interface for communication. Gigabit Ethernet cables (Cat5e or higher) are needed to connect the 3D sensor. A gigabit switch can be used to connect several 3D sensors. The Ethernet connection from the switch or 3D sensor is linked to the scanner's physical network port in both scenarios. To visualize 3D scans, calibrate robot cameras, and establish localization settings, a well-connected connection to the 3D sensor is required.\\
+The vision controller is connected to a PC to get the Web interface to trigger the camera and see the Web interface for communication. Gigabit Ethernet cables (Cat5e or higher) are needed to connect the 3D sensor. A gigabit switch can be used to connect several 3D sensors. The Ethernet connection from the switch or 3D sensor is linked to the scanner's physical network port in both scenarios. To visualize 3D scans, calibrate robot cameras, and establish localization settings, a well-connected connection to the 3D sensor is required.[15]\\
 \newpage
 To set up the network interface that the vision controller uses to connect to the Photoneo 3D sensor(s), go to the Network page and select the Scanner interface section. Both a fixed IPv6 link-local address and a programmable IPv4 address are features of Photoneo 3D sensors. IPv6 connections are better than IPv4 ones. However, the IPv4 address is used if the IPv6 connection is banned or fails.
 \subsubsection{Marker Pattern}\\
@@ -885,20 +885,18 @@ The robot motion to be designed must meet certain conditions to maximize the man
 2)  \textbf{Constraints on torque and smoothness:}The trajectory must be created so that all joint torques stay within their ranges at all times. The torque limitations are as follows: i = 1,..., 3 n; ut.rnm(t) 5 uc(t) 5 ~c,max(t).[14]\\
 3) \textbf{Settling time:}  As the robot rapidly reaches a steady state, the amount of time required for the task is decreased. The settling time should be kept to a minimum while taking into account the robot's torque and smoothness limitations, the conveyor belt's speed, and the initial positions of the robot and the part.[14]\\
 The joint variables in the forward kinematics issue establish the end-effector's position and orientation in Cartesian space, also known as the workspace. For rotational joints, the joint variables are the angles between the links; for prismatic joints, they are the link extension. On the other hand, the inverse kinematics challenge is determining the values of the joint variables that enable the manipulator to arrive at the specified location given a desired end-effector position and orientation.
-The figure below illustrates the connection between joint space and Cartesian space, as well as the relationship between forward and inverse kinematics.\\
+The figure below illustrates the connection between joint space and Cartesian space, as well as the relationship between forward and inverse kinematics.[10]\\
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=10cm]{Thesis-report/Figures/fk.png}  
-    \caption{Forward and Inverse Kinematics}
+    \caption{Forward and Inverse Kinematics [10]}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-Finding the joint variables that allow a robot to be manipulated into the required position requires an understanding of its inverse kinematics. This is used to control the robot's position, motion, and other features. This study presents a detailed explanation and comparison of two popular approaches for manipulating robots: Jacobian inverse techniques and inverse kinematics.
-Sixteen alternatives are available for a general six DOF robot, as shown below, and it lists the number of analytical solutions for robots with varying degrees of freedom. Therefore, an accurate set of solutions among several inverse kinematic solutions is needed for the continuous motion of a robot.
+Finding the joint variables that allow a robot to be manipulated into the required position requires an understanding of its inverse kinematics. This is used to control the robot's position, motion, and other features. This study presents a detailed explanation and comparison of two popular approaches for manipulating robots: Jacobian inverse techniques and inverse kinematics.[10]
+Sixteen alternatives are available for a general six DOF robot, as shown below, and it lists the number of analytical solutions for robots with varying degrees of freedom. Therefore, an accurate set of solutions among several inverse kinematic solutions is needed for the continuous motion of a robot.[10]
 
-\\ The benefit of analytical expression is that it provides formulas for the connection between link parameters and joint angles. The robotics controller can directly incorporate these relationships.\\
-\documentclass{article}
-\usepackage{booktabs}
+\\ The benefit of analytical expression is that it provides formulas for the connection between link parameters and joint angles. The robotics controller can directly incorporate these relationships.[10]\\
 
 \begin{table}[h]
     \centering
@@ -1063,12 +1061,12 @@ Additionally, there are several electromechanical technologies, including:
     
 \chapter{\section{\mbox{Working Principle }}{{\normalfont\fontsize{14}{16}\bfseries}}
 \subsubsection{Steps for Conveyor Tracking Visual System:}\\
-Two steps are necessary for conveyor visual tracking: \\
+Two steps are necessary for conveyor visual tracking: [12]\\
 \begin{itemize}
 \item Item detection\\
 \item Object tracking.\\
 \end{itemize}\\
-There are several ways to identify items. Some potential limitations are, however, information-based recognition, self-organizing maps, template matching, and the temporal difference between two consecutive image samples. Due to their slowness, self-organizing maps cannot function in real-time. Template matching requires prior knowledge of object information to match objects. Unfortunately, because of the necessary computational load, this method cannot be used in real time. The color information solution overcomes the first two limitations; however, it is not compatible with binary images. The object recognition method that leverages the difference between two photographs can be useful when the environment does not change quickly over time.
+There are several ways to identify items. Some potential limitations are, however, information-based recognition, self-organizing maps, template matching, and the temporal difference between two consecutive image samples. Due to their slowness, self-organizing maps cannot function in real-time. Template matching requires prior knowledge of object information to match objects. Unfortunately, because of the necessary computational load, this method cannot be used in real time. The color information solution overcomes the first two limitations; however, it is not compatible with binary images. The object recognition method that leverages the difference between two photographs can be useful when the environment does not change quickly over time.[12]
 \subsubsection{Photoneo Camera}
 The main Vision camera we have used to track the moving object's motion through the conveyor belt is a Photoneocamera (MotionCam 3D M+), which has advanced settings that can capture and detect the object's position.\\\\ The photoneo camera mainly consists of 3D sensing technology, which contains parallel structured light that helps provide the light source to detect the objects. Using this camera, the camera can capture accurate point clouds and a standard intensity image of the object. \
 
@@ -1083,7 +1081,7 @@ There are two subsections in this section:
 \begin{figure}[h]
     \centering
     \includegraphics[width=5cm]{Thesis-report/Figures/network_interface.jpeg}
-    \caption{Robot Network Interface}[2]
+    \caption{Robot Network Interface[2]}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
  The Action Request Communication Channel is used to facilitate communication between the vision controller and the robotic controller, as explained in the Robot Communication.  The robotic controller connects to the TCP server created by the vision controller and transmits requests to it.[2]
@@ -1094,10 +1092,10 @@ Gigabit Ethernet cables (Cat5e or higher category) are needed to connect the 3D 
 \begin{figure}[h]
     \centering
     \includegraphics[width=5cm]{Thesis-report/Figures/scanner_interface.jpeg}
-    \caption{Robot Network Interface}[2]
+    \caption{Robot Network Interface [2]}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-
+\newpage
  Setting up localization settings, calibrating the robot camera, and seeing 3D scans all require a well-configured connection to the 3D Sensor. [2]\\
 
  To set up the network interface that the vision controller uses to connect to the Photoneo 3D Sensor, go to the Network page and select the Scanner interface section.[2]\\
