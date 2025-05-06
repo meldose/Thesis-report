@@ -628,7 +628,6 @@ Finding a camera's intrinsic matrix, extrinsic matrix, and distortion coefficien
 The transformation matrix in the above equation that must be computed for the eye-to-hand calibration is cam H base.  Cam H cal, which can be computed using either 3D recognition of the calibration rig or camera calibration (extrinsic matrix), is the transformation matrix from the calibration rig frame to the camera frame.  Forward kinematics can be used to calculate base H cal, the transformation matrix from the calibration rig frame to the robot base frame.
 \\ The calibration matrix will become invalid, and the entire calibration process will need to be restarted if there is a change in the relative position between the 3D sensor and the robot after the calibration. In other words, after the system has been calibrated, the 3D sensor cannot be changed concerning the robot.\\
 
-The calibration matrix specifies the transformation straight to the robot base coordinate system because the 3D sensor is fixed. With this configuration, the robot's mobility is unrestricted, and it doesn't need to halt during the scan acquisition, unlike with the hand-eye approach.\\\\
 
 \begin{figure}[h]
     \centering
@@ -637,8 +636,13 @@ The calibration matrix specifies the transformation straight to the robot base c
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 
+The calibration matrix specifies the transformation straight to the robot base coordinate system because the 3D sensor is fixed. With this configuration, the robot's mobility is unrestricted, and it doesn't need to halt during the scan acquisition, unlike with the hand-eye approach.\\\\
+
+
 \subsubsection{Calibration Ball}\\\\
 
+
+A calibration ball serves as the calibration object. It is also feasible to use a bespoke ball with the right characteristics in place of the calibration ball, the ball needs to be exactly round and composed of a surface that is good for scanning (smooth and not extremely reflective). The ball needs to be attached to the gripper or the flange, which are the robot's endpoints. During the calibration process, make sure the ball is securely attached and stays in place. Verify that the ball can be seen clearly by the 3D sensor.[2] \\
 \begin{figure}[h]
     \centering
     \includegraphics[width=5cm]{Thesis-report/Figures/ball.png}
@@ -646,7 +650,6 @@ The calibration matrix specifies the transformation straight to the robot base c
     \label{fig1.Photoneo Cmaera}
 \end{figure} 
 
-A calibration ball serves as the calibration object. It is also feasible to use a bespoke ball with the right characteristics in place of the calibration ball, the ball needs to be exactly round and composed of a surface that is good for scanning (smooth and not extremely reflective). The ball needs to be attached to the gripper or the flange, which are the robot's endpoints. During the calibration process, make sure the ball is securely attached and stays in place. Verify that the ball can be seen clearly by the 3D sensor.[2] \\
 
 The following components make up the calibration interface:
 \begin{enumerate}
