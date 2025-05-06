@@ -597,14 +597,14 @@ Go to the Calibration page within the solution to begin the calibration.  The fo
 \begin{figure}[h]
     \centering
     \includegraphics[width=13.5cm]{Thesis-report/Figures/calib.png}
-    \caption{Calibration} [2]
+    \caption{Calibration [2] }
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 The camera calibration is performed through an extrinsic method in which the camera is fixed in a position and the calibration ball is fixed at the end of the robot TCP.\\
 \begin{figure}[h]
     \centering
     \includegraphics[width=13.5cm]{Thesis-report/Figures/calibration.jpeg}
-    \caption{Calibration for camera with respect to Robot frame} [2]
+    \caption{Calibration for camera with respect to Robot frame [2] } 
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 The below figure shows how the calibration is happening by adding the point by fixing the point where the robot Coordinates [X, Y, Z] rotation values will save the points by saving the points (represented as a green point). Here, we need to add 9 points to get the calibration workspace. After the calibration, the average value from the 9 points is taken into consideration.(The lesser the value better the accuracy) [2]\\ 
@@ -632,7 +632,7 @@ The transformation matrix in the above equation that must be computed for the ey
 \begin{figure}[h]
     \centering
     \includegraphics[width=13cm]{Thesis-report/Figures/extrinsic.png}
-    \caption{Extrinsic Calibration} [2] 
+    \caption{Extrinsic Calibration [2] } 
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 
@@ -646,7 +646,7 @@ A calibration ball serves as the calibration object. It is also feasible to use 
 \begin{figure}[h]
     \centering
     \includegraphics[width=5cm]{Thesis-report/Figures/ball.png}
-    \caption{Callibration ball} [2]
+    \caption{Callibration ball [2] }
     \label{fig1.Photoneo Cmaera}
 \end{figure} 
 
@@ -663,7 +663,7 @@ The visualizer shows the point cloud and 3D sensors from all vision systems.
 \begin{figure}[h]
     \centering
     \includegraphics[width=12cm]{Thesis-report/Figures/calibration_procedure.png}
-    \caption{Calibration using the calibration ball}
+    \caption{Calibration using the calibration ball [2] }
     \label{fig1.Photoneo Cmaera}
 \end{figure} 
 
@@ -686,7 +686,7 @@ Either a new calibration point is introduced:
 \begin{figure}[h]
     \centering
     \includegraphics[width=12cm]{Thesis-report/Figures/point.png}
-    \caption{Calibration point saved}
+    \caption{Calibration point saved [2] }
     \label{fig1.Photoneo Cmaera}
 \end{figure} 
 
@@ -849,7 +849,7 @@ Initially, before we start the calibration, we need to set the camera to a speci
 \begin{figure}[h]
     \centering
     \includegraphics[width=16cm]{Thesis-report/Figures/scanning_profile.jpg} 
-    \caption{Scanning Profile}
+    \caption{Scanning Profile [2] }
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 
@@ -865,25 +865,25 @@ This method can also be used to get the Conveyor belt calibrated. The steps incl
 \end{enumerate}
 
 \chapter{\section{\mbox{Inverse Kinematics }}{{\normalfont\fontsize{14}{16}\bfseries}}
-We look at the system model, which includes a nonredundant robot manipulator with n degrees of freedom and a conveyor belt system. The following attributes are presumed to be present in the system model:\\
+We look at the system model, which includes a nonredundant robot manipulator with n degrees of freedom and a conveyor belt system. The following attributes are presumed to be present in the system model: [14]\\
 1) The conveyor belt system runs at constant velocity, and the
-part is stationary concerning the conveyor belt system.\\
+part is stationary concerning the conveyor belt system.[14]\\
 2) The orientation of the robot hand is aligned with the part
-initially and kept fixed while the robot tracks the part.\\
+initially and kept fixed while the robot tracks the part.[14]\\
 3) The robot tracks the part along a straight line path over the
-conveyor belt system.
+conveyor belt system.[14]
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=12cm]{Thesis-report/Figures/ik.jpeg}  
-    \caption{Kinematics}
+    \caption{Kinematics [14]}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-The robot motion to be designed must meet certain conditions to maximize the manipulator's usable performance on conveyor tracks. These requirements can be multiplied as follows to create a single differential equation.
+The robot motion to be designed must meet certain conditions to maximize the manipulator's usable performance on conveyor tracks. These requirements can be multiplied as follows to create a single differential equation.[14]
 
-1) \textbf{Steady-state error:}  The task's accuracy may be reduced due to location and velocity errors in the steady state. Therefore, the steady-state error in the conveyor tracking trajectory must be as low as feasible.\\
-2)  \textbf{Constraints on torque and smoothness:}The trajectory must be created so that all joint torques stay within their ranges at all times. The torque limitations are as follows: i = 1,..., 3 n; ut.rnm(t) 5 uc(t) 5 ~c,max(t).\\
-3) \textbf{Settling time:}  As the robot rapidly reaches a steady state, the amount of time required for the task is decreased. The settling time should be kept to a minimum while taking into account the robot's torque and smoothness limitations, the conveyor belt's speed, and the initial positions of the robot and the part.\\
+1) \textbf{Steady-state error:}  The task's accuracy may be reduced due to location and velocity errors in the steady state. Therefore, the steady-state error in the conveyor tracking trajectory must be as low as feasible.[14]\\
+2)  \textbf{Constraints on torque and smoothness:}The trajectory must be created so that all joint torques stay within their ranges at all times. The torque limitations are as follows: i = 1,..., 3 n; ut.rnm(t) 5 uc(t) 5 ~c,max(t).[14]\\
+3) \textbf{Settling time:}  As the robot rapidly reaches a steady state, the amount of time required for the task is decreased. The settling time should be kept to a minimum while taking into account the robot's torque and smoothness limitations, the conveyor belt's speed, and the initial positions of the robot and the part.[14]\\
 The joint variables in the forward kinematics issue establish the end-effector's position and orientation in Cartesian space, also known as the workspace. For rotational joints, the joint variables are the angles between the links; for prismatic joints, they are the link extension. On the other hand, the inverse kinematics challenge is determining the values of the joint variables that enable the manipulator to arrive at the specified location given a desired end-effector position and orientation.
 The figure below illustrates the connection between joint space and Cartesian space, as well as the relationship between forward and inverse kinematics.\\
 
