@@ -239,13 +239,13 @@ The tracking of the conveyor using collaborative robots equipped with vision cam
 \begin{justify}
 The tracking of the conveyor is a vital component of robot manipulators in industrial robotic applications. The task grows more complex as the target moves down the production line. Conveyor tracking utilizes a robot to track and retrieve an object from a conveyor belt. Robots require object information, such as position, orientation, velocity, size, etc., to catch items. Applications for using vision sensors to recognize things include military, medical, biology, engineering, education, and factory operations. When a robot is assembling electric parts into a product, it needs to be able to track and reorganize objects on the conveyor belt and correct position errors. The vision sensor can interpret this information rapidly.\\
 
-Face tracking, color tracking, and object tracking are just a few of the various engineering applications that have recently made use of tracking video.  In the industrial sector, it was used to track items such as goods, factory workers, and manufacturing clothing.  The object detection techniques and image processing to mono video are the foundation of video tracking.\\
+Face tracking, color tracking, and object tracking are just a few of the various engineering applications that have recently made use of tracking video.  In the industrial sector, it was used to track items such as goods, factory workers, and clothing manufacturing.  The object detection techniques and image processing for mono video are the foundation of video tracking.\\
 
-Autonomous robots rely on intelligent perception systems to handle a variety of tasks.  Furthermore, the kind of sensor and the precision of the sensor data have a greater impact on how well these intelligent systems operate.The camera is the most equipped sensor among these. Because of its low cost and plenty of information, the camera is the most widely utilized sensor among these equipped sensors in the perception system.  RGB and depth cameras are the two broad categories into which camera sensors fall.  RGB is limited to obtaining information about the surrounding environment's appearance; depth cameras can simultaneously obtain texture and depth information; however, because of the influence of environmental changes and disparate depth estimation techniques, the depth information obtained is not reliable and precise.\\
+Autonomous robots rely on intelligent perception systems to handle a variety of tasks.  Furthermore, the kind of sensor and the precision of the sensor data have a greater impact on how well these intelligent systems operate. The camera is the most equipped sensor among these. Because of its low cost and plenty of information, the camera is the most widely utilized sensor among these equipped sensors in the perception system.  RGB and depth cameras are the two broad categories into which camera sensors fall.  RGB is limited to obtaining information about the surrounding environment's appearance; depth cameras can simultaneously obtain texture and depth information; however, because of the influence of environmental changes and disparate depth estimation techniques, the depth information obtained is not reliable and precise.\\
 
 Structured light cameras, time of flight (TOF) cameras, and binocular stereo depth cameras are the three types of depth cameras.  Structured light camera technology is quite mature, with excellent accuracy but restricted measuring range; binocular stereo cameras are inexpensive but highly influenced by the surroundings; and TOF measurement distance is long, ideal for dynamic situations, but the precision is poor (cm).  Structured light cameras have a two to three meter range, but given the wealth of environmental data that can be gathered within this range, this is adequate. Due to its excellent accuracy and great range, Lidar is another sensor that is frequently used in intelligent perception systems.  Since LiDAR's point cloud is less impacted by the surroundings, robot perception systems frequently use it.\\
 
-In an industrial production, the vision system is used to inspect the product.  It speeds up product detection and cuts down on time.  It is made up of a camera or vision sensor that uses line or area sensors to send digital images or videos to the host computer.  The digital image or video is analyzed using an image processing technique that allows it to identify defects, shapes, or colors.  Analysis filters are frequently used to differentiate between vision system functions such edge detection, surface defect identification, and light intensity reflected from the product surface.  Compared to image processing algorithms, video processing algorithms are more complex.  To find the merchandise, the tracking video used video processing algorithms.\\
+In an industrial production, the vision system is used to inspect the product.  It speeds up product detection and cuts down on time.  It is made up of a camera or vision sensor that uses line or area sensors to send digital images or videos to the host computer.  The digital image or video is analyzed using an image processing technique that allows it to identify defects, shapes, or colors.  Analysis filters are frequently used to differentiate between vision system functions such as edge detection, surface defect identification, and light intensity reflected from the product surface.  Compared to image processing algorithms, video processing algorithms are more complex.  To find the merchandise, the tracking video used video processing algorithms.\\
 
 A robot's job in robotic conveyor tracking is to follow and retrieve goods from a conveyor belt. Robots require information about an object, like its position, orientation, velocity, size, and other characteristics, before they can take it from an automation line. The information that vision sensors can supply about an object on the conveyor belts is more than that of ultrasonic and infrared ray sensors. An object tracking system typically consists of the following steps: capturing an image, identifying an object, and retrieving data regarding the position and orientation of the object. A conveyor system's item tracking procedure needs to be quick enough to accommodate a real-time setting. This article describes a tracking system for robots that makes use of vision data that is taken from consecutive frames of images.\\\\
 
@@ -253,7 +253,7 @@ Many applications in manufacturing, construction, and vehicle automation and aut
 
 Industrial robots are frequently used for dangerous, repetitive, and unmanageable human activities.
  Therefore, increasing the production efficiency of industrial robot manipulators is a top priority.
- With an emphasis on localization and shortest path computation, machine vision and path planning approaches can accomplish this.  This is especially crucial for the manufacturing and bottle filling sectors, which heavily rely on robotic manipulators to position and move bottles both during production and after refills. Robot vision finds it extremely difficult to focus on distinguishing aspects of soft, fragile, or opaque things, making detection considerably more difficult.In recent years, industrial robots and robotic manipulators have become increasingly complex, diverse, and particularly engineered to attain a high degree of autonomy.  This contrasts with previous ideas that viewed robots as mechanical manipulators. Furthermore, to provide accurate control mechanisms, object detection and tracking for these robotic manipulators have drawn a lot of interest [2].  Automated object detection, in particular, has helped robots become more versatile by enabling more generalized and adaptive behavior for various objects and situations. The degree of freedom (DOF) of robotic manipulators is frequently one of the most crucial components for their functionality.For example, DOF is important for jobs involving pick and place, welding, pelleting, painting, packing, and grinding.  The DOF is chosen based on the type of work that must be done in an industrial setting and ranges from 1 to 6 degrees of freedom.\\
+ With an emphasis on localization and shortest path computation, machine vision and path planning approaches can accomplish this.  This is especially crucial for the manufacturing and bottle filling sectors, which heavily rely on robotic manipulators to position and move bottles both during production and after refills. Robot vision finds it extremely difficult to focus on distinguishing aspects of soft, fragile, or opaque things, making detection considerably more difficult. In recent years, industrial robots and robotic manipulators have become increasingly complex, diverse, and particularly engineered to attain a high degree of autonomy.  This contrasts with previous ideas that viewed robots as mechanical manipulators. Furthermore, to provide accurate control mechanisms, object detection and tracking for these robotic manipulators have drawn a lot of interest [2].  Automated object detection, in particular, has helped robots become more versatile by enabling more generalized and adaptive behavior for various objects and situations. The degree of freedom (DOF) of robotic manipulators is frequently one of the most crucial components for their functionality. For example, DOF is important for jobs involving pick and place, welding, pelleting, painting, packing, and grinding.  The DOF is chosen based on the type of work that must be done in an industrial setting and ranges from 1 to 6 degrees of freedom.\\
 
 As a result, robotics is now more useful in Complex path designs for many kinds of objects were made possible by the assistant editor who oversaw the review of this paper and the industry. As a result, the creation of robotic control systems with a vision system integrated has received a lot of attention.  Additionally, machine learning-based techniques that make use of effective computer vision frameworks are widely adopted.  Additionally, neural networks and deep learning-based techniques are becoming more and more popular, although caution needs to be exercised regarding the generalizability and explainability of these models.\\
 
@@ -280,7 +280,7 @@ Using this camera, the camera can capture accurate point clouds and a standard i
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 
-To precisely follow the colored area of the RGB marker, we develop and construct a parallel stereo charged-coupled device (CCD) camera system.  Using blob analysis, this ROI was also isolated from the picture live stream and triangulated to determine the 3D coordinates in the world coordinate frame.  Robot path and trajectory planning were assessed using the marker's 3D coordinates, which were converted into the robot frame of axis (robot stereo vision coordinate system).  Therefore, in order to choose and position an object, our suggested model calculates the real-time distance the robot must travel along the three axes.
+To precisely follow the colored area of the RGB marker, we develop and construct a parallel stereo charged-coupled device (CCD) camera system.  Using blob analysis, this ROI was also isolated from the picture live stream and triangulated to determine the 3D coordinates in the world coordinate frame.  Robot path and trajectory planning were assessed using the marker's 3D coordinates, which were converted into the robot frame of reference (robot stereo vision coordinate system).  Therefore, to choose and position an object, our suggested model calculates the real-time distance the robot must travel along the three axes.
 
 The camera's carbon fiber body is lightweight and guarantees the same degree of stiffness as scanners. Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU that acts as the brain behind intelligent applications. A sequential structured light, which is utilized in numerous meteorological applications, is the primary technological driver in the first group. One well-suited representative of this category is the 3D scanner range from Photoneo. This technique is not appropriate for dynamic scenes because it uses sequential (multi-frame) capturing. This section is the source of the parallel structured light.\\
 
@@ -290,13 +290,13 @@ The process of 3D scanning involves gathering data from an object's surface and 
 \subsubsection{Types of 3D scanning}
 
 \subsubsection {Laser Scanning}
-Two devices are often used in laser scanning; one is in charge of directing a laser beam onto a surface, and the other is in charge of recording the precise spot where the object contacts the beam.  Triangulation can be used to calculate the distance between the surface and the scanner as well as the angle of reflection.\\
+Two devices are often used in laser scanning; one directs a laser beam onto a surface, and the other records the precise spot where the object contacts the beam.  Triangulation can be used to calculate the distance between the surface and the scanner and the angle of reflection.\\
 
 \subsubsection {Structure Light Scanning}
-This technology projects structured light patterns, such as simple geometric patterns or parallel lines, onto a surface.  It is obvious that the object's shape will cause the patterns to distort.  It is feasible to rebuild the scanned surface by using a camera to analyze these deformations, distinguishing edges, and determining the separation between the item and the scanner.\\
+This technology projects structured light patterns, such as simple geometric patterns or parallel lines, onto a surface.  The object's shape will cause the patterns to distort.  It is feasible to rebuild the scanned surface by using a camera to analyze these deformations, distinguishing edges, and determining the separation between the item and the scanner.\\
 
 \subsubsection {Photogrammetry}
-Triangulation is used in photogrammetry to intersect particular points within two-dimensional images based on the angles at which those points can be found.  To create an acceptable 3D mode, a lot depends on the size of the item, the quantity of photos, and their quality.\\
+Triangulation is used in photogrammetry to intersect particular points within two-dimensional images based on the angles at which those points can be found.  To create an acceptable 3D model, a lot depends on the size of the item, the quantity of photos, and their quality.\\
 
 \subsubsection{Time fo Flight}
 The time it takes for light to travel from an illumination source to a scene and back is measured by the time of flight. The speed of light itself is the primary obstacle in this situation. Usually, the phase shift of a modulated signal is used to measure time. High pixel modulation frequencies must be used to achieve a respectable level of depth accuracy. The primary drawback in this case is physics, since a greater frequency results in less charge transfer, which lowers contrast and SNR. The restriction suggests an accuracy level that TOF systems can achieve. Usually, it falls within the centimeter range. Another issue is interreflections, which can significantly bend the surface.\\
@@ -355,7 +355,7 @@ To set up the network interface that the vision controller uses to connect to th
 The figure above shows the S30 calibration board that helps calibrate the conveyor belt, which aligns the coordinates of the object with the conveyor belt for objects passing through the belt. The belt can be used to align the object coordinates with respect to the conveyor belt, so that the robot can pick items from the moving conveyor belt.
 \newpage
 \subsubsection{Active ambient light rejection:}\\
-The inability of all area-based 3D sensors to function in direct sunshine is a typical problem.  Direct sunshine has a maximum power output of 1120 W/m³.  High-end band-pass filters installed in all of Photoneo's sensors lower ambient light levels to around 15 W/m2.  Although it can oversaturate the image or produce a high shot-noise, this still performs better than the majority of projection systems.
+The inability of all area-based 3D sensors to function in direct sunshine is a typical problem.  Direct sunshine has a maximum power output of 1120 W/m³.  High-end band-pass filters installed in all of Photoneo's sensors lower ambient light levels to around 15 W/m2.  Although it can oversaturate the image or produce high shot noise, this still performs better than the majority of projection systems.
  Delivering active lighting as a brief pulse, which raises the projection's optical power output and shortens the system's exposure time overall, is one way to lessen the impact of ambient light.  This method has drawbacks, such as limited parts availability, complicated power supply management, hazards to eye safety, or problems with heat control.\\
 
 The patent for Photoneo is pending.  The sensor and projection can cooperate to regulate the light sensitivity of the sensor surface through active ambient light suppression.  Only around 1 percent of the sensor surface may be exposed by the direct reflection of the projection at any given point in time during the acquisition due to geometrical constraints.  The remaining 99 percent of the sensor can be turned off by the camera's control circuit, preventing any photoelectrons from being collected.  Scanning in direct sunshine is made possible by the technology's efficient 1:100 suppression of ambient light from any source (key benefit 5).\\
@@ -455,7 +455,7 @@ It is needed to indicate the reliability of depth or image data. It helps in fil
     \label{fig1.Photoneo Cmaera}
 \end{figure}\\
 \textbf{6.Normals:}
-The normals are defined, and how they interact with the light and other physical effects. They are very much needed for realistic rendering, depth understanding in computer vision and graphics.
+The normals are defined, and how they interact with the light and other physical effects. They are very much needed for realistic rendering, depth understanding in computer vision, and graphics.
     \begin{figure}[h]
     \centering
     \includegraphics[width=6cm]{Thesis-report/Figures/new_Normals.png}
@@ -470,7 +470,7 @@ The normals are defined, and how they interact with the light and other physical
     \label{fig1.Photoneo Cmaera}
 \end{figure}\\
 \textbf{8.Color Image:}
-It provides the visual information, making the object recognition, segmentation and realistic rendering in computer vision, image generation, etc.
+It provides the visual information, making object recognition, segmentation, and realistic rendering in computer vision, image generation, etc.
     \begin{figure}[h]
     \centering
     \includegraphics[width=6cm]{Thesis-report/Figures/new_white_IMG_ColorCameraImage_8Bit.png}
@@ -509,7 +509,7 @@ In the preceding part, the picking procedure was put into practice. With some dy
 By calibrating the y and z axes, we may create a prospective viewpoint to enhance object location after obtaining the past 10 frames as a reference to compare with the present frame. The tracker would ultimately follow the target by the predicted trajectory after we had the position of the tracker and the target.\\\\
 Initially obtain the tracker's (gripper) and the target's (workpiece) instantaneous positions independently once the camera has determined the outlines of objects. First, the contour is the difference between the color frame and the reference and current frames. The coordinates of the items in the depth frame are then obtained. The situation along the x and z axes in the depth frame and the y and z axes from the Kinect color frame are among the desired data. \\
 
-The tracker and target belong to different x-y planes; thus, we may utilize a threshold regarding the data along the z-axis in the color frame in Kinect view to separate the objects. It is referred to as the robot palm if the coordinate along the z-axis item is more than the threshold.
+The tracker and target belong to different x-y planes; thus, we may utilize a threshold regarding the data along the z-axis in the color frame in Kinect view to separate the objects. It is referred to as the robot palm if the coordinate along the z-axis is more than the threshold.
 \subsection{Position Calibration}\\
 Static pose recognition will end when the tracking approach is activated. The end-effector and object positions on the conveyor are among the data. The workpiece will proceed through the conveyor in a straight line. Therefore, only the workpieces' positions will be changed, and their orientation will remain unchanged. It is important to note that the end-effector might follow the subsequent instructions based on the tracking approach. This doesn't assist with grabbing articles, though. The gripper should take aim-off into account when doing object tracking to ensure that the entire gripping process is complete. Thus, proper gripping position by the tracking method turns out to be an important point. Without additional indication, the arm might not be aware of some issues that arise on the conveyor.\\
 
@@ -552,14 +552,14 @@ To enable the robotic arm to know where to pick and position the target objects,
 
 where: cam  Pobj: [u, v, 1]" on the image plane; Pobj: The object point [EX, CY, CZ]" in the camera frame.
  The calibration of the eye-to-hand stereo camera yields the intrinsic matrix K in above Equation (4), and the estimation of depth based on the disparity is used to determine the depth ° Z.
- The coordinate conversion from the stereo camera frame to the robot base frame is the second operation sequence.  The transformation matrix base Heam, which is determined from the eye-to-hand calibration, is used to do this.  Combining the first and second operation sequences yields equation:\\
+ The coordinate conversion from the stereo camera frame to the robot base frame is the second operation sequence.  The transformation matrix base Heam, which is determined from the eye-to-hand calibration, is used to do this.  Combining the first and second operation sequences yields the equation:\\
 
  \[
 \text{baseP}_{\text{obj}} = {}^{\text{base}}H_{\text{cam}} \cdot \text{camP}_{\text{obj}}
 \]
 
 where: base Pobj: The robot base frame's object point; base  Heam: The matrix used to convert the robot base frame from the stereo camera frame
- Finally, the above two equations are combined to give the overall transformation equation for the entire system .For a robotic system with an eye-to-hand arrangement, equation below shows the series of coordinate transformations from the image plane to the robot base frame.\\
+ Finally, the above two equations are combined to give the overall transformation equation for the entire system .For a robotic system with an eye-to-hand arrangement, the equation below shows the series of coordinate transformations from the image plane to the robot base frame.\\
 
  \[
 \text{baseP}_{\text{obj}} = {}^{\text{base}}H_{\text{cam}} \cdot \text{camP}_{\text{obj}}
@@ -575,9 +575,9 @@ where: base Pobj: The robot base frame's object point; base  Heam: The matrix us
 \newpage
 \subsection{Software Codes}
 \subsubsection{Servo-X}
-The servoX is the motion of the robot in Cartesian space, where we need to define the max velocity, max acceleration, and its servoX proportional gain. Initially, the coordinates that we get from the camera space as Quaternion values that include [X,Y,Z,ex,ey,ez] as the target values for the robot to move to that particular position and pick up the object. Since we have a calibrated camera concerning the Robot frame, the coordinates that we get from the object will be concerning the robot frame.
+The servoX is the motion of the robot in Cartesian space, where we need to define the max velocity, max acceleration, and its servoX proportional gain. Initially, the coordinates that we get from the camera space as Quaternion values that include [X, Y, Z, ex, ey,ez] as the target values for the robot to move to that particular position and pick up the object. Since we have a calibrated camera concerning the Robot frame, the coordinates that we get from the object will be concerning the robot frame.
 \subsubsection{Move Linear:}\\
-The above method is basically used in the dynamic application, where the object coordinates(Quaternion values) [X,Y,Z,Ex,Ey,Ez] these values are passed to the robot controller directly for moving to the target position. Here we need to provide the max acceleration, max velocity for the robotic movement.\\
+The above method is basically used in the dynamic application, where the object coordinates(Quaternion values) [X, Y, Z, Ex, Ey, Ez] these values are passed to the robot controller directly for moving to the target position. Here we need to provide the max acceleration, max velocity for the robotic movement.\\
 
 \subsection{Calibration for camera for Workspace}\\\\
 
@@ -617,7 +617,7 @@ This kind of calibration is employed in configurations where the 3D sensor is fi
     \caption{Calibration for the camera concerning the Robot frame}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-Finding a camera's intrinsic matrix, extrinsic matrix, and distortion coefficients is the aim of camera calibration. The relationship between the camera frame and the chessboard frame is described by the extrinsic matrix, whereas the relationship between the picture plane and the camera frame is described by the intrinsic matrix. The aim of hand-eye calibration is to establish the transformation relationship between the cameras and the robotic arm.  The location of an object in the camera frame can be converted into its location in the robot base frame once the transformation connection has been established. The robotic arm will then be able to locate the object and pick it up. Finding the transformation matrix between the robot base and the camera (base H cam) is the aim of an eye-to-hand calibration.\\
+Finding a camera's intrinsic matrix, extrinsic matrix, and distortion coefficients is the aim of camera calibration. The relationship between the camera frame and the chessboard frame is described by the extrinsic matrix, whereas the relationship between the picture plane and the camera frame is described by the intrinsic matrix. Hand-eye calibration aims to establish the transformation relationship between the cameras and the robotic arm.  The location of an object in the camera frame can be converted into its location in the robot base frame once the transformation connection has been established. The robotic arm will then be able to locate the object and pick it up. Finding the transformation matrix between the robot base and the camera (base H cam) is the aim of an eye-to-hand calibration.\\
 
 \begin{equation}
 {}^{cam}\!H_{cal} = {}^{cam}\!H_{base} \cdot \left( {}^{base}\!H_{tcp} \cdot {}^{tcp}\!H_{cal} \right) = {}^{cam}\!H_{base} \cdot {}^{base}\!H_{cal}
@@ -677,7 +677,7 @@ Either a new calibration point is introduced:
     \item The robot can call the Add calibration point request.[2]
 \end{enumerate}
 
- A scan acquisition is initiated, and the calibration tool (ball/pattern) is detected upon the addition of a new calibration point.  A flash message alerting the user to the successful outcome appears if the detection is successful.  A permanent error notice that explains the reason and how to fix the mistake will appear if the calibration point was not inserted.[2]
+ The scan acquisition is initiated, and the calibration tool (ball/pattern) is detected with the addition of a new calibration point.  A flash message alerting the user to the successful outcome appears if the detection is successful.  A permanent error notice that explains the reason and how to fix the mistake will appear if the calibration point is not inserted [2].
 
 \begin{figure}[h]
     \centering
@@ -686,7 +686,7 @@ Either a new calibration point is introduced:
     \label{fig1.Photoneo Cmaera}
 \end{figure} 
 
-Three calibration sites are needed for both the hand-eye and extrinsic calibration. Once the necessary number of calibration points has been added, the resulting calibration matrix and calibration accuracy information are only available.[2]
+Three calibration sites are needed for both the hand-eye and extrinsic calibration. Once the necessary number of calibration points has been added, the resulting calibration matrix and the calibration accuracy information are only available [2].
  
  Position of 3D sensors and point clouds
  The model of the 3D sensor of the currently calibrated vision system begins to reflect the pose of the real 3D sensor when the 4th point is added during the extrinsic calibration and the Lth point is added during the hand-eye calibration.  The point cloud is shown simultaneously.\\
@@ -713,7 +713,7 @@ Three calibration sites are needed for both the hand-eye and extrinsic calibrati
 \caption{Calibration Results}
 \end{table}
 
- The total calibration accuracy score, reported in millimeters, is a measure of calibration quality.  Aim for the lowest possible score at all times.  Numerous elements, including the size of the robotic arm, the quality of the calibration ball, scanning parameters, lighting circumstances, and the 3D sensor, all have an impact on the value.  It is OK to have an accuracy value of a few millimeters. The calibration accuracy value is used to confirm the quality of the calibration.
+ The total calibration accuracy score, reported in millimeters, is a measure of calibration quality.  Attempt to score the lowest possible score at all times.  Numerous elements, including the robotic arm size, the quality of the calibration ball, scanning parameters, lighting circumstances, and the 3D sensor, all have an impact on the value.  It is OK to have an accuracy value of a few millimeters. The calibration accuracy value is used to confirm the quality of the calibration.
 
  Additionally, by assessing the location of the 3D sensor and the point cloud in the picture, the roughly accurate result (without accounting for precision) may be verified.
  The scene's origin is found in the coordinate frame of the robotic controller that was used for the calibration process.  That usually refers to the robot base's origin.  Then, the relative positions of the actual 3D sensor and the robot base in reality should be comparable to or identical to those of the model of the 3D sensor and the scene origin.
@@ -857,7 +857,7 @@ This method can also be used to get the Conveyor belt calibrated. The steps incl
     \item \textbf{Third step:} While triggering the camera in the first and final position,n we also try to capture the timestamps of the camera, which calculates the time taken by the camera to trigger.[2]
     \item \textbf{Fourth step:} In this step, we need to calculate the change in the position for the X, Y, and Y, respectively, which includes ($\Delta X$, $\Delta Y$, and $\Delta Z$ ). In addition to that, we need to get the change in time also  ($\Delta t$).[2]
     \item \textbf{Fifth step:} In this step, we need to find the custom velocity by dividing the change in the position by the change in time.[2]
-    \item \textbf{Sixth step:} Finally, we need to mutiply the custom velocity with the time and changes in postion along the X position, which will help in getting change in the position as linear motion and transfered to the robotic controller that helps the robot to pick the itmes from the conveyor belt.[2]
+    \item \textbf{Sixth step:} Finally, we need to multiply the custom velocity with the time and changes in postion along the X position, which will help in getting change in the position as linear motion and transfered to the robotic controller that helps the robot to pick the itmes from the conveyor belt.[2]
 \end{enumerate}
 
 \chapter{\section{\mbox{Inverse Kinematics }}{{\normalfont\fontsize{14}{16}\bfseries}}
