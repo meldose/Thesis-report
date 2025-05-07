@@ -721,7 +721,8 @@ Three calibration sites are needed for both the hand-eye and extrinsic calibrati
 
  Additionally, by assessing the location of the 3D sensor and the point cloud in the picture, the roughly accurate result (without accounting for precision) may be verified.
  The scene's origin is found in the coordinate frame of the robotic controller that was used for the calibration process.  That usually refers to the robot base's origin.  Then, the relative positions of the actual 3D sensor and the robot base in reality should be comparable to or identical to those of the model of the 3D sensor and the scene origin.
-
+ 
+\newpage
 \subsubsection{Calibration of Conveyor Belt}.
 
 The conveyor belt calibration can be done as follows:\\
@@ -789,7 +790,7 @@ Calibration of the marker pattern from the camera to the conveyor belt, which is
     \item Use PhoXi Control's marker pattern to save calibration. We can use this setting as a custom scanning profile in VS Space by adding a triggering item for the sensor at the marker pattern export photo's origin.[21]
     \item Robot to conveyor belt: The robot moves the conveyor belt from a shared origin, but the marker pattern stays in place according to the conveyor belt. This allows the robot to reach the marker pattern, calibrate the custom coordinate space in the robot track, and save the "calibration" encoder value, which synchronizes the robot and conveyor.[21]\\
 \end{enumerate}
-\newpage
+
 \subsection{Conditions for Conveyor Belt:}
 While setting up the conveyor belt with a Vision Camera, we need to follow certain conditions:
 
