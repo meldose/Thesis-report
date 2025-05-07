@@ -323,18 +323,18 @@ The Parallel Structured Light's main advantages are:
  \item Active rejection of ambient light through interreflection suppression[15]
 \item Several devices using the same space at the same time[15]\\
 
-A control unit that operates in tandem with the projection is in charge of these groups. The coded patterns are inserted into the groups rather than changing the projection itself. The sensor may generate over 20 distinct virtual representations of the scene illuminated by the coded patterns injected at the end of the frame. The universal method may be modified on the fly to accommodate various materials and light sources by using any type of pattern typically used for sequential structured light.\\
+A control unit that operates in tandem with the projection is in charge of these groups. The coded patterns are inserted into the groups rather than changing the projection itself. The sensor may generate over 20 distinct virtual representations of the scene illuminated by the coded patterns injected at the end of the frame. The universal method may be modified on the fly to accommodate various materials and light sources by using any type of pattern typically used for sequential structured light.[15]\\
 
-After undergoing embedded processing, these virtual images are sent via gigabit Ethernet to a client's PC.  Three types of outputs are provided by the sensor:
+After undergoing embedded processing, these virtual images are sent via gigabit Ethernet to a client's PC.  Three types of outputs are provided by the sensor:[15]
 \begin{enumerate}
-    \item Point Cloud: 32 bits per channel  XYZ
-    \item 32 bits per channel is the normal map.  XYZ
-    \item Texture: Grayscale, 10/12 bits
+    \item Point Cloud: 32 bits per channel  XYZ [15]
+    \item 32 bits per channel is the normal map.  XYZ [15]
+    \item Texture: Grayscale, 10/12 bits [15]
 \end{enumerate}
 
-The sensor produces outputs with a resolution of 1068 x 800 when in "one frame" camera mode.  Approximately 500k individual measurements were used to interpolate these positions.  At a distance of one meter, the usual z-noise standard deviation is less than 0.5 mm (key advantage 1).  Every photon contributes to the 3D measurement in the best possible way thanks to the pixel design.  With sub-pixel accuracy coding (high z-precision) and an efficiency of only 4.5 pixels per 3D measurement, the technology outperforms its competitors and provides the highest XYZ resolution (important benefit 2).\\
+The sensor produces outputs with a resolution of 1068 x 800 when in "one frame" camera mode.  Approximately 500k individual measurements were used to interpolate these positions.  At a distance of one meter, the usual z-noise standard deviation is less than 0.5 mm (key advantage 1).  Every photon contributes to the 3D measurement in the best possible way thanks to the pixel design.  With sub-pixel accuracy coding (high z-precision) and an efficiency of only 4.5 pixels per 3D measurement, the technology outperforms its competitors and provides the highest XYZ resolution (important benefit 2).[15]\\
 
-The alternative operating mode is a "scanner mode" that is intended for still images.  The sensor provides 1602 × 1200 individual measurements as its raw sensoric output in this mode.  This is recorded in three consecutive frames. A laser that has been deflected by a mirror illuminates the scene.  The projection's 10 µs per pixel exposure may guarantee constant, motion-blur-free data (key benefit 4).\\
+The alternative operating mode is a "scanner mode" that is intended for still images.  The sensor provides 1602 × 1200 individual measurements as its raw sensoric output in this mode.  This is recorded in three consecutive frames. A laser that has been deflected by a mirror illuminates the scene.  The projection's 10 µs per pixel exposure may guarantee constant, motion-blur-free data (key benefit 4).[15]\\
 
 
 \subsubsection{Vision Controller}\\
