@@ -618,7 +618,7 @@ This kind of calibration is employed in configurations where the 3D sensor is fi
     \caption{Calibration for the camera concerning the Robot frame}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-Finding a camera's intrinsic matrix, extrinsic matrix, and distortion coefficients is the aim of camera calibration. The relationship between the camera frame and the chessboard frame is described by the extrinsic matrix, whereas the relationship between the picture plane and the camera frame is described by the intrinsic matrix. Hand-eye calibration aims to establish the transformation relationship between the cameras and the robotic arm.  The location of an object in the camera frame can be converted into its location in the robot base frame once the transformation connection has been established. The robotic arm will then be able to locate the object and pick it up. Finding the transformation matrix between the robot base and the camera (base H cam) is the aim of an eye-to-hand calibration.\\
+Finding a camera's intrinsic matrix, extrinsic matrix, and distortion coefficients is the aim of camera calibration. The relationship between the camera frame and the chessboard frame is described by the extrinsic matrix, whereas the relationship between the picture plane and the camera frame is described by the intrinsic matrix. Hand-eye calibration aims to establish the transformation relationship between the cameras and the robotic arm.  The location of an object in the camera frame can be converted into its location in the robot base frame once the transformation connection has been established. The robotic arm will then be able to locate the object and pick it up. Finding the transformation matrix between the robot base and the camera (base H cam) is the aim of an eye-to-hand calibration.[3]\\
 
 \begin{equation}
 {}^{cam}\!H_{cal} = {}^{cam}\!H_{base} \cdot \left( {}^{base}\!H_{tcp} \cdot {}^{tcp}\!H_{cal} \right) = {}^{cam}\!H_{base} \cdot {}^{base}\!H_{cal}
@@ -626,7 +626,7 @@ Finding a camera's intrinsic matrix, extrinsic matrix, and distortion coefficien
 
 
 The transformation matrix in the above equation that must be computed for the eye-to-hand calibration is cam H base.  Cam H cal, which can be computed using either 3D recognition of the calibration rig or camera calibration (extrinsic matrix), is the transformation matrix from the calibration rig frame to the camera frame.  Forward kinematics can be used to calculate base H cal, the transformation matrix from the calibration rig frame to the robot base frame.
-\\ The calibration matrix will become invalid, and the entire calibration process will need to be restarted if there is a change in the relative position between the 3D sensor and the robot after the calibration. In other words, after the system has been calibrated, the 3D sensor cannot be changed concerning the robot.\\
+\\ The calibration matrix will become invalid, and the entire calibration process will need to be restarted if there is a change in the relative position between the 3D sensor and the robot after the calibration. In other words, after the system has been calibrated, the 3D sensor cannot be changed concerning the robot.[3]\\
 
 
 \begin{figure}[h]
@@ -636,7 +636,7 @@ The transformation matrix in the above equation that must be computed for the ey
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 
-The calibration matrix specifies the transformation straight to the robot base coordinate system because the 3D sensor is fixed. With this configuration, the robot's mobility is unrestricted, and it doesn't need to halt during the scan acquisition, unlike with the hand-eye approach.
+The calibration matrix specifies the transformation straight to the robot base coordinate system because the 3D sensor is fixed. With this configuration, the robot's mobility is unrestricted, and it doesn't need to halt during the scan acquisition, unlike with the hand-eye approach.[2]
 
 
 \subsubsection{Calibration Ball}\\\\
@@ -1395,13 +1395,14 @@ The web interface shows the image of the object being detected; initially, we lo
 \newpage
  The above figure represents the web interface that includes the camera triggering the object placed in the workspace. The green section represents the area for the workspace, and the red section is the object to be picked up by the Robot. Using a TCP/IP client request connection in which the robot and camera connections are being established. For setting up the connection, the robotic controller and camera IP address (subnet) are made into the same, which helps in communication through a web interface.
 \newpage
- The below figure shows the volume/area in which the Photoneo Camera is possible to scan the items and get the object poses. The top view shows the maximum FOV where the camera can reach the object to get the object coordinates, which includes 15m.\\
 \begin{figure}[h]
     \centering
     \includegraphics[width=8cm]{Thesis-report/Figures/scanning volume.png} 
     \caption{Scanning Volume [18]}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
+ The above figure shows the volume/area in which the Photoneo Camera is possible to scan the items and get the object poses. The top view shows the maximum FOV where the camera can reach the object to get the object coordinates, which includes 15m.\\
+
 \newpage
 \chapter{\section{\mbox{Results and Discussions }}{{\normalfont\fontsize{14}{16}\bfseries}}
 The below figure shows the results that is obtained while picking the items on a moving conveyor belt speed (m/s) concerning the Robot speed.\\
