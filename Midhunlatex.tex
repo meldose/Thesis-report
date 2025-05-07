@@ -621,10 +621,9 @@ This kind of calibration is employed in configurations where the 3D sensor is fi
 \end{figure}
 Finding a camera's intrinsic matrix, extrinsic matrix, and distortion coefficients is the aim of camera calibration. The relationship between the camera frame and the chessboard frame is described by the extrinsic matrix, whereas the relationship between the picture plane and the camera frame is described by the intrinsic matrix. Hand-eye calibration aims to establish the transformation relationship between the cameras and the robotic arm.  The location of an object in the camera frame can be converted into its location in the robot base frame once the transformation connection has been established. The robotic arm will then be able to locate the object and pick it up. Finding the transformation matrix between the robot base and the camera (base H cam) is the aim of an eye-to-hand calibration.[3]\\
 
-\begin{equation}
-{}^{cam}\!H_{cal} = {}^{cam}\!H_{base} \cdot \left( {}^{base}\!H_{tcp} \cdot {}^{tcp}\!H_{cal} \right) = {}^{cam}\!H_{base} \cdot {}^{base}\!H_{cal}
-\end{equation}
-
+ \[
+{}^{cam}\!H_{cal} = {}^{cam}\!H_{base} \cdot \left( {}^{base}\!H_{tcp} \cdot {}^{tcp}\!H_{cal} \right) = {}^{cam}\!H_{base} \cdot {}^{base}\!H_{cal} [3]
+\]
 
 The transformation matrix in the above equation that must be computed for the eye-to-hand calibration is cam H base.  Cam H cal, which can be computed using either 3D recognition of the calibration rig or camera calibration (extrinsic matrix), is the transformation matrix from the calibration rig frame to the camera frame.  Forward kinematics can be used to calculate base H cal, the transformation matrix from the calibration rig frame to the robot base frame.
 \\ The calibration matrix will become invalid, and the entire calibration process will need to be restarted if there is a change in the relative position between the 3D sensor and the robot after the calibration. In other words, after the system has been calibrated, the 3D sensor cannot be changed concerning the robot.[3]\\
@@ -738,20 +737,20 @@ The above figure consists of the inputs and outputs, where the inputs include:\
 \begin{itemize}
 \item \textbf{Scan request}\\
 The Scan request consists of a  Python code that is used to send a request to the camera, which is then taken by the vision controller or the vision control box that helps trigger the camera.
- \item \textbf{Trigger scan}\\
+ \item \textbf{Trigger scan}[21]\\
  The trigger scan can be of the SW or HW method, where the output is hardware or software.
 
 \item \textbf{Trigger }\\
-Initially, the scan request is given to the Vision controller, creating a trigger scan that helps the camera trigger. 
+Initially, the scan request is given to the Vision controller, creating a trigger scan that helps the camera trigger.[21] 
 The output section includes the following:
 \end{itemize}
 \begin{itemize}
 \item \textbf{Coordinates of localized object}\\
-The coordinates of the localized object consist of the object [X, Y, Z, Rx, Ry, Rz, and W], where X, Y and Z include the coordinates of the object and [Rx, Ry, Rz, and W] include the quaternion values (rotation values), which are identified by the vision camera.
+The coordinates of the localized object consist of the object [X, Y, Z, Rx, Ry, Rz, and W], where X, Y and Z include the coordinates of the object and [Rx, Ry, Rz, and W] include the quaternion values (rotation values), which are identified by the vision camera.[21]
 \item \textbf{ Scan}\\
-Once the trigger commands reach the camera, the scan will start to take place and take the objects as mentioned above.
+Once the trigger commands reach the camera, the scan will start to take place and take the objects as mentioned above.[21]
 \item \textbf{Final position} \\ 
-The final position is considered the location where the object coordinates, along with the calibration offset and traveled distance.
+The final position is considered the location where the object coordinates, along with the calibration offset and traveled distance.[21]
 \end{itemize}
 
 
@@ -770,10 +769,10 @@ The distance between the marker pattern positions for the camera calibration and
 \begin{figure}[h]
     \centering
     \includegraphics[width=16cm]{Thesis-report/Figures/conveyor_belt.jpg} 
-    \caption{Coveyor Belt setup}
+    \caption{Coveyor Belt setup [21]}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-In the below figure, we can see the conveyor belt having the calibration board that is used for the calibration, which determines the X, Y, and Z coordinates of the object along with the conveyor belt, where MSD means marker space displacement, TD means travel distance, and TSc means trigger to scan completion in meters where the target position is the T[X, Y, Z, Rx, Ry, Rz], which represents the quaternion value of the object that needs to be converted into Euler values that are used to move the robot to that specified location \\
+In the below figure, we can see the conveyor belt having the calibration board that is used for the calibration, which determines the X, Y, and Z coordinates of the object along with the conveyor belt, where MSD means marker space displacement, TD means travel distance, and TSc means trigger to scan completion in meters where the target position is the T[X, Y, Z, Rx, Ry, Rz], which represents the quaternion value of the object that needs to be converted into Euler values that are used to move the robot to that specified location [21] \\
 
 
 In the below figure, the number represents the coordinates of the object after the scanning of the object is done after the trigger. Once these quaternion values are attained, these values are then sent to the robotic controller for the robot to move to the required target position.\\\\
@@ -786,9 +785,9 @@ In the below figure, the number represents the coordinates of the object after t
 \newpage
 Calibration of the marker pattern from the camera to the conveyor belt, which is the common origin:
 \begin{enumerate}
-    \item Attach the appropriate calibration pattern to the conveyor belt. 
-    \item Use PhoXi Control's marker pattern to save calibration. We can use this setting as a custom scanning profile in VS Space by adding a triggering item for the sensor at the marker pattern export photo's origin.
-    \item Robot to conveyor belt: The robot moves the conveyor belt from a shared origin, but the marker pattern stays in place according to the conveyor belt. This allows the robot to reach the marker pattern, calibrate the custom coordinate space in the robot track, and save the "calibration" encoder value, which synchronizes the robot and conveyor.\\
+    \item Attach the appropriate calibration pattern to the conveyor belt. [21]
+    \item Use PhoXi Control's marker pattern to save calibration. We can use this setting as a custom scanning profile in VS Space by adding a triggering item for the sensor at the marker pattern export photo's origin.[21]
+    \item Robot to conveyor belt: The robot moves the conveyor belt from a shared origin, but the marker pattern stays in place according to the conveyor belt. This allows the robot to reach the marker pattern, calibrate the custom coordinate space in the robot track, and save the "calibration" encoder value, which synchronizes the robot and conveyor.[21]\\
 \end{enumerate}
 \newpage
 \subsection{Conditions for Conveyor Belt:}
@@ -1293,17 +1292,17 @@ The figure above shows the STL file of the trapezoid, which is used to pick up t
 \newpage
 \subsubsection{Conveyor Belt}
 \begin{flushleft}
-The conveyor belt is the main belt where we have to place the object, thereby putting the object into dynamic mode.[21]\\
+The conveyor belt is the main belt where we have to place the object, thereby putting the object into dynamic mode.[22]\\
 
 The conveyor belt specification includes:\\
 \begin{enumerate}
-    \item The item model has Belt size: 59x7.8 in/1498.6x198 mm [21]
-    \item Table Width: 9.9 in/ 252 mm [21]
-    \item Load Capacity Limit: 82.67 lbs/37.5 kg [21]
-    \item Material: 201 Stainless Steel [21]
-    \item Product Weight: 40.79/18.5 kg [21]
-    \item Conveyor belt speed: Bi-directional Variable speed, 28 m/min [21]
-    \item Product Size: 58.86 x 14.17 x 35.91 in/1495 x 360 x 912 mm [21]
+    \item The item model has Belt size: 59x7.8 in/1498.6x198 mm [22]
+    \item Table Width: 9.9 in/ 252 mm [22]
+    \item Load Capacity Limit: 82.67 lbs/37.5 kg [22]
+    \item Material: 201 Stainless Steel [22]
+    \item Product Weight: 40.79/18.5 kg [22]
+    \item Conveyor belt speed: Bi-directional Variable speed, 28 m/min [22]
+    \item Product Size: 58.86 x 14.17 x 35.91 in/1495 x 360 x 912 mm [22]
 \end{enumerate}
 
 \begin{figure}[h]
@@ -1324,18 +1323,18 @@ The conveyor belt specification includes:\\
 The following figure shows the parts, which include: 
 
 \begin{flushleft}
-1. \textbf{Conveyor Belt:} The conveyor belt is the main surface that moves materials or products from one point to another. It always runs when the motor is on and effectively carries items of various shapes and sizes.[21]\\
+1. \textbf{Conveyor Belt:} The conveyor belt is the main surface that moves materials or products from one point to another. It always runs when the motor is on and effectively carries items of various shapes and sizes.[22]\\
 \begin{flushleft}
 
 \begin{flushleft}
 2.	\textbf {Adjustment Lever:}
-Function: The conveyor system can be adjusted thanks to this lever. It can be used to adjust the height, alignment, or tension of the belt to guarantee smooth operation and to suit various materials.[21]
+Function: The conveyor system can be adjusted thanks to this lever. It can be used to adjust the height, alignment, or tension of the belt to guarantee smooth operation and to suit various materials.[22]
 \begin{flushleft}
 3.	\textbf {Guardrail:}
-Function: To stop goods from slipping off during transportation, guardrails are positioned along the conveyor belt's sides. It aids in safely guiding objects along the belt, particularly when working with slick or irregular objects.[21]\\
+Function: To stop goods from slipping off during transportation, guardrails are positioned along the conveyor belt's sides. It aids in safely guiding objects along the belt, particularly when working with slick or irregular objects.[22]\\
 
 4.	\textbf {Motor:}
-Function: The conveyor belt can move because of the motor's power. It drives the belt directly or via a gearbox and pulleys by converting electrical energy into mechanical energy.[21]\\
+Function: The conveyor belt can move because of the motor's power. It drives the belt directly or via a gearbox and pulleys by converting electrical energy into mechanical energy.[22]\\
 \begin{figure}[h]
     \centering
     \includegraphics[width=cm]{Thesis-report/Figures/cv2belt.jpg}
@@ -1344,10 +1343,10 @@ Function: The conveyor belt can move because of the motor's power. It drives the
 \end{figure}
 
 5.	\textbf {Control Panel:}
-Function: Operators can oversee the conveyor's operation from the control panel. Switches, speed controls, emergency stop buttons, and other controls to modify the conveyor's direction, speed, and mode of operation may be included.[21]\\
+Function: Operators can oversee the conveyor's operation from the control panel. Switches, speed controls, emergency stop buttons, and other controls to modify the conveyor's direction, speed, and mode of operation may be included.[22]\\
 
 6.	\textbf{Rubber Feet:}
-Function: During operation, the rubber feet help absorb vibrations and stabilise the conveyor system. They also shield the floor from scratches and stop the conveyor from slipping on smooth surfaces.[21]\\
+Function: During operation, the rubber feet help absorb vibrations and stabilise the conveyor system. They also shield the floor from scratches and stop the conveyor from slipping on smooth surfaces.[22]\\
 
 \begin{figure}[h]
     \centering
@@ -1531,9 +1530,12 @@ Germany, 2018.
 Camera Using a Hemispherical Calibration Board,2023 9th International Conference on Mechatronics and Robotics Engineering,
 \bibitem{ref17}Miguel Fernandez, Scan to 3D Model and parametric data system implementation, Turku University of Applied Sciences, Bachelor of Information and Communications Technology, 2021.
 \bibitem{ref18} Motion Cam  -3D Color Map Datasheet
-\bibitem{ref19} Robot Manipulation through Inverse Kinematics, Abdullah Aamir Hayat,Abdullah Aamir Hayat,Abdullah Aamir Hayat, Indian Institute of Technology Delhi.
+\bibitem{ref19} Robot Manipulation through Inverse Kinematics, Abdullah Aamir Hayat,Abdullah Aamir Hayat, Abdullah Aamir Hayat, Indian Institute of Technology Delhi.
 \bibitem{ref20} Quaternions, Interpolation and Animation,Erik B Dam, Martin Koch , Martin lillholm, Department of Computer Science University of Copenhagen, Denmark, 1998.
-\bibitem{ref21} https://eur.vevor.com/belt-conveyor-c_10439 srsltid=AfmBOoqNYgY4dkBQihCa9ItoNIpgXAC6e39Atuqhn0fdtybn8S4CvWio
+\bibitem{ref21} Locator studio setup, Photoneo
+
+\bibitem{ref22} https://eur.vevor.com/belt-conveyor-c_10439 srsltid=AfmBOoqNYgY4dkBQihCa9ItoNIpgXAC6e39Atuqhn0fdtybn8S4CvWio
+
 
 \end{thebibliography}
 
