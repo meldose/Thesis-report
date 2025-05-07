@@ -1259,7 +1259,7 @@ Euler angles are usually implemented using rotation matrices. There is an x rota
 The second rotational modality uses quaternions and is defined by Euler's theorem. Given the lack of a comprehensive overview of the field and the fact that quaternions are not nearly as well-known as transformation matrices, we will first provide a historical perspective before delving deeply into quaternion mathematics.
 \newpage
 \subsection{Object for picking}
-The objects that we have used for conveyor tracking include a trapezoid, a pipe socket, and a circular ball.
+We have used trapezoid for object picking 
 
 \begin{figure}[h]
     \centering
@@ -1285,9 +1285,10 @@ The trapezoid  is:\\
     \caption{Trapezoid object}
     \label{fig:trapezoid}
 \end{minipage} \\\\
-\end{figure}\\\\
+
 
 The figure above shows the STL file of the trapezoid, which is used to pick up the object. While loading the STL file for the object, we will get the X, Y, and Z coordinates for the object.
+
 \newpage
 \subsubsection{Conveyor Belt}
 The conveyor belt is the main belt where we have to place the object, thereby putting the object into dynamic mode.\\
@@ -1320,11 +1321,14 @@ The conveyor belt specification includes:\\
 
 The following figure shows the parts, which include: 
 
+\begin{flushleft}
 1. \textbf{Conveyor Belt:} The conveyor belt is the main surface that moves materials or products from one point to another. It always runs when the motor is switched on and carries the items of various shapes and sizes effectively.\\
+\begin{flushleft}
 
+\begin{flushleft}
 2.	\textbf {Adjustment Lever:}
 Function: The conveyor system can be adjusted thanks to this lever. It can be used to adjust the height, alignment, or tension of the belt to guarantee smooth operation and to suit various materials.
-
+\begin{flushleft}
 3.	\textbf {Guardrail:}
 Function: To stop goods from slipping off during transportation, guardrails are positioned along the conveyor belt's sides. It aids in safely guiding objects along the belt, particularly when working with slick or irregular objects.\\
 
