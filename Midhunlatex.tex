@@ -969,11 +969,10 @@ The change in the end-effector's pose that corresponds to the change in joint an
 \[
 J =
 \begin{bmatrix}
-\mathbf{0} & \mathbf{e}_1 \times \mathbf{a}_1 & \mathbf{e}_1 \\
-\mathbf{e}_6 & \mathbf{e}_6 \times \mathbf{a}_6 & \mathbf{e}_6
+0 & e_1 x a_1 & e_1 \\
+e_6 & e_6 x a_6 & e_6 \\
 \end{bmatrix}
 \]
-
 
 where a1 is the joint axis direction of joint 1 and e is the vector. Likewise, direction and is the joint axis a2, e is the EE's location from joint 2, and so forth. The differential rotation and translation vectors that correspond to the differential change in the joint rates make up each column of the Jacobian. The Jacobian inverse provides the joint variation for the desired increment at the kth point pose as follows:[19]\\
 \[
