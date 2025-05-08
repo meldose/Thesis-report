@@ -414,81 +414,100 @@ When mounting a camera for vision operation, it is best to keep it stable and as
 
 \subsection{Camera Examples under different Settings:}\\
 The below figures show the examples for the object taken under the camera settings:\\
+\subsection{Camera Examples Under Different Settings}
 
+The following figures illustrate examples of the same object captured under various camera settings:
 
-\textbf{1.Texture:}
-The texture helps in ensuring the details of the object look natural. Moreover, it helps in being visually understandable.
-    \begin{figure}[h]
+\textbf{1. Texture:}  
+The texture image helps ensure that object details appear natural and are visually understandable.
+
+\begin{figure}[h]
     \centering
     \includegraphics[width=6cm]{Thesis-report/Figures/new_Texture.png}
     \caption{Texture}
-    \label{fig1.Photoneo Cmaera}
-\end{figure}\\
-\textbf{2.EventMap:}
-The Event Map helps in capturing objects in fast motion without any blur.It helps in capturing the full frames at a fixed rate.
-    \begin{figure}[h]
+    \label{fig:texture}
+\end{figure}
+
+\textbf{2. Event Map:}  
+The Event Map captures fast-moving objects without motion blur and ensures full frames at a fixed rate.
+
+\begin{figure}[h]
     \centering
     \includegraphics[width=6cm]{Thesis-report/Figures/new_EventMap.png}
-    \caption{EventMap}
-    \label{fig1.Photoneo Cmaera}
-\end{figure}\\
+    \caption{Event Map}
+    \label{fig:eventmap}
+\end{figure}
 
-\textbf{3.DepthMap Grayscale}
-The DepthMap grayscale is needed as it explains in storing the complex 3D coordinates, where it consists of Brighter pixels and Darker pixels.
-    \begin{figure}[h]
+\textbf{3. Depth Map (Grayscale):}  
+The grayscale depth map stores complex 3D coordinates, where brighter pixels represent closer distances and darker pixels represent farther ones.
+
+\begin{figure}[h]
     \centering
     \includegraphics[width=6cm]{Thesis-report/Figures/new_DepthMap.png}
-    \caption{DepthMap Grayscale}
-    \label{fig1.Photoneo Cmaera}
-\end{figure}\\
-\textbf{4.Depth Hue:}
-The Depth Hue is needed as it is a more intuitive and visually distinct way to represent the depth as compared to the grayscale depth map.
-    \begin{figure}[h]
+    \caption{Depth Map (Grayscale)}
+    \label{fig:depthmap_gray}
+\end{figure}
+
+\textbf{4. Depth Hue:}  
+Depth Hue provides a more intuitive and visually distinct way to represent depth compared to grayscale.
+
+\begin{figure}[h]
     \centering
     \includegraphics[width=6cm]{Thesis-report/Figures/new_Depth_Hue.png}
     \caption{Depth Hue}
-    \label{fig1.Photoneo Camera}
-\end{figure}\\
-\textbf{5.Confidence Map:}
-It is needed to indicate the reliability of depth or image data. It helps in filtering the Noisy and unreliable data.
-    \begin{figure}[h]
+    \label{fig:depth_hue}
+\end{figure}
+
+\textbf{5. Confidence Map:}  
+The confidence map indicates the reliability of the captured depth or image data, helping to filter out noisy and unreliable regions.
+
+\begin{figure}[h]
     \centering
     \includegraphics[width=6cm]{Thesis-report/Figures/new_ConfidenceMap.png}
     \caption{Confidence Map}
-    \label{fig1.Photoneo Cmaera}
-\end{figure}\\
-    \begin{figure}[h]
+    \label{fig:confidence_map}
+\end{figure}
+
+\textbf{6. Normals:}  
+Surface normals are essential for realistic rendering and understanding object orientation. They describe how surfaces interact with light and are crucial in graphics and computer vision.
+
+\begin{figure}[h]
     \centering
     \includegraphics[width=6cm]{Thesis-report/Figures/new_Normals.png}
     \caption{Normals}
-    \label{fig1.Photoneo Cmaera}
-\end{figure}\\
-\textbf{6.Normals:}
-The normals are defined, and how they interact with the light and other physical effects. They are very much needed for realistic rendering, depth understanding in computer vision, and graphics.
+    \label{fig:normals}
+\end{figure}
 
-\textbf{7.White}
-    \begin{figure}[h]
+\textbf{7. White Illumination:}  
+White light illumination is used to uniformly light the object for color and texture accuracy.
+
+\begin{figure}[h]
     \centering
     \includegraphics[width=6cm]{Thesis-report/Figures/new_white.png}
-    \caption{White}
-    \label{fig1.Photoneo Cmaera}
-\end{figure}\\
-\textbf{8.Color Image:}
-It provides the visual information, making object recognition, segmentation, and realistic rendering in computer vision, image generation, etc.
-    \begin{figure}[h]
-    \centering
-    \includegraphics[width=6cm]{Thesis-report/Figures/new_white_IMG_ColorCameraImage_8Bit.png}
-    \caption{Color Image}
-    \label{fig1.Photoneo Cmaera}
-\end{figure}\\
+    \caption{White Illumination}
+    \label{fig:white}
+\end{figure}
 
+\textbf{8. Color Image:}  
+Color images provide rich visual information necessary for object recognition, segmentation, and rendering in computer vision applications.
+
+
+\newpage
 \subsection{Object Identification}\\
 \begin{figure}[h]
     \centering
     \includegraphics[width=8cm]{Thesis-report/Figures/Trapezoid web.jpeg}
-    \caption{Object Identification in Web interface}
-    \label{fig1.Photoneo Cmaera}
+    \caption{Object Identification in Web Interface}
+    \label{fig:web_interface}
 \end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=6cm]{Thesis-report/Figures/new_white_IMG_ColorCameraImage_8Bit.png}
+    \caption{Color Image}
+    \label{fig:color_image}
+\end{figure}
+
 
 The STL file is uploaded to the Web interface, thereby helping the camera to identify the object in the moving conveyor belt tracking system. Once the object is detected, the camera helps in getting the object's position and its quaternion values.
 
@@ -1003,7 +1022,7 @@ Since the Jacobian matrix is square and invertible, it is utilized in this case 
 We must first gain a fundamental understanding of the Robot Coordinate System before delving deeper into the tracking system's operation. Generally speaking, robotic systems are Cartesian coordinate systems with three axes: the X, Y, and Z axes. Additionally, there is the Rotation Coordinate System, which describes the robot's degree of rotational motion and joint function. However, as this format is more widely used in the business and simpler to use and comprehend, we shall solely investigate the Cartesian coordinate system. For getting the robot coordinates, we should be  aware of the following terms used in the system:\\\\
  \textbf{System of World Coordinates (WCS):} \\
 A coordinate system is often specified by the user or developer, but it can exist anywhere in the world. As long as WCS makes it simpler to explain the locations of other things or items in that specific area, you can put it anywhere in your room or factory. Origin placement is typically done at the edge of a group or a room's corner.\\\\
-\newpage
+\newpa
  \textbf{Machine Coordinate System (MCS):} \\
 Robot Base Frame Coordinate System is another name for Machine Coordinate System (MCS). All other coordinate systems will be compared to this most significant coordinate system. Where developers and programmers would implement their code based on this coordinate system is equally crucial. MCS is typically positioned near the robot's base for the point of origin, though it's important to remember that different robot types have different bases.\\\\
 
@@ -1243,7 +1262,7 @@ When we pass the object through the conveyor belt, there is a change in position
 where X is the final position of the object\\
 v is the velocity / calibrated custom velocity in m/s\\
 t is a change in time \\
-
+\newpage
 \subsection{Coordinate Transformation:}
 Many applications in manufacturing, construction, and vehicle automation and autonomy depend on the availability of 3D information.  Time-of-flight (TOF) sensors are getting cheaper and more accessible. They offer in-depth information at every pixel in addition to intensity.
 The TOF sensor provides spherically-coordinated range data of the environment within its field of view.  As described in the following section, the spherical coordinates are transformed into Cartesian coordinates, with the origin of the coordinate system located at the camera's center.
