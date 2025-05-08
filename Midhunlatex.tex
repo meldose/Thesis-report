@@ -748,6 +748,7 @@ The output section includes the following:
 \begin{itemize}
 \item \textbf{Coordinates of localized object}\\
 The coordinates of the localized object consist of the object [X, Y, Z, Rx, Ry, Rz, and W], where X, Y and Z include the coordinates of the object and [Rx, Ry, Rz, and W] include the quaternion values (rotation values), which are identified by the vision camera.[21]
+
 \item \textbf{ Scan}\\
 Once the trigger commands reach the camera, the scan will start to take place and take the objects as mentioned above.[21]
 \item \textbf{Final position} \\ 
@@ -760,7 +761,7 @@ The final position is considered the location where the object coordinates, alon
 Coordinates from localization in marker space (calculate the transformation matrix from camera space to marker space to calibrate the marker pattern)
 
 Possible triggers for the distance traveled from acquisition to the beginning of picking in conveyor tracking mode include:\\\\
-The scan request function pho_wait_for_req_completion() in SW-HW output of the trigger\\\\
+The scan request function pho wait for req completion() in SW-HW output of the trigger\\\\
 
 \textbf{Calibration Distance:}
 The distance between the marker pattern positions for the camera calibration and custom workspace calibration (the linear transformation between the camera and the custom WS origin) is known as the calibration distance.\\
@@ -975,6 +976,7 @@ e_6 & e_6 x a_6 & e_6 \\
 \]
 
 where a1 is the joint axis direction of joint 1 and e is the vector. Likewise, direction and is the joint axis a2, e is the EE's location from joint 2, and so forth. The differential rotation and translation vectors that correspond to the differential change in the joint rates make up each column of the Jacobian. The Jacobian inverse provides the joint variation for the desired increment at the kth point pose as follows:[19]\\
+
 \[
 \Delta \theta_k = J_k^{-1} \Delta x_e [19]
 \]
@@ -982,17 +984,18 @@ where Xe represents the required increase in the EE's posture. The effective met
 
 \[
 \theta_k = \theta_{k-1} + J_k \Delta x_e [19]
-\]
-\[
 
-In general, \theta_k = \theta_{k-1} + J^{\dagger} \Delta x + (I - J^{\dagger} J) \Delta \phi [19]
+In general, \theta k = \theta {k-1} + J^{\dagger} \Delta x + (I - J^{\dagger} J) \Delta \phi [19]
 \]
 
 where \[
 J = J (JJ) [19]
 \]
- is the null space of J with phi as the objective function, and J = J (JJ) -1 is the pseudo-inverse of the matrix J. x J.[19]
+
+
+is the null space of J with phi as the objective function, and J = J (JJ) -1 is the pseudo-inverse of the matrix J. x J.[19]
 Since the Jacobian matrix is square and invertible, it is utilized in this case for the manipulator with DOF = 6. [19]\
+
 \subsection{Robot Coordinate System} 
 
 We must first gain a fundamental understanding of the Robot Coordinate System before delving deeper into the tracking system's operation. Generally speaking, robotic systems are Cartesian coordinate systems with three axes: the X, Y, and Z axes. Additionally, there is the Rotation Coordinate System, which describes the robot's degree of rotational motion and joint function. However, as this format is more widely used in the business and simpler to use and comprehend, we shall solely investigate the Cartesian coordinate system. For getting the robot coordinates, we should be  aware of the following terms used in the system:\\\\
@@ -1574,6 +1577,7 @@ Camera Using a Hemispherical Calibration Board,2023 9th International Conference
 \input{Chapters/Reference}
 \newpage
 \input{Chapters/Annex}
+
 
 
 
