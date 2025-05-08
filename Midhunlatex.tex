@@ -965,13 +965,15 @@ J
 
 The change in the end-effector's pose that corresponds to the change in joint angles θ is denoted by the word x. The recursive relationship between the angular velocity and linear velocities for a 6R manipulator yields the Jacobian J, which is a 6×6 matrix for a 6-DOF robot. It is provided as [19]\\
 
+
 \[
 J =
 \begin{bmatrix}
-1 & e_1 \times a_1 & e_1 \\
-e_6 & e_6 \times a_6 & e_6 [19]
+\mathbf{0} & \mathbf{e}_1 \times \mathbf{a}_1 & \mathbf{e}_1 \\
+\mathbf{e}_6 & \mathbf{e}_6 \times \mathbf{a}_6 & \mathbf{e}_6
 \end{bmatrix}
 \]
+
 
 where a1 is the joint axis direction of joint 1 and e is the vector. Likewise, direction and is the joint axis a2, e is the EE's location from joint 2, and so forth. The differential rotation and translation vectors that correspond to the differential change in the joint rates make up each column of the Jacobian. The Jacobian inverse provides the joint variation for the desired increment at the kth point pose as follows:[19]\\
 \[
