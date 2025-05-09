@@ -215,7 +215,7 @@ Signature of the student:
 
     \vspace{1cm}
     
-    I express my special gratitude to Sugeeth Gopinathan (Head of Software Strategy), Phuong Nguyen (Software Application Expert), Dr. Norman Kohler (Senior Robotics Engineer), Mr. Amarnath Reddy Bana (Group Lead), and Mr. Florian Schnös (ProduktManager Software) for instructing, providing information about how tasks are to be done and the flow of work, and guiding me for the thesis. In addition to that, I also thank all the members for their guidance and keen support at various stages of my thesis.
+    I express my special gratitude to Dr.Sugeeth Gopinathan (Head of Software Strategy), Dr.Phuong Nguyen (Software Application Expert), Mr. Norman Kohler (Senior Robotics Engineer), Mr. Amarnath Reddy Bana (Group Lead), and Mr. Florian Schnös (ProduktManager Software) for instructing, providing information about how tasks are to be done and the flow of work, and guiding me for the thesis. In addition to that, I also thank all the members for their guidance and keen support at various stages of my thesis.
 
     \vspace{1cm}
 
@@ -412,8 +412,7 @@ Velocity for the linear velocity in Cartesian space. First, FK is used to determ
 \subsection{Position of Camera}\\
 When mounting a camera for vision operation, it is best to keep it stable and as close to the robot's work envelope as feasible, without interfering with or restricting the movement of the robot arm. The longer the part must travel from the camera's location into the robot's reachable workspace, the more errors the encoder counts will produce, since the accuracy of conveyor tracking with vision depends on the coordinate transformation between the camera's picture-taking location and the robot's work envelope. The camera must be oriented downwards since the components are positioned on the conveyor belt's surface, and vision recognition is done on the parts' upper surface. For the camera's 25 mm lens to cover the entire visible portion of the conveyor belt, a camera fixture was constructed to hold the camera directly above the upstream sensor. The upstream sensor is also used to activate the camera to take a photo when parts are presented at this point, so the picture-taking location is placed at the top of the upstream sensor. Following their placement in fixed locations, the camera and conveyor must be calibrated using the calibration program on the robot controller to configure the camera's properties and determine how the locations of the camera and conveyor relate to the robot's world coordinate.\
 
-\subsection{Camera Examples under different Settings:}\\
-The below figures show the examples for the object taken under the camera settings:\\
+
 \subsection{Camera Examples Under Different Settings}
 
 The following figures illustrate examples of the same object captured under various camera settings:
@@ -491,8 +490,6 @@ White light illumination is used to uniformly light the object for color and tex
 \textbf{8. Color Image:}  
 Color images provide rich visual information necessary for object recognition, segmentation, and rendering in computer vision applications.
 
-
-\newpage
 \subsection{Object Identification}\\
 \begin{figure}[h]
     \centering
@@ -511,7 +508,6 @@ Color images provide rich visual information necessary for object recognition, s
 
 The STL file is uploaded to the Web interface, thereby helping the camera to identify the object in the moving conveyor belt tracking system. Once the object is detected, the camera helps in getting the object's position and its quaternion values.
 
- \newpage
 \subsection{Trajectory Planning}\\
 Using a set of predetermined points, trajectory planning aims to produce stable and fluid motion in world coordinates. A few characteristics, such as the maximum velocity, acceleration, and jerk, will be taken into account to demonstrate the continuous motion of the robot arm. The constant context of temporal movement is unique. Additionally, this function has a first derivative and a second derivative. In addition to increasing wear on the mechanism, jerky action frequently causes vibration in the robot manipulator.\\
 The fundamental path interpolation functions, such as linear and point-to-point movement, are carried out when the precondition parameters have been addressed. Interpolation, which is determined by previous factors, will produce the path segments. A self-defined function is crucial to the creation of path segments in Cartesian space. Joint command and linear command can both follow the point-to-point movement. Every joint's present condition is indicated in the joint space.\\
