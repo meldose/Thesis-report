@@ -412,97 +412,83 @@ Velocity for the linear velocity in Cartesian space. First, FK is used to determ
 \subsection{Position of Camera}\\
 When mounting a camera for vision operation, it is best to keep it stable and as close to the robot's work envelope as feasible, without interfering with or restricting the movement of the robot arm. The longer the part must travel from the camera's location into the robot's reachable workspace, the more errors the encoder counts will produce, since the accuracy of conveyor tracking with vision depends on the coordinate transformation between the camera's picture-taking location and the robot's work envelope. The camera must be oriented downwards since the components are positioned on the conveyor belt's surface, and vision recognition is done on the parts' upper surface. For the camera's 25 mm lens to cover the entire visible portion of the conveyor belt, a camera fixture was constructed to hold the camera directly above the upstream sensor. The upstream sensor is also used to activate the camera to take a photo when parts are presented at this point, so the picture-taking location is placed at the top of the upstream sensor. Following their placement in fixed locations, the camera and conveyor must be calibrated using the calibration program on the robot controller to configure the camera's properties and determine how the locations of the camera and conveyor relate to the robot's world coordinate.\
 
+\newpage
 
 \subsection{Camera Examples Under Different Settings}
 
-The following figures illustrate examples of the same object captured under various camera settings:
+The following figures illustrate examples of the same object captured under various camera settings.
 
-\textbf{1. Texture:}  
-The texture image helps ensure that object details appear natural and are visually understandable.
-
-\begin{figure}[h]
+\noindent\textbf{1. Texture:} The texture image helps ensure that object details appear natural and are visually understandable.
+\begin{figure}[H]
     \centering
     \includegraphics[width=6cm]{Thesis-report/Figures/new_Texture.png}
     \caption{Texture}
     \label{fig:texture}
 \end{figure}
 
-\textbf{2. Event Map:}  
-The Event Map captures fast-moving objects without motion blur and ensures full frames at a fixed rate.
-
-\begin{figure}[h]
+\noindent\textbf{2. Event Map:} The Event Map captures fast-moving objects without motion blur and ensures full frames at a fixed rate.
+\begin{figure}[H]
     \centering
     \includegraphics[width=6cm]{Thesis-report/Figures/new_EventMap.png}
     \caption{Event Map}
     \label{fig:eventmap}
 \end{figure}
 
-\textbf{3. Depth Map (Grayscale):}  
-The grayscale depth map stores complex 3D coordinates, where brighter pixels represent closer distances and darker pixels represent farther ones.
-
-\begin{figure}[h]
+\noindent\textbf{3. Depth Map (Grayscale):} The grayscale depth map stores complex 3D coordinates, where brighter pixels represent closer distances and darker pixels represent farther ones.
+\begin{figure}[H]
     \centering
     \includegraphics[width=6cm]{Thesis-report/Figures/new_DepthMap.png}
     \caption{Depth Map (Grayscale)}
     \label{fig:depthmap_gray}
 \end{figure}
 
-\textbf{4. Depth Hue:}  
-Depth Hue provides a more intuitive and visually distinct way to represent depth compared to grayscale.
-
-\begin{figure}[h]
+\noindent\textbf{4. Depth Hue:} Depth Hue provides a more intuitive and visually distinct way to represent depth compared to grayscale.
+\begin{figure}[H]
     \centering
     \includegraphics[width=6cm]{Thesis-report/Figures/new_Depth_Hue.png}
     \caption{Depth Hue}
     \label{fig:depth_hue}
 \end{figure}
 
-\textbf{5. Confidence Map:}  
-The confidence map indicates the reliability of the captured depth or image data, helping to filter out noisy and unreliable regions.
-
-\begin{figure}[h]
+\noindent\textbf{5. Confidence Map:} The confidence map indicates the reliability of the captured depth or image data, helping to filter out noisy and unreliable regions.
+\begin{figure}[H]
     \centering
     \includegraphics[width=6cm]{Thesis-report/Figures/new_ConfidenceMap.png}
     \caption{Confidence Map}
     \label{fig:confidence_map}
 \end{figure}
 
-\textbf{6. Normals:}  
-Surface normals are essential for realistic rendering and understanding object orientation. They describe how surfaces interact with light and are crucial in graphics and computer vision.
-
-\begin{figure}[h]
+\noindent\textbf{6. Normals:} Surface normals are essential for realistic rendering and understanding object orientation. They describe how surfaces interact with light and are crucial in graphics and computer vision.
+\begin{figure}[H]
     \centering
     \includegraphics[width=6cm]{Thesis-report/Figures/new_Normals.png}
     \caption{Normals}
     \label{fig:normals}
 \end{figure}
 
-\textbf{7. White Illumination:}  
-White light illumination is used to uniformly light the object for color and texture accuracy.
-
-\begin{figure}[h]
+\noindent\textbf{7. White Illumination:} White light illumination is used to uniformly light the object for color and texture accuracy.
+\begin{figure}[H]
     \centering
     \includegraphics[width=6cm]{Thesis-report/Figures/new_white.png}
     \caption{White Illumination}
     \label{fig:white}
 \end{figure}
 
-\textbf{8. Color Image:}  
-Color images provide rich visual information necessary for object recognition, segmentation, and rendering in computer vision applications.
+\noindent\textbf{8. Color Image:} Color images provide rich visual information necessary for object recognition, segmentation, and rendering in computer vision applications.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=6cm]{Thesis-report/Figures/new_white_IMG_ColorCameraImage_8Bit.png}
+    \caption{Color Image}
+    \label{fig:color_image}
+\end{figure}
 
+\newpage
 \subsection{Object Identification}\\
 \begin{figure}[h]
     \centering
     \includegraphics[width=8cm]{Thesis-report/Figures/Trapezoid web.jpeg}
     \caption{Object Identification in Web Interface}
     \label{fig:web_interface}
-\end{figure}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=6cm]{Thesis-report/Figures/new_white_IMG_ColorCameraImage_8Bit.png}
-    \caption{Color Image}
-    \label{fig:color_image}
 \end{figure}
 
 
@@ -527,7 +513,7 @@ In the preceding part, the picking procedure was put into practice. With some dy
 
 By calibrating the y and z axes, we may create a prospective viewpoint to enhance object location after obtaining the past 10 frames as a reference to compare with the present frame. The tracker would ultimately follow the target by the predicted trajectory after we had the position of the tracker and the target.\\\\
 Initially obtain the tracker's (gripper) and the target's (workpiece) instantaneous positions independently once the camera has determined the outlines of objects. First, the contour is the difference between the color frame and the reference and current frames. The coordinates of the items in the depth frame are then obtained. The situation along the x and z axes in the depth frame and the y and z axes from the Kinect color frame are among the desired data. \\
-\newpage
+
 The tracker and target belong to different x-y planes; thus, we may utilize a threshold regarding the data along the z-axis in the color frame in Kinect view to separate the objects. It is referred to as the robot palm if the coordinate along the z-axis is more than the threshold.
 \subsection{Position Calibration}\\
 Static pose recognition will end when the tracking approach is activated. The end-effector and object positions on the conveyor are among the data. The workpiece will proceed through the conveyor in a straight line. Therefore, only the workpieces' positions will be changed, and their orientation will remain unchanged. It is important to note that the end-effector might follow the subsequent instructions based on the tracking approach. This doesn't assist with grabbing articles, though. The gripper should take aim-off into account when doing object tracking to ensure that the entire gripping process is complete. Thus, proper gripping position by the tracking method turns out to be an important point. Without additional indication, the arm might not be aware of some issues that arise on the conveyor.
@@ -1018,7 +1004,7 @@ Since the Jacobian matrix is square and invertible, it is utilized in this case 
 We must first gain a fundamental understanding of the Robot Coordinate System before delving deeper into the tracking system's operation. Generally speaking, robotic systems are Cartesian coordinate systems with three axes: the X, Y, and Z axes. Additionally, there is the Rotation Coordinate System, which describes the robot's degree of rotational motion and joint function. However, as this format is more widely used in the business and simpler to use and comprehend, we shall solely investigate the Cartesian coordinate system. For getting the robot coordinates, we should be  aware of the following terms used in the system:\\\\
  \textbf{System of World Coordinates (WCS):} \\
 A coordinate system is often specified by the user or developer, but it can exist anywhere in the world. As long as WCS makes it simpler to explain the locations of other things or items in that specific area, you can put it anywhere in your room or factory. Origin placement is typically done at the edge of a group or a room's corner.\\\\
-\newpa
+\newpage
  \textbf{Machine Coordinate System (MCS):} \\
 Robot Base Frame Coordinate System is another name for Machine Coordinate System (MCS). All other coordinate systems will be compared to this most significant coordinate system. Where developers and programmers would implement their code based on this coordinate system is equally crucial. MCS is typically positioned near the robot's base for the point of origin, though it's important to remember that different robot types have different bases.\\\\
 
@@ -1165,7 +1151,7 @@ The Robot module functions as a TCP client, while the vision controller establis
     \caption{Channel Communication[2]}
     \label{fig1.Photoneo Camera}
 \end{figure}
-\newpage
+
 The robot connection status is currently indicated by the following indicator:
 
  Action Request Client: the state of the Action Request Communication Channel connection between the Action Request Server and the Action Request Client.  It may exist in one of two states:[2]
@@ -1222,13 +1208,14 @@ The Robotic movement can be performed with 3 methods called Servo X, ServoJ,and 
 The Movelinear is the method in which the target position for the robot to pick up the object is directly given as the quaternion values provided by the camera, by scanning the objects. Here we define the maximum velocity, acceleration. The movement of the robot happens in a servo interface where the quaternion values are sent to the robot as the target position, which helps the robot to the required position.
 
 \subsection{Static Picking:}\\
-Static pick-up is the process of picking items from the conveyor belt when it is not moving. Initially, we keep the object on the conveyor belt and then trigger the camera which helps in getting the object coordinates to the robotic controller. When the robot receives the data, the robot moves to the target position to pick the required target.
 \begin{figure}[h]
     \centering
     \includegraphics[width=10cm]{Thesis-report/Figures/static.jpeg}
     \caption{Static Picking}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
+
+Static pick-up is the process of picking items from the conveyor belt when it is not moving. Initially, we keep the object on the conveyor belt and then trigger the camera which helps in getting the object coordinates to the robotic controller. When the robot receives the data, the robot moves to the target position to pick the required target.
 
 
 \subsection{Dynamic Picking:}\\
@@ -1259,7 +1246,7 @@ When we pass the object through the conveyor belt, there is a change in position
 where X is the final position of the object\\
 v is the velocity / calibrated custom velocity in m/s\\
 t is a change in time \\
-\newpage
+
 \subsection{Coordinate Transformation:}
 Many applications in manufacturing, construction, and vehicle automation and autonomy depend on the availability of 3D information.  Time-of-flight (TOF) sensors are getting cheaper and more accessible. They offer in-depth information at every pixel in addition to intensity.
 The TOF sensor provides spherically-coordinated range data of the environment within its field of view.  As described in the following section, the spherical coordinates are transformed into Cartesian coordinates, with the origin of the coordinate system located at the camera's center.
@@ -1282,7 +1269,7 @@ Euler angles are usually implemented using rotation matrices. There is an x rota
 \subsection{Quaternions:}\\
 The second rotational modality uses quaternions and is defined by Euler's theorem. Given the lack of a comprehensive overview of the field and the fact that quaternions are not nearly as well-known as transformation matrices, we will first provide a historical perspective before delving deeply into quaternion mathematics.[20]
 
-\newpage
+
 \subsection{Object for picking}
 We have used trapezoid for object picking 
 
@@ -1431,7 +1418,7 @@ The web interface shows the image of the object being detected; initially, we lo
     \caption{Scanning Volume [18]}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-\newpage
+
  The above figure shows the volume/area in which the Photoneo Camera is possible to scan the items and get the object poses. The top view shows the maximum FOV where the camera can reach the object to get the object coordinates, which includes 15m.\\
 
 \newpage
@@ -1600,34 +1587,5 @@ Camera Using a Hemispherical Calibration Board,2023 9th International Conference
 \input{Chapters/Reference}
 \newpage
 \input{Chapters/Annex}
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
