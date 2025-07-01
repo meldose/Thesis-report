@@ -1,6 +1,6 @@
 \documentclass[12pt]{article}
 \usepackage{graphicx} % Required for inserting images
-\usepackage[a4paper, top=2.5cm, bottom=2.0cm, left=2cm, right=2cm]{geometry}
+\usepackage[a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
 
 \usepackage{babel}
 \usepackage{float}
@@ -17,6 +17,8 @@
 \usepackage{booktabs}
 \usepackage{array}
 \usepackage{wrapfig}
+\usepackage{changepage}
+\usepackage{enumitem}
 
 
 \newcommand\AtPageUpperRight[1]{\AtPageUpperLeft{
@@ -301,9 +303,7 @@ This technology projects structured light patterns, such as simple geometric pat
 Triangulation is used in photogrammetry to intersect particular points within two-dimensional images based on the angles at which those points can be found.  To create an acceptable 3D model, a lot depends on the size of the item, the quantity of photos, and their quality.[15]\\
 
 \subsection{Time fo Flight}
-The time it takes for light to travel from an illumination source to a scene and back is measured by the time of flight. The speed of light itself is the primary obstacle in this situation. Usually, the phase shift of a modulated signal is used to measure time. High pixel modulation frequencies must be used to achieve a respectable level of depth accuracy. The primary drawback in this case is physics, since a greater frequency results in less charge transfer, which lowers contrast and SNR. The restriction suggests an accuracy level that TOF systems can achieve. Usually, it falls within the centimeter range. Another issue is interreflections, which can significantly bend the surface.[15]\\
-
-
+The time it takes for light to travel from an illumination source to a scene and back is measured by the time of flight. The speed of light itself is the primary obstacle in this situation. Usually, the phase shift of a modulated signal is used to measure time. High pixel modulation frequencies must be used to achieve a respectable level of depth accuracy. The primary drawback in this case is physics, since a greater frequency results in less charge transfer, which lowers contrast and SNR. The restriction suggests an accuracy level that TOF systems can achieve. Usually, it falls within the centimeter range. Another issue is interreflections, which can significantly bend the surface.[15]\
 
 \subsection{Active stereo}
 By projecting a synthetic texture onto an object, active stereo addresses the unreliable passive stereo. Nevertheless, it still has to resolve the computationally demanding picture correspondence matching problem. Given the complexity of the matching problem, the projected texture can be either high frequency, which can satisfy a higher resolution but usually has poor reliability, or low frequency, which typically uses random laser dots and can offer higher reliability but poor resolution (the features are sparse).[15]
@@ -312,6 +312,7 @@ By projecting a synthetic texture onto an object, active stereo addresses the un
 A spatially encoded pattern is used in structured patterns/dots technology to encode depth disparity information into pattern patches, which are usually projected through a laser diffraction grating in the form of a carefully planned dot collection. The camera must be able to see enough of the patch to reassemble the coding and accurately record the depth information. This produces artifacts on surfaces' edges and tiny objects. The Nyquist-Shannon theorem requires an order of magnitude higher camera resolution to reconstruct individual dots in the projection (and hence 3D measurements). Modern systems use about 25 camera pixels for each 3D measurement, producing about 70k 3D points.[15]
 
 \subsection{Parallel Structured Light}
+
 Parallel Structured Light parallelizes the sequential structured light using a sophisticated sensor design, which enables it to record the scene illuminated by various patterns simultaneously. In addition to sharing many of the sequential structured light's benefits, such as resolution and accuracy, it also overcomes one of its main drawbacks: the inability to capture a dynamic environment. Photoneo's Parallel Structured Light gets around the restriction by projecting and capturing numerous encoded patterns. Pixel modulations within our proprietary CMOS sensor are used to accomplish this. Multiple groups of separately modified pixels make up the sensor itself.[15] \\\\ 
 
 The Parallel Structured Light's main advantages are:
@@ -323,6 +324,7 @@ The Parallel Structured Light's main advantages are:
 \item Patent-pending active ambient light rejection technology for outdoor use in direct sunlight[15]
  \item Active rejection of ambient light through interreflection suppression[15]
 \item Several devices using the same space at the same time[15]\\
+\end{enumerate}
 
 A control unit that operates in tandem with the projection is in charge of these groups. The coded patterns are inserted into the groups rather than changing the projection itself. The sensor may generate over 20 distinct virtual representations of the scene illuminated by the coded patterns injected at the end of the frame. The universal method may be modified on the fly to accommodate various materials and light sources by using any type of pattern typically used for sequential structured light.[15]\\
 
