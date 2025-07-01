@@ -1,0 +1,130 @@
+\section{Work Breakdown Structure}
+\begin{enumerate}[label=3.\arabic*]
+  \item Interactive Route Planning
+    \begin{enumerate}[label=3.1.\arabic*]
+      \item Define start/end configurations
+      \item Collision-free path generation
+      \item Metric minimization
+      \item Flowchart implementation and documentation
+    \end{enumerate}
+  \item Surface Imaging \& Geometry Estimation
+    \begin{enumerate}[label=3.2.\arabic*]
+      \item Imaging subtask definition
+      \item Geometry estimation subtask definition
+      \item Contrast enhancement strategy
+      \item Lighting and optics configuration
+    \end{enumerate}
+  \item Robotic Movement
+    \begin{enumerate}[label=3.3.\arabic*]
+      \item Forward kinematics (pose computation)
+      \item Inverse kinematics
+        \begin{enumerate}[label=3.3.2.\arabic*]
+          \item Analytic IK (if available)
+          \item Numerical IK via pseudo-inverse
+        \end{enumerate}
+      \item Jacobian-based velocity mapping
+      \item Iterative convergence \& dynamic gain tuning
+    \end{enumerate}
+  \item Camera Setup \& Positioning
+    \begin{enumerate}[label=3.4.\arabic*]
+      \item Mechanical mounting and orientation
+      \item Fixture design for 25\,mm lens coverage
+      \item Camera–conveyor calibration procedure
+    \end{enumerate}
+  \item Imaging Modes \& Examples
+    \begin{enumerate}[label=3.5.\arabic*]
+      \item Texture imaging
+      \item Event map capture
+      \item Depth map (grayscale)
+      \item Depth hue mapping
+      \item Confidence map generation
+      \item Surface normals extraction
+      \item White illumination
+      \item Color imaging
+    \end{enumerate}
+  \item Object Identification
+    \begin{enumerate}[label=3.6.\arabic*]
+      \item STL upload to web interface
+      \item 3D detection and segmentation
+      \item Pose and quaternion extraction
+    \end{enumerate}
+  \item Trajectory Planning
+    \begin{enumerate}[label=3.7.\arabic*]
+      \item Define waypoints and timing constraints
+      \item Interpolation functions (linear, PTP)
+      \item Path segmentation in Cartesian space
+      \item Synchronization of joint vs.\ linear moves
+    \end{enumerate}
+  \item Tracking Method
+    \begin{enumerate}[label=3.8.\arabic*]
+      \item Real-time frame-by-frame image processing
+      \item Frame averaging (last 10 frames)
+      \item Contour differencing and depth extraction
+      \item Gripper–target coordinate determination
+    \end{enumerate}
+  \item Position Calibration
+    \begin{enumerate}[label=3.9.\arabic*]
+      \item Static pose recognition
+      \item Gripper “aim-off” compensation
+      \item Conveyor-based positional offset
+    \end{enumerate}
+  \item Encoder Offsets \& Belt Variables
+    \begin{enumerate}[label=3.10.\arabic*]
+      \item Define DEFBELT variable
+      \item Scale-factor calibration
+      \item Instantaneous position calculation
+      \item Dynamic SETBELT updates
+    \end{enumerate}
+  \item Moving Calibration via Conveyor Edge
+    \begin{enumerate}[label=3.11.\arabic*]
+      \item Edge detection (polar line fit)
+      \item Motion correction along conveyor slope
+    \end{enumerate}
+  \item Coordinate Transformation Chain
+    \begin{enumerate}[label=3.12.\arabic*]
+      \item Pinhole camera model (intrinsic \& CZ)
+      \item Image-plane to camera-frame conversion
+      \item Camera-frame to robot-base (\textsuperscript{base}H\_cam)
+      \item Combined transformation formula
+    \end{enumerate}
+  \item Software Modules
+    \begin{enumerate}[label=3.13.\arabic*]
+      \item Servo-X: Cartesian motion control
+      \item Move Linear: dynamic quaternion-based moves
+    \end{enumerate}
+  \item Camera Workspace Calibration (Web UI)
+    \begin{enumerate}[label=3.14.\arabic*]
+      \item Vision system configuration listing
+      \item Extrinsic calibration (9 points)
+      \item Hand-eye calibration procedure
+      \item Calibration ball interface and point management
+    \end{enumerate}
+  \item Extrinsic Calibration Results
+    \begin{enumerate}[label=3.15.\arabic*]
+      \item Transformation matrix output
+      \item Accuracy score analysis
+    \end{enumerate}
+  \item Conveyor Belt Calibration
+    \begin{enumerate}[label=3.16.\arabic*]
+      \item Scan request and trigger (SW/HW)
+      \item Object coordinate retrieval
+      \item Final position computation
+    \end{enumerate}
+  \item Conveyor Conditions \& Kinematics
+    \begin{enumerate}[label=3.17.\arabic*]
+      \item Velocity matching (\(V_c = V_r\))
+      \item Target position formula
+      \item Marker space displacement (AMS)
+      \item Tracked distance (TSC, CTO)
+      \item Final adjusted pick position
+    \end{enumerate}
+  \item Manual Calibration Procedure
+    \begin{enumerate}[label=3.18.\arabic*]
+      \item First trigger and pose capture
+      \item Conveyor-move and second pose capture
+      \item Timestamp and \(\Delta t\) measurement
+      \item \(\Delta X, \Delta Y, \Delta Z\) computation
+      \item Custom velocity calculation
+      \item Linear position update and robot command
+    \end{enumerate}
+\end{enumerate}
