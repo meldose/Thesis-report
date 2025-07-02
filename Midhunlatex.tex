@@ -19,6 +19,7 @@
 \usepackage{wrapfig}
 \usepackage{changepage}
 \usepackage{enumitem}
+\usepackage[colorlinks=true,linkcolor=blue]{hyperref}
 
 
 \newcommand\AtPageUpperRight[1]{\AtPageUpperLeft{
@@ -241,15 +242,15 @@ The tracking of the conveyor using collaborative robots equipped with vision cam
 \label{introduction}
 
 \begin{justify}
-The tracking of the conveyor is a vital component of robot manipulators in industrial robotic applications. The task grows more complex as the target moves down the production line. Conveyor tracking utilizes a robot to track and retrieve an object from a conveyor belt. Robots require object information, such as position, orientation, velocity, size, etc., to catch items. Applications for using vision sensors to recognize things include military, medical, biology, engineering, education, and factory operations. When a robot is assembling electric parts into a product, it needs to be able to track and reorganize objects on the conveyor belt and correct position errors. The vision sensor can interpret this information rapidly.\\
+In industrial robotic applications, the conveyor's tracking is an essential part of robot manipulators.  As the target progresses down the production line, the task becomes increasingly complex.  Conveyor tracking tracks and retrieves an article from a conveyor belt using a robot.  To catch objects, robots need to know their position, orientation, velocity, size, and other characteristics.  Applications in the fields of biology, engineering, education, manufacturing, medicine, and the military all use vision sensors to identify objects.  A robot must be able to track, rearrange, and repair position mistakes of things on a conveyor belt when assembling electric parts into a finished product.  This information can be quickly interpreted by the visual sensor.\\
 
 Face tracking, color tracking, and object tracking are just a few of the various engineering applications that have recently made use of tracking video.  In the industrial sector, it was used to track items such as goods, factory workers, and clothing manufacturing.  The object detection techniques and image processing for mono video are the foundation of video tracking.\\
 
-Autonomous robots rely on intelligent perception systems to handle a variety of tasks.  Furthermore, the kind of sensor and the precision of the sensor data have a greater impact on how well these intelligent systems operate. The camera is the most equipped sensor among these. Because of its low cost and plenty of information, the camera is the most widely utilized sensor among these equipped sensors in the perception system.  RGB and depth cameras are the two broad categories into which camera sensors fall.  RGB is limited to obtaining information about the surrounding environment's appearance; depth cameras can simultaneously obtain texture and depth information; however, because of the influence of environmental changes and disparate depth estimation techniques, the depth information obtained is not reliable and precise.\\
+Autonomous robots rely on intelligent perception systems to handle a variety of tasks.  Furthermore, the kind of sensor and the precision of the sensor data have a greater impact on how well these intelligent systems operate. The camera is the most equipped sensor among these. Because of its low cost and plenty of information, the camera is the most widely utilized sensor among these equipped sensors in the perception system.  RGB and depth cameras are the two broad categories into which camera sensors fall.  RGB is limited to obtaining information about the surrounding environment's appearance; depth cameras can simultaneously obtain texture and depth information.\\
 
 Structured light cameras, time of flight (TOF) cameras, and binocular stereo depth cameras are the three types of depth cameras.  Structured light camera technology is quite mature, with excellent accuracy but restricted measuring range; binocular stereo cameras are inexpensive but highly influenced by the surroundings; and TOF measurement distance is long, ideal for dynamic situations, but the precision is poor (cm).  Structured light cameras have a two to three meter range, but given the wealth of environmental data that can be gathered within this range, this is adequate. Due to its excellent accuracy and great range, Lidar is another sensor that is frequently used in intelligent perception systems.  Since LiDAR's point cloud is less impacted by the surroundings, robot perception systems frequently use it.\\
 
-In an industrial production, the vision system is used to inspect the product.  It speeds up product detection and cuts down on time.  It is made up of a camera or vision sensor that uses line or area sensors to send digital images or videos to the host computer.  The digital image or video is analyzed using an image processing technique that allows it to identify defects, shapes, or colors.  Analysis filters are frequently used to differentiate between vision system functions such as edge detection, surface defect identification, and light intensity reflected from the product surface.  Compared to image processing algorithms, video processing algorithms are more complex.  To find the merchandise, the tracking video used video processing algorithms.\\
+In industrial production, the vision system is typically used to inspect the product.  It speeds up product detection and cuts down on time.  It is made up of a camera or vision sensor that uses line or area sensors to send digital images or videos to the host computer.  The digital image or video is analyzed using an image processing technique that allows it to identify defects, shapes, or colors.  Analysis filters are frequently used to differentiate between vision system functions such as edge detection, surface defect identification, and light intensity reflected from the product surface.  Compared to image processing algorithms, video processing algorithms are more complex.\\
 
 A robot's job in robotic conveyor tracking is to follow and retrieve goods from a conveyor belt. Robots require information about an object, like its position, orientation, velocity, size, and other characteristics, before they can take it from an automation line. The information that vision sensors can supply about an object on the conveyor belts is more than that of ultrasonic and infrared ray sensors. An object tracking system typically consists of the following steps: capturing an image, identifying an object, and retrieving data regarding the position and orientation of the object. A conveyor system's item tracking procedure needs to be quick enough to accommodate a real-time setting. This article describes a tracking system for robots that makes use of vision data that is taken from consecutive frames of images.\\\\
 
@@ -257,18 +258,19 @@ Many applications in manufacturing, construction, and vehicle automation and aut
 
 Industrial robots are frequently used for dangerous, repetitive, and unmanageable human activities.
  Therefore, increasing the production efficiency of industrial robot manipulators is a top priority.
- With an emphasis on localization and shortest path computation, machine vision and path planning approaches can accomplish this.  This is especially crucial for the manufacturing and bottle filling sectors, which heavily rely on robotic manipulators to position and move bottles both during production and after refills. Robot vision finds it extremely difficult to focus on distinguishing aspects of soft, fragile, or opaque things, making detection considerably more difficult. In recent years, industrial robots and robotic manipulators have become increasingly complex, diverse, and particularly engineered to attain a high degree of autonomy.  This contrasts with previous ideas that viewed robots as mechanical manipulators. Furthermore, to provide accurate control mechanisms, object detection and tracking for these robotic manipulators have drawn a lot of interest [2].  Automated object detection, in particular, has helped robots become more versatile by enabling more generalized and adaptive behavior for various objects and situations. The degree of freedom (DOF) of robotic manipulators is frequently one of the most crucial components for their functionality. For example, DOF is important for jobs involving pick and place, welding, pelleting, painting, packing, and grinding.  The DOF is chosen based on the type of work that must be done in an industrial setting and ranges from 1 to 6 degrees of freedom.\\
+ With an emphasis on localization and shortest path computation, machine vision and path planning approaches can accomplish this.  This is especially crucial for the manufacturing and bottle filling sectors, which heavily rely on robotic manipulators to position and move bottles both during production and after refills. Robot vision finds it extremely difficult to focus on distinguishing aspects of soft, fragile, or opaque things, making detection considerably more difficult. Many industrial robots and robotic manipulators have become increasingly complex, diverse, and particularly engineered to attain a high degree of autonomy.  This contrasts with previous ideas that viewed robots as mechanical manipulators. Furthermore, to provide accurate control mechanisms, object detection and tracking for these robotic manipulators have drawn a lot of interest [2].  Automated object detection, in particular, has helped robots become more versatile by enabling more generalized and adaptive behavior for various objects and situations. For example, DOF is important for jobs involving pick and place, welding, pelleting, painting, packing, and grinding.  The DOF is chosen based on the type of work that must be done in an industrial setting and ranges from 1 to 6 degrees of freedom.\\
 
-As a result, robotics is now more useful in Complex path designs for many kinds of objects were made possible by the assistant editor who oversaw the review of this paper and the industry. As a result, the creation of robotic control systems with a vision system integrated has received a lot of attention.  Additionally, machine learning-based techniques that make use of effective computer vision frameworks are widely adopted.  Additionally, neural networks and deep learning-based techniques are becoming more and more popular, although caution needs to be exercised regarding the generalizability and explainability of these models.\\
+ Additionally, machine learning-based techniques that make use of effective computer vision frameworks are widely adopted.  Additionally, neural networks and deep learning-based techniques are becoming more and more popular, although caution needs to be exercised regarding the generalizability and explainability of these models.\\
 
 The three primary aspects of this work on vision-based automatic pick-and-place systems are object recognition, machine vision system calibration, and object coordinate transformations. Three components make up the calibration of the machine vision system: hand-eye calibration, stereo calibration, and camera calibration. This study computes the transformation link between the camera coordinate system (eye) and the robot base coordinate system (hand) using transformation matrices for hand-eye calibration.  Identifying objects in a picture and determining their positions is the primary goal of object recognition.  Four steps are typically involved in 3D object identification: interest point detection, interest point descriptor, match-point error elimination, and model recognition. \\
 
-It is more difficult for robotic arms to do complex operations like object pick-and-place by themselves.  Adding machine vision to the robotic arm system is one way to potentially get around the aforementioned issues.  In this paper, vision-based autonomous pick-and-place systems for 3-D objects are developed using the eye-to-hand camera arrangement.  The three primary components of the vision-based autonomous pick-and-place system created in this research are object recognition, machine vision system calibration, and object coordinate transformations.  The vision-based automated pick-and-place system created in this study can execute an automatic pick-and-place task for 3-D items, according to experimental data.
+Robotic arms find it more challenging to do intricate tasks like object pick-and-place on their own.   One possible solution to the aforementioned problems is to incorporate machine vision into the robotic arm system.   This research uses the eye-to-hand camera arrangement to construct vision-based autonomous pick-and-place systems for 3-D objects.   Object coordinate transformations, machine vision system calibration, and object recognition are the three main parts of the vision-based autonomous pick-and-place system developed in this study.   Experimental results show that the vision-based automated pick-and-place system developed in this study can perform an autonomous pick-and-place job for 3-D objects.
 
 \subsection{Photoneo Camera}
 \begin{justify}
 
-The main Vision camera we have used to track the moving object's motion through the conveyor belt is a Photoneocamera (MotionCam 3D M+), which has advanced settings that can capture and detect the object's position. The photoneo camera mainly consists of 3D sensing technology, which contains parallel structured light that helps provide the light source to detect objects.\\
+The camera we have used to track the moving object's motion through the conveyor belt is a 
+\hyperref[fig:photonPhotoneo camera (Figure~\ref*{fig1.Photoneo Cmaera})} (MotionCam 3D M+), which has advanced settings that can capture and detect the object's position. The Photoneo camera mainly consists of 3D sensing technology, which contains parallel structured light that helps provide the light source to detect objects.\\
 \begin{figure}[h]
     \centering
     \includegraphics[width=5cm]{Thesis-report/Figures/CAMERA.png}
@@ -276,7 +278,7 @@ The main Vision camera we have used to track the moving object's motion through 
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 
-Using this camera, the camera can capture accurate point clouds and a standard intensity image of the object. Its foundation is a specialized CMOS image sensor that uses Photoneo's patented Parallel Structured Light technology.\\
+This camera \ref{fig:camera_mount}. can capture accurate point clouds and a standard intensity image of the object. Its foundation is a specialized CMOS image sensor that uses Photoneo's patented Parallel Structured Light technology.\\
 \begin{figure}[h]
     \centering
     \includegraphics[width=4cm]{Thesis-report/Figures/camera.jpeg}
@@ -284,9 +286,9 @@ Using this camera, the camera can capture accurate point clouds and a standard i
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 
-To precisely follow the colored area of the RGB marker, we develop and construct a parallel stereo charged-coupled device (CCD) camera system.  Using blob analysis, this ROI was also isolated from the picture live stream and triangulated to determine the 3D coordinates in the world coordinate frame.  Robot path and trajectory planning were assessed using the marker's 3D coordinates, which were converted into the robot frame of reference (robot stereo vision coordinate system).  Therefore, to choose and position an object, our suggested model calculates the real-time distance the robot must travel along the three axes.
+The camera is built with a parallel stereo charged-coupled device (CCD) camera system to accurately follow the colored region of the RGB marker. This ROI was also separated from the live stream image using blob analysis, and then the 3D coordinates in the world coordinate frame were triangulated.   The 3D coordinates of the marker were transformed into the robot frame of reference (robot stereo vision coordinate system) and used to evaluate the robot path and trajectory planning.   Consequently, our proposed model determines the real-time distance the robot needs to travel along the three axes to select and position an object.
 
-The camera's carbon fiber body is lightweight and guarantees the same degree of stiffness as scanners. Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU that acts as the brain behind intelligent applications. A sequential structured light, which is utilized in numerous meteorological applications, is the primary technological driver in the first group. One well-suited representative of this category is the 3D scanner range from Photoneo. This technique is not appropriate for dynamic scenes because it uses sequential (multi-frame) capturing. This section is the source of the parallel structured light.\\
+The camera's carbon fiber body is lightweight and guarantees the same degree of stiffness as scanners. Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU, which is used for intelligent applications.  One well-suited representative of this category is the 3D scanner range from Photoneo. This method is appropriate for dynamic scenes because it uses sequential (multi-frame) capturing. This section is the source of the parallel structured light.\\
 
 \subsection{3D Scanning}
 The process of 3D scanning involves gathering data from an object's surface and turning it into data points.  These data points are utilized for a digital replication of the scanned object or for a dimension analysis.[17]\\
@@ -294,7 +296,7 @@ The process of 3D scanning involves gathering data from an object's surface and 
 \subsection{Types of 3D scanning}
 
 \subsubsection {Laser Scanning}
-Two devices are often used in laser scanning; one directs a laser beam onto a surface, and the other records the precise spot where the object contacts the beam.  Triangulation can be used to calculate the distance between the surface and the scanner and the angle of reflection.[17]\\
+Two devices are often used in laser scanning; one directs a laser beam onto a surface, and the other records the precise spot where the object contacts the beam.  Triangulation can be used to calculate the distance between the surface and the scanner and the angle of reflection. Many other approaches similat to that of the Traingulation method which include Time of flight measurement, Structured light Scanning , Stereo Photogrammetry, Laser interferometry etc.. [17].
 
 \subsubsection {Structure Light Scanning}
 This technology projects structured light patterns, such as simple geometric patterns or parallel lines, onto a surface.  The object's shape will cause the patterns to distort.  It is feasible to rebuild the scanned surface by using a camera to analyze these deformations, distinguishing edges, and determining the separation between the item and the scanner.[17]\\
@@ -328,16 +330,16 @@ The Parallel Structured Light's main advantages are:
 
 A control unit that operates in tandem with the projection is in charge of these groups. The coded patterns are inserted into the groups rather than changing the projection itself. The sensor may generate over 20 distinct virtual representations of the scene illuminated by the coded patterns injected at the end of the frame. The universal method may be modified on the fly to accommodate various materials and light sources by using any type of pattern typically used for sequential structured light.[15]\\
 
-After undergoing embedded processing, these virtual images are sent via gigabit Ethernet to a client's PC.  Three types of outputs are provided by the sensor:[15]
+After undergoing embedded processing, these virtual images are sent via gigabit Ethernet to a client PC.  Three types of outputs are provided by the sensor:[15]
 \begin{enumerate}
     \item Point Cloud: 32 bits per channel  XYZ [15]
     \item 32 bits per channel is the normal map.  XYZ [15]
     \item Texture: Grayscale, 10/12 bits [15]
 \end{enumerate}
 
-The sensor produces outputs with a resolution of 1068 x 800 when in "one frame" camera mode.  Approximately 500k individual measurements were used to interpolate these positions.  At a distance of one meter, the usual z-noise standard deviation is less than 0.5 mm (key advantage 1).  Every photon contributes to the 3D measurement in the best possible way thanks to the pixel design.  With sub-pixel accuracy coding (high z-precision) and an efficiency of only 4.5 pixels per 3D measurement, the technology outperforms its competitors and provides the highest XYZ resolution (important benefit 2).[15]\\
+The sensor produces outputs with a resolution of 1068 x 800 when in "one frame" camera mode.  Approximately 500k individual measurements were used to interpolate these positions.  At a distance of one meter, the usual z-noise standard deviation is less than 0.5 mm (key advantage 1).  Every photon contributes to the 3D measurement in the best possible way thanks to the pixel design.  With sub-pixel accuracy coding (high z-precision) and an efficiency of only 4.5 pixels per 3D measurement, the technology outperforms its competitors and provides the highest XYZ resolution (benefit 2).[15]\\
 
-The alternative operating mode is a "scanner mode" that is intended for still images.  The sensor provides 1602 × 1200 individual measurements as its raw sensoric output in this mode.  This is recorded in three consecutive frames. A laser that has been deflected by a mirror illuminates the scene.  The projection's 10 µs per pixel exposure may guarantee constant, motion-blur-free data (key benefit 4).[15]\\
+The alternative operating mode is a "scanner mode" that is intended for still images.  The sensor provides 1602 × 1200 individual measurements as its raw sensoric output in this mode.  This is recorded in three consecutive frames. A laser that has been deflected by a mirror illuminates the scene.  The projection's 10 µs per pixel exposure may guarantee constant, motion-blur-free data (benefit 4).[15]\\
 
 
 \subsection{Vision Controller}\\
@@ -348,9 +350,9 @@ The figure below shows the vision controller connected to the photoneo camera an
     \caption{Vision Controller[2]}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-The vision controller is connected to a PC to get the Web interface to trigger the camera and see the Web interface for communication. Gigabit Ethernet cables (Cat5e or higher) are needed to connect the 3D sensor. A gigabit switch can be used to connect several 3D sensors. The Ethernet connection from the switch or 3D sensor is linked to the scanner's physical network port in both scenarios. To visualize 3D scans, calibrate robot cameras, and establish localization settings, a well-connected connection to the 3D sensor is required.[15]\\
+The vision controller is connected to a PC through the Web interface to trigger the camera and see the Web interface for communication. Gigabit Ethernet cables (Cat5e or higher) are needed to connect the 3D sensor. A gigabit switch can be used to connect several 3D sensors. The Ethernet connection from the switch or 3D sensor is linked to the scanner's physical network port in both scenarios. To visualize 3D scans, calibrate robot cameras, and establish localization settings, a well-connected connection to the 3D sensor is required.[15]\\
 
-To set up the network interface that the vision controller uses to connect to the Photoneo 3D sensor(s), go to the Network page and select the Scanner interface section. Both a fixed IPv6 link-local address and a programmable IPv4 address are features of Photoneo 3D sensors. IPv6 connections are better than IPv4 ones. However, the IPv4 address is used if the IPv6 connection is banned or fails.
+To set up the network interface that the vision controller uses to connect to the Photoneo 3D sensor(s), Network page and select the Scanner interface section. Both a fixed IPv6 link-local address and a programmable IPv4 address are features of Photoneo 3D sensors.
 \subsection{Marker Pattern}\\
 \begin{figure}[h]
     \centering
@@ -358,7 +360,7 @@ To set up the network interface that the vision controller uses to connect to th
     \caption{Marker Pattern[2]}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-The figure above shows the S30 calibration board that helps calibrate the conveyor belt, which aligns the coordinates of the object with the conveyor belt for objects passing through the belt. The belt can be used to align the object coordinates with respect to the conveyor belt, so that the robot can pick items from the moving conveyor belt.[2]
+The figure above shows the S30 calibration board that helps calibrate the conveyor belt, which aligns the coordinates of the object with the conveyor belt for objects passing through the belt. The belt can be used to align the object coordinates with   respect to the conveyor belt, so that the robot can pick items from the moving conveyor belt.[2]
 
 \subsection{Active ambient light rejection:}\\
 The inability of all area-based 3D sensors to function in direct sunshine is a typical problem.  Direct sunshine has a maximum power output of 1120 W/m³.  High-end band-pass filters installed in all of Photoneo's sensors lower ambient light levels to around 15 W/m2.  Although it can oversaturate the image or produce high shot noise, this still performs better than the majority of projection systems.
@@ -389,7 +391,7 @@ The figure above shows the scanning distance of various cameras vs their Point s
 
 This approach uses an interactive route planning solution for a fixed-based manipulator from an initial to a final configuration, along with a camera system for 3D detection.  Two characteristics of the ideal path should be collision-free and metric minimization.\\
 
-The flowchart below represent the basic topics that we are going to discuss:
+The flowchart below represents the basic topics that we are going to discuss:
 
 \begin{figure}[H]
     \centering
