@@ -386,17 +386,17 @@ The figure above shows the scanning distance of various cameras vs. their point 
 \begin{justify}
 
 \subsection{Robotic Conveyor Tracking}
-Early work on visually guided conveyor tracking focused on 2D cameras and simple background‐subtraction methods. Shin \emph{et al.} demonstrated frame‐difference object detection combined with 2D template matching to locate parts on a belt in real time, but suffered from occlusion and uniform‐lighting limitations :contentReference[oaicite:0]{index=0}. Park and Lee formulated the conveyor‐tracking problem as a constrained trajectory‐planning task for 6‐DOF manipulators, minimizing steady‐state tracking error and actuator torques :contentReference[oaicite:1]{index=1}. More recently, Zhang \emph{et al.} integrated Time‐of‐Flight ranging with color segmentation to classify and track parcels at higher belt speeds, achieving sub‐5 mm positional accuracy at 1 m/s :contentReference[oaicite:2]{index=2}.\\
+Early work on visually guided conveyor tracking focused on 2D cameras and simple background‐subtraction methods. JOURNAL demonstrated frame‐difference object detection combined with 2D template matching to locate parts on a belt in real time, but suffered from occlusion and uniform‐lighting limitations : REFERED FROM []. Park and Lee formulated the conveyor‐tracking problem as a constrained trajectory‐planning task for 6‐DOF manipulators, minimizing steady‐state tracking error and actuator torques : REFERRED FROM []. More recently,JOURNAL integrated Time‐of‐Flight ranging with color segmentation to classify and track parcels at higher belt speeds, achieving sub‐5 mm positional accuracy at 1 m/s :REFERRED FROM [].\\\\
 
 \subsection{3D Vision Systems and Depth Sensing}
-The shift from 2D to 3D sensing has been driven by affordable structured‐light and TOF cameras. Photoneo’s MotionCam 3D M+ uses Parallel Structured Light to capture 1068 × 800 depth frames at 60 Hz, merging per‐pixel depth with intensity for robust object detection under ambient light :contentReference[oaicite:3]{index=3}. Fernandez \emph{et al.} showed how TOF depth data can be converted from spherical to Cartesian coordinates for conveyor‐based pick‐and‐place, with typical z‐noise under 0.5 mm at 1 m distance :contentReference[oaicite:4]{index=4}. Luo \emph{et al.} extended this by fusing stereo‐vision point clouds with TOF to improve tracking through partial occlusions :contentReference[oaicite:5]{index=5}.\\
+The shift from 2D to 3D sensing has been driven by affordable structured‐light and TOF cameras. Photoneo’s MotionCam 3D M+ uses Parallel Structured Light to capture 1068 × 800 depth frames at 60 Hz, merging per‐pixel depth with intensity for robust object detection under ambient light :REFERRED FROM []. Fernandez \emph{et al.} showed how TOF depth data can be converted from spherical to Cartesian coordinates for conveyor‐based pick‐and‐place, with typical z‐noise under 0.5 mm at 1 m distance :REFERRED FROM []. Luo \emph{et al.} extended this by fusing stereo‐vision point clouds with TOF to improve tracking through partial occlusions:REFERRED FROM [].\\
 
 \newpage
 \subsection{Calibration Techniques (Hand–Eye and Extrinsic)}
-Accurate hand–eye and extrinsic calibration is critical for mapping camera coordinates into the robot base frame. Standard methods use a calibration rig (ball or checkerboard) and solve for the transform ${}^{\rm base}H_{\rm cam}$ via least‐squares on multiple correspondences :contentReference[oaicite:6]{index=6}. Ge \emph{et al.} automated lidar–camera extrinsic calibration with a hemispherical target, yielding sub‐millimeter accuracy over nine poses :contentReference[oaicite:7]{index=7}. Photoneo’s web‐interface further streamlines extrinsic setup by guiding users through nine sample points and reporting an overall accuracy score in millimeters :contentReference[oaicite:8]{index=8}.\\
+Accurate hand–eye and extrinsic calibration is critical for mapping camera coordinates into the robot base frame. Standard methods use a calibration rig (ball or checkerboard) and solve for the transform ${}^{\rm base}H_{\rm cam}$ via least‐squares on multiple correspondences :REFERRED FROM []. Ge \emph{et al.} automated lidar–camera extrinsic calibration with a hemispherical target, yielding sub‐millimeter accuracy over nine poses :REFERRED FROM []. Photoneo’s web‐interface further streamlines extrinsic setup by guiding users through nine sample points and reporting an overall accuracy score in millimeters :REFERRED FROM []
 
 \subsection{Dynamic Object Tracking and Path Planning}
-Real‐time tracking of moving parts requires coupling vision updates with trajectory replanning. Shahzadi \emph{et al.} proposed a vision‐based path planning framework where each new depth frame triggers a local replanning via a fast pseudo‐inverse Jacobian update, ensuring collision‐free, smooth motion :contentReference[oaicite:9]{index=9}. Wunsch and Hirzinger introduced dynamic occlusion handling in 3D by predicting object pose through Kalman filtering of multi‐view point clouds :contentReference[oaicite:10]{index=10}. Agrawal \emph{et al.} demonstrated shadow‐casting to enhance grasp edges, reducing processing latency in high‐speed pick‐and‐place :contentReference[oaicite:11]{index=11}.
+Real‐time tracking of moving parts requires coupling vision updates with trajectory replanning. Shahzadi \emph{et al.} proposed a vision‐based path planning framework where each new depth frame triggers a local replanning via a fast pseudo‐inverse Jacobian update, ensuring collision‐free, smooth motion :REFERRED FROM []. Wunsch and Hirzinger introduced dynamic occlusion handling in 3D by predicting object pose through Kalman filtering of multi‐view point clouds :REFERRED FROM []. Agrawal \emph{et al.} demonstrated shadow‐casting to enhance grasp edges, reducing processing latency in high‐speed pick‐and‐place :REFERRED FROM [].
 
 \subsection{Gaps and Research Directions}
 Despite these advances, challenges remain in  
@@ -406,9 +406,9 @@ Despite these advances, challenges remain in
   \item \textbf{Transparent/reflective objects:} current depth sensors struggle with non‐Lambertian surfaces.
   \item \textbf{Explainability and safety:} integrating uncertainty estimates into real‐time safety controllers.
 \end{itemize}
-Your thesis will address several of these by combining Photoneo’s Parallel Structured Light with predictive IK and an FMEA-informed safety framework.
 
 \end{justify}
+
 \newpage
 \chapter{\section{\mbox{Methodology }}{{\normalfont\fontsize{14}{16}\bfseries}}
 
@@ -419,7 +419,7 @@ The flowchart below represents the basic topics that we are going to discuss:
 \begin{figure}[H]
     \centering
     \includegraphics[width=8cm]{Thesis-report/Figures/methodology.png}
-    \caption{Flowchart}
+    \caption{Methodology Flowchart}
     \label{fig:depthmap_gray}
 \end{figure}
 
@@ -1075,6 +1075,7 @@ The orientation of the conveyor belt coordinates and the camera origin coordinat
 \end{figure}
 As can be seen from the above image, to match the conveyor belt origin, we must perform a translation transformation in both the X and Y axes. We must do a rotation transformation for the Z-axis since the belt origin faces the other direction from the camera origin. In summary, this section contains two transformations: Rotation transformation, Rot(x, 180°); AND Translation in the X-axis and Y-axis, Trans(ΔX, ΔY, 0). Observe that both the Y and Z axes changed their facing directions when we rotated the X axis. For this section, some offset will be required.\\
 
+\newpage
 2. \textbf{ Conveyor belt (B1) to conveyor belt (B2) transformation:} \\
 For this part, it is quite simple. This transformation is about the movement of the conveyor belt from the Camera’s Field of View to the Robot’s Workspace/Pick range. The only value that changes in this transformation is the X-axis value. As mentioned in the introduction, we also include the encoder’s reading to help us track how much distance the conveyor belt covered.\\
 
