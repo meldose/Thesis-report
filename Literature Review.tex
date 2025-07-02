@@ -293,6 +293,8 @@ The camera's carbon fiber body is lightweight and guarantees the same degree of 
 \subsection{3D Scanning}
 The process of 3D scanning involves gathering data from an object's surface and turning it into data points.  These data points are utilized for a digital replication of the scanned object or for a dimension analysis.[17]\\
 
+\newpage
+
 \subsection{Types of 3D scanning}
 
 \subsubsection {Laser Scanning}
@@ -386,7 +388,8 @@ The figure above shows the scanning distance of various cameras vs. their point 
 \begin{justify}
 
 \subsection{Robotic Conveyor Tracking}
-Early work on visually guided conveyor tracking focused on 2D cameras and simple background‐subtraction methods. JOURNAL demonstrated frame‐difference object detection combined with 2D template matching to locate parts on a belt in real time, but suffered from occlusion and uniform‐lighting limitations : REFERED FROM []. Park and Lee formulated the conveyor‐tracking problem as a constrained trajectory‐planning task for 6‐DOF manipulators, minimizing steady‐state tracking error and actuator torques : REFERRED FROM []. More recently,JOURNAL integrated Time‐of‐Flight ranging with color segmentation to classify and track parcels at higher belt speeds, achieving sub‐5 mm positional accuracy at 1 m/s :REFERRED FROM [].\\\\
+
+Early work on visually guided conveyor tracking focused on 2D cameras and simple background‐subtraction methods. JOURNAL demonstrated frame‐difference object detection combined with 2D template matching to locate parts on a belt in real time, but suffered from occlusion and uniform‐lighting limitations: REFERRED FROM []. Park and Lee formulated the conveyor‐tracking problem as a constrained trajectory‐planning task for 6‐DOF manipulators, minimizing steady‐state tracking error and actuator torques : REFERRED FROM []. More recently,JOURNAL integrated Time‐of‐Flight ranging with color segmentation to classify and track parcels at higher belt speeds, achieving sub‐5 mm positional accuracy at 1 m/s : REFERRED FROM [].\\\\
 
 \subsection{3D Vision Systems and Depth Sensing}
 The shift from 2D to 3D sensing has been driven by affordable structured‐light and TOF cameras. Photoneo’s MotionCam 3D M+ uses Parallel Structured Light to capture 1068 × 800 depth frames at 60 Hz, merging per‐pixel depth with intensity for robust object detection under ambient light :REFERRED FROM []. Fernandez \emph{et al.} showed how TOF depth data can be converted from spherical to Cartesian coordinates for conveyor‐based pick‐and‐place, with typical z‐noise under 0.5 mm at 1 m distance :REFERRED FROM []. Luo \emph{et al.} extended this by fusing stereo‐vision point clouds with TOF to improve tracking through partial occlusions:REFERRED FROM [].\\
@@ -549,7 +552,7 @@ The fundamental path interpolation functions, such as linear and point-to-point 
 In the preceding part, the picking procedure was put into practice. With some dynamic adjustments, the situation is now more challenging. The robot should be updated with the object's information when it begins to move on the conveyor to use the tracing talent. The tracking technique presents certain difficulties when using a visual control system. First, we must use real-time frame-by-frame image processing to track the objects. Next, we use the average of the previous ten frames as a guide. Second, we must specify the gripper's position about the moving object. We came up with one method for determining the objects' positions. Kinects that can recognize objects can also provide us with depth information in addition to the target's color. Next, using the information gathered, we devise a method to obtain 3D coordinates and calibrate the scale to the y and z-axes while taking into account the depth frame, which is the x-axis under Kinect view. Finally, the robot's reaction will complete the grabbing maneuver by following the updated data. Our tracking strategy is divided into three subsections. \\ 
 
 By calibrating the y and z axes, we may create a prospective viewpoint to enhance object location after obtaining the past 10 frames as a reference to compare with the present frame. The tracker would ultimately follow the target by the predicted trajectory after we had the position of the tracker and the target.\\\\
-Initially obtain the tracker's (gripper) and the target's (workpiece) instantaneous positions independently once the camera has determined the outlines of objects. First, the contour is the difference between the color frame and the reference and current frames. The coordinates of the items in the depth frame are then obtained. The situation along the x and z axes in the depth frame and the y and z axes from the Kinect color frame are among the desired data. \\
+Initially, obtain the tracker's (gripper) and the target's (workpiece) instantaneous positions independently once the camera has determined the outlines of objects. First, the contour is the difference between the color frame and the reference and current frames. The coordinates of the items in the depth frame are then obtained. The situation along the x and z axes in the depth frame and the y and z axes from the Kinect color frame are among the desired data. \\
 
 The tracker and target belong to different x-y planes; thus, we may utilize a threshold regarding the data along the z-axis in the color frame in Kinect view to separate the objects. It is referred to as the robot palm if the coordinate along the z-axis is more than the threshold.
 \subsection{Position Calibration}\\
@@ -576,6 +579,7 @@ Where encoder-count is the encoder's read contents, and encoder-offset is used t
 \text{SETBELT} \ \% \text{belt-variable} = \text{expression}
 \]
 
+\newpage
 For picking-on-the-fly robot tasks, a fast digital-input interdigital input that detects the occurrence of an external event of the type "an object has completely entered the conveyor belt window" (and hence is completely visible) will initiate the dynamic robot-vision synchronization based on the "look-and-move" cooperation principle. A photocell detects this event and uses it to determine whether to take an image of the moving item.
 \subsection{Moving Calibration through Conveyor belt}\\
 The trajectory follows the instructions produced from trajectory planning and eye-in-hand vision each time the robot arm's palm begins to perform a moving task. The border of the conveyor will show up on the top side of the image when viewed through a camera. Because the conveyor's moving path is linear, the robot's motion can be corrected by following the conveyor's edge slope. The line equation in polar coordinates is used to determine the conveyor's line edge. The polar parametric form has the advantage of having no singular condition in the domain of sinusoidal functions.
