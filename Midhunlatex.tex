@@ -693,7 +693,7 @@ The visualizer shows the point cloud and 3D sensors from all vision systems.
 \item ● Finish and save result: button to complete the calibration process and save the calibration matrix result into the vision system [2]\\
 \end{enumerate}
 
-The 3D sensor must record the calibration ball in several locations throughout the entire region of interest during the extrinsic calibration process.  In a similar vein, the 3D sensor must record the marker plate from multiple perspectives during the hand-eye calibration.  As a result, move the robot in a variety of positions with as many different joint orientations as you can, and in each position, add a new calibration point.[2]
+The 3D sensor must record the calibration ball in several locations throughout the entire region of interest during the extrinsic calibration process.  In a similar vein, the 3D sensor must record the marker plate from multiple perspectives during the hand-eye calibration.  As a result, motion of the robot in a variety of positions with as many different joint orientations is possible in each position by adding a new calibration point [2].
 
 Either a new calibration point is introduced:
 \begin{enumerate}
@@ -776,19 +776,22 @@ Once the trigger commands reach the camera, the scan will start to take place an
 The final position is considered the location where the object coordinates, along with the calibration offset and traveled distance.[21]
 \end{itemize}
 
+\begin{enumerate}
+\item {Calculate the pick pose:} \\
+Initially we need to calculate the pose of the object that need to be picked up
 
-1. \textbf{Calculate the pick pose:} \\\\
-2. \textbf{Components of the pick pose calculation:} 
-Coordinates from localization in marker space (calculate the transformation matrix from camera space to marker space to calibrate the marker pattern)
+\item {Components of the pick pose calculation:}
+ Coordinates from localization in marker space (calculate the transformation matrix from camera space to marker space to calibrate the marker pattern)
 
-Possible triggers for the distance traveled from acquisition to the beginning of picking in conveyor tracking mode include:\\\\
-The scan request function pho wait for req completion() in SW-HW output of the trigger\\\\
+\end{enumerate}
+Possible triggers for the distance traveled from acquisition to the beginning of picking in conveyor tracking mode include:\\
 
-\textbf{Calibration Distance:}
+The scan request function pho wait for req completion() in SW-HW output of the trigger\\
+\begin{enumerate}
+\item{Calibration Distance:}
 The distance between the marker pattern positions for the camera calibration and custom workspace calibration (the linear transformation between the camera and the custom WS origin) is known as the calibration distance.\\
 
-\textbf{Localized posture minus calibration distance plus traveled distance from the scan is the formula.} \\
-
+\end{enumerate}
 \begin{figure}[h]
     \centering
     \includegraphics[width=13cm]{Thesis-report/Figures/conveyor_belt.jpg} 
@@ -809,7 +812,7 @@ In the below figure, the number represents the coordinates of the object after t
 Calibration of the marker pattern from the camera to the conveyor belt, which is the common origin:
 \begin{enumerate}
     \item Attach the appropriate calibration pattern to the conveyor belt. [21]
-    \item Use PhoXi Control's marker pattern to save calibration. We can use this setting as a custom scanning profile in VS Space by adding a triggering item for the sensor at the marker pattern export photo's origin.[21]
+    \item Use PhoXi Control's marker pattern to save calibration. We can use this setting as a custom scanning profile in Vision System´s Space by adding a triggering item for the sensor at the marker pattern export photo's origin.[21]
     \item Robot to conveyor belt: The robot moves the conveyor belt from a shared origin, but the marker pattern stays in place according to the conveyor belt. This allows the robot to reach the marker pattern, calibrate the custom coordinate space in the robot track, and save the "calibration" encoder value, which synchronizes the robot and conveyor.[21]\\
 \end{enumerate}
 
@@ -832,6 +835,7 @@ where \( V_c \) represents the velocity of the conveyor belt and \( V_r \) repre
 
 \text{where } TX \text{ is the initial detected position, } AMS \text{ is the marker space displacement, and } TD \text{ is the tracked distance.}\\
 
+\newpage
 3. \textbf{Marker Space Displacement(AMS):} \\
 
 \[
@@ -846,10 +850,12 @@ AMS \cdot \theta = TX - \text{Marker Pattern Origin}
 TD = \Delta TSC + \Delta CTO
 \]
 
-Where:
-
-- \( \Delta TSC \) is the \textbf{Target Scan Completion Distance}, which is the distance moved by the conveyor while scanning is completed.
-- \( \Delta CTO \) is the \textbf{Conveyor Tracking Offset}, which is the distance moved while waiting for the robot to reach the pick position.
+\begin{itemize}
+  \item $\Delta TSC$ is the \textbf{Target Scan Completion Distance}%
+        —distance moved by the conveyor during scan completion.
+  \item $\Delta CTO$ is the \textbf{Conveyor Tracking Offset}%
+        —distance moved while waiting for the robot to reach the pick position.
+\end{itemize}
 
 5. \textbf{Target Scan Completion Distance (TSC):} 
 
