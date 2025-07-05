@@ -316,6 +316,7 @@ A spatially encoded pattern is used in structured patterns/dots technology to en
 \subsection{Parallel Structured Light}
 
 Parallel Structured Light parallelizes the sequential structured light using a sophisticated sensor design, which enables it to record the scene illuminated by various patterns simultaneously. In addition to sharing many of the sequential structured light's benefits, such as resolution and accuracy, it also overcomes one of its main drawbacks: the inability to capture a dynamic environment. Photoneo's Parallel Structured Light gets around the restriction by projecting and capturing numerous encoded patterns. Pixel modulations within our proprietary CMOS sensor are used to accomplish this. Multiple groups of separately modified pixels make up the sensor itself.[15] \\\\ 
+\newpage
 
 The Parallel Structured Light's main advantages are:
 \begin{enumerate}
@@ -404,7 +405,7 @@ Surface imaging and geometry estimation are the two primary subtasks that compri
 
 
 \label{Literature}
-\subsection{Robotic Movement}\\\\
+\subsection{Robotic Motion}\\\\
 Given a point in the world coordinate, the angle of each joint is calculated based on an inverse kinematics (IK) equation. In general, there may be no analytic IK solution from a manipulator for the configurations of each joint. The numerical method is introduced to solve the problem for
 general manipulators. The velocity of the joint can be mapped to Cartesian space with the Jacobian linearization method.\\
 
@@ -472,7 +473,7 @@ The following figures illustrate examples of the same object captured under vari
     \label{fig:confidence_map}
 \end{figure}
 
-\noindent\textbf{6. Normals:} Surface normals are essential for realistic rendering and understanding object orientation. They describe how surfaces interact with light and are crucial in graphics and computer vision.
+\noindent\textbf{6. Normals:} Surface normals are essential for realistic rendering and understanding object orientation. They describe how surfaces interact with light, which is crucial in graphics and computer vision.
 \begin{figure}[H]
     \centering
     \includegraphics[width=6cm]{Thesis-report/Figures/new_Normals.png}
@@ -526,7 +527,8 @@ The fundamental path interpolation functions, such as linear and point-to-point 
 In the preceding part, the picking procedure was put into practice. With some dynamic adjustments, the situation is now more challenging. The robot should be updated with the object's information when it begins to move on the conveyor to use the tracing talent. The tracking technique presents certain difficulties when using a visual control system. First, we must use real-time frame-by-frame image processing to track the objects. Next, we use the average of the previous ten frames as a guide. Second, we must specify the gripper's position about the moving object. We came up with one method for determining the objects' positions. Kinects that can recognize objects can also provide us with depth information in addition to the target's color. Next, using the information gathered, we devise a method to obtain 3D coordinates and calibrate the scale to the y and z-axes while taking into account the depth frame, which is the x-axis under Kinect view. Finally, the robot's reaction will complete the grabbing maneuver by following the updated data. Our tracking strategy is divided into three subsections. \\ 
 
 By calibrating the y and z axes, we may create a prospective viewpoint to enhance object location after obtaining the past 10 frames as a reference to compare with the present frame. The tracker would ultimately follow the target by the predicted trajectory after we had the position of the tracker and the target.\\\\
-Initially obtain the tracker's (gripper) and the target's (workpiece) instantaneous positions independently once the camera has determined the outlines of objects. First, the contour is the difference between the color frame and the reference and current frames. The coordinates of the items in the depth frame are then obtained. The situation along the x and z axes in the depth frame and the y and z axes from the Kinect color frame are among the desired data. \\
+
+Initially, obtain the instantaneous positions of the tracker's (gripper) and the target's (workpiece) instantaneous positions independently once the camera has determined the outlines of objects. First, the contour is the difference between the color frame and the reference and current frames. The coordinates of the items in the depth frame are then obtained. The situation along the x and z axes in the depth frame and the y and z axes from the Kinect color frame are among the desired data. \\
 
 The tracker and target belong to different x-y planes; thus, we may utilize a threshold regarding the data along the z-axis in the color frame in Kinect view to separate the objects. It is referred to as the robot palm if the coordinate along the z-axis is more than the threshold.
 \subsection{Position Calibration}\\
@@ -554,7 +556,7 @@ Where encoder-count is the encoder's read contents, and encoder-offset is used t
 \]
 
 For picking-on-the-fly robot tasks, a fast digital-input interdigital input that detects the occurrence of an external event of the type "an object has completely entered the conveyor belt window" (and hence is completely visible) will initiate the dynamic robot-vision synchronization based on the "look-and-move" cooperation principle. A photocell detects this event and uses it to determine whether to take an image of the moving item.
-\subsection{Moving Calibration through Conveyor belt}\\
+\subsection{Moving Calibration Board through Conveyor belt}\\
 The trajectory follows the instructions produced from trajectory planning and eye-in-hand vision each time the robot arm's palm begins to perform a moving task. The border of the conveyor will show up on the top side of the image when viewed through a camera. Because the conveyor's moving path is linear, the robot's motion can be corrected by following the conveyor's edge slope. The line equation in polar coordinates is used to determine the conveyor's line edge. The polar parametric form has the advantage of having no singular condition in the domain of sinusoidal functions.
 
 \begin{equation}
@@ -569,15 +571,15 @@ To enable the robotic arm to know where to pick and position the target objects,
 \text{camP}_{\text{obj}} = C_Z \cdot K^{-1} \cdot p_{\text{obj}} [3]
 \]
 
-where: cam  Pobj: [u, v, 1]" on the image plane; Pobj: The object point [EX, CY, CZ]" in the camera frame.
+where: camera Pobj: [u, v, 1]" on the image plane; Pobj: The object point [EX, CY, CZ]" in the camera frame.
  The calibration of the eye-to-hand stereo camera yields the intrinsic matrix K in above Equation (4), and the estimation of depth based on the disparity is used to determine the depth ° Z.
- The coordinate conversion from the stereo camera frame to the robot base frame is the second operation sequence.  The transformation matrix base Heam, which is determined from the eye-to-hand calibration, is used to do this.  Combining the first and second operation sequences yields the equation:\\
+ The coordinate conversion from the stereo camera frame to the robot base frame is the second operation sequence.  The transformation matrix base Hcam, which is determined from the eye-to-hand calibration, is used to do this.  Combining the first and second operation sequences yields the equation:\\
 
  \[
 \text{baseP}_{\text{obj}} = {}^{\text{base}}H_{\text{cam}} \cdot \text{camP}_{\text{obj}} [3]
 \]
 
-where: base Pobj: The robot base frame's object point; base  Heam: The matrix used to convert the robot base frame from the stereo camera frame.Finally, the above two equations are combined to give the overall transformation equation for the entire system .For a robotic system with an eye-to-hand arrangement, the equation below shows the series of coordinate transformations from the image plane to the robot base frame.[3]\\
+where: base Pobj: The robot base frame's object point; base  Hcam: The matrix used to convert the robot base frame from the stereo camera frame. Finally, the above two equations are combined to give the overall transformation equation for the entire system .For a robotic system with an eye-to-hand arrangement, the equation below shows the series of coordinate transformations from the image plane to the robot base frame.[3]\\
 
  \[
 \text{baseP}_{\text{obj}} = {}^{\text{base}}H_{\text{cam}} \cdot \text{camP}_{\text{obj}} [3]
@@ -590,15 +592,15 @@ where: base Pobj: The robot base frame's object point; base  Heam: The matrix us
 \]
 
 
-\subsection{Software Codes}
+\subsection{Features for Robot Motion}
 \subsubsection{Servo-X}
 The servoX is the motion of the robot in Cartesian space, where we need to define the max velocity, max acceleration, and its servoX proportional gain. Initially, the coordinates that we get from the camera space as Quaternion values that include [X, Y, Z, ex, ey,ez] as the target values for the robot to move to that particular position and pick up the object. Since we have a calibrated camera relative to the Robot frame, the coordinates that we get from the object will be relative to the robot frame.
 \subsubsection{Move Linear:}\\
-The above method is basically used in the dynamic application, where the object coordinates(Quaternion values) [X, Y, Z, Ex, Ey, Ez] these values are passed to the robot controller directly for moving to the target position. Here we need to provide the max acceleration, max velocity for the robotic movement.
+The above method is basically used in the dynamic application, where the object coordinates(Quaternion values) [X, Y, Z, Ex, Ey, Ez] are passed to the robot controller directly for moving to the target position. Here, we need to provide the maximum acceleration and the maximum velocity for the robotic movement.
 
-\subsection{Calibration for camera for Workspace}\\\\
+\subsection{Calibration for camera}\\\\
 
-Go to the Calibration page within the solution to begin the calibration.  The following details are displayed along with a list of all defined vision systems: [2]
+For camera calibration, the following steps need to be followed and considered: [2]
 \begin{enumerate}
     \item ● ID: the Vision system's ID[2]
     \item ● Name: the Vision system's name [2]
@@ -616,16 +618,17 @@ Go to the Calibration page within the solution to begin the calibration.  The fo
     \caption{Calibration [2] }
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-The camera calibration is performed through an extrinsic method in which the camera is fixed in a position and the calibration ball is fixed at the end of the robot TCP.\\
+The camera calibration is performed through an extrinsic method in which the camera is fixed in a position and the calibration ball is fixed at the end of the robot Tool Center Point.\\
 \begin{figure}[h]
     \centering
     \includegraphics[width=12cm]{Thesis-report/Figures/calibration.jpeg}
     \caption{Calibration for camera with respect to Robot frame [2] } 
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-The below figure shows how the calibration is happening by adding the point by fixing the point where the robot Coordinates [X, Y, Z] rotation values will save the points by saving the points (represented as a green point). Here, we need to add 9 points to get the calibration workspace. After the calibration, the average value from the 9 points is taken into consideration.(The lesser the value better the accuracy) [2]\\ 
+The below figure shows how the calibration is happening by adding the point by fixing the point where the robot Coordinates [X, Y, Z] rotation values will save the points(represented as a green point). Here, we need to add 9 points to get the calibration workspace. After the calibration, the average value from the 9 points is taken into consideration.(The lesser the value better the accuracy) [2]\\ 
 
-The below figure shows the calibration method used in this study (Extrinsic Calibration) (EC), where the camera is fixed at the location, and 9 points are taken into consideration, where the average value is finally taken as the value for the calibration. [2]\\
+\newpage
+Figure 18 below shows the calibration method used in this study (Extrinsic Calibration) (EC), where the camera is fixed at the location, and 9 points are taken into consideration, where the average value is finally taken as the value for the calibration. [2]\\
 
 This kind of calibration is employed in configurations where the 3D sensor is fixedly positioned within the robotic cell, often above the bin. The 3D sensor does not have to be stationary relative to the robotic cell itself; it just needs to be stationary relative to the robot's foundation.[2]
 \begin{figure}[h]
@@ -640,7 +643,8 @@ Finding a camera's intrinsic matrix, extrinsic matrix, and distortion coefficien
 {}^{cam}\!H_{cal} = {}^{cam}\!H_{base} \cdot \left( {}^{base}\!H_{tcp} \cdot {}^{tcp}\!H_{cal} \right) = {}^{cam}\!H_{base} \cdot {}^{base}\!H_{cal} [3]
 \]
 
-The transformation matrix in the above equation that must be computed for the eye-to-hand calibration is cam H base.  Cam H cal, which can be computed using either 3D recognition of the calibration rig or camera calibration (extrinsic matrix), is the transformation matrix from the calibration rig frame to the camera frame.  Forward kinematics can be used to calculate base H cal, the transformation matrix from the calibration rig frame to the robot base frame.
+\newpage
+The transformation matrix in the above equation that must be computed for the eye-to-hand calibration is the camera H base(the pose of the robot’s base frame expressed in the camera frame.) and the Cam H cal, which can be computed using either 3D recognition of the calibration rig or camera calibration (extrinsic matrix), is the transformation matrix from the calibration rig frame to the camera frame.  Forward kinematics can be used to calculate base H cal(The pose of the calibration object’s coordinate frame cal expressed in the camera frame. Mathematically, the transformation matrix from the calibration rig frame to the robot base frame.
 \\ The calibration matrix will become invalid, and the entire calibration process will need to be restarted if there is a change in the relative position between the 3D sensor and the robot after the calibration. In other words, after the system has been calibrated, the 3D sensor cannot be changed relative to the robot.[3]\\
 
 
