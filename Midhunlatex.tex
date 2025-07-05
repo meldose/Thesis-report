@@ -533,12 +533,12 @@ The tracker and target belong to different x-y planes; thus, we may utilize a th
 Static pose recognition will end when the tracking approach is activated. The end-effector and object positions on the conveyor are among the data. The workpiece will proceed through the conveyor in a straight line. Therefore, only the workpieces' positions will be changed, and their orientation will remain unchanged. It is important to note that the end-effector might follow the subsequent instructions based on the tracking approach. This doesn't assist with grabbing articles, though. The gripper should take aim-off into account when doing object tracking to ensure that the entire gripping process is complete. Thus, proper gripping position by the tracking method turns out to be an important point. Without additional indication, the arm might not be aware of some issues that arise on the conveyor.
 
 \subsection{Encoder offsets}\\
-The main method for defining robot movements about a conveyor belt is to model the belt using a unique kind of position data called belt variables. The position of a reference frame fixed to the moving belt conveyor is defined by a belt variable, which is regarded as a relative transformation with a component variable in time. The relationship between a belt encoder and the position and speed of the reference frame, which keeps a fixed position and orientation concerning the belt, can be described using such a belt variable. A belt variable is defined as:
+The main method for defining robot movements about a conveyor belt is to model the belt using a unique kind of position data called belt variables. The position of a reference frame fixed to the moving belt conveyor is defined by a belt variable, which is regarded as a relative transformation with a component variable in time. The relationship between a belt encoder and the position and speed of the reference frame, which keeps a fixed position and orientation relative to the belt, can be described using such a belt variable. A belt variable is defined as:
 
 \[
 \text{DEFBELT} \, \% \text{belt-variable} = \text{nominal-trans}, \, \text{scale factor}
 \]
-Where scale factor is a calibrating constant that specifies the ratio between the elementary displacement of the belt and one pulse of the encoder; nominal-trans is the value in R6 of the (simple or composed) relative transformation that defines the position and orientation of the conveyor belt; and belt-variable is the name of the belt variable to be defined. The nominal transformation specifies a position (X, Y, Z) that points to the approximate center of the belt concerning the robot's base frame; the X axis of the nominal transformation indicates the direction of motion of the belt; and the XY plane defined by this transformation is parallel to the conveyor belt surface.\\
+Where scale factor is a calibrating constant that specifies the ratio between the elementary displacement of the belt and one pulse of the encoder; nominal-trans is the value in R6 of the (simple or composed) relative transformation that defines the position and orientation of the conveyor belt; and belt-variable is the name of the belt variable to be defined. The nominal transformation specifies a position (X, Y, Z) that points to the approximate center of the belt relative to the robot's base frame; the X axis of the nominal transformation indicates the direction of motion of the belt; and the XY plane defined by this transformation is parallel to the conveyor belt surface.\\
 \[
 \text{XYZ-instantaneous} =
 \text{XYZ-nominal} + \text{belt-distance} \cdot \text{vers}(X_{l,\sim,\text{minal\_rrarrv}})
@@ -592,7 +592,7 @@ where: base Pobj: The robot base frame's object point; base  Heam: The matrix us
 
 \subsection{Software Codes}
 \subsubsection{Servo-X}
-The servoX is the motion of the robot in Cartesian space, where we need to define the max velocity, max acceleration, and its servoX proportional gain. Initially, the coordinates that we get from the camera space as Quaternion values that include [X, Y, Z, ex, ey,ez] as the target values for the robot to move to that particular position and pick up the object. Since we have a calibrated camera concerning the Robot frame, the coordinates that we get from the object will be concerning the robot frame.
+The servoX is the motion of the robot in Cartesian space, where we need to define the max velocity, max acceleration, and its servoX proportional gain. Initially, the coordinates that we get from the camera space as Quaternion values that include [X, Y, Z, ex, ey,ez] as the target values for the robot to move to that particular position and pick up the object. Since we have a calibrated camera relative to the Robot frame, the coordinates that we get from the object will be relative to the robot frame.
 \subsubsection{Move Linear:}\\
 The above method is basically used in the dynamic application, where the object coordinates(Quaternion values) [X, Y, Z, Ex, Ey, Ez] these values are passed to the robot controller directly for moving to the target position. Here we need to provide the max acceleration, max velocity for the robotic movement.
 
@@ -627,11 +627,11 @@ The below figure shows how the calibration is happening by adding the point by f
 
 The below figure shows the calibration method used in this study (Extrinsic Calibration) (EC), where the camera is fixed at the location, and 9 points are taken into consideration, where the average value is finally taken as the value for the calibration. [2]\\
 
-This kind of calibration is employed in configurations where the 3D sensor is fixedly positioned within the robotic cell, often above the bin. The 3D sensor does not have to be stationary concerning the robotic cell itself; it just needs to be stationary concerning the robot's foundation.[2]
+This kind of calibration is employed in configurations where the 3D sensor is fixedly positioned within the robotic cell, often above the bin. The 3D sensor does not have to be stationary relative to the robotic cell itself; it just needs to be stationary relative to the robot's foundation.[2]
 \begin{figure}[h]
     \centering
     \includegraphics[width=10cm]{Thesis-report/Figures/extrinsic_ball.jpeg}
-    \caption{Calibration for the camera concerning the Robot frame}
+    \caption{Calibration for the camera relative to the Robot frame}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 Finding a camera's intrinsic matrix, extrinsic matrix, and distortion coefficients is the aim of camera calibration. The relationship between the camera frame and the chessboard frame is described by the extrinsic matrix, whereas the relationship between the picture plane and the camera frame is described by the intrinsic matrix. Hand-eye calibration aims to establish the transformation relationship between the cameras and the robotic arm.  The location of an object in the camera frame can be converted into its location in the robot base frame once the transformation connection has been established. The robotic arm will then be able to locate the object and pick it up. Finding the transformation matrix between the robot base and the camera (base H cam) is the aim of an eye-to-hand calibration.[3]\\
@@ -641,7 +641,7 @@ Finding a camera's intrinsic matrix, extrinsic matrix, and distortion coefficien
 \]
 
 The transformation matrix in the above equation that must be computed for the eye-to-hand calibration is cam H base.  Cam H cal, which can be computed using either 3D recognition of the calibration rig or camera calibration (extrinsic matrix), is the transformation matrix from the calibration rig frame to the camera frame.  Forward kinematics can be used to calculate base H cal, the transformation matrix from the calibration rig frame to the robot base frame.
-\\ The calibration matrix will become invalid, and the entire calibration process will need to be restarted if there is a change in the relative position between the 3D sensor and the robot after the calibration. In other words, after the system has been calibrated, the 3D sensor cannot be changed concerning the robot.[3]\\
+\\ The calibration matrix will become invalid, and the entire calibration process will need to be restarted if there is a change in the relative position between the 3D sensor and the robot after the calibration. In other words, after the system has been calibrated, the 3D sensor cannot be changed relative to the robot.[3]\\
 
 
 \begin{figure}[h]
@@ -886,7 +886,7 @@ This method can also be used to get the Conveyor belt calibrated. The steps incl
 \chapter{\section{\mbox{Inverse Kinematics }}{{\normalfont\fontsize{14}{16}\bfseries}}
 We look at the system model, which includes a nonredundant robot manipulator with n degrees of freedom and a conveyor belt system. The following attributes are assumed to be present in the system model: [14]\\
 1) The conveyor belt system runs at constant velocity, and the
-part is stationary concerning the conveyor belt system. [14]\\
+part is stationary relative to the conveyor belt system. [14]\\
 2) The orientation of the robot hand is initially aligned with the part and kept fixed while the robot tracks the part. [14]\\
 3) The robot tracks the part along a straight path over the
 conveyor belt system [14].
@@ -1440,7 +1440,7 @@ The web interface shows the image of the object being detected; initially, we lo
 \newpage
 \chapter{\section{\mbox{Results and Discussions }}{{\normalfont\fontsize{14}{16}\bfseries}}
 \subsection{Robot TCP Speed vs Conveyor Speed}
-The below figure shows the results that is obtained while picking the items on a moving conveyor belt speed (m/s) concerning the Robot speed.\\
+The below figure shows the results that is obtained while picking the items on a moving conveyor belt speed (m/s) relative to the Robot speed.\\
 \label{Literature}
 \begin{figure}[h]
     \centering
@@ -1450,7 +1450,7 @@ The below figure shows the results that is obtained while picking the items on a
 \end{figure}\\
 \subsection{Success Rate vs Conveyor Speed}
 
-During the dynamic picking testing, I tested the picking of the Trapezoid object with the pipe to have a comparison for getting some results. The below figure shows the results that are obtained while placing the items that include the trapezoid and pipe on a moving conveyor belt speeds (m/s) concerning Success rates.\\
+During the dynamic picking testing, I tested the picking of the Trapezoid object with the pipe to have a comparison for getting some results. The below figure shows the results that are obtained while placing the items that include the trapezoid and pipe on a moving conveyor belt speeds (m/s) relative to Success rates.\\
 \begin{figure}[h]
     \centering
     \includegraphics[width=12cm]{Thesis-report/Figures/conveyor_speed vs success_rates.png} 
@@ -1461,7 +1461,7 @@ During the dynamic picking testing, I tested the picking of the Trapezoid object
 
 \end{figure}\\
 \subsection{Average Pick Time vs Conveyor Speed}
-The below figure shows the results obtained while placing the items on a moving conveyor belt speed (m/s) concerning the Avg pick-up time.\\
+The below figure shows the results obtained while placing the items on a moving conveyor belt speed (m/s) relative to the Avg pick-up time.\\
 \begin{figure}[h]
     \centering
     \includegraphics[width=12cm]{Thesis-report/Figures/conveyor_speed vs avg pick_up_time.png} 
