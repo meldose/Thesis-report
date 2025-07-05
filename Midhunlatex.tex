@@ -1163,7 +1163,7 @@ Gigabit Ethernet cables (Cat5e or higher category) are needed to connect the 3D 
  Both a fixed IPv6 link-local address and a programmable IPv4 address are features of Photoneo 3D Sensors.IPv6 connections are better than IPv4 ones.  Nevertheless, the IPv4 address is used if the IPv6 connection is banned or fails.  Consequently, having a legitimate IPv4 network configuration is advised.[2]\\
 
  The interface can be set up to operate a DHCP server or to utilize any random static IP address.  Use the appropriate IP address settings on the sensor side through the PhoXi Control program in both situations.[2]\\
-
+\newpage
 \subsubsection{Communication of Robot With Vision Camera}\\
 The robot interface on the vision controller and the robot module operating on the robot controller enable communication between the vision controller and the robot controller.[2]\\
 
@@ -1225,23 +1225,26 @@ It is necessary to thoroughly configure the visual system that will be calibrate
 The calibration space and scanner position specify the 3D sensor's mount point and, consequently, the calibration type. The scanner model is automatically calculated based on the selected 3D sensor.[2]
 
 \subsubsection{6-Axis Cobot-Delta}
-The cobot that we have used for the conveyor tracking system is a 6-axis cobot called a Delta robot. The robot mainly moves towards its target position by getting the values from the camera in the form of quaternion values.[2]\
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=4.5cm]{Thesis-report/Figures/robot.jpeg}
-    \caption{Delta Robot}
-    \label{fig1.Photoneo Cmaera}
-\end{figure}
+The cobot that we have used for the conveyor tracking system is a 6-axis cobot called a Delta robot. The robot mainly moves towards its target position by getting the values from the camera in the form of quaternion values.[2]
 
-\subsubsection{RobotiQ 140 Gripper:}
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=8cm]{Thesis-report/Figures/cobot_gripper_2F_85-ezgif.com-webp-to-jpg-converter.jpg}
-    \caption{RobotiQ 140 Gripper}
-    \label{fig1.Photoneo Cmaera}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=3.5cm]{Thesis-report/Figures/robot.jpeg}
+  \caption{Delta Robot}
+  \label{fig:delta_robot}
 \end{figure}
-The RobotiQ 140 gripper is a two-finger gripper that mainly works under the principle of Modbus Communication. This gripper's 85 mm stroke, 230 N maximum gripping force, and 5 kg maximum payload make it the perfect choice for anyone looking for a flexible, all-purpose end-of-arm tool. This gripper is perfect for low-volume, high-changeover settings since it can efficiently grasp a broad range of workpiece sizes and forms.
+\FloatBarrier
 
+\subsubsection{RobotiQ 140 Gripper}
+The RobotiQ 140 gripper is a two-finger gripper that mainly works under the principle of Modbus communication. Its 85 mm stroke, 230 N max gripping force and 5 kg max payload make it ideal for low-volume, high-changeover settings.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=8cm]{Thesis-report/Figures/cobot_gripper_2F_85-ezgif.com-webp-to-jpg-converter.jpg}
+  \caption{RobotiQ 140 Gripper}
+  \label{fig:robotiq_140}
+\end{figure}
+\FloatBarrier
 
 \section{Robotic Movement:}
 The Robotic movement can be performed with 3 methods called Servo X, ServoJ,and Movelinear.\
@@ -1317,13 +1320,13 @@ Euler angles are usually implemented using rotation matrices. There is an x rota
 \subsection{Quaternions:}\\
 The second rotational modality uses quaternions and is defined by Euler's theorem. Given the lack of a comprehensive overview of the field and the fact that quaternions are not nearly as well-known as transformation matrices, we will first provide a historical perspective before delving deeply into quaternion mathematics.[20]
 
-
+\newpage
 \subsection{Object for picking}
 We have used trapezoid for object picking 
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=6cm]{Thesis-report/Figures/two.png} 
+    \includegraphics[width=4cm]{Thesis-report/Figures/two.png} 
     \caption{Trapezoid}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
@@ -1460,14 +1463,15 @@ The web interface shows the image of the object being detected; initially, we lo
 \newpage
  The above figure represents the web interface that includes the camera triggering the object placed in the workspace. The green section represents the area for the workspace, and the red section is the object to be picked up by the Robot. Using a TCP/IP client request connection in which the robot and camera connections are being established. For setting up the connection, the robotic controller and camera IP address (subnet) are made into the same, which helps in communication through a web interface.
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=8cm]{Thesis-report/Figures/scanning volume.png} 
-    \caption{Scanning Volume [18]}
-    \label{fig1.Photoneo Cmaera}
+\begin{figure}[H]  % requires \usepackage{float}
+  \centering
+  \includegraphics[width=8cm]{Thesis-report/Figures/scanning volume.png}
+  \caption{Scanning Volume [18]}
+  \label{fig:photoneo-scanning-volume}
 \end{figure}
 
- The above figure shows the volume/area in which the Photoneo Camera is possible to scan the items and get the object poses. The top view shows the maximum FOV where the camera can reach the object to get the object coordinates, which includes 15m.\\
+The above figure shows the volume/area in which the Photoneo Camera can scan items and determine object poses. The top view shows the maximum field of view (FOV) reachable by the camera for object coordinate acquisition, which extends up to 15 m.
+
 
 \newpage
 \chapter{\section{\mbox{Results and Discussions }}{{\normalfont\fontsize{14}{16}\bfseries}}
