@@ -886,12 +886,12 @@ Initially, before we start the calibration, we need to set the camera to a speci
 
 This method can also be used to get the Conveyor belt calibrated. The steps include :
 \begin{enumerate}
-    \item \textbf{First step:}  Place the picking / triggering object in the field of view of the camera and trigger the camera, then get the object pose, which includes the [X1, Y1, and Z1] respectively [2]
-    \item \textbf{Second step:} Switch on the conveyor belt and get the farthest position where the camera triggers the object, and get the coordinates which include the [X2, Y2, and Z3] respectively.[2]
+    \item \textbf{First step:}  Place the picking / triggering object in the field of view of the camera and trigger the camera, then get the object pose, which includes [X1, Y1, and Z1] respectively [2]
+    \item \textbf{Second step:} Switch on the conveyor belt and get the farthest position where the camera triggers the object, and get the coordinates which includes [X2, Y2, and Z3] respectively.[2]
     \item \textbf{Third step:} While triggering the camera in the first and final position,n we also try to capture the timestamps of the camera, which calculates the time taken by the camera to trigger.[2]
     \item \textbf{Fourth step:} In this step, we need to calculate the change in the position for the X, Y, and Y, respectively, which includes ($\Delta X$, $\Delta Y$, and $\Delta Z$ ). In addition to that, we need to get the change in time also  ($\Delta t$).[2]
     \item \textbf{Fifth step:} In this step, we need to find the custom velocity by dividing the change in the position by the change in time.[2]
-    \item \textbf{Sixth step:} Finally, we need to multiply the custom velocity with the time and changes in postion along the X position, which will help in getting change in the position as linear motion and transfered to the robotic controller that helps the robot to pick the itmes from the conveyor belt.[2]
+    \item \textbf{Sixth step:} In order to obtain a change in position as linear motion and transmit it to the robotic controller that assists the robot in picking up items from the conveyor belt, we must lastly multiply the custom velocity by the time and position changes along the X position.[2]
 \end{enumerate}
 
 \chapter{\section{\mbox{Inverse Kinematics }}{{\normalfont\fontsize{14}{16}\bfseries}}
