@@ -644,7 +644,8 @@ Finding a camera's intrinsic matrix, extrinsic matrix, and distortion coefficien
 \]
 
 \newpage
-The transformation matrix in the above equation that must be computed for the eye-to-hand calibration is the camera H base(the pose of the robot’s base frame expressed in the camera frame.) and the Cam H cal, which can be computed using either 3D recognition of the calibration rig or camera calibration (extrinsic matrix), is the transformation matrix from the calibration rig frame to the camera frame.  Forward kinematics can be used to calculate base H cal(The pose of the calibration object’s coordinate frame cal expressed in the camera frame. Mathematically, the transformation matrix from the calibration rig frame to the robot base frame.
+The transformation matrix in the above equation that must be computed for the eye-to-hand calibration is the camera H base(the pose of the robot’s base frame expressed in the camera frame.) and the Cam H cal, which can be computed using either 3D recognition of the calibration rig or camera calibration (extrinsic matrix), is the transformation matrix from the calibration rig frame to the camera frame.  Forward kinematics can be used to calculate base H cal(The pose of the calibration object’s frame cal expressed in the robot’s base frame.
+– typically obtained by detecting the calibration target from a known robot pose.)Mathematically, the transformation matrix from the calibration rig frame to the robot base frame.
 \\ The calibration matrix will become invalid, and the entire calibration process will need to be restarted if there is a change in the relative position between the 3D sensor and the robot after the calibration. In other words, after the system has been calibrated, the 3D sensor cannot be changed relative to the robot.[3]\\
 
 
