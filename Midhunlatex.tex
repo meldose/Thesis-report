@@ -67,11 +67,11 @@
     
     \vspace{0.5 cm}
     
-    \mbox{first examiner: Prof. Ginu Paul Alunkal}
+    \mbox{first examiner: Mr. Ginu Paul Alunkal}
     
     \vspace{1.5 cm}
     
-    \mbox{Deggendorf, 30.05.2025}
+    \mbox{Deggendorf, 30.07.2025}
 
 \end{center}
 \end{titlepage}
@@ -114,7 +114,7 @@
 
     \vspace{0.5 cm}
 
-    \mbox{ Prof. Ginu Paul Alunkal}
+    \mbox{ Mr. Ginu Paul Alunkal}
 
     \vspace{0.5 cm}
 
@@ -171,7 +171,7 @@
 
 \vspace{0.5cm}
 
-\mbox{Name of the first Examiner:  Prof. Ginu Paul Alunkal }
+\mbox{Name of the first Examiner:  Mr. Ginu Paul Alunkal }
 
 \vspace{1 cm}
 
@@ -186,7 +186,7 @@ Object Tracking using 3D Machine Vision Camera for Industrial Robots
 
  \vspace{1.5 cm}
 \raggedright
-Deggendorf,30.05.2025
+Deggendorf,30.07.2025
 \hspace{4 cm}
 Signature of the student:
 
@@ -380,13 +380,34 @@ Internal interreflections between pixels are also suppressed by the same techniq
 
 The figure above shows the scanning distance of various cameras vs. their point size. Here, we have used the M+ Range camera.
 
-\newpage
-
-\newpage
 \chapter{\section{\mbox{Literature Review }}{{\normalfont\fontsize{14}{16}\bfseries}}
 
+\label{chap:litreview}
+
+\begin{justify}
+
+\subsection{Robotic Conveyor Tracking}
+Early work on visually guided conveyor tracking focused on 2D cameras and simple background‐subtraction methods. Shin AUTHOR NAME Demonstrated frame‐difference object detection combined with 2D template matching to locate parts on a belt in real time, but suffered from occlusion and uniform‐lighting limitations: REFERENCE TO. Park and Lee formulated the conveyor‐tracking problem as a constrained trajectory‐planning task for 6‐DOF manipulators, minimizing steady‐state tracking error and actuator torques: REFERENCE TO. More recently, Zhang AUTHOR NAME integrated Time‐of‐Flight ranging with color segmentation to classify and track parcels at higher belt speeds, achieving sub‐5 mm positional accuracy at 1 m/s: REFERENCE TO \\\\
+\subsection{3D Vision Systems and Depth Sensing}
+The shift from 2D to 3D sensing has been driven by affordable structured light and TOF cameras. Photoneo’s MotionCam 3D M+ uses Parallel Structured Light to capture 1068 × 800 depth frames at 60 Hz, merging per‐pixel depth with intensity for robust object detection under ambient light: REFERENCE TO. Fernandez AUTHOR NAME showed how TOF depth data can be converted from spherical to Cartesian coordinates for conveyor‐based pick‐and‐place, with typical z‐noise under 0.5 mm at 1 m distance: REFERENCE TO. Luo AUTHOR NAME extended this by fusing stereo‐vision point clouds with TOF to improve tracking through partial occlusions: REFERENCE TO.\\
 
 \newpage
+\subsection{Calibration Techniques (Hand–Eye and Extrinsic)}
+Accurate hand-eye and extrinsic calibration is critical for mapping camera coordinates into the robot base frame. Standard methods use a calibration rig (ball or checkerboard) and solve for the transform ${}^{\rm base}H_{\rm cam}$ via least‐squares on multiple correspondences: REFERENCE TO. Ge AUTHOR NAMEautomated lidar–camera extrinsic calibration with a hemispherical target, yielding sub‐millimeter accuracy over nine poses: REFERENCE TO. Photoneo’s web interface further streamlines extrinsic setup by guiding users through nine sample points and reporting an overall accuracy score in millimeters: REFERENCE TO.\\
+
+\subsection{Dynamic Object Tracking and Path Planning}
+Real‐time tracking of moving parts requires coupling vision updates with trajectory replanning. Shahzadi AUTHOR NAME proposed a vision‐based path planning framework where each new depth frame triggers a local replanning via a fast pseudo‐inverse Jacobian update, ensuring collision‐free, smooth motion: REFERENCE TO. Wunsch and Hirzinger introduced dynamic occlusion handling in 3D by predicting object pose through Kalman filtering of multi‐view point clouds: REFERENCE TO. Agrawal AUTHOR NAME Demonstrated shadow‐casting to enhance grasp edges, reducing processing latency in high‐speed pick‐and‐place: REFERENCE TO.
+
+\subsection{Gaps and Research Directions}
+Despite these advances, challenges remain in  
+\begin{itemize}[nosep]
+  \item \textbf{High‐speed tracking:} maintaining sub‐millimeter accuracy above 1 m/s belt speeds.
+  \item \textbf{Dynamic lighting:} achieving robust detection under rapidly changing ambient conditions.
+  \item \textbf{Transparent/reflective objects:} current depth sensors struggle with non‐Lambertian surfaces.
+  \item \textbf{Explainability and safety:} integrating uncertainty estimates into real‐time safety controllers.
+\end{itemize}
+
+\end{justify}
 \newpage
 \chapter{\section{\mbox{Methodology }}{{\normalfont\fontsize{14}{16}\bfseries}}
 
@@ -622,7 +643,7 @@ The camera calibration is performed through an extrinsic method in which the cam
 \begin{figure}[h]
     \centering
     \includegraphics[width=12cm]{Thesis-report/Figures/calibration.jpeg}
-    \caption{Calibration for camera with respect to Robot frame [2] } 
+    \caption{Calibration for camera concerning Robot frame}[2] 
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 The below figure shows how the calibration is happening by adding the point by fixing the point where the robot Coordinates [X, Y, Z] rotation values will save the points(represented as a green point). Here, we need to add 9 points to get the calibration workspace. After the calibration, the average value from the 9 points is taken into consideration.(The lesser the value better the accuracy) [2]\\ 
@@ -812,7 +833,7 @@ In the below figure, the number represents the coordinates of the object after t
 Calibration of the marker pattern from the camera to the conveyor belt, which is the common origin:
 \begin{enumerate}
     \item Attach the appropriate calibration pattern to the conveyor belt. [21]
-    \item Use PhoXi Control's marker pattern to save calibration. We can use this setting as a custom scanning profile in Vision System´s Space by adding a triggering item for the sensor at the marker pattern export photo's origin.[21]
+    \item Use PhoXi Control's marker pattern to save calibration. We can use this setting as a custom scanning Mrile in Vision System´s Space by adding a triggering item for the sensor at the marker pattern export photo's origin.[21]
     \item Robot to conveyor belt: The robot moves the conveyor belt from a shared origin, but the marker pattern stays in place according to the conveyor belt. This allows the robot to reach the marker pattern, calibrate the custom coordinate space in the robot track, and save the "calibration" encoder value, which synchronizes the robot and conveyor.[21]\\
 \end{enumerate}
 
@@ -874,12 +895,12 @@ After considering the conveyor motion and processing delays, the final position 
 \]
 \newpage
 \subsection{Manual Calibration}
-Initially, before we start the calibration, we need to set the camera to a specific profile setup to Marker Space according to the calibration setup and save the profile as given below: [2]
+Initially, before we start the calibration, we need to set the camera to a specific Mrile setup to Marker Space according to the calibration setup and save the Mrile as given below: [2]
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=13cm]{Thesis-report/Figures/scanning_profile.jpg} 
-    \caption{Scanning Profile [2] }
+    \includegraphics[width=13cm]{Thesis-report/Figures/scanning_Mrile.jpg} 
+    \caption{Scanning Mrile [2] }
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 
