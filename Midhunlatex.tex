@@ -1448,10 +1448,9 @@ The deployment page shows console logs that provide information about previous a
 The web interface shows the image of the object being detected; initially, we load the STL file of the object to be captured by the robot. The red color indicates the object, and once the object turns green, the object coordinate will be indicated as quaternion values. After getting the quaternion values, these are transferred to the robotic controller, which helps the robot to reach the desired target position [2]
 
 \newpage
-CROP THE IMAGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 \begin{figure}[h]
     \centering
-    \includegraphics[width=12cm]{Thesis-report/Figures/web interface.jpeg} 
+    \includegraphics[width=12cm]{Thesis-report/Figures/web_interface.png} 
     \caption{Camera web interface}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
@@ -1462,9 +1461,8 @@ CROP THE IMAGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     \caption{Object detection with pipe }
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-\newpage
- The above figure represents the web interface that includes the camera triggering the object placed in the workspace. The green section represents the area for the workspace, and the red section is the object to be picked up by the robot. Using a TCP/IP client request connection in which the robot and camera connections are being established. For setting up the connection, the robotic controller and camera IP address (subnet) are made into the same, which helps in communication through a web interface.The camera sits around 350mm tall and projects a pyramidla field of view with colored ones. The Depth lanes at 630 mm,907mm and 1574mm from sensor; at ecah distance the intersection of the FOV with flat plan is a rectangle that grows with distance.Moreover, the blue trapezoid is the maximum rectangular cross section of the scan volume with sensor horizontal, vertical, and diagonal field of view limits.
 
+ The above figure represents the web interface that includes the camera triggering the object placed in the workspace. The green section represents the area for the workspace, and the red section is the object to be picked up by the robot. Using a TCP/IP client request connection in which the robot and camera connections are being established. For setting up the connection, the robotic controller and camera IP address (subnet) are made into the same, which helps in communication through a web interface.
 \begin{figure}[H]  % requires \usepackage{float}
   \centering
   \includegraphics[width=8cm]{Thesis-report/Figures/scanning volume.png}
@@ -1472,8 +1470,9 @@ CROP THE IMAGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   \label{fig:photoneo-scanning-volume}
 \end{figure}
 
-The above figure shows the volume/area in which the Photoneo Camera can scan items and determine object poses. The top view shows the maximum field of view (FOV) reachable by the camera for object coordinate acquisition, which extends up to 15 m.
+The above figure shows the volume/area in which the Photoneo Camera can scan items and determine object poses. The top view shows the maximum field of view (FOV) reachable by the camera for object coordinate acquisition, which extends up to 15 m.The camera sits around 350mm tall and projects a pyramidla field of view with colored ones. The Depth lanes at 630 mm,907mm and 1574mm from sensor; at ecah distance the intersection of the FOV with flat plan is a rectangle that grows with distance.Moreover, the blue trapezoid is the maximum rectangular cross section of the scan volume with sensor horizontal, vertical, and diagonal field of view limits.
 
+\newpage
 \chapter{\section{\mbox{Results and Discussions }}{{\normalfont\fontsize{14}{16}\bfseries}}
 \subsection{Robot TCP Speed vs Conveyor Speed}
 The below figure shows the results that is obtained while picking the items on a moving conveyor belt speed (m/s) relative to the Robot speed.\\
