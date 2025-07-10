@@ -1474,46 +1474,48 @@ The above figure shows the volume/area in which the Photoneo Camera can scan ite
 
 \newpage
 \chapter{\section{\mbox{Results and Discussions }}{{\normalfont\fontsize{14}{16}\bfseries}}
-\subsection{Robot TCP Speed vs Conveyor Speed}
-The below figure shows the results that is obtained while picking the items on a moving conveyor belt speed (m/s) relative to the Robot speed.\\
-\label{Literature}
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=12cm]{Thesis-report/Figures/conveyor_speed vs Robot tcp speed.png} 
-    \caption{Robot TCP Speed vs Conveyor Speed}
-    \label{fig1.Photoneo Cmaera}
-\end{figure}\\
-\subsection{Success Rate vs Conveyor Speed}
+\section{Robot TCP Speed vs Conveyor Speed}
+The robot's tool-center-point (TCP) speed is plotted against the belt speed in  The red circles show the measured TCP speeds, whereas the blue line represents the identity (conveyor speed). The robot's mean TCP speed increases approximately linearly from 0.08\,m/s to 0.31\,m/s as the belt speed increases from 1.00\,m/s to 2.00\,m/s, constantly trailing the conveyor.
 
-During the dynamic picking testing, I tested the picking of the Trapezoid object with the pipe to have a comparison for getting some results. The below figure shows the results that are obtained while placing the items that include the trapezoid and pipe on a moving conveyor belt speeds (m/s) relative to Success rates.\\
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=12cm]{Thesis-report/Figures/conveyor_speed vs success_rates.png} 
-    \caption{Success Rate vs Conveyor Speed}
-    \label{fig1.Photoneo Cmaera}
-    
- 
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.6\textwidth]{Thesis-report/Figures/conveyor_speed vs Robot tcp speed.png}
+  \caption{Mean TCP speed of the robot versus conveyor belt speed.}
+  \label{fig:tcp_vs_conveyor}
+\end{figure}
 
-\end{figure}\\
-\subsection{Average Pick Time vs Conveyor Speed}
-The below figure shows the results obtained while placing the items on a moving conveyor belt speed (m/s) relative to the Avg pick-up time.\\
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=12cm]{Thesis-report/Figures/conveyor_speed vs avg pick_up_time.png} 
-    \caption{Average Pick Time vs Conveyor Speed}
-    \label{fig1.Photoneo Cmaera}
-\end{figure}\\
-\subsection{Average Pick Time vs Lighting condition}
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=10cm]{Thesis-report/Figures/Picking_time vs item_type.png} 
-    \caption{Average Pick Time vs Lighting condition}
-    \label{fig1.Photoneo Cmaera}
-\end{figure} \\
-The figure above shows the results that are obtained while placing the items include the trapezoid and pipe with an average pick-up time vs. lighting conditions.\\
+\section{Success Rate vs Conveyor Speed}
+Figure~\ref{fig:success_vs_conveyor} shows the success rate for dynamic picking of trapezoid and pipe objects at belt speeds between 1.0\,m/s and 2.0\,m/s. During the dynamic picking tests, the robot maintained a higher success rate on trapezoid objects compared to pipes.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Thesis-report/Figures/conveyor_speed vs success_rates.png}
+  \caption{Success rate of dynamic picking versus conveyor belt speed.}
+  \label{fig:success_vs_conveyor}
+\end{figure}
+
+\section{Average Pick Time vs Conveyor Speed}
+The average pick time per item is plotted in Figure~\ref{fig:picktime_vs_conveyor}. The red line with circular markers shows that pick times increase from approximately 0.5\,s at 1.0\,m/s to 1.5\,s at 2.0\,m/s, indicating that higher belt speeds result in longer pick durations.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{Thesis-report/Figures/conveyor_speed vs avg pick_up_time.png}
+  \caption{Average item-pick time versus conveyor belt speed.}
+  \label{fig:picktime_vs_conveyor}
+\end{figure}
+
+\section{Average Pick Time vs Lighting Condition}
+Figure~\ref{fig:picktime_vs_lighting} contrasts the robot's picking performance under bright and dim lighting for pipes and trapezoids. Under bright light, the success rates are 80\% for pipes and 90\% for trapezoids. In dim light, success drops to 60\% for pipes and 80\% for trapezoids, showing that dimmed illumination affects pipe handling more severely.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.65\textwidth]{Thesis-report/Figures/Picking_time vs item_type.png}
+  \caption{Average pick time and success rate by item type under different lighting conditions.}
+  \label{fig:picktime_vs_lighting}
+\end{figure}
 
 
-
+\newpage
 \chapter{\section{\mbox{Conclusions and Future Prospects}}{{\normalfont\fontsize{14}{16}\bfseries}}
 \label{Literature}
 
