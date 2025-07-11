@@ -1213,11 +1213,9 @@ Two steps are necessary for conveyor visual tracking: [12]\\
 \item Item detection
 \item Object tracking.
 \end{itemize}
-There are several ways to identify items. Some potential limitations are, however, information-based recognition, self-organizing maps, template matching, and the temporal difference between two consecutive image samples. Due to their slowness, self-organizing maps cannot function in real-time. Template matching requires prior knowledge of object information to match objects. Unfortunately, because of the necessary computational load, this method cannot be used in real time. The color information solution overcomes the first two limitations; however, it is not compatible with binary images. The object recognition method that leverages the difference between two photographs can be useful when the environment does not change quickly over time.[12]
+There are several ways to identify items. Some potential limitations are, however, information-based recognition, self-organizing maps, template matching, and the temporal difference between two consecutive image samples. Due to their slowness, self-organizing maps cannot function in real time. Template matching requires prior knowledge of object information to match objects. Unfortunately, because of the necessary computational load, this method cannot be used in real time. The color information solution overcomes the first two limitations; however, it is not compatible with binary images. The object recognition method that leverages the difference between two photographs can be useful when the environment does not change quickly over time. [12]
 \subsubsection{Photoneo Camera}
-The main Vision camera we have used to track the moving object's motion through the conveyor belt is a Photoneocamera (MotionCam 3D M+), which has advanced settings that can capture and detect the object's position.\\\\ The photoneo camera mainly consists of 3D sensing technology, which contains parallel structured light that helps provide the light source to detect the objects. Using this camera, the camera can capture accurate point clouds and a standard intensity image of the object.[2] \
-
-Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU that acts as the brain behind intelligent applications. A sequential structured light, which is utilized in numerous meteorological applications, is the primary technological driver in the first group. One well-suited representative of this category is the 3D scanner range from Photoneo. This technique is not appropriate for dynamic scenes because it uses sequential (multi-frame) capturing. This section is the source of the parallel structured light.[2] \
+The main Vision camera we have used to track the moving object's motion through the conveyor belt is a Photoneocamera (MotionCam 3D M+), which has advanced settings that can capture and detect the object's position.\\\\ The photoneo camera mainly consists of 3D sensing technology, which contains parallel structured light that helps provide the light source to detect the objects. Using this camera, the camera can capture accurate point clouds and a standard intensity image of the object.[2].Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU that acts as the brain behind intelligent applications. A sequential structured light, which is utilized in numerous meteorological applications, is the primary technological driver in the first group. One well-suited representative of this category is the 3D scanner range from Photoneo. This technique is not appropriate for dynamic scenes because it uses sequential (multi-frame) capturing. This section is the source of the parallel structured light.[2] \
 
 \subsubsection{Robot Interface:}\\
 There are two software components which includes:
@@ -1235,7 +1233,7 @@ There are two software components which includes:
  It is advised to keep the Action Request Server port section empty and use the default port for this TCP server.  It is necessary to use the same port on the robot side when a custom port is defined.[2]
 \newpage
 \subsubsection{Vision controller Interface:}\\
-Gigabit Ethernet cables (Cat5e or higher category) are needed to connect the 3D sensor.  A gigabit switch can be used to connect several 3D sensors.  In all situations, the switch or 3D sensor's Ethernet connection is attached to the scanner's network port.[2]
+Gigabit Ethernet cables (Cat5e or higher category) are needed to connect the 3D sensor.  A gigabit switch can be used to connect several 3D sensors.  In all situations, the switch or the 3D sensor's Ethernet connection is attached to the scanner's network [2].
 \begin{figure}[h]
     \centering
     \includegraphics[width=5cm]{Thesis-report/Figures/scanner_interface.jpeg}
@@ -1243,9 +1241,7 @@ Gigabit Ethernet cables (Cat5e or higher category) are needed to connect the 3D 
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 
- Setting up localization settings, calibrating the robot camera, and seeing 3D scans all require a well-configured connection to the 3D Sensor. [2]\\
-
- To set up the network interface that the vision controller uses to connect to the Photoneo 3D Sensor, go to the Network page and select the Scanner interface section.[2]\\
+ Setting up localization settings, calibrating the robot camera, and seeing 3D scans all require a well-configured connection to the 3DSensor. Go to the Network tab and choose the Scanner Interface section to configure the network interface that the vision controller uses to connect to the Photoneo 3D Sensor.[2]\\
 
  Both a fixed IPv6 link-local address and a programmable IPv4 address are features of Photoneo 3D Sensors.IPv6 connections are better than IPv4 ones.  Nevertheless, the IPv4 address is used if the IPv6 connection is banned or fails.  Consequently, having a legitimate IPv4 network configuration is advised.[2]\\
 
