@@ -648,7 +648,7 @@ The camera calibration is performed through an extrinsic method in which the cam
 The below figure shows how the calibration is happening by adding the point by fixing the point where the robot Coordinates [X, Y, Z] rotation values will save the points(represented as a green point). Here, we need to add 9 points to get the calibration workspace. After the calibration, the average value from the 9 points is taken into consideration.(The lesser the value better the accuracy) [2]\\ 
 
 \newpage
-Figure 18 below shows the calibration method used in this study (Extrinsic Calibration) (EC), where the camera is fixed at the location, and 9 points are taken into consideration, where the average value is finally taken as the value for the calibration. [2]\\
+Figure 18 shows the calibration method used in this study (Extrinsic Calibration) (EC), where the camera is fixed at the location, and 9 points are taken into consideration, where the average value is finally taken as the value for the calibration. [2]\\
 
 This kind of calibration is employed in configurations where the 3D sensor is fixedly positioned within the robotic cell, often above the bin. The 3D sensor does not have to be stationary relative to the robotic cell itself; it just needs to be stationary relative to the robot's foundation.[2]
 \begin{figure}[h]
@@ -710,7 +710,7 @@ The visualizer shows the point cloud and 3D sensors from all vision systems.
 \item  ● Trigger scan: a button for starting a new scan, typically used to obtain the current point cloud for verification purposes [2]
 \item  ● List of calibration points: a list of all successfully added calibration points with individual accuracies and the option to delete a point. The outcome of the calibration process is the calibration matrix. [2]
 \item  ● Accuracy of calibration: overall calibration accuracy 
-\item ● Finish and save result: button to complete the calibration process and save the calibration matrix result into the vision system [2]\\
+\item ● Finish and save result: button to complete the calibration process and save the calibration matrix result into the vision system [2]
 \end{enumerate}
 
 The 3D sensor must record the calibration ball in several locations throughout the entire region of interest during the extrinsic calibration process.  In a similar vein, the 3D sensor must record the marker plate from multiple perspectives during the hand-eye calibration.  As a result, motion of the robot in a variety of positions with as many different joint orientations is possible in each position by adding a new calibration point [2].
