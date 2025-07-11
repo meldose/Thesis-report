@@ -552,7 +552,7 @@ Initially, obtain the instantaneous positions of the tracker's (gripper) and the
 
 The tracker and target belong to different x-y planes; thus, we may utilize a threshold regarding the data along the z-axis in the color frame in Kinect view to separate the objects. It is referred to as the robot palm if the coordinate along the z-axis is more than the threshold.
 \subsection{Position Calibration}\\
-Static pose recognition will end when the tracking approach is activated. The end-effector and object positions on the conveyor are among the data. The workpiece will proceed through the conveyor in a straight line. Therefore, only the workpieces' positions will be changed, and their orientation will remain unchanged. It is important to note that the end-effector might follow the subsequent instructions based on the tracking approach. This doesn't assist with grabbing articles, though. The gripper should take aim-off into account when doing object tracking to ensure that the entire gripping process is complete. Thus, proper gripping position by the tracking method turns out to be an important point. Without additional indication, the arm might not be aware of some issues that arise on the conveyor.
+Static pose recognition will end when the tracking approach is activated. The positions of the end effector and object on the conveyor are among the data. The workpiece will proceed through the conveyor in a straight line. Therefore, only the workpieces' positions will be changed, and their orientation will remain unchanged. It is important to note that the end-effector might follow the subsequent instructions based on the tracking approach. This doesn't assist with grabbing articles, though. The gripper should take aim-off into account when doing object tracking to ensure that the entire gripping process is complete. Thus, proper gripping position by the tracking method turns out to be an important point. Without additional indication, the arm might not be aware of some issues that arise on the conveyor.
 
 \subsection{Encoder offsets}\\
 The main method for defining robot movements about a conveyor belt is to model the belt using a unique kind of position data called belt variables. The position of a reference frame fixed to the moving belt conveyor is defined by a belt variable, which is regarded as a relative transformation with a component variable in time. The relationship between a belt encoder and the position and speed of the reference frame, which keeps a fixed position and orientation relative to the belt, can be described using such a belt variable. A belt variable is defined as:
@@ -585,7 +585,7 @@ r = x\cos\theta + y\sin\theta
 
 \subsection{Transformation of Coordinates:}\\
 To enable the robotic arm to know where to pick and position the target objects, the primary objective of the object coordinate transformations is to convert the target objects' coordinates from the image plane coordinates to the robot base coordinates.[3]
- The pinhole camera model and the chain of transformations for the robotic system with eye-to-hand configuration are combined to create the chain of coordinate transformations for a robotic system with eye-to-hand configuration.[3]\\
+ The pinhole camera model and the chain of transformations for the robotic system with eye-to-hand configuration are combined to create the chain of coordinate transformations for a robotic system with eye-to-hand configuration.[3]
 
 \[
 \text{camP}_{\text{obj}} = C_Z \cdot K^{-1} \cdot p_{\text{obj}} [3]
@@ -593,13 +593,13 @@ To enable the robotic arm to know where to pick and position the target objects,
 
 where: camera Pobj: [u, v, 1]" on the image plane; Pobj: The object point [EX, CY, CZ]" in the camera frame.
  The calibration of the eye-to-hand stereo camera yields the intrinsic matrix K in above Equation (4), and the estimation of depth based on the disparity is used to determine the depth ° Z.
- The coordinate conversion from the stereo camera frame to the robot base frame is the second operation sequence.  The transformation matrix base Hcam, which is determined from the eye-to-hand calibration, is used to do this.  Combining the first and second operation sequences yields the equation:\\
+ The coordinate conversion from the stereo camera frame to the robot base frame is the second operation sequence.  The transformation matrix base Hcam, which is determined from the eye-to-hand calibration, is used to do this.  Combining the first and second operation sequences yields the equation:
 
  \[
 \text{baseP}_{\text{obj}} = {}^{\text{base}}H_{\text{cam}} \cdot \text{camP}_{\text{obj}} [3]
 \]
 
-where: base Pobj: The robot base frame's object point; base  Hcam: The matrix used to convert the robot base frame from the stereo camera frame. Finally, the above two equations are combined to give the overall transformation equation for the entire system .For a robotic system with an eye-to-hand arrangement, the equation below shows the series of coordinate transformations from the image plane to the robot base frame.[3]\\
+where: base Pobj: The robot base frame's object point; base  Hcam: The matrix used to convert the robot base frame from the stereo camera frame. Finally, the above two equations are combined to give the overall transformation equation for the entire system .For a robotic system with an eye-to-hand arrangement, the equation below shows the series of coordinate transformations from the image plane to the robot base frame.[3]
 
  \[
 \text{baseP}_{\text{obj}} = {}^{\text{base}}H_{\text{cam}} \cdot \text{camP}_{\text{obj}} [3]
