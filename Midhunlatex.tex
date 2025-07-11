@@ -1116,7 +1116,7 @@ Since the Jacobian matrix is square and invertible, it is utilized in this case 
 We must first gain a fundamental understanding of the robot coordinate system before delving deeper into the tracking system's operation. Generally speaking, robotic systems are Cartesian coordinate systems with three axes: the X, Y, and Z axes. Additionally, there is the Rotation Coordinate System, which describes the robot's degree of rotational motion and joint function. However, as this format is more widely used in business and simpler to use and comprehend, we shall solely investigate the Cartesian coordinate system. For getting the robot coordinates, we should be  aware of the following terms used in the system:\\\\
  \textbf{System of World Coordinates (WCS):} \\
 A coordinate system is often specified by the user or developer, but it can exist anywhere in the world. As long as WCS makes it simpler to explain the locations of other things or items in that specific area, you can put it anywhere in your room or factory. Origin placement is typically done at the edge of a group or a room's corner.\\\\
-\newpage
+
  \textbf{Machine Coordinate System (MCS):} \\
 Robot Base Frame Coordinate System is another name for Machine Coordinate System (MCS). All other coordinate systems will be compared to this most significant coordinate system. Where developers and programmers would implement their code based on this coordinate system is equally crucial. MCS is typically positioned near the robot's base for the point of origin, though it's important to remember that different robot types have different bases.\\\\
 
@@ -1134,10 +1134,10 @@ This refers to the workpiece or tracked objects that travel along the conveyor b
     \caption{Homogenous transform}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-\newpage
+
 \textbf{ Operations Needed to Develop the Tracking System:} \\
 The tracking system's pillars are composed of three primary components. Only a scenario including a camera, a belt conveyor, and a robot will be covered in this post. It is certainly possible to expand the tracking system by including additional robots and cameras. Although more intricate procedures will be required to make up for the additional components, the fundamentals will remain the same.\\
-
+\newpage
 1. \textbf{ Conveyor Belt to Camera Conversion (B1):} \\
 The orientation of the conveyor belt coordinates and the camera origin coordinates deviate from one another. The origin of a camera is the upper left corner of its field of vision (FOV), where the values of its pixels start at (0, 0). This origin is set in stone and cannot be altered. For the conveyor belt, we can freely provide the origin's location, but the standard procedure is to first specify the picking window's dimensions (it's square), taking into account the robot's picking range limit, and then place the origin at the center of the window's bottom.\\
 
@@ -1158,7 +1158,7 @@ For this part, it is quite simple. This transformation is about the movement of 
     \caption{Conveyor belt b1 to b2 conversion}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-\newpage
+
 \subsubsection{Encoder offset}
 Types and Technologies of Encoders
 Although encoders come in a wide variety of forms, they essentially fall into two primary sensing categories. These include:
@@ -1182,7 +1182,7 @@ Additionally, there are several electromechanical technologies, including
     \item Capacitive
     \item Laser 
 \end{enumerate}
-
+\newpage
 The controller receives counts as the encoder rotates. Assume that the count range is between 0 and 10,000. We know that a complete rotation of the shaft registers a count of 10,000, but the precise position is unknown because this is an incremental encoder. The object will be placed on the conveyor, and the current encoder count will be recorded as soon as the entry photo-eye sensor detects the object. Assume that $5232$ is the number.
 
 \begin{align*}
