@@ -946,7 +946,7 @@ The figure below illustrates the connection between joint space and Cartesian sp
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 Finding the joint variables that allow a robot to be manipulated into the required position requires an understanding of its inverse kinematics. This is used to control the robot's position, motion, and other features. This study presents a detailed explanation and comparison of two popular approaches for manipulating robots: Jacobian inverse techniques and inverse kinematics.[10]
-Sixteen alternatives are available for a general six DOF robot, as shown below, and it lists the number of analytical solutions for robots with varying degrees of freedom. Therefore, an accurate set of solutions among several inverse kinematic solutions is needed for the continuous motion of a robot.[10]\\\\
+Sixteen alternatives are available for a general six DOF robot, as shown below, and it lists the number of analytical solutions for robots with varying degrees of freedom. Therefore, an accurate set of solutions among several inverse kinematic solutions is needed for the continuous motion of a robot.[10]\\
 
 \\ The benefit of analytical expression is that it provides formulas for the connection between link parameters and joint angles. The robotics controller can directly incorporate these relationships.[10]\\
 
@@ -976,7 +976,10 @@ Greater than 6 & 16\\
     \item Convert the first three elements to meters ([X.Y, Z])
     \item Set the velocity and timeout for picking
     \item Record the start time
-    \item Calculate the current time and update the position X with the equation ([X=X0 + velocity x t])
+    \item Calculate the current time and update the position X with the equation \[  
+X = X_0 + v\,t
+\]
+
     \item Create the target position with the quaternion values received from the camera
     \item Check the condition where the object needs to be picked, if the distance is less than 700, then do the motion of move linear ()
     \item If not success:  break the loop and print the target is too far
