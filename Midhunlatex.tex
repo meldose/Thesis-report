@@ -1403,35 +1403,35 @@ Euler angles can be used to parameterize the space of orientations. A universal 
 \subsubsection*{1. Gimbal Lock}
 \begin{itemize}
   \item \textbf{Loss of One Degree of Freedom.} 
-    When two of the three rotation axes become aligned (for example, in a Z–X′–Z sequence the X′ axis lines up with Z), one “gimbal” loses its ability to rotate independently. Consequently, the local parameter space collapses from three dimensions to two.[20]
+   One "gimbal" loses its capacity to rotate on its own when two of the three rotation axes align (for instance, the X′ axis aligns with Z in a Z–X′–Z sequence).  As a result, the three-dimensional local parameter space shrinks to two dimensions.[20]
   \item \textbf{Numerical Instability.} 
-    Near the singular alignment (e.g.\ a pitch of \(\ pm90^\circ \) in a Z–Y′–X sequence), small orientation changes require large swings in two of the Euler angles, amplifying floating-point errors.[20]
+    Small orientation changes necessitate huge swings in two of the Euler angles, which amplifies floating-point mistakes, especially near the unique alignment (e.g., a pitch of \(\ pm90^\circ \) in a Z–Y′–X sequence).[20]
   \item \textbf{Control \& Interpolation Problems.} 
-    In applications such as flight control or animation, smoothly interpolating through a gimbal-lock singularity can cause sudden flips or erratic motion.[20]
+    Smoothly interpolating through a gimbal-lock singularity might result in abrupt flips or unpredictable motion in applications like animation or flight control.[20]
 \end{itemize}
 
 \subsubsection{2. Ambiguity (Non-Uniqueness)}
 \begin{itemize}
   \item \textbf{Multiple Angle Triples for the Same Rotation.} 
-    Because each rotation about an axis is periodic (modulo \(360^\circ\)), and because different sequences can reach the same final orientation, there are infinitely many \((\alpha,\beta,\gamma)\) that yield the same rotation matrix. For instance, a “roll” of \(+360^\circ\) is indistinguishable from \(0^\circ\).[20]
+   There are an unlimited number of \((\alpha,\beta,\gamma)\) that produce the same rotation matrix since every rotation about an axis is periodic (modulo \(360^\circ\)) and because different sequences might arrive at the same ultimate orientation.  A "roll" of \(+360^\circ\), for example, is identical to \(0^\circ\).[20]
   \item \textbf{Convention Dependence.} 
-    There are twelve common Euler conventions (proper Euler vs.\ Tait–Bryan, intrinsic vs.\ extrinsic, and choice of axis ordering). Without knowing the exact convention, an \((\alpha,\beta,\gamma)\) triplet is ambiguous.[20]
+    There are twelve main Euler conventions, including choice of axis ordering, intrinsic vs. extrinsic, and proper Euler vs. Tait–Bryan.  In the absence of precise convention, a \((\alpha,\beta,\gamma)\) triplet is unclear.[20]
   \item \textbf{Inverse-Mapping Ambiguities.} 
-    Given a rotation matrix, solving for Euler angles often yields two valid solutions (sometimes called the “standard” and “supplementary” sets), requiring extra logic to choose one.[20]
+   Solving for Euler angles given a rotation matrix frequently produces two valid answers (also referred to as the "standard" and "supplementary" sets), necessitating additional reasoning to select one.[20]
 \end{itemize}
 \newpage
 \subsubsection*{Why It Matters}
 \begin{itemize}
-  \item \textbf{Robustness:} Gimbal lock can cripple systems such as aircraft autopilots, robotic manipulators, or VR head-tracking.[20]
-  \item \textbf{Maintainability:} Ambiguity forces code, file formats, and APIs to rigidly specify which Euler convention is used to avoid misinterpretation.[20]
+  \item \textbf{Robustness:} Systems like VR head-tracking, robotic manipulators, and airplane autopilots can all be rendered inoperable by gimbal lock.[20]
+  \item \textbf{Maintainability:} To prevent misunderstandings, ambiguity compels programs, file formats, and APIs to explicitly state which Euler standard is being used.[20]
 \end{itemize}
 
 \subsubsection*{Alternatives}
 Many applications prefer other orientation representations to avoid both gimbal lock and ambiguity:
 \begin{itemize}
-  \item \textbf{Quaternions.}  Free of singularities, supports smooth spherical linear interpolation (slerp), unique up to a sign.[20]
-  \item \textbf{Rotation Vectors / Axis–Angle.}  One-to-one mapping (aside from sign and \(2\pi\) periodicity).[20]
-  \item \textbf{Rotation Matrices.}  Unambiguous and globally non-singular, though over-parameterized (9 numbers with 6 constraints).[20]
+  \item \textbf{Quaternions.}  It is unique up to a sign, free of singularities, and provides smooth spherical linear interpolation (slerp).[20]
+  \item \textbf{Rotation Vectors / Axis–Angle.}  One-to-one mapping (except for periodicity and sign and \(2\pi\).[20]
+  \item \textbf{Rotation Matrices.}  Despite being over-parameterized (9 integers with 6 restrictions), it is clear and globally non-singular.[20]
 \end{itemize}
 
 \subsubsection{Rotation matrices}\\
@@ -1479,7 +1479,6 @@ We often write a quaternion as
 \]
 This four-dimensional algebra provides a compact, non-singular representation of 3D rotations.
 
-\newpage
 \subsection{Object for picking}
 We have used a trapezoid for object picking 
 
@@ -1606,7 +1605,6 @@ The deployment page shows console logs that provide information about previous a
 
 The web interface shows the image of the object being detected; initially, we load the STL file of the object to be captured by the robot. The red color indicates the object, and once the object turns green, the object coordinate will be indicated as quaternion values. After getting the quaternion values, these are transferred to the robotic controller, which helps the robot to reach the desired target position [2]
 
-\newpage
 \begin{figure}[h]
     \centering
     \includegraphics[width=12cm]{Thesis-report/Figures/web_interface.png} 
