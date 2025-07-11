@@ -1398,14 +1398,53 @@ Many applications in manufacturing, construction, and vehicle automation and aut
 \subsection{Euler Angles:}\\
 Euler angles can be used to parameterize the space of orientations. A universal orientation is expressed as a sequence of rotations along three mutually orthogonal axes in space when Euler angles are applied. In a Cartesian coordinate system, the x, y, and z axes are typically utilized. The rotations are frequently referred to as x-, y-, and z-rolls.To solve differential equations, Euler initially created Euler angles. The most popular technique for parameterizing the space of orientations is now the use of Euler angles. Euler angles can be used to parameterize the space of rotations if we decide to think of a rotation as the activity carried out to achieve a specific orientation. The rotation angles about the x, y, and z axes are denoted as { 1, { 2, and { 3, respectively.[20]
 \subsubsection{Rotation matrices}\\
-Euler angles are usually implemented using rotation matrices. There is an x rotation matrix, a y rotation matrix, and a z rotation matrix for every kind of roll. The position vector for the rotated point is obtained by multiplying the matrices by the position vector for a point in space. Although a rotation matrix is a 3 × 3 matrix, homogeneous 4 × 4 matrices are typically utilized in its place. The three roll matrices corresponding to the three Euler angles are multiplied to produce a general rotation. The generated matrix can be applied to the locations that need to be rotated and represents the general rotation. In most cases, matrix multiplication is not commutative. The fact that rotations in space do not commute fits in nicely with this. Lastly, it should be mentioned that the only implementation that effectively incorporates all common transformations—translation, scaling, shearing, and different projection transformations—is the use of homogeneous transformation matrices.[20]
+Euler angles are usually implemented using rotation matrices. There is an x rotation matrix, a y rotation matrix, and a z rotation matrix for every kind of roll. The position vector for the rotated point is obtained by multiplying the matrices by the position vector for a point in space. Although a rotation matrix is a 3 × 3 matrix, homogeneous 4 × 4 matrices are typically utilized in its place. The three roll matrices corresponding to the three Euler angles are multiplied to produce a general rotation. The generated matrix can be applied to the locations that need to be rotated and represents the general rotation. In most cases, matrix multiplication is not commutative. The fact that rotations in space do not commute fits in nicely with this. Lastly, it should be mentioned that the only implementation that effectively incorporates all common transformations—translation, scaling, shearing, and different projection transformations—is the use of homogeneous transformation matrices. s.[20]
 
 \subsection{Quaternions:}\\
-The second rotational modality uses quaternions and is defined by Euler's theorem. Given the lack of a comprehensive overview of the field and the fact that quaternions are not nearly as well-known as transformation matrices, we will first provide a historical perspective before delving deeply into quaternion mathematics.[20]
+The second rotational modality uses quaternions and is defined by Euler's theorem. Given the lack of a comprehensive overview of the field and the fact that quaternions are not nearly as well known as transformation matrices, we will first provide a historical perspective before delving deeply into quaternion mathematics [20].\\
+
+\subsubsection{Rotations and Euler’s Theorem}
+Rotations in 3D can be implemented using Euler’s theorem combined with \emph{quaternions}, an extension of complex numbers.[20]
+
+\subsubsection{Impossibility of 3D ``Complex'' Numbers}
+Hamilton originally attempted to define three-dimensional complex numbers of the form
+\[
+  a + i\,b + j\,c,\quad i^2 = j^2 = -1,[20]
+\]
+closed under multiplication.  Kenneth O.~May (1966) showed by contradiction that no such 3D system exists:
+\[
+  \text{Assume }i\,j = a + i\,b + j\,c,\quad
+  i^2 = j^2 = -1.[20]
+\]
+A brief outline of the contradiction leads to
+\[
+  c^2 + 1 = 0,\quad c\in\mathbb{R},[20]
+\]
+which is impossible.
+
+\subsubsection{Hamilton’s Discovery of Quaternions (1843)}
+While walking by the Royal Canal in Dublin, Hamilton realized that four components are needed to represent a rotation followed by a scaling in 3D space:[20]
+\[
+  q = s + x\,i + y\,j + z\,k,[20]
+  \quad
+  i^2 = j^2 = k^2 = ijk = -1.[20]
+\]
+Here:
+\begin{itemize}
+  \item $s\in\mathbb{R}$ is the \emph{scalar part} (encoding uniform scaling).
+  \item $\mathbf{v} = (x,y,z)\in\mathbb{R}^3$ is the \emph{vector part} (encoding rotation axis and angle).
+\end{itemize}
+
+\subsubsection{Quaternion Notation}
+We often write a quaternion as
+\[
+  q = [\,s,\;\mathbf{v}\,],\quad s\in\mathbb{R},\;\mathbf{v}\in\mathbb{R}^3.[20]
+\]
+This four-dimensional algebra provides a compact, non-singular representation of 3D rotations.
 
 \newpage
 \subsection{Object for picking}
-We have used trapezoid for object picking 
+We have used a trapezoid for object picking 
 
 \begin{figure}[h]
     \centering
