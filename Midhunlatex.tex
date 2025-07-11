@@ -847,7 +847,7 @@ V_c = V_r
 
 where \( V_c \) represents the velocity of the conveyor belt and \( V_r \) represents the velocity of the robot.\\
 
-2. \textbf{Target Position Calculation:} The final position of the robot is calculated by:
+2. \textbf{Target Position Calculation:} The final position of the robot is calculated by
 
 \[
 \text{Target} = TX + AMS \cdot \theta + TD
@@ -872,9 +872,9 @@ TD = \Delta TSC + \Delta CTO
 
 \begin{itemize}
   \item $\Delta TSC$ is the \textbf{Target Scan Completion Distance}%
-        —distance moved by the conveyor during scan completion.
+        —Distance moved by the conveyor during scan completion.
   \item $\Delta CTO$ is the \textbf{Conveyor Tracking Offset}%
-        —distance moved while waiting for the robot to reach the pick position.
+        —Distance moved while waiting for the robot to reach the pick position.
 \end{itemize}
 
 5. \textbf{Target Scan Completion Distance (TSC):} 
@@ -904,18 +904,18 @@ Initially, before we start the calibration, we need to set the camera to a speci
 \end{figure}
 
 
-This method can also be used to get the Conveyor belt calibrated. The steps include :
+This method can also be used to get the conveyor belt calibrated. The steps include:
 \begin{enumerate}
-    \item \textbf{First step:}  Place the picking / triggering object in the field of view of the camera and trigger the camera, then get the object pose, which includes [X1, Y1, and Z1] respectively [2]
-    \item \textbf{Second step:} Switch on the conveyor belt and get the farthest position where the camera triggers the object, and get the coordinates which includes [X2, Y2, and Z3] respectively.[2]
-    \item \textbf{Third step:} While triggering the camera in the first and final position,n we also try to capture the timestamps of the camera, which calculates the time taken by the camera to trigger.[2]
+    \item \textbf{First step:}  Place the picking/triggering object in the field of view of the camera and trigger the camera, then get the object pose, which includes [X1, Y1, and Z1] respectively [2]
+    \item \textbf{Second step:} Switch on the conveyor belt and get the farthest position where the camera triggers the object, and get the coordinates, which include [X2, Y2, and Z3] respectively. [2]
+    \item \textbf{Third step:} While triggering the camera in the first and final positions, we also try to capture the timestamps of the camera, which calculates the time taken by the camera to trigger. [2]
     \item \textbf{Fourth step:} In this step, we need to calculate the change in the position for the X, Y, and Y, respectively, which includes ($\Delta X$, $\Delta Y$, and $\Delta Z$ ). In addition to that, we need to get the change in time also  ($\Delta t$).[2]
-    \item \textbf{Fifth step:} In this step, we need to find the custom velocity by dividing the change in the position by the change in time.[2]
-    \item \textbf{Sixth step:} In order to obtain a change in position as linear motion and transmit it to the robotic controller that assists the robot in picking up items from the conveyor belt, we must lastly multiply the custom velocity by the time and position changes along the X position.[2]
+    \item \textbf{Fifth step:} In this step, we need to find the custom velocity by dividing the change in the position by the change in time. [2]
+    \item \textbf{Sixth step:} To obtain a change in position as linear motion and transmit it to the robotic controller that assists the robot in picking up items from the conveyor belt, we must lastly multiply the custom velocity by the time and position changes along the X position. [2]
 \end{enumerate}
 
 \chapter{\section{\mbox{Inverse Kinematics }}{{\normalfont\fontsize{14}{16}\bfseries}}
-The system model, which includes a non-redundant robot manipulator with n degrees of freedom and a conveyor belt system. The following attributes are assumed to be present in the system model: [14]\\
+The system model includes a non-redundant robot manipulator with n degrees of freedom and a conveyor belt system. The following attributes are assumed to be present in the system model: [14]\\
 1) The conveyor belt system runs at constant velocity, and the
 part is stationary relative to the conveyor belt system. [14]\\
 2) The orientation of the robot hand is initially aligned with the part and kept fixed while the robot tracks the part. [14]\\
@@ -934,8 +934,8 @@ Robot motion must meet certain conditions to maximize the usable performance of 
 1) \textbf{Steady-state error:}  The task's accuracy may be reduced due to location and velocity errors in the steady state. Therefore, the steady-state error in the conveyor tracking trajectory must be as low as possible [14].\\
 2)  \textbf{Constraints on torque and smoothness:}The trajectory must be created so that all joint torques remain within their ranges at all times [14].\\
 3) \textbf{Settling time:}  As the robot rapidly reaches a steady state, the amount of time required for the task decreases. The settling time should be kept to a minimum while taking into account the limitations of the robot's torque and smoothness, the speed of the conveyor belt, and the initial positions of the robot and the part. [14]\\
-The joint variables in the forward kinematics issue establish the end-effector's position and orientation in Cartesian space, also known as the workspace. For rotational joints, the joint variables are the angles between the links; for prismatic joints, they are the link extension. On the other hand, the inverse kinematics challenge is determining the values of the joint variables that enable the manipulator to arrive at the specified location given a desired end-effector position and orientation.
-The figure below illustrates the connection between joint space and Cartesian space, as well as the relationship between forward and inverse kinematics.[10]\\
+The joint variables in the forward kinematics issue establish the end-effector's position and orientation in Cartesian space, also known as the workspace. For rotational joints, the joint variables are the angles between the links; for prismatic joints, they are the link extensions. On the other hand, the inverse kinematics challenge is determining the values of the joint variables that enable the manipulator to arrive at the specified location given a desired end-effector position and orientation.
+The figure below illustrates the connection between joint space and Cartesian space, as well as the relationship between forward and inverse kinematics. [10]\\
 
 \begin{figure}[h]
     \centering
@@ -943,10 +943,10 @@ The figure below illustrates the connection between joint space and Cartesian sp
     \caption{Forward and Inverse Kinematics [10]}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-Finding the joint variables that allow a robot to be manipulated into the required position requires an understanding of its inverse kinematics. This is used to control the robot's position, motion, and other features. This study presents a detailed explanation and comparison of two popular approaches for manipulating robots: Jacobian inverse techniques and inverse kinematics.[10]
-Sixteen alternatives are available for a general six DOF robot, as shown below, and it lists the number of analytical solutions for robots with varying degrees of freedom. Therefore, an accurate set of solutions among several inverse kinematic solutions is needed for the continuous motion of a robot.[10]\\
+Finding the joint variables that allow a robot to be manipulated into the required position requires an understanding of its inverse kinematics. This is used to control the robot's position, motion, and other features. This study presents a detailed explanation and comparison of two popular approaches for manipulating robots: Jacobian inverse techniques and inverse kinematics. [10]
+Sixteen alternatives are available for a general six-DOF robot, as shown below, and it lists the number of analytical solutions for robots with varying degrees of freedom. Therefore, an accurate set of solutions among several inverse kinematic solutions is needed for the continuous motion of a robot. [10]\\
 
-\\ The benefit of analytical expression is that it provides formulas for the connection between link parameters and joint angles. The robotics controller can directly incorporate these relationships.[10]\\
+\\ The benefit of analytical expression is that it provides formulas for the connection between link parameters and joint angles. The robotics controller can directly incorporate these relationships. [10]\\
 
 \begin{table}[h]
     \centering
@@ -979,18 +979,18 @@ X = X_0 + v\,t
 \]
 
     \item Create the target position with the quaternion values received from the camera
-    \item Check the condition where the object needs to be picked, if the distance is less than 700, then do the motion of move linear ()
-    \item If not success:  break the loop and print the target is too far
-    \item Get the current joint angles and TCP Pose, and calculate the distance to the object.
+    \item Check the condition where the object needs to be picked; if the distance is less than 700, then do the motion of move linear ()
+    \item If not successful,  break the loop and print that the target is too far
+    \item Get the current joint angles and TCP pose, and calculate the distance to the object.
     \item If the distance to the object is less than 5, then send the signal to the gripper and pick the object.
     \item If the timeout to pick is greater compared to the given input, then break the loop.
 \end{enumerate}
 \newpage
-The following figure shows the flowchart for the Dynamic Picking:\\
+The following figure shows the flowchart for the dynamic picking:\\
 \begin{figure}[h]
     \centering
     \includegraphics[width=10.3cm]{Thesis-report/Figures/flowchart.png}  
-    \caption{flow Chart}
+    \caption{flowchart}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 \newpage
@@ -998,12 +998,12 @@ The following figure shows the flowchart for the Dynamic Picking:\\
 The time derivative of the kinematic equations that connect the end-effector's velocity to the joint rates is known as the Jacobian in robotics. The following is the phrase for the Jacobian [19].
 \subsubsection{Kinematic Velocity Equations}
 
-The end‐effector angular and linear velocities are given by
+The end-effector angular and linear velocities are given by
 \begin{align}
   \omega_e &= J_{\omega}(\theta)\,\dot{\theta}, \\
   v_e      &= J_{v}(\theta)\,\dot{\theta},
 \end{align}
-where:
+where
 
 \begin{description}
   \item[$\theta$]%
@@ -1014,16 +1014,16 @@ where:
     \end{itemize}
 
   \item[$\dot{\theta}$]%
-    Joint velocity vector (time‐derivative of $\theta$).
+    Joint velocity vector (time derivative of $\theta$).
     \[
       \dot{\theta} = \begin{bmatrix}
         \dot{\theta}_1 \\ \dot{\theta}_2 \\ \vdots \\ \dot{\theta}_n
       \end{bmatrix},[19]
     \] 
-    with units: rad/s for revolute, m/s for prismatic joints.
+    with units: rad/s for revolute and m/s for prismatic joints.
 
   \item[$J(\theta)$]%
-    Geometric Jacobian, a $6\times n$ matrix mapping $\dot\theta$ to the end‐effector twist.
+    Geometric Jacobian, a $6\times n$ matrix mapping $\dot\theta$ to the end-effector twist.
     \[
       J(\theta) = 
       \begin{bmatrix}
@@ -1062,7 +1062,7 @@ where:
       \omega_e = \begin{bmatrix} \omega_x \\ \omega_y \\ \omega_z \end{bmatrix}.[19]
     \]
 \end{description}
-where the 3x6 matrices J ω and J v relate the joint velocities or rates θ to the end-effector angular velocity ω e and velocity v e, respectively. Also, J ω and J v are where J  J (JJ) is the function of θ and the pseudo-inverse of the J matrix. It is possible to rewrite as:[19]\\
+where the 3x6 matrices J ω and J v relate the joint velocities or rates θ to the end-effector angular velocity ω e and velocity v e, respectively. Also, J ω and J v are where J  J (JJ) is the function of θ and the pseudo-inverse of the J matrix. It is possible to rewrite as [19]:\\
 \[
 \Delta x_e = J \Delta \theta [19]
 \]
@@ -1088,7 +1088,7 @@ e_6 & e_6 x a_6 & e_6 \\
 \end{bmatrix}
 \]
 
-where a1 is the joint axis direction of joint 1 and e is the vector. Likewise, direction and is the joint axis a2, e is the EE's location from joint 2, and so forth. The differential rotation and translation vectors that correspond to the differential change in the joint rates make up each column of the Jacobian. The Jacobian inverse provides the joint variation for the desired increment at the kth point pose as follows:[19]\\
+where a1 is the joint axis direction of joint 1 and e is the vector. Likewise, direction is the joint axis a2, e is the EE's location from joint 2, and so forth. The differential rotation and translation vectors that correspond to the differential change in the joint rates make up each column of the Jacobian. The Jacobian inverse provides the joint variation for the desired increment at the kth point pose as follows:[19]\\
 
 \[
 \Delta \theta_k = J_k^{-1} \Delta x_e [19]
@@ -1108,7 +1108,7 @@ J = J (JJ) [19]
 \]
 
 
-is the null space of J with phi as the objective function, and J = J (JJ) -1 is the pseudo-inverse of the matrix J. x J.[19]
+is the null space of J with phi as the objective function, and J = J (JJ) -1 is the pseudo-inverse of the matrix J x J.[19]
 Since the Jacobian matrix is square and invertible, it is utilized in this case for the manipulator with DOF = 6. [19]\
 
 \subsection{Robot Coordinate System} 
@@ -1124,9 +1124,9 @@ Robot Base Frame Coordinate System is another name for Machine Coordinate System
 This refers to the workpiece or tracked objects that travel along the conveyor belt. In certain applications, part orientation plays a crucial role in assembly procedures. In our application, we just want to choose or select the objects, independent of their orientation; thus, this isn't accurate.\\
 
  \textbf{Tool Coordinate System (TCS):} \\
- This refers to the location of the robot's end-tool tip. As you can see, a robotic hand typically has a mechanism attached to the end, with a gripper. When referring to the robot base frame, this typically requires a little amount of offset and aids the robot in completing its responsibilities.\\\\
+ This refers to the location of the robot's end-tool tip. As you can see, a robotic hand typically has a mechanism attached to the end with a gripper. When referring to the robot base frame, this typically requires a small amount of offset and aids the robot in completing its responsibilities.\\\\
  \textbf{ Coordinate Transformation Matrix:}  \\
- In essence, the coordinate transformation matrix is a matrix that depicts how a coordinate system's orientation changes from one frame to another. It describes rotation transformation and translation transformation, and is composed of a 3x3 rotation matrix and a 3x1 displacement vector. In the case of three dimensions, the matrix is 4x4. A more common and widely used name for this matrix is the homogeneous transformation matrix. Remember that this matrix can be applied to any coordinate transformation situation, including regular coordinate transformation operations and forward kinematics derivations.\\\\
+ In essence, the coordinate transformation matrix is a matrix that depicts how a coordinate system's orientation changes from one frame to another. It describes rotation transformation and translation transformation and is composed of a 3x3 rotation matrix and a 3x1 displacement vector. In the case of three dimensions, the matrix is 4x4. A more common and widely used name for this matrix is the homogeneous transformation matrix. Remember that this matrix can be applied to any coordinate transformation situation, including regular coordinate transformation operations and forward kinematics derivations.\\\\
 
 \begin{figure}[h]
     \centering
@@ -1147,10 +1147,10 @@ The orientation of the conveyor belt coordinates and the camera origin coordinat
     \caption{Conveyor to camera conversion}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-As can be seen from the above image, to match the conveyor belt origin, we must perform a translation transformation in both the X and Y axes. We must do a rotation transformation for the Z-axis since the belt origin faces the other direction from the camera origin. In summary, this section contains two transformations: Rotation transformation, Rot(x, 180°); AND Translation in the X-axis and Y-axis, Trans(ΔX, ΔY, 0). Observe that both the Y and Z axes changed their facing directions when we rotated the X axis. For this section, some offset will be required.\\
+As can be seen from the above image, to match the conveyor belt origin, we must perform a translation transformation in both the X and Y axes. We must do a rotation transformation for the Z-axis since the belt origin faces the other direction from the camera origin. In summary, this section contains two transformations: Rotation transformation, Rot(x, 180°), AND Translation in the X-axis and Y-axis, Trans(ΔX, ΔY, 0). Observe that both the Y and Z axes changed their facing directions when we rotated the X axis. For this section, some offset will be required.\\
 
 2. \textbf{ Conveyor belt (B1) to conveyor belt (B2) transformation:} \\
-For this part, it is quite simple. This transformation is about the movement of the conveyor belt from the Camera’s Field of View to the Robot’s Workspace/Pick range. The only value that changes in this transformation is the X-axis value. As mentioned in the introduction, we also include the encoder’s reading to help us track how much distance the conveyor belt covered.\\
+For this part, it is quite simple. This transformation is about the movement of the conveyor belt from the camera’s field of view to the robot’s workspace/pick range. The only value that changes in this transformation is the X-axis value. As mentioned in the introduction, we also include the encoder’s reading to help us track how much distance the conveyor belt covered.\\
 
 \begin{figure}[h]
     \centering
@@ -1165,16 +1165,16 @@ Although encoders come in a wide variety of forms, they essentially fall into tw
 
 \begin{enumerate}
     \item  Linear
-    \item Rotating /Rotational
+    \item Rotating/Rotational
     
 \end{enumerate}
 
-There are various encoder measuring types within those categories, including:
+There are various encoder measuring types within those categories, including
 \begin{enumerate}
     \item Complete
     \item Gradual
 \end{enumerate}
-Additionally, there are several electromechanical technologies, including:
+Additionally, there are several electromechanical technologies, including
 \begin{enumerate}
     \item Magnetism
     \item Optical
@@ -1213,13 +1213,13 @@ Two steps are necessary for conveyor visual tracking: [12]\\
 \end{itemize}
 There are several ways to identify items. Some potential limitations are, however, information-based recognition, self-organizing maps, template matching, and the temporal difference between two consecutive image samples. Due to their slowness, self-organizing maps cannot function in real time. Template matching requires prior knowledge of object information to match objects. Unfortunately, because of the necessary computational load, this method cannot be used in real time. The color information solution overcomes the first two limitations; however, it is not compatible with binary images. The object recognition method that leverages the difference between two photographs can be useful when the environment does not change quickly over time. [12]
 \subsubsection{Photoneo Camera}
-The main Vision camera we have used to track the moving object's motion through the conveyor belt is a Photoneocamera (MotionCam 3D M+), which has advanced settings that can capture and detect the object's position.\\\\ The photoneo camera mainly consists of 3D sensing technology, which contains parallel structured light that helps provide the light source to detect the objects. Using this camera, the camera can capture accurate point clouds and a standard intensity image of the object.[2].Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU that acts as the brain behind intelligent applications. A sequential structured light, which is utilized in numerous meteorological applications, is the primary technological driver in the first group. One well-suited representative of this category is the 3D scanner range from Photoneo. This technique is not appropriate for dynamic scenes because it uses sequential (multi-frame) capturing. This section is the source of the parallel structured light.[2] \
+The main Vision camera we have used to track the moving object's motion through the conveyor belt is a Photoneo camera (MotionCam 3D M+), which has advanced settings that can capture and detect the object's position.\\\\ The photoneo camera mainly consists of 3D sensing technology, which contains parallel structured light that helps provide the light source to detect the objects. Using this camera, the camera can capture accurate point clouds and a standard intensity image of the object. [2]. Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU that acts as the brain behind intelligent applications. A sequential structured light, which is utilized in numerous meteorological applications, is the primary technological driver in the first group. One well-suited representative of this category is the 3D scanner range from Photoneo. This technique is not appropriate for dynamic scenes because it uses sequential (multi-frame) capturing. This section is the source of the parallel structured light. [2] \
 
 \subsubsection{Robot Interface:}\\
-There are two software components which includes:
+There are two software components, which include
 \begin{enumerate}
-    \item  ● Robot interface: utilized to configure the vision controller's Ethernet port on the network.[2]
-    \item  ● Robot controller: utilized to determine the robot controller's IP address.[2]
+    \item  ● Robot interface: utilized to configure the vision controller's Ethernet port on the network. [2]
+    \item  ● Robot controller: utilized to determine the robot controller's IP address. [2]
 \end{enumerate}
 \begin{figure}[h]
     \centering
@@ -1227,10 +1227,10 @@ There are two software components which includes:
     \caption{Robot Network Interface[2]}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
- The Action Request Communication Channel is used to facilitate communication between the vision controller and the robotic controller, as explained in the Robot Communication.  The robotic controller connects to the TCP server created by the vision controller and transmits requests to it.[2]
- It is advised to keep the Action Request Server port section empty and use the default port for this TCP server.  It is necessary to use the same port on the robot side when a custom port is defined.[2]
+ The Action Request Communication Channel is used to facilitate communication between the vision controller and the robotic controller, as explained in the Robot Communication.  The robotic controller connects to the TCP server created by the vision controller and transmits requests to it. [2]
+ It is advised to keep the Action Request Server port section empty and use the default port for this TCP server.  It is necessary to use the same port on the robot side when a custom port is defined. [2]
 \newpage
-\subsubsection{Vision controller Interface:}\\
+\subsubsection{Vision Controller Interface:}\\
 Gigabit Ethernet cables (Cat5e or higher category) are needed to connect the 3D sensor.  A gigabit switch can be used to connect several 3D sensors.  In all situations, the switch or the 3D sensor's Ethernet connection is attached to the scanner's network [2].
 \begin{figure}[h]
     \centering
@@ -1239,14 +1239,14 @@ Gigabit Ethernet cables (Cat5e or higher category) are needed to connect the 3D 
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 
- Setting up localization settings, calibrating the robot camera, and seeing 3D scans all require a well-configured connection to the 3DSensor. Go to the Network tab and choose the Scanner Interface section to configure the network interface that the vision controller uses to connect to the Photoneo 3D Sensor.[2]\\
+ Setting up localization settings, calibrating the robot camera, and seeing 3D scans all require a well-configured connection to the 3DSensor. Go to the Network tab and choose the Scanner Interface section to configure the network interface that the vision controller uses to connect to the Photoneo 3D Sensor. [2]\\
 
- Both a fixed IPv6 link-local address and a programmable IPv4 address are features of Photoneo 3D Sensors.IPv6 connections are better than IPv4 ones.  Nevertheless, the IPv4 address is used if the IPv6 connection is banned or fails.  Consequently, having a legitimate IPv4 network configuration is advised.[2]\\
+ Both a fixed IPv6 link-local address and a programmable IPv4 address are features of Photoneo 3D Sensors. IPv6 connections are better than IPv4 ones.  Nevertheless, the IPv4 address is used if the IPv6 connection is banned or fails.  Consequently, having a legitimate IPv4 network configuration is advised. [2]\\
 
- The interface can be set up to operate a DHCP server or to utilize any random static IP address, and we use the appropriate IP address settings on the sensor side through the PhoXi Control program in both situations.[2]\\
+ The interface can be set up to operate a DHCP server or to utilize any random static IP address, and we use the appropriate IP address settings on the sensor side through the PhoXi Control program in both situations. [2]\\
 \newpage
 \subsubsection{Communication of Robot With Vision Camera}\\
-The robot interface on the vision controller and the robot module operating on the robot controller enable communication between the vision controller and the robot controller.[2]\\
+The robot interface on the vision controller and the robot module operating on the robot controller enable communication between the vision controller and the robot controller. [2]\\
 
 \begin{figure}[h]
     \centering
@@ -1257,7 +1257,7 @@ The robot interface on the vision controller and the robot module operating on t
 
 The Vision Controller's scanner port is directly attached to a single Photoneo 3D sensor. 
 ● The vision controller's network port is directly connected to a desktop PC for remote control.
-● The robot controller is directly attached to the vision controller's robot port.[2]
+● The robot controller is directly attached to the vision controller's robot port. [2]
 
 \begin{figure}[h]
     \centering
@@ -1268,25 +1268,25 @@ The Vision Controller's scanner port is directly attached to a single Photoneo 3
 
 \newpage
  \subsubsection{Protocol TCP/IP}\\
-The robot controller and the vision controller communicate via the TCP/IP protocol. Network connectivity is an optional feature that some robot controllers do not come with by default. All prerequisites for the full installation of the robot module are listed in the robot integration guides' Prerequisites section.[2]
+The robot controller and the vision controller communicate via the TCP/IP protocol. Network connectivity is an optional feature that some robot controllers do not come with by default. All prerequisites for the full installation of the robot module are listed in the robot integration guides' Prerequisites section. [2]
 
 \subsubsection{Channel of communication}\\
-The Robot module functions as a TCP client, while the vision controller establishes a TCP server. The client is called the Action Request Client, while the server is called the Action Request Server. The Action Request Client communicates with the Action Request Server over this channel. After receiving the action request, the vision controller carries it out and replies to the robotic controller.[2]\\\\
+The robot module functions as a TCP client, while the vision controller establishes a TCP server. The client is called the Action Request Client, while the server is called the Action Request Server. The Action Request Client communicates with the Action Request Server over this channel. After receiving the action request, the vision controller carries it out and replies to the robotic controller. [2]\\\\
 
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=14cm]{Thesis-report/Figures/channel.png}
-    \caption{Channel Communication[2]}
+    \caption{Channel Communication [2]}
     \label{fig1.Photoneo Camera}
 \end{figure}
 
 The robot connection status is currently indicated by the following indicator:
 
- Action Request Client: the state of the Action Request Communication Channel connection between the Action Request Server and the Action Request Client.  It may exist in one of two states:[2]
+ Action Request Client: the state of the Action Request Communication Channel connection between the Action Request Server and the Action Request Client.  It may exist in one of two states: [2]
  \begin{enumerate}
-     \item  \textbf{CONNECTED:} The Action Request Client can send requests since it is connected to the Action Request Server.[2]\\ 
-      \item   \textbf{DISCONNECTED:}  The Action Request Server is awaiting a fresh connection as the Action Request Client is not connected to it.[2]
+     \item  \textbf{CONNECTED:} The Action Request Client can send requests since it is connected to the Action Request Server. [2]\\ 
+      \item   \textbf{DISCONNECTED:}  The Action Request Server is awaiting a fresh connection, as the Action Request Client is not connected to it. [2]
 
  \end{enumerate}
 
@@ -1294,19 +1294,19 @@ The robot connection status is currently indicated by the following indicator:
 
  \\ Each indicator bears the identification number of the vision system to which it belongs.
   \begin{enumerate}
-  \item  \textbf{CONNECTED:} The vision system's 3D sensor is connected.[2]
-  \item   \textbf{DISCONNECTED:}  There is no connection to the 3D sensor linked to vision system 2.[2]
+  \item  \textbf{CONNECTED:} The vision system's 3D sensor is connected. [2]
+  \item   \textbf{DISCONNECTED:}  There is no connection to the 3D sensor linked to vision system 2. [2]
  \end{enumerate}
 
 \subsubsection{Network (EC, HC) }\\
-The robot interface (and robot controller IP) and the Vision controller's 3D sensor interface must be properly configured for the Vision controller to communicate with both the robot and the 3D sensor. This is not required for marker space calibration.[2]
+The robot interface (and robot controller IP) and the vision controller's 3D sensor interface must be properly configured for the vision controller to communicate with both the robot and the 3D sensor. This is not required for marker space calibration. [2]
 \subsubsection{Vision }\\
 It is necessary to thoroughly configure the visual system that will be calibrated. Make sure the following vision system parameters are set up correctly before beginning the calibration:
 ● Scanner ID: This vision system uses a 3D sensor. The linked 3D sensors will appear in the drop-down list of available 3D sensors if the scanner interface is set up properly.
-The calibration space and scanner position specify the 3D sensor's mount point and, consequently, the calibration type. The scanner model is automatically calculated based on the selected 3D sensor.[2]
+The calibration space and scanner position specify the 3D sensor's mount point and, consequently, the calibration type. The scanner model is automatically calculated based on the selected 3D sensor. [2]
 
 \subsubsection{6-Axis Cobot-Delta}
-The cobot that we have used for the conveyor tracking system is a 6-axis cobot called a Delta robot. The robot mainly moves towards its target position by getting the values from the camera in the form of quaternion values.[2]
+The cobot that we have used for the conveyor tracking system is a 6-axis cobot called a Delta robot. The robot mainly moves towards its target position by getting the values from the camera in the form of quaternion values. [2]
 
 \begin{figure}[H]
   \centering
@@ -1317,7 +1317,7 @@ The cobot that we have used for the conveyor tracking system is a 6-axis cobot c
 \FloatBarrier
 
 \subsubsection{RobotiQ 140 Gripper}
-The RobotiQ 140 gripper is a two-finger gripper that mainly works under the principle of Modbus communication. Its 85 mm stroke, 230 N max gripping force and 5 kg max payload make it ideal for low-volume, high-changeover settings.
+The RobotiQ 140 gripper is a two-finger gripper that mainly works under the principle of Modbus communication. Its 85 mm stroke, 230 N max gripping force, and 5 kg max payload make it ideal for low-volume, high-changeover settings.
 
 \begin{figure}[H]
   \centering
@@ -1328,14 +1328,14 @@ The RobotiQ 140 gripper is a two-finger gripper that mainly works under the prin
 \FloatBarrier
 
 \section{Robotic Movement:}
-The Robotic movement can be performed with 3 methods called Servo X, ServoJ,and Movelinear.\
+The robotic movement can be performed with 3 methods called Servo X, Servo J, and Movelinear.\
 \begin{itemize}
     \item ServoX
     \item Servo J
     \item MoveLinear
 \end{itemize}\\
-1. \textbf{ServoX:} When executing the Servo X motion, we move the robot in Cartesian motion, where the coordinates that we get from the camera are represented by the quaternion poses [X, Y, Z, Qx, Qy, Qz, W]. These are already in Cartesian poses, which can be directly passed to the robotic controller, giving these values as the target position, and moving the robot to the desired location. During motion, the camera coordinates were not in the correct order as those of the robotic movement, so initially, the target position had to be changed as in this form [X, Y, Z, W, Qx, Qy, Qz].\\\\
-2. \textbf{ServoJ:} When using Servo J, the robot moves with the joint movements, rather than Cartesian. The object coordinates that we get from the camera are in Cartesian form; they need to be converted into joint form and given as the target position. When giving the target position, the final orientation values of the coordinates will not be the same as those of the TCP coordinates of the robot. To set this, we have to implement the method of inverse kinematics.\\\\
+1. \textbf{ServoX:} When executing the Servo X motion, we move the robot in Cartesian motion, where the coordinates that we get from the camera are represented by the quaternion poses [X, Y, Z, Qx, Qy, Qz, W]. These are already in Cartesian poses, which can be directly passed to the robotic controller, giving these values as the target position and moving the robot to the desired location. During motion, the camera coordinates were not in the correct order as those of the robotic movement, so initially, the target position had to be changed as in this form [X, Y, Z, W, Qx, Qy, Qz].\\\\
+2. \textbf{ServoJ:} When using ServoJ, the robot moves with the joint movements rather than Cartesian. The object coordinates that we get from the camera are in Cartesian form; they need to be converted into joint form and given as the target position. When giving the target position, the final orientation values of the coordinates will not be the same as those of the TCP coordinates of the robot. To set this, we have to implement the method of inverse kinematics.\\\\
 3. \textbf{Movelinear:}
 The Movelinear controller is the method in which the target position for the robot to pick up the object is directly given as the quaternion values provided by the camera, by scanning the objects. Here we define the maximum velocity and acceleration. The movement of the robot occurs in a servo interface where the quaternion values are sent to the robot as the target position, thereby reaching the required position.
 
@@ -1347,7 +1347,7 @@ The Movelinear controller is the method in which the target position for the rob
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 
-Static pick-up is the process of picking items from the conveyor belt when it is not moving. Initially, we keep the object on the conveyor belt and then trigger the camera which helps in getting the object coordinates to the robotic controller. When the robot receives the data, the robot moves to the target position to pick the required target.
+Static pick-up is the process of picking items from the conveyor belt when it is not moving. Initially, we keep the object on the conveyor belt and then trigger the camera, which helps in getting the object coordinates to the robotic controller. When the robot receives the data, the robot moves to the target position to pick the required target.
 
 
 \subsection{Dynamic Picking:}\\
@@ -1370,18 +1370,18 @@ The Dynamic Pick involves the process of picking the items from the moving conve
 \end{figure}
 
 
-For the Dynamic picking, a typical construction site is needed, and quick, real-time modeling is necessary to support decision-making.  Thus, a quick 3D data collection and processing system is required for real-time modeling of a building site.  Only high-quality, rich 3D datasets of static objects are produced using laser scanners; a typical scan has millions of points.  Furthermore, real-time modeling is not practicable due to the slowness of data collection and processing.  Nevertheless, 3D range cameras provide an additional option by enabling wide-field-of-view, low-cost, automatic tracking and detection of both static and moving objects at frame rates higher than 1Hz (real-time).
+For dynamic picking, a typical construction site is needed, and quick, real-time modeling is necessary to support decision-making.  Thus, a quick 3D data collection and processing system is required for real-time modeling of a building site.  Only high-quality, rich 3D datasets of static objects are produced using laser scanners; a typical scan has millions of points.  Furthermore, real-time modeling is not practicable due to the slowness of data collection and processing.  Nevertheless, 3D range cameras provide an additional option by enabling wide-field-of-view, low-cost, automatic tracking and detection of both static and moving objects at frame rates higher than 1 Hz (real-time).
 
-The Dynamic movement can be explained as follows:\\
+The dynamic movement can be explained as follows:\\
 
-Initially, we pass the object through the running conveyor belt and trigger the camera, where we get the initial and final coordinates. We also calculate the timestamps to get the changes in time. Then we need to find the custom velocity, which can be calculated by dividing the change in position by and change in time.
-When we pass the object through the conveyor belt, there is a change in position in the X axis, as this is a linear motion of movement. The change in the position of the object needs to be transferred to the robot so that the robot can understand where it needs to come and pick the item from the conveyor belt. This can be compensated by using the following equation: \[ X = X_0 + v\cdot t \] where X0 is the initial position of the object \\
+Initially, we pass the object through the running conveyor belt and trigger the camera, where we get the initial and final coordinates. We also calculate the timestamps to get the changes in time. Then we need to find the custom velocity, which can be calculated by dividing the change in position by the change in time.
+When we pass the object through the conveyor belt, there is a change in position in the X axis, as this is a linear motion of movement. The change in the position of the object needs to be transferred to the robot so that the robot can understand where it needs to come and pick the item from the conveyor belt. This can be compensated by using the following equation: \[ X = X_0 + v\cdot t \] where X₀ is the initial position of the object \\
 where X is the final position of the object\\
-v is the custom velocity / calibrated in m/s\\
-t is the change in time. 
+v is the custom velocity calibrated in m/s\\
+It is the change in time. 
 
 \subsection{Coordinate Transformation:}
-Many applications in manufacturing, construction, and vehicle automation and autonomy depend on the availability of 3D information.  Time-of-flight (ToF) sensors are getting cheaper and more available. They offer in depth information for every pixel at every pixel in addition to intensity. The ToF sensor provides spherically-coordinated range data of the environment within its field of view.  As described in the following section, the spherical coordinates are transformed into Cartesian coordinates, with the origin of the coordinate system located at the camera's center.
+Many applications in manufacturing, construction, and vehicle automation and autonomy depend on the availability of 3D information.  Time-of-flight (ToF) sensors are getting cheaper and more available. They offer in depth information for every pixel at every pixel in addition to intensity. The ToF sensor provides spherically coordinated range data of the environment within its field of view.  As described in the following section, the spherical coordinates are transformed into Cartesian coordinates, with the origin of the coordinate system located at the camera's center.
  With the origin at a known reference point, the 3D point cloud in the camera coordinate system is converted to the belt coordinate system. \\
 
  The tests examine the capacity of TOF sensors to provide sensing for a robot tasked with handling goods traveling on a conveyor belt in an indoor scenario.  The range data is utilized to identify and calculate the dimensions of objects traveling along a conveyor belt.  The robot then receives the geometry and recognition data for additional action.  The findings suggest that TOF sensors have immediate potential for automating these kinds of applications.\\
@@ -1394,42 +1394,42 @@ Many applications in manufacturing, construction, and vehicle automation and aut
  \end{enumerate}
 
 \subsection{Euler Angles:}\\
-Euler angles can be used to parameterize the space of orientations. A universal orientation is expressed as a sequence of rotations along three mutually orthogonal axes in space when Euler angles are applied. In a Cartesian coordinate system, the x, y, and z axes are typically utilized. The rotations are frequently referred to as x-, y-, and z-rolls.To solve differential equations, Euler initially created Euler angles. The most popular technique for parameterizing the space of orientations is now the use of Euler angles. Euler angles can be used to parameterize the space of rotations if we decide to think of a rotation as the activity carried out to achieve a specific orientation.[20]
+Euler angles can be used to parameterize the space of orientations. A universal orientation is expressed as a sequence of rotations along three mutually orthogonal axes in space when Euler angles are applied. In a Cartesian coordinate system, the x, y, and z axes are typically utilized. The rotations are frequently referred to as x-, y-, and z-rolls. To solve differential equations, Euler initially created Euler angles. The most popular technique for parameterizing the space of orientations is now the use of Euler angles. Euler angles can be used to parameterize the space of rotations if we decide to think of a rotation as the activity carried out to achieve a specific orientation. [20]
 
 \subsection{Disadvantages of Gimbal Lock and Ambiguity}
 
 \subsubsection*{1. Gimbal Lock}
 \begin{itemize}
   \item \textbf{Loss of One Degree of Freedom.} 
-   One "gimbal" loses its capacity to rotate on its own when two of the three rotation axes align (for instance, the X′ axis aligns with Z in a Z–X′–Z sequence).  As a result, the three-dimensional local parameter space shrinks to two dimensions.[20]
+   One "gimbal" loses its capacity to rotate on its own when two of the three rotation axes align (for instance, the X′ axis aligns with Z in a Z–X′–Z sequence).  As a result, the three-dimensional local parameter space shrinks to two dimensions. [20]
   \item \textbf{Numerical Instability.} 
-    Small orientation changes necessitate huge swings in two of the Euler angles, which amplifies floating-point mistakes, especially near the unique alignment (e.g., a pitch of \(\ pm90^\circ \) in a Z–Y′–X sequence).[20]
+    Small orientation changes necessitate huge swings in two of the Euler angles, which amplifies floating-point mistakes, especially near the unique alignment (e.g., a pitch \(\ pm90^\circ \) in a Z–Y′–X sequence). [20]
   \item \textbf{Control \& Interpolation Problems.} 
-    Smoothly interpolating through a gimbal-lock singularity might result in abrupt flips or unpredictable motion in applications like animation or flight control.[20]
+    Smoothly interpolating through a gimbal-lock singularity might result in abrupt flips or unpredictable motion in applications like animation or flight control. [20]
 \end{itemize}
 
 \subsubsection{2. Ambiguity (Non-Uniqueness)}
 \begin{itemize}
   \item \textbf{Multiple Angle Triples for the Same Rotation.} 
-   There are an unlimited number of \((\alpha,\beta,\gamma)\) that produce the same rotation matrix since every rotation about an axis is periodic (modulo \(360^\circ\)) and because different sequences might arrive at the same ultimate orientation.  A "roll" of \(+360^\circ\), for example, is identical to \(0^\circ\).[20]
+   There are an unlimited number of those \((\alpha,\beta,\gamma)\) that produce the same rotation matrix since every rotation about an axis is periodic (modulo \(360^\circ\)) and because different sequences might arrive at the same ultimate orientation.  A "roll" of\(+360^\circ\), for example, is identical to\(0^\circ\).[20]
   \item \textbf{Convention Dependence.} 
-    There are twelve main Euler conventions, including choice of axis ordering, intrinsic vs. extrinsic, and proper Euler vs. Tait–Bryan.  In the absence of precise convention, a \((\alpha,\beta,\gamma)\) triplet is unclear.[20]
+    There are twelve main Euler conventions, including choice of axis ordering, intrinsic vs. extrinsic, and proper Euler vs. Tait–Bryan.  In the absence of precise convention, a \((\alpha,\beta,\gamma)\) triplet is unclear. [20]
   \item \textbf{Inverse-Mapping Ambiguities.} 
-   Solving for Euler angles given a rotation matrix frequently produces two valid answers (also referred to as the "standard" and "supplementary" sets), necessitating additional reasoning to select one.[20]
+   Solving for Euler angles given a rotation matrix frequently produces two valid answers (also referred to as the "standard" and "supplementary" sets), necessitating additional reasoning to select one. [20]
 \end{itemize}
 \newpage
 \subsubsection*{Why It Matters}
 \begin{itemize}
-  \item \textbf{Robustness:} Systems like VR head-tracking, robotic manipulators, and airplane autopilots can all be rendered inoperable by gimbal lock.[20]
-  \item \textbf{Maintainability:} To prevent misunderstandings, ambiguity compels programs, file formats, and APIs to explicitly state which Euler standard is being used.[20]
+  \item \textbf{Robustness:} Systems like VR head-tracking, robotic manipulators, and airplane autopilots can all be rendered inoperable by gimbal lock. [20]
+  \item \textbf{Maintainability:} To prevent misunderstandings, ambiguity compels programs, file formats, and APIs to explicitly state which Euler standard is being used. [20]
 \end{itemize}
 
 \subsubsection*{Alternatives}
 Many applications prefer other orientation representations to avoid both gimbal lock and ambiguity:
 \begin{itemize}
-  \item \textbf{Quaternions.}  It is unique up to a sign, free of singularities, and provides smooth spherical linear interpolation (slerp).[20]
-  \item \textbf{Rotation Vectors / Axis–Angle.}  One-to-one mapping (except for periodicity and sign and \(2\pi\).[20]
-  \item \textbf{Rotation Matrices.}  Despite being over-parameterized (9 integers with 6 restrictions), it is clear and globally non-singular.[20]
+  \item \textbf{Quaternions.}  It is unique up to a sign, free of singularities, and provides smooth spherical linear interpolation (slerp). [20]
+  \item \textbf{Rotation Vectors/Axis-Angle.}  One-to-one mapping (except for periodicity and sign and \(2\pi\). [20]
+  \item \textbf{Rotation Matrices.Despite being over-parameterized (9 integers with 6 restrictions), it is clear and globally non-singular. [20]
 \end{itemize}
 
 \subsubsection{Rotation matrices}\\
@@ -1439,7 +1439,7 @@ Euler angles are usually implemented using rotation matrices. There is an x rota
 The second rotational modality uses quaternions and is defined by Euler's theorem. Given the lack of a comprehensive overview of the field and the fact that quaternions are not nearly as well known as transformation matrices, we will first provide a historical perspective before delving deeply into quaternion mathematics [20].\\
 
 \subsubsection{Rotations and Euler’s Theorem}
-Rotations in 3D can be implemented using Euler’s theorem combined with \emph{quaternions}, an extension of complex numbers.[20]
+Rotations in 3D can be implemented using Euler’s theorem combined with \emph{quaternions}, an extension of complex numbers. [20]
 
 \subsubsection{Impossibility of 3D ``Complex'' Numbers}
 Hamilton originally attempted to define three-dimensional complex numbers of the form
@@ -1488,7 +1488,7 @@ We have used a trapezoid for object picking
 \end{figure}
 
 \subsubsection{Trapezoid}
-The trapezoid  is:\\
+The trapezoid  is\\
 
 \centering
 \begin{minipage}{0.38\textwidth} % Adjust width as needed
@@ -1515,12 +1515,12 @@ The figure above shows the STL file of the trapezoid, which is used to pick up t
 \begin{flushleft}
 \subsubsection{Conveyor Belt}
 \begin{flushleft}
-The conveyor belt is the main belt where we have to place the object, thereby putting the object into dynamic mode.[22]\\
+The conveyor belt is the main belt where we have to place the object, thereby putting the object into dynamic mode. [22]\\
 
-The conveyor belt specification includes:\\
+The conveyor belt specification includes\\
 \begin{enumerate}
     \item The item model has Belt size: 59x7.8 in/1498.6x198 mm [22]
-    \item Table Width: 9.9 in/ 252 mm [22]
+    \item Table Width: 9.9 in/252mm [22]
     \item Load Capacity Limit: 82.67 lbs/37.5 kg [22]
     \item Material: 201 Stainless Steel [22]
     \item Product Weight: 40.79/18.5 kg [22]
@@ -1531,22 +1531,22 @@ The conveyor belt specification includes:\\
 \begin{figure}[h]
     \centering
 {
-        \includegraphics[width=5cm]{Thesis-report/Figures/CV belt1.jpeg}
+        \includegraphics[width=5cm] {Thesis-report/Figures/CV belt1.jpeg}
         \label{fig:cv_belt1}
     }
     \quad
 {
-        \includegraphics[width=5cm]{Thesis-report/Figures/CV_ belt2.jpeg}
+        \includegraphics[width=5cm] {Thesis-report/Figures/CV_ belt2.jpeg}
         \label{fig:cv_belt2}
     }
     \caption{Images of the conveyor belt}
     \label{fig:conveyor_belt}
 \end{figure}
 
-The following figure shows the parts, which include: 
+The following figure shows the parts, which include 
 
 \begin{flushleft}
-1. \textbf{Conveyor Belt:} The conveyor belt is the main surface that moves materials or products from one point to another. It always runs when the motor is on and effectively carries items of various shapes and sizes.[22]\\
+1. \textbf{Conveyor Belt:} The conveyor belt is the main surface that moves materials or products from one point to another. It always runs when the motor is on and effectively carries items of various shapes and sizes. [22]\\
 \begin{flushleft}
 
 \begin{flushleft}
@@ -1554,19 +1554,19 @@ The following figure shows the parts, which include:
 Function: The conveyor system can be adjusted thanks to this lever. It can be used to adjust the height, alignment, or tension of the belt to guarantee smooth operation and to suit various materials.[22]
 \begin{flushleft}
 3.	\textbf {Guardrail:}
-Function: To stop goods from slipping off during transportation, guardrails are positioned along the conveyor belt's sides. It aids in safely guiding objects along the belt, particularly when working with slick or irregular objects.[22]\\
+Function: To stop goods from slipping off during transportation, guardrails are positioned along the conveyor belt's sides. It aids in safely guiding objects along the belt, particularly when working with slick or irregular objects. [22]\\
 
 4.	\textbf {Motor:}
-Function: The conveyor belt can move because of the motor's power. It drives the belt directly or via a gearbox and pulleys by converting electrical energy into mechanical energy.[22]\\
+Function: The conveyor belt can move because of the motor's power. It drives the belt directly or via a gearbox and pulleys by converting electrical energy into mechanical energy. [22]\\
 \begin{figure}[h]
     \centering
     \includegraphics[width=6cm]{Thesis-report/Figures/belt_dimension.jpg}
-    \caption{Conveyor belt with Details[22]}
+    \caption{Conveyor belt with [22]}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 
 5.	\textbf {Control Panel:}
-Function: Operators can oversee the conveyor's operation from the control panel. Switches, speed controls, emergency stop buttons, and other controls to modify the conveyor's direction, speed, and mode of operation may be included.[22]\\
+Function: Operators can oversee the conveyor's operation from the control panel. Switches, speed controls, emergency stop buttons, and other controls to modify the conveyor's direction, speed, and mode of operation may be included. [22]\\
 
 6.	\textbf{Rubber Feet:}
 Function: The rubber feet steady the conveyor system and assist in absorbing vibrations while it is in use.  Additionally, they shield the floor from scuffs and stop the conveyor from slipping on smooth surfaces, which could lead to motion detection instability. [22].\\
@@ -1580,7 +1580,7 @@ Function: The rubber feet steady the conveyor system and assist in absorbing vib
 \newpage
 \subsection{Photoneo Camera-Web Interface}\\
 
-For running the Solution request, after verifying that the environment complies with all necessary safety rules, Button Deploy launches the solution.[2]\\
+For running the solution request, after verifying that the environment complies with all necessary safety rules, Button Deploy launches the solution. [2]\\
 
 \begin{figure}[h]
     \centering
@@ -1588,7 +1588,7 @@ For running the Solution request, after verifying that the environment complies 
     \caption{Solution Deployment[2]} 
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-Runtime requests from action clients are received and executed following the deployment of a defined solution.  The Action Request Client (Robot main software) and Photoneo 3D Sensors (vision systems) connection statuses can be viewed by the user. Additionally, it provides the ability to call a Scan request and a Get object request, as well as to halt or resume the deployed solution.[2]\\
+Runtime requests from action clients are received and executed following the deployment of a defined solution.  The Action Request Client (robot main software) and Photoneo 3D Sensors (vision systems) connection statuses can be viewed by the user. Additionally, it provides the ability to call a scan request and a get object request, as well as to halt or resume the deployed solution. [2]\\
 The deployment page shows console logs that provide information about previous actions and occurrences, along with a visualiser that presents the following data:[2]
 
 ○	Real-time visualization of the captured 3D point cloud[2]
@@ -1617,7 +1617,7 @@ The web interface shows the image of the object being detected; initially, we lo
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 
- The above figure represents the web interface that includes the camera triggering the object placed in the workspace. The green section represents the area for the workspace, and the red section is the object to be picked up by the robot. Using a TCP/IP client request connection in which the robot and camera connections are being established. For setting up the connection, the robotic controller and camera IP address (subnet) are made into the same, which helps in communication through a web interface.
+ The above figure represents the web interface that includes the camera triggering the object placed in the workspace. The green section represents the area for the workspace, and the red section is the object to be picked up by the robot. Using a TCP/IP client, request a connection in which the robot and camera connections are being established. For setting up the connection, the robotic controller and camera IP address (subnet) are made into the same, which helps in communication through a web interface.
 \begin{figure}[H]  % requires \usepackage{float}
   \centering
   \includegraphics[width=8cm]{Thesis-report/Figures/scanning volume.png}
@@ -1625,7 +1625,7 @@ The web interface shows the image of the object being detected; initially, we lo
   \label{fig:photoneo-scanning-volume}
 \end{figure}
 
-The above figure shows the volume/area in which the Photoneo Camera can scan items and determine object poses. The top view shows the maximum field of view (FOV) reachable by the camera for object coordinate acquisition, which extends up to 15 m.The camera sits around 350mm tall and projects a pyramidla field of view with colored ones. The Depth lanes at 630 mm,907mm and 1574mm from sensor; at ecah distance the intersection of the FOV with flat plan is a rectangle that grows with distance.Moreover, the blue trapezoid is the maximum rectangular cross section of the scan volume with sensor horizontal, vertical, and diagonal field of view limits.
+The above figure shows the volume/area in which the Photoneo camera can scan items and determine object poses. The top view shows the maximum field of view (FOV) reachable by the camera for object coordinate acquisition, which extends up to 15 m. The camera sits around 350 mm tall and projects a pyramidla field of view with colored ones. The Depth lanes at 630 mm,907mm, and 1574 mm from the sensor; at each distance, the intersection of the FOV with the flat plane is a rectangle that grows with distance. Moreover, the blue trapezoid is the maximum rectangular cross-section of the scan volume with sensor horizontal, vertical, and diagonal field of view limits.
 
 \newpage
 \chapter{\section{\mbox{Results and Discussions }}{{\normalfont\fontsize{14}{16}\bfseries}}
@@ -1640,7 +1640,7 @@ The robot's tool-center-point (TCP) speed is plotted against the belt speed in  
 
 
 \section{Success Rate vs Conveyor Speed}
-Figure below shows the success rate for dynamic picking of trapezoid and pipe objects at belt speeds between 1.0\,m/s and 2.0\,m/s. During the dynamic picking tests, the robot maintained a higher success rate on trapezoid objects compared to pipes.
+The figure below shows the success rate for dynamic picking of trapezoid and pipe objects at belt speeds between 1.0\,m/s and 2.0\,m/s. During the dynamic picking tests, the robot maintained a higher success rate on trapezoid objects compared to pipes.
 
 \begin{figure}[h]
     \centering
