@@ -682,7 +682,7 @@ The calibration matrix specifies the transformation straight to the robot base c
 \subsubsection{Calibration Ball}\\\\
 
 
-A calibration ball serves as the calibration object. It is also feasible to use a bespoke ball with the right characteristics in place of the calibration ball, the ball needs to be exactly round and composed of a surface that is good for scanning (smooth and not extremely reflective). The ball needs to be attached to the gripper or the flange, which are the robot's endpoints. During the calibration process, make sure the ball is securely attached and stays in place. Verify that the ball can be seen clearly by the 3D sensor.[2] \\
+A calibration ball serves as the calibration object. It is also feasible to use a bespoke ball with the right characteristics in place of the calibration ball; the ball needs to be exactly round and composed of a surface that is good for scanning (smooth and not extremely reflective). The ball needs to be attached to the gripper or the flange, which are the robot's endpoints. During the calibration process, make sure the ball is securely attached and stays in place. Verify that the ball can be seen clearly by the 3D sensor.[2] \\
 \begin{figure}[h]
     \centering
     \includegraphics[width=3cm]{Thesis-report/Figures/ball.png}
@@ -733,7 +733,7 @@ Either a new calibration point is introduced:
 Three calibration sites are needed for both the hand-eye and extrinsic calibration. Once the necessary number of calibration points has been added, the resulting calibration matrix and the calibration accuracy information are only available [2].
  
  Position of 3D sensors and point clouds
- The model of the 3D sensor of the currently calibrated vision system begins to reflect the pose of the real 3D sensor when the 4th point is added during the extrinsic calibration and the Lth point is added during the hand-eye calibration.  The point cloud is shown simultaneously.\\
+ The model of the 3D sensor of the currently calibrated vision system begins to reflect the pose of the real 3D sensor when the 4th point is added during the extrinsic calibration and the 5th point is added during the hand-eye calibration.  The point cloud is shown simultaneously.\\
  Every calibration point that has been successfully inserted has an ID and a unique accuracy score that is measured in millimeters.  The confidence level in correctness increases as the accuracy score decreases.  The Delete option can be used to eliminate a point from the dataset if its accuracy score is excessively high.
 
  \subsection{Extrinsic Calibration Results:}
@@ -758,7 +758,7 @@ Three calibration sites are needed for both the hand-eye and extrinsic calibrati
 \caption{Calibration Results}
 \end{table}
 
- The total calibration accuracy score, reported in millimeters, is a measure of calibration quality.  Attempt to score the lowest possible score at all times.  Numerous elements, including the robotic arm size, the quality of the calibration ball, scanning parameters, lighting circumstances, and the 3D sensor, all have an impact on the value.  It is OK to have an accuracy value of a few millimeters. The calibration accuracy value is used to confirm the quality of the calibration.
+ The total calibration accuracy score, reported in millimeters, is a measure of calibration quality.  Attempt to score the lowest possible score at all times.  Numerous elements, including the robotic arm size, the quality of the calibration ball, scanning parameters, lighting circumstances, and the 3D sensor, all have an impact on the value.  It is okay to have an accuracy value of a few millimeters. The calibration accuracy value is used to confirm the quality of the calibration.
 
  Additionally, by assessing the location of the 3D sensor and the point cloud in the picture, the roughly accurate result (without accounting for precision) may be verified.
  The scene's origin is found in the coordinate frame of the robotic controller that was used for the calibration process.  That usually refers to the robot base's origin.  Then, the relative positions of the actual 3D sensor and the robot base in reality should be comparable to or identical to those of the model of the 3D sensor and the scene origin.
@@ -821,7 +821,7 @@ The distance between the marker pattern positions for the camera calibration and
 In the below figure, we can see the conveyor belt having the calibration board that is used for the calibration, which determines the X, Y, and Z coordinates of the object along with the conveyor belt, where MSD means marker space displacement, TD means travel distance, and TSc means trigger to scan completion in meters where the target position is the T[X, Y, Z, Rx, Ry, Rz], which represents the quaternion value of the object that needs to be converted into Euler values that are used to move the robot to that specified location [21] \\
 
 
-In the below figure, the number represents the coordinates of the object after the scanning of the object is done after the trigger. Once these quaternion values are attained, these values are then sent to the robotic controller for the robot to move to the required target position.\\\\
+In the below figure, the number represents the coordinates of the object after the scanning of the object is done after the trigger. Once these quaternion values are attained, these values are then sent to the robotic controller for the robot to move to the required target position.\\
 \begin{figure}[h]
     \centering
     \includegraphics[width=13cm]{Thesis-report/Figures/coordinates.png} 
@@ -839,7 +839,7 @@ Calibration of the marker pattern from the camera to the conveyor belt, which is
 \subsection{Conditions for Conveyor Belt:}
 While setting up the conveyor belt with a Vision Camera, we need to follow certain conditions:
 
-1. \textbf{Matching the robot speed with the conveyor belt:} For the robot to pick up the object from the conveyor belt, the robot`s end effector should move at the same speed as that of the conveyor belt.\\
+1. \textbf{Matching the robot speed with the conveyor belt:} For the robot to pick up the object from the conveyor belt, the robot`s end effector should move at the same speed as that of the conveyor belt.
 
 \[
 V_c = V_r
@@ -856,7 +856,7 @@ where \( V_c \) represents the velocity of the conveyor belt and \( V_r \) repre
 \text{where } TX \text{ is the initial detected position, } AMS \text{ is the marker space displacement, and } TD \text{ is the tracked distance.}\\
 
 \newpage
-3. \textbf{Marker Space Displacement(AMS):} \\
+3. \textbf{Marker Space Displacement(AMS):}
 
 \[
 AMS \cdot \theta = TX - \text{Marker Pattern Origin}
@@ -887,7 +887,7 @@ TD = \Delta TSC + \Delta CTO
 
 6. \textbf{Final Adjusted Position:}\\
 
-After considering the conveyor motion and processing delays, the final position will be the place where the robot should pick the object.\\
+After considering the conveyor motion and processing delays, the final position will be the place where the robot should pick the object.
 
 \[
 \text{Target} = TX + (TX - \text{Marker Pattern Origin}) + (V_c \times t_s) + (V_c \times t_r)
