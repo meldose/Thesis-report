@@ -998,9 +998,72 @@ The following figure shows the flowchart for the Dynamic Picking:\\
 \newpage
 \subsection{Jacobian inverse method :}\\
 The time derivative of the kinematic equations that connect the end-effector's velocity to the joint rates is known as the Jacobian in robotics. The following is the phrase for the Jacobian [19].
-\[
-\omega_e = J_{\omega} \theta, \quad v_e = J_v \theta [19]
-\]
+\subsubsection{Kinematic Velocity Equations}
+
+The end‐effector angular and linear velocities are given by
+\begin{align}
+  \omega_e &= J_{\omega}(\theta)\,\dot{\theta}, \\
+  v_e      &= J_{v}(\theta)\,\dot{\theta},
+\end{align}
+where:
+
+\begin{description}
+  \item[$\theta$]%
+    Joint coordinate vector of size $n$.
+    \begin{itemize}
+      \item For revolute joints: $\theta_i$ is the $i$-th joint angle.
+      \item For prismatic joints: $\theta_i$ is the $i$-th joint displacement.
+    \end{itemize}
+
+  \item[$\dot{\theta}$]%
+    Joint velocity vector (time‐derivative of $\theta$).
+    \[
+      \dot{\theta} = \begin{bmatrix}
+        \dot{\theta}_1 \\ \dot{\theta}_2 \\ \vdots \\ \dot{\theta}_n
+      \end{bmatrix},[19]
+    \] 
+    with units: rad/s for revolute, m/s for prismatic joints.
+
+  \item[$J(\theta)$]%
+    Geometric Jacobian, a $6\times n$ matrix mapping $\dot\theta$ to the end‐effector twist.
+    \[
+      J(\theta) = 
+      \begin{bmatrix}
+        J_v(\theta) \\[6pt]
+        J_\omega(\theta) [19]
+      \end{bmatrix}.
+    \]
+
+  \item[$J_v(\theta)$]%
+    Linear‐velocity submatrix of $J$. It’s the top 3 rows:
+    \[
+      J_v(\theta) \in \mathbb{R}^{3\times n},
+      \quad
+      v_e = J_v(\theta)\,\dot\theta
+      \;\in\; \mathbb{R}^3.
+    \]
+
+  \item[$J_\omega(\theta)$]%
+    Angular‐velocity submatrix of $J$. It’s the bottom 3 rows:
+    \[
+      J_\omega(\theta) \in \mathbb{R}^{3\times n},
+      \quad
+      \omega_e = J_\omega(\theta)\,\dot\theta
+      \;\in\; \mathbb{R}^3.[19]
+    \]
+
+  \item[$v_e$]%
+    End‐effector linear velocity vector in the base/world frame:
+    \[
+      v_e = \begin{bmatrix} \dot{x} \\ \dot{y} \\ \dot{z} \end{bmatrix}.[19]
+    \]
+
+  \item[$\omega_e$]%
+    End‐effector angular velocity vector in the base/world frame:
+    \[
+      \omega_e = \begin{bmatrix} \omega_x \\ \omega_y \\ \omega_z \end{bmatrix}.[19]
+    \]
+\end{description}
 where the 3x6 matrices J ω and J v relate the joint velocities or rates θ to the end-effector angular velocity ω e and velocity v e, respectively. Also, J ω and J v are where J  J (JJ) is the function of θ and the pseudo-inverse of the J matrix. It is possible to rewrite as:[19]\\
 \[
 \Delta x_e = J \Delta \theta [19]
@@ -1119,8 +1182,28 @@ Additionally, there are several electromechanical technologies, including:
     \item Optical
     \item Inductive
     \item Capacitive
-    \item Laser \\\
+    \item Laser 
 \end{enumerate}
+
+The controller receives counts as the encoder rotates. Assume that the count range is between 0 and 10,000. We know that a complete rotation of the shaft registers a count of 10,000, but the precise position is unknown because this is an incremental encoder. The object will be placed on the conveyor, and the current encoder count will be recorded as soon as the entry photo-eye sensor detects the object. Assume that $5232$ is the number.
+
+\begin{align*}
+  C_{\mathrm{in}}    &= 5232 
+    &&\text{encoder count at entry},\\
+  C_{\mathrm{out}}   &= 6311 
+    &&\text{encoder count at exit},\\
+  N                  &= 10\,000 
+    &&\text{total counts per revolution},\\[6pt]
+  \Delta C           &= (C_{\mathrm{out}} - C_{\mathrm{in}} + N)\bmod N
+    &&= (6311 - 5232 + 10\,000)\bmod 10\,000 = 1079,\\[8pt]
+  L                  &= \frac{\Delta C}{N}\,L_{\mathrm{rev}}
+    &&= \frac{1079}{10\,000}\,L_{\mathrm{rev}},\\[6pt]
+  \Delta\theta       &= \frac{\Delta C}{N}\times360^\circ
+    &&= \frac{1079}{10\,000}\times360^\circ.
+\end{align*}\\
+
+After the object leaves and is picked up by the exit photo-eye, we record $C_{\mathrm{out}}=6311$.  Deducting $C_{\mathrm{in}}=5232$ gives $\Delta C=1079$ counts.  This tells us the object traversed 1079 encoder counts from entrance to exit, though its exact position on the shaft remains unknown.
+
 \newpage
 
 \chapter{\section{\mbox{Working Principle }}{{\normalfont\fontsize{14}{16}\bfseries}}
