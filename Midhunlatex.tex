@@ -301,7 +301,7 @@ Two devices are often used in laser scanning; one directs a laser beam onto a su
 This technology projects structured light patterns, such as simple geometric patterns or parallel lines, onto a surface.  The object's shape will cause the patterns to distort.  It is feasible to rebuild the scanned surface by using a camera to analyze these deformations, distinguishing edges, and determining the separation between the item and the scanner.[17]
 
 \subsection {Photogrammetry}
-Triangulation is used in photogrammetry to intersect particular points within two-dimensional images based on the angles at which those points can be found.  To create an acceptable 3D model, a lot depends on the size of the item, the quantity of photos, and their quality.[15]
+Triangulation is used in photogrammetry to intersect particular points within two-dimensional images based on the angles at which those points can be found.  To create an acceptable 3D model, a lot depends on the size of the item, the quantity of photos, and their quality. [15]
 
 \subsection{Time fo Flight}
 The time it takes for light to travel from an illumination source to a scene and back is measured by the time of flight. The speed of light itself is the primary obstacle in this situation. Usually, the phase shift of a modulated signal is used to measure time. High pixel modulation frequencies must be used to achieve a respectable level of depth accuracy. The primary drawback in this case is physics, since a greater frequency results in less charge transfer, which lowers contrast and SNR. The restriction suggests an accuracy level that TOF systems can achieve. Usually, it falls within the centimeter range. Another issue is interreflections, which can significantly bend the surface.[15]\
@@ -427,26 +427,26 @@ Surface imaging and geometry estimation are the two primary subtasks that compri
 \label{Literature}
 \subsection{Robotic Motion}\\\\
 Given a point in the world coordinate, the angle of each joint is calculated based on an inverse kinematics (IK) equation. In general, there may be no analytic IK solution from a manipulator for the configurations of each joint. The numerical method is introduced to solve the problem for
-general manipulators. The velocity of the joint can be mapped to Cartesian space with the Jacobian linearization method.\\
+general manipulators. The velocity of the joint can be mapped to Cartesian space with the Jacobian linearization method.[19]\\
 
 \begin{document}
 
 \[
-v = J(q) \dot{q}
+v = J(q) \dot{q}[19]
 \]
 
-Pseudo-inverse is used to solve the joint:\\
+Pseudo-inverse is used to solve the joint:[19]\\
 
 \begin{document}
 
 \[
-\dot{q} = J^\dagger \dot{x}, \quad J^\dagger = (J^T J)^{-1} J^T
+\dot{q} = J^\dagger \dot{x}, \quad J^\dagger = (J^T J)^{-1} J^T[19]
 \]
 
-Velocity for the linear velocity in Cartesian space. First, FK is used to determine the manipulator's pose. Next, the IK solver uses a pseudo-inverse calculation to update the joint angles. Until the end tip reaches the desired posture with an acceptable error, these two stages are repeated. If the starting value and changing rate are appropriately calibrated, the dynamic gain causes the speed to reach its maximum and minimum quickly. Joint angles have an impact on the inaccuracy during the iteration process. Inappropriate angles cause the gain to drop dynamically, and vice versa.
+Velocity for the linear velocity in Cartesian space. First, FK is used to determine the manipulator's pose. Next, the IK solver uses a pseudo-inverse calculation to update the joint angles. Until the end tip reaches the desired posture with an acceptable error, these two stages are repeated. If the starting value and changing rate are appropriately calibrated, the dynamic gain causes the speed to reach its maximum and minimum quickly. Joint angles have an impact on the inaccuracy during the iteration process. Inappropriate angles cause the gain to drop dynamically, and vice versa.[19]
 
 \subsection{Position of Camera}\\
-When mounting a camera for vision operation, it is best to keep it stable and as close to the robot's work envelope as feasible, without interfering with or restricting the movement of the robot arm. The longer the part must travel from the camera's location into the robot's reachable workspace, the more errors the encoder counts will produce, since the accuracy of conveyor tracking with vision depends on the coordinate transformation between the camera's picture-taking location and the robot's work envelope. The camera must be oriented downwards since the components are positioned on the conveyor belt's surface, and vision recognition is done on the parts' upper surface. For the camera's 25 mm lens to cover the entire visible portion of the conveyor belt, a camera fixture was constructed to hold the camera directly above the upstream sensor. The upstream sensor is also used to activate the camera to take a photo when parts are presented at this point, so the picture-taking location is placed at the top of the upstream sensor. Following their placement in fixed locations, the camera and conveyor must be calibrated using the calibration program on the robot controller to configure the camera's properties and determine how the locations of the camera and conveyor relate to the robot's world coordinate.\
+When mounting a camera for vision operation, it is best to keep it stable and as close to the robot's work envelope as feasible, without interfering with or restricting the movement of the robot arm. The longer the part must travel from the camera's location into the robot's reachable workspace, the more errors the encoder counts will produce, since the accuracy of conveyor tracking with vision depends on the coordinate transformation between the camera's picture-taking location and the robot's work envelope. The camera must be oriented downwards since the components are positioned on the conveyor belt's surface, and vision recognition is done on the parts' upper surface. For the camera's 25 mm lens to cover the entire visible portion of the conveyor belt, a camera fixture was constructed to hold the camera directly above the upstream sensor. The upstream sensor is also used to activate the camera to take a photo when parts are presented at this point, so the picture-taking location is placed at the top of the upstream sensor. Following their placement in fixed locations, the camera and conveyor must be calibrated using the calibration program on the robot controller to configure the camera's properties and determine how the locations of the camera and conveyor relate to the robot's world coordinate.[19]\
 
 
 \subsection{Camera Examples Under Different Settings}
@@ -555,34 +555,33 @@ The tracker and target belong to different x-y planes; thus, we may utilize a th
 Static pose recognition will end when the tracking approach is activated. The positions of the end effector and object on the conveyor are among the data. The workpiece will proceed through the conveyor in a straight line. Therefore, only the workpieces' positions will be changed, and their orientation will remain unchanged. It is important to note that the end-effector might follow the subsequent instructions based on the tracking approach. This doesn't assist with grabbing articles, though. The gripper should take aim-off into account when doing object tracking to ensure that the entire gripping process is complete. Thus, proper gripping position by the tracking method turns out to be an important point. Without additional indication, the arm might not be aware of some issues that arise on the conveyor.
 
 \subsection{Encoder offsets}\\
-The main method for defining robot movements about a conveyor belt is to model the belt using a unique kind of position data called belt variables. The position of a reference frame fixed to the moving belt conveyor is defined by a belt variable, which is regarded as a relative transformation with a component variable in time. The relationship between a belt encoder and the position and speed of the reference frame, which keeps a fixed position and orientation relative to the belt, can be described using such a belt variable. A belt variable is defined as:
+The main method for defining robot movements about a conveyor belt is to model the belt using a unique kind of position data called belt variables. The position of a reference frame fixed to the moving belt conveyor is defined by a belt variable, which is regarded as a relative transformation with a component variable in time. The relationship between a belt encoder and the position and speed of the reference frame, which keeps a fixed position and orientation relative to the belt, can be described using such a belt variable. A belt variable is defined as:[22]
 
 \[
-\text{DEFBELT} \, \% \text{belt-variable} = \text{nominal-trans}, \, \text{scale factor}
+\text{DEFBELT} \, \% \text{belt-variable} = \text{nominal-trans}, \, \text{scale factor}[22]
 \]
-Where scale factor is a calibrating constant that specifies the ratio between the elementary displacement of the belt and one pulse of the encoder; nominal-trans is the value in R6 of the (simple or composed) relative transformation that defines the position and orientation of the conveyor belt; and belt-variable is the name of the belt variable to be defined. The nominal transformation specifies a position (X, Y, Z) that points to the approximate center of the belt relative to the robot's base frame; the X axis of the nominal transformation indicates the direction of motion of the belt; and the XY plane defined by this transformation is parallel to the conveyor belt surface.\\
+Where scale factor is a calibrating constant that specifies the ratio between the elementary displacement of the belt and one pulse of the encoder; nominal-trans is the value in R6 of the (simple or composed) relative transformation that defines the position and orientation of the conveyor belt; and belt-variable is the name of the belt variable to be defined. The nominal transformation specifies a position (X, Y, Z) that points to the approximate center of the belt relative to the robot's base frame; the X axis of the nominal transformation indicates the direction of motion of the belt; and the XY plane defined by this transformation is parallel to the conveyor belt surface.[22]\\
 \[
 \text{XYZ-instantaneous} =
-\text{XYZ-nominal} + \text{belt-distance} \cdot \text{vers}(X_{l,\sim,\text{minal\_rrarrv}})
+\text{XYZ-nominal} + \text{belt-distance} \cdot \text{vers}(X_{l,\sim,\text{minal\_rrarrv}})[22]
 \]
 
 \[
 \text{with} \quad \text{belt-distance} =
 (\text{encoder-count} - \text{encoder-offset}) \cdot \text{scale-factor}
 \]
-Where encoder-count is the encoder's read contents, and encoder-offset is used to determine the belt's reference frame's instantaneous location (x, y) about its nominal location (x, y). Specifically, a displacement carried out by the conveyor can be nullified by using the offset of the belt (by setting the offset value to the current value of the encoder's counter). The conveyor's visual robot tracking system takes into consideration fluctuating belt offsets, which are often altered by software operations.
+Where encoder-count is the encoder's read contents, and encoder-offset is used to determine the belt's reference frame's instantaneous location (x, y) about its nominal location (x, y). Specifically, a displacement carried out by the conveyor can be nullified by using the offset of the belt (by setting the offset value to the current value of the encoder's counter). The conveyor's visual robot tracking system takes into consideration fluctuating belt offsets, which are often altered by software operations.[22]
 \[
-\text{SETBELT} \ \% \text{belt-variable} = \text{expression}
+\text{SETBELT} \ \% \text{belt-variable} = \text{expression}[22]
 \]
 
-For picking-on-the-fly robot tasks, a fast digital-input interdigital input that detects the occurrence of an external event of the type "an object has completely entered the conveyor belt window" (and hence is completely visible) will initiate the dynamic robot-vision synchronization based on the "look-and-move" cooperation principle. A photocell detects this event and uses it to determine whether to take an image of the moving item.
+For picking-on-the-fly robot tasks, a fast digital-input interdigital input that detects the occurrence of an external event of the type "an object has completely entered the conveyor belt window" (and hence is completely visible) will initiate the dynamic robot-vision synchronization based on the "look-and-move" cooperation principle. A photocell detects this event and uses it to determine whether to take an image of the moving item.[22]
 \subsection{Moving Calibration Board through Conveyor belt}\\
-The trajectory follows the instructions produced from trajectory planning and eye-in-hand vision each time the robot arm's palm begins to perform a moving task. The border of the conveyor will show up on the top side of the image when viewed through a camera. Because the conveyor's moving path is linear, the robot's motion can be corrected by following the conveyor's edge slope. The line equation in polar coordinates is used to determine the conveyor's line edge. The polar parametric form has the advantage of having no singular condition in the domain of sinusoidal functions.
+The trajectory follows the instructions produced from trajectory planning and eye-in-hand vision each time the robot arm's palm begins to perform a moving task. The border of the conveyor will show up on the top side of the image when viewed through a camera. Because the conveyor's moving path is linear, the robot's motion can be corrected by following the conveyor's edge slope. The line equation in polar coordinates is used to determine the conveyor's line edge. The polar parametric form has the advantage of having no singular condition in the domain of sinusoidal functions.[12]
 
-\begin{equation}
-r = x\cos\theta + y\sin\theta
-\end{equation}
-
+\[
+r = x\cos\theta + y\sin\theta[12]
+\]
 \subsection{Transformation of Coordinates:}\\
 To enable the robotic arm to know where to pick and position the target objects, the primary objective of the object coordinate transformations is to convert the target objects' coordinates from the image plane coordinates to the robot base coordinates. [3]
  The pinhole camera model and the chain of transformations for the robotic system with eye-to-hand configuration are combined to create the chain of coordinate transformations for a robotic system with eye-to-hand configuration. [3]
@@ -733,8 +732,8 @@ Either a new calibration point is introduced:
 Three calibration sites are needed for both the hand-eye and extrinsic calibration. Once the necessary number of calibration points has been added, the resulting calibration matrix and the calibration accuracy information are only available [2].
  
  Position of 3D sensors and point clouds
- the model of the 3D sensor of the currently calibrated vision system begins to reflect the pose of the real 3D sensor when the 4th point is added during the extrinsic calibration and the 5th point is added during the hand-eye calibration.  The point cloud is shown simultaneously.\\
- Every calibration point that has been successfully inserted has an ID and a unique accuracy score that is measured in millimeters.  The confidence level in correctness increases as the accuracy score decreases.  The Delete option can be used to eliminate a point from the dataset if its accuracy score is excessively high.
+ the model of the 3D sensor of the currently calibrated vision system begins to reflect the pose of the real 3D sensor when the 4th point is added during the extrinsic calibration and the 5th point is added during the hand-eye calibration.  The point cloud is shown simultaneously.[2]\\
+ Every calibration point that has been successfully inserted has an ID and a unique accuracy score that is measured in millimeters.  The confidence level in correctness increases as the accuracy score decreases.  The Delete option can be used to eliminate a point from the dataset if its accuracy score is excessively high.[2]
 
  \subsection{Extrinsic Calibration Results:}
 \begin{table}[h!]
@@ -758,7 +757,7 @@ Three calibration sites are needed for both the hand-eye and extrinsic calibrati
 \caption{Calibration Results}
 \end{table}
 
- The total calibration accuracy score, reported in millimeters, is a measure of calibration quality.  Attempt to score the lowest possible score at all times.  Numerous elements, including the robotic arm size, the quality of the calibration ball, scanning parameters, lighting circumstances, and the 3D sensor, all have an impact on the value. The calibration accuracy value is used to confirm the quality of the calibration.
+ The total calibration accuracy score, reported in millimeters, is a measure of calibration quality.  Attempt to score the lowest possible score at all times.  Numerous elements, includingotic arm size, calicalibration ball quality,eters, lighting conditions, andconditions, andn impact on the value. The calibration accuracy value is used to confirm the quality of the calibration.
 
  Additionally, by assessing the location of the 3D sensor and the point cloud in the picture, the roughly accurate result (without accounting for precision) may be verified.
  The scene's origin is found in the coordinate frame of the robotic controller that was used for the calibration process.  That usually refers to the robot base's origin.  Then, the relative positions of the actual 3D sensor and the robot base in reality should be comparable to or identical to those of the model of the 3D sensor and the scene origin.
@@ -806,10 +805,10 @@ Initially, we need to calculate the pose of the object that needs to be picked u
 \end{enumerate}
 Possible triggers for the distance traveled from acquisition to the beginning of picking in conveyor tracking mode include\\
 
-The scan request function pho wait for req completion() in SW-HW output of the trigger\\
+The scan request function pho wait for req completion() in SW-HW output of the trigger [21]\\
 \begin{enumerate}
 \item{Calibration Distance:}
-The distance between the marker pattern positions for the camera calibration and custom workspace calibration (the linear transformation between the camera and the custom WS origin) is known as the calibration distance.\\
+The distance between the marker pattern positions for the camera calibration and custom workspace calibration (the linear transformation between the camera and the custom WS origin) is known as the calibration distance.[21]\\
 
 \end{enumerate}
 \begin{figure}[h]
@@ -1376,20 +1375,22 @@ v is the custom velocity calibrated in m/s\\
 t is the change in time. 
 
 \subsection{Coordinate Transformation:}
-Many applications in manufacturing, construction, and vehicle automation and autonomy depend on the availability of 3D information.  Time-of-flight (ToF) sensors are getting cheaper and more available. They offer in-depth information for every pixel at every pixel in addition to intensity. The ToF sensor provides spherically coordinated range data of the environment within its field of view.  As described in the following section, the spherical coordinates are transformed into Cartesian coordinates, with the origin of the coordinate system located at the camera's center.
- With the origin at a known reference point, the 3D point cloud in the camera coordinate system is converted to the belt coordinate system. \\
+Many applications in manufacturing, construction, and vehicle automation and autonomy depend on the availability of 3D information.  Time-of-flight (ToF) sensors are getting cheaper and more available. They offer in-depth information for every pixel at every pixel in addition to intensity. The ToF sensor provides spherically coordinated range data of the environment within its field of view.  As described in the following section, the spherical coordinates are transformed into Cartesian coordinates, with the origin of the coordinate system located at the camera's center.[5]
+ With the origin at a known reference point, the 3D point cloud in the camera coordinate system is converted to the belt coordinate system.[5]\\
 
- The tests examine the capacity of ToF sensors to provide sensing for a robot tasked with handling goods traveling on a conveyor belt in an indoor scenario.  The range data is utilized to identify and calculate the dimensions of objects traveling along a conveyor belt.  The robot then receives the geometry and recognition data for additional action.  The findings suggest that ToF sensors have immediate potential for automating these kinds of applications.\\
+ The tests examine the capacity of ToF sensors to provide sensing for a robot tasked with handling goods traveling on a conveyor belt in an indoor scenario.  The range data is utilized to identify and calculate the dimensions of objects traveling along a conveyor belt.  The robot then receives the geometry and recognition data for additional action.  The findings suggest that ToF sensors have immediate potential for automating these kinds of applications.[5]\\
 
- The coordinate transformation is necessary for two reasons:
+ The coordinate transformation is necessary for two reasons:[5]
  \begin{enumerate}
-     \item  To enable the robot to be guided by the range camera's measurements, the robot and the camera must agree on a coordinate system.
+     \item  To enable the robot to be guided by the range camera's measurements, the robot and the camera must agree on a coordinate system.[5]
 
-    \item The z-axis is normal to the belt plane in the belt coordinate system.  By referring to points above the belt plane ($z >= 0$) and inside the belt limits, this alignment of the coordinate axis makes it easier to extract item point clouds on the belt.
+    \item The z-axis is normal to the belt plane in the belt coordinate system.  By referring to points above the belt plane ($z >= 0$) and inside the belt limits, this alignment of the coordinate axis makes it easier to extract item point clouds on the belt.[5]
  \end{enumerate}
 
 \subsection{Euler Angles:}\\
-Euler angles can be used to parameterize the space of orientations. A universal orientation is expressed as a sequence of rotations along three mutually orthogonal axes in space when Euler angles are applied. In a Cartesian coordinate system, the x, y, and z axes are typically utilized. The rotations are frequently referred to as x, y, and z-rolls. To solve differential equations, Euler initially created Euler angles. The most popular technique for parameterizing the space of orientations is now the use of Euler angles. Euler angles can be used to parameterize the space of rotations if we decide to think of a rotation as the activity carried out to achieve a specific orientation. [20]
+Euler angles can be used to parameterize the space of orientations. A universal orientation is expressed as a sequence of rotations along three mutually orthogonal axes in space when Euler angles are applied. In a Cartesian coordinate system, the x, y, and z axes are typically utilized. The rotations are frequently referred to as x, y, and z-rolls. 
+\newpage
+To solve differential equations, Euler initially created Euler angles. The most popular technique for parameterizing the space of orientations is now the use of Euler angles. Euler angles can be used to parameterize the space of rotations if we decide to think of a rotation as the activity carried out to achieve a specific orientation. [20]
 
 \subsection{Disadvantages of Gimbal Lock and Ambiguity}
 
@@ -1620,7 +1621,7 @@ The web interface shows the image of the object being detected; initially, we lo
   \label{fig:photoneo-scanning-volume}
 \end{figure}
 
-The above figure shows the volume/area in which the Photoneo Camera can scan items and determine object poses. The top view shows the maximum field of view (FOV) reachable by the camera for object coordinate acquisition, which extends up to 15 m. The camera sits around 350 mm tall and projects a pyramidla field of view with colored ones. The Depth lanes at 630 mm,907mm, and 1574 mm fromthe sensor; at each distance, the intersection of the FOV with the flat plan is a rectangle that grows with distance. Moreover, the blue trapezoid is the maximum rectangular cross-section of the scan volume with sensor horizontal, vertical, and diagonal field of view limits.
+The above figure shows the volume/area in which the Photoneo Camera can scan items and determine object poses. The top view shows the maximum field of view (FOV) reachable by the camera for object coordinate acquisition, which extends up to 15 m. The camera sits around 350 mm tall and projects a pyramidla field of view with colored ones. The Depth lanes at 630 mm,907mm, and 1574 mm fromthe sensor; at each distance, the intersection of the FOV with the flat plan is a rectangle that grows with distance. Moreover, the blue trapezoid is the maximum rectangular cross-section of the scan volume with sensor horizontal, vertical, and diagonal field of view limits.[18]
 
 \newpage
 \chapter{\section{\mbox{Results and Discussions }}{{\normalfont\fontsize{14}{16}\bfseries}}
@@ -1760,8 +1761,9 @@ Camera Using a Hemispherical Calibration Board,2023 9th International Conference
 \bibitem{ref19} Robot Manipulation through Inverse Kinematics, Abdullah Aamir Hayat,Abdullah Aamir Hayat, Abdullah Aamir Hayat, Indian Institute of Technology Delhi.
 \bibitem{ref20} Quaternions, Interpolation and Animation,Erik B Dam, Martin Koch , Martin lillholm, Department of Computer Science University of Copenhagen, Denmark, 1998.
 \bibitem{ref21} Locator studio setup, Photoneo
-
-\bibitem{ref22} https://eur.vevor.com/belt-conveyor-c_10439 srsltid=AfmBOoqNYgY4dkBQihCa9ItoNIpgXAC6e39Atuqhn0fdtybn8S4CvWio
+\bibitem{ref22} Visual Robot Guidance in Conveyor Tracking with
+Belt Variables,University Politehnica of Bucharest,Th. Borangiu1, F.D. Anton1, Anamaria Dogar1
+\bibitem{ref23} https://eur.vevor.com/belt-conveyor-c_10439 srsltid=AfmBOoqNYgY4dkBQihCa9ItoNIpgXAC6e39Atuqhn0fdtybn8S4CvWio
 
 
 \end{thebibliography}
