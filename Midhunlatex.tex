@@ -1136,10 +1136,10 @@ This refers to the workpiece or tracked objects that travel along the conveyor b
 \end{figure}
 
 \textbf{ Operations Needed to Develop the Tracking System:} \\
-The tracking system's pillars are composed of three primary components. Only a scenario including a camera, a belt conveyor, and a robot will be covered in this post. It is certainly possible to expand the tracking system by including additional robots and cameras. Although more intricate procedures will be required to make up for the additional components, the fundamentals will remain the same.\\
+The tracking system's pillars are composed of three primary components. Only a scenario including a camera, a belt conveyor, and a robot will be covered in this post. It is certainly possible to expand the tracking system by including additional robots and cameras. Although more intricate procedures will be required to compensate for additional components, the fundamentals will remain the same.\\
 \newpage
 1. \textbf{ Conveyor Belt to Camera Conversion (B1):} \\
-The orientation of the conveyor belt coordinates and the camera origin coordinates deviate from one another. The origin of a camera is the upper left corner of its field of vision (FOV), where the values of its pixels start at (0, 0). This origin is set in stone and cannot be altered. For the conveyor belt, we can freely provide the origin's location, but the standard procedure is to first specify the picking window's dimensions (it's square), taking into account the robot's picking range limit, and then place the origin at the center of the window's bottom.\\
+The orientation of the conveyor belt coordinates and the camera origin coordinates deviate from one another. The origin of a camera is the upper left corner of its field of vision (FOV), where the values of its pixels start at (0, 0). This origin is set in stone and cannot be altered. For the conveyor belt, we can freely provide the origin's location, but the standard procedure is to first specify the picking window's dimensions (it is square), taking into account the robot's picking range limit, and then place the origin at the center of the window's bottom.\\
 
 \begin{figure}[h]
     \centering
@@ -1147,7 +1147,7 @@ The orientation of the conveyor belt coordinates and the camera origin coordinat
     \caption{Conveyor to camera conversion}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-As can be seen from the above image, to match the conveyor belt origin, we must perform a translation transformation in both the X and Y axes. We must do a rotation transformation for the Z-axis since the belt origin faces the other direction from the camera origin. In summary, this section contains two transformations: Rotation transformation, Rot(x, 180°); AND Translation in the X-axis and Y-axis, Trans(ΔX, ΔY, 0). Observe that both the Y and Z axes changed their facing directions when we rotated the X axis. For this section, some offset will be required.\\
+As can be seen in the above image, to match the origin of the conveyor belt, we must perform a translation transformation on both the X and the Y axes. We must do a rotation transformation for the Z-axis, since the belt origin faces the other direction from the camera origin. In summary, this section contains two transformations: Rotation transformation, Rot(x, 180°), AND Translation in the X-axis and Y-axis, Trans(ΔX, ΔY, 0). Observe that both the Y and Z axes changed their facing directions when we rotated the X axis. For this section, some offset will be required.\\
 
 2. \textbf{ Conveyor belt (B1) to conveyor belt (B2) transformation:} \\
 For this part, it is quite simple. This transformation is about the movement of the conveyor belt from the camera’s field of view to the robot’s workspace/pick range. The only value that changes in this transformation is the X-axis value. As mentioned in the introduction, we also include the encoder’s reading to help us track how much distance the conveyor belt covered.\\
@@ -1185,7 +1185,7 @@ Additionally, there are several electromechanical technologies, including
 \newpage
 The controller receives counts as the encoder rotates. Assume that the count range is between 0 and 10,000. We know that a complete rotation of the shaft registers a count of 10,000, but the precise position is unknown because this is an incremental encoder. The object will be placed on the conveyor, and the current encoder count will be recorded as soon as the entry photo-eye sensor detects the object. Assume that $5232$ is the number.
 
-\begin{align*}
+\begin{align}
   C_{\mathrm{in}}    &= 5232 
     &&\text{encoder count at entry},\\
   C_{\mathrm{out}}   &= 6311 
@@ -1198,7 +1198,7 @@ The controller receives counts as the encoder rotates. Assume that the count ran
     &&= \frac{1079}{10\,000}\,L_{\mathrm{rev}},\\[6pt]
   \Delta\theta       &= \frac{\Delta C}{N}\times360^\circ
     &&= \frac{1079}{10\,000}\times360^\circ.
-\end{align*}\\
+\end{align}\\
 
 After the object leaves and is picked up by the exit photo-eye, we record $C_{\mathrm{out}}=6311$.  Deducting $C_{\mathrm{in}}=5232$ gives $\Delta C=1079$ counts.  This tells us the object traversed 1079 encoder counts from entrance to exit, though its exact position on the shaft remains unknown.
 
