@@ -256,7 +256,7 @@ A robot's job in robotic conveyor tracking is to follow and retrieve goods from 
 
 Many applications in manufacturing, construction, and vehicle automation and autonomy depend on the ability to access 3D information.  In addition to intensity, TOF (Time-of-Flight) sensors are becoming more commonly available and more reasonably priced. These sensors also provide depth information at each pixel. Industrial robots are frequently used for dangerous, repetitive, and unmanageable human activities.
  Therefore, increasing the production efficiency of industrial robot manipulators is a top priority.
- With an emphasis on localization and shortest path computation, machine vision and path planning approaches can accomplish this.  This is especially crucial for the manufacturing and bottle filling sectors, which heavily rely on robotic manipulators to position and move bottles both during production and after refills. Robot vision finds it extremely difficult to focus on distinguishing aspects of soft, fragile, or opaque things, making detection considerably more difficult. Many industrial robots and robotic manipulators have become increasingly complex, diverse, and particularly engineered to attain a high degree of autonomy.  This contrasts with previous ideas that viewed robots as mechanical manipulators. Furthermore, to provide accurate control mechanisms, object detection and tracking for these robotic manipulators have drawn a lot of interest [2].  Automated object detection, in particular, has helped robots become more versatile by enabling more generalized and adaptive behavior for various objects and situations. For example, DOF is important for jobs involving pick and place, welding, pelleting, painting, packing, and grinding.  The DOF is chosen based on the type of work that must be done in an industrial setting and ranges from 1 to 6 degrees of freedom.\\
+ With an emphasis on localization and shortest path computation, machine vision and path planning approaches can accomplish this.  This is especially crucial for the manufacturing and bottle filling sectors, which heavily rely on robotic manipulators to position and move bottles both during production and after refills. Robot vision finds it extremely difficult to focus on distinguishing aspects of soft, fragile, or opaque things, making detection considerably more difficult. Many industrial robots and robotic manipulators have become increasingly complex, diverse, and particularly engineered to attain a high degree of autonomy.  This contrasts with previous ideas that viewed robots as mechanical manipulators. Furthermore, to provide accurate control mechanisms, object detection and tracking for these robotic manipulators have drawn a lot of interest [2].  Automated object detection, in particular, has helped robots become more versatile by enabling more generalized and adaptive behavior for various objects and situations. For example, DoF is important for jobs involving pick and place, welding, pelleting, painting, packing, and grinding.  The DoF is chosen based on the type of work that must be done in an industrial setting and ranges from 1 to 6 degrees of freedom.\\
 
  Additionally, machine learning-based techniques that make use of effective computer vision frameworks are widely adopted.  Additionally, neural networks and deep learning-based techniques are becoming more and more popular, although caution needs to be exercised regarding the generalizability and explainability of these models.\\
 
@@ -352,7 +352,7 @@ The figure below shows the vision controller connected to the Photoneo camera an
 \end{figure}
 The vision controller is connected to a PC through the web interface to trigger the camera and see the Web interface for communication. Gigabit Ethernet cables (Cat5e or higher) are needed to connect the 3D sensor. A gigabit switch can be used to connect several 3D sensors. The Ethernet connection from the switch or 3D sensor is linked to the scanner's physical network port in both scenarios. To visualize 3D scans, calibrate robot cameras, and establish localization settings, a well-connected connection to the 3D sensor is required. [15]\\
 
-To set up the network interface that the vision controller uses to connect to the Photoneo 3D sensor(s), go to the Network page and select the Scanner Interface section. Both a fixed IPv6 link-local address and a programmable IPv4 address are features of Photoneo 3D sensors.
+To set up the network interface that the vision controller uses to connect to the Photoneo 3D sensor(s), enter into the Network page and select the Scanner Interface section. Both a fixed IPv6 link-local address and a programmable IPv4 address are features of Photoneo 3D sensors.
 \subsection{Marker Pattern}\\
 \begin{figure}[h]
     \centering
@@ -360,7 +360,7 @@ To set up the network interface that the vision controller uses to connect to th
     \caption{Marker Pattern [2]}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-The figure above shows the S30 calibration board that helps calibrate the conveyor belt, which aligns the coordinates of the object with the conveyor belt for objects passing through the belt. The belt can be used to align the object coordinates relative to conveyor belt the conveyor belt so that the robot can pick items from the moving conveyor belt. [2]
+The figure above shows the S30 calibration board that helps calibrate the conveyor belt, which aligns the coordinates of the object with the conveyor belt for objects passing through the belt. The belt can be used to align the object coordinates relative to conveyor belt ,so that the robot can pick items from the moving conveyor belt. [2]
 
 \subsection{Active ambient light rejection:}\\
 The inability of all area-based 3D sensors to function in direct sunshine is a typical problem.  Direct sunshine has a maximum power output of 1120 W/m³.  High-end band-pass filters installed in all of Photoneo's sensors lower ambient light levels to around 15 W/m².  Although it can oversaturate the image or produce high shot noise, this still performs better than the majority of projection systems.
@@ -421,7 +421,7 @@ The flowchart below represents the basic topics that we are going to discuss:
     \label{fig:depthmap_gray}
 \end{figure}
 
-Surface imaging and geometry estimation are the two primary subtasks that comprise imaging of the item to be inspected. There are numerous ways to implement automated optical inspection systems in the field of optical inspection.  A good combination of strategies should be chosen based on the task at hand. Improving the contrast between an object's flawed and perfect areas is crucial for dependable and robust automated detection systems in the field of optical surface inspection.  In particular, the lighting and optics define the contrasts.
+Surface imaging and geometry estimation are the two primary subtasks that comprise imaging of the item to be inspected. There are numerous ways to implement automated optical inspection systems in the field of optical inspection.  A good combination of strategies should be chosen based on the task at hand. Improving the contrast between an object's flawed and perfect areas is crucial for dependable and robust automated detection systems in the field of optical surface inspection.
 
 
 \label{Literature}
@@ -544,7 +544,7 @@ All joints will arrive simultaneously before approaching targets since the veloc
 
 The fundamental path interpolation functions, such as linear and point-to-point movement, are carried out when the precondition parameters have been addressed. Interpolation, which is determined by previous factors, will produce the path segments. 
 \subsection{Tracking Method}\\
-In the preceding part, the picking procedure was put into practice. With some dynamic adjustments, the situation is now more challenging. The robot should be updated with the object's information when it begins to move on the conveyor to use the tracing talent. The tracking technique presents certain difficulties when using a visual control system. First, we must use real-time frame-by-frame image processing to track the objects. Next, we use the average of the previous ten frames as a guide. Second, we must specify the gripper's position about the moving object. We came up with one method for determining the objects' positions. Kinects that can recognize objects can also provide us with depth information in addition to the target's color. Next, using the information gathered, we devise a method to obtain 3D coordinates and calibrate the scale to the y-axis and z-axis while taking into account the depth frame, which is the x-axis under Kinect view. Finally, the robot's reaction will complete the grabbing maneuver by following the updated data. Our tracking strategy is divided into three subsections. \\ 
+In the preceding part, the picking procedure was put into practice. With some dynamic adjustments, the situation is now more challenging. The robot should be updated with the object's information when it begins to move on the conveyor to use the tracing talent. The tracking technique presents certain difficulties when using a visual control system. First, we must use real-time frame-by-frame image processing to track the objects. Next, we use the average of the previous ten frames as a guide. Second, we must specify the gripper's position about the moving object. One method for determining the objects' positions is Kinects that can recognize objects can also provide us with depth information in addition to the target's color. Next, using the information gathered, we devise a method to obtain 3D coordinates and calibrate the scale to the y-axis and z-axis while taking into account the depth frame, which is the x-axis under Kinect view. Finally, the robot's reaction will complete the grabbing maneuver by following the updated data. Our tracking strategy is divided into three subsections. \\ 
 
 By calibrating the y and z axes, we may create a prospective viewpoint to enhance object location after obtaining the past 10 frames as a reference to compare with the present frame. The tracker would ultimately follow the target by the predicted trajectory after we had the position of the tracker and the target.\\
 
@@ -642,7 +642,7 @@ The camera calibration is performed through an extrinsic method in which the cam
 \begin{figure}[h]
     \centering
     \includegraphics[width=12cm]{Thesis-report/Figures/calibration.jpeg}
-    \caption{Calibration for camera concerning the robot frame}[2] 
+    \caption{Calibration for camera relative to the robot frame}[2] 
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 The below figure shows how the calibration is happening by adding the point by fixing the point where the robot coordinates [X, Y, Z] rotation values will save the points (represented as a green point). Here, we need to add 9 points to get the calibration workspace. After the calibration, the average value from the 9 points is taken into consideration. (The lesser the value, the better the accuracy.) [2]\\ 
@@ -733,7 +733,7 @@ Either a new calibration point is introduced:
 Three calibration sites are needed for both the hand-eye and extrinsic calibration. Once the necessary number of calibration points has been added, the resulting calibration matrix and the calibration accuracy information are only available [2].
  
  Position of 3D sensors and point clouds
- The model of the 3D sensor of the currently calibrated vision system begins to reflect the pose of the real 3D sensor when the 4th point is added during the extrinsic calibration and the Lth point is added during the hand-eye calibration.  The point cloud is shown simultaneously.\\
+ the model of the 3D sensor of the currently calibrated vision system begins to reflect the pose of the real 3D sensor when the 4th point is added during the extrinsic calibration and the 5th point is added during the hand-eye calibration.  The point cloud is shown simultaneously.\\
  Every calibration point that has been successfully inserted has an ID and a unique accuracy score that is measured in millimeters.  The confidence level in correctness increases as the accuracy score decreases.  The Delete option can be used to eliminate a point from the dataset if its accuracy score is excessively high.
 
  \subsection{Extrinsic Calibration Results:}
@@ -1122,7 +1122,7 @@ Robot Base Frame Coordinate System is another name for Machine Coordinate System
 
  \textbf{Coordinate System for Parts and Workpieces (PCS):} \\
 This refers to the workpiece or tracked objects that travel along the conveyor belt. In certain applications, part orientation plays a crucial role in assembly procedures. In our application, we just want to choose or select the objects, independent of their orientation; thus, this isn't accurate.\\
-
+\newpage
  \textbf{Tool Coordinate System (TCS):} \\
  This refers to the location of the robot's end-tool tip. As you can see, a robotic hand typically has a mechanism attached to the end, with a gripper. When referring to the robot base frame, this typically requires a small amount of offset and aids the robot in completing its responsibilities.\\\\
  \textbf{ Coordinate Transformation Matrix:}  \\
@@ -1206,14 +1206,14 @@ After the object leaves and is picked up by the exit photo-eye, we record $C_{\m
 
 \chapter{\section{\mbox{Working Principle }}{{\normalfont\fontsize{14}{16}\bfseries}}
 \subsubsection{Steps for Conveyor Tracking Visual System:}\\
-Two steps are necessary for conveyor visual tracking: [12]\\
+Two steps are necessary for conveyor visual tracking: [12]
 \begin{itemize}
 \item Item detection
 \item Object tracking.
 \end{itemize}
 There are several ways to identify items. Some potential limitations are, however, information-based recognition, self-organizing maps, template matching, and the temporal difference between two consecutive image samples. Due to their slowness, self-organizing maps cannot function in real time. Template matching requires prior knowledge of object information to match objects. Unfortunately, because of the necessary computational load, this method cannot be used in real time. The color information solution overcomes the first two limitations; however, it is not compatible with binary images. The object recognition method that leverages the difference between two photographs can be useful when the environment does not change quickly over time. [12]
 \subsubsection{Photoneo Camera}
-The main Vision camera we have used to track the moving object's motion through the conveyor belt is a Photoneo camera (MotionCam 3D M+), which has advanced settings that can capture and detect the object's position.\\\\ The photoneo camera mainly consists of 3D sensing technology, which contains parallel structured light that helps provide the light source to detect the objects. Using this camera, the camera can capture accurate point clouds and a standard intensity image of the object. [2]. Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU that acts as the brain behind intelligent applications. A sequential structured light, which is utilized in numerous meteorological applications, is the primary technological driver in the first group. One well-suited representative of this category is the 3D scanner range from Photoneo. This technique is not appropriate for dynamic scenes because it uses sequential (multi-frame) capturing. This section is the source of the parallel structured light. [2] \
+The main Vision camera we have used to track the moving object's motion through the conveyor belt is a Photoneo camera (MotionCam 3D M+), which has advanced settings that can capture and detect the object's position.\\\\ The photoneo camera mainly consists of 3D sensing technology, which contains parallel structured light that helps provide the light source to detect the objects. Using this camera, the camera can capture accurate point clouds and a standard intensity image of the object. [2]. Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU that acts as the brain behind intelligent applications. A sequential structured light, which is utilized in numerous meteorological applications, is the primary technological driver in the first group. One well-suited representative of this category is the 3D scanner range from Photoneo. This technique is not appropriate for dynamic scenes because it uses sequential (multi-frame) capturing.[2] \
 
 \subsubsection{Robot Interface:}\\
 There are two software components, which include
@@ -1268,7 +1268,7 @@ The Vision Controller's scanner port is directly attached to a single Photoneo 3
 
 \newpage
  \subsubsection{Protocol TCP/IP}\\
-The robot controller and the vision controller communicate via the TCP/IP protocol. Network connectivity is an optional feature that some robot controllers do not come with by default. All prerequisites for the full installation of the robot module are listed in the robot integration guides' Prerequisites section. [2]
+The robot controller and the vision controller communicate via the TCP/IP protocol. Network connectivity is an optional feature that some robot controllers do not come with by default. [2]
 
 \subsubsection{Channel of communication}\\
 The robot module functions as a TCP client, while the vision controller establishes a TCP server. The client is called the Action Request Client, while the server is called the Action Request Server. The Action Request Client communicates with the Action Request Server over this channel. After receiving the action request, the vision controller carries it out and replies to the robotic controller. [2]\\\\
@@ -1285,7 +1285,7 @@ The robot connection status is currently indicated by the following indicator:
 
  Action Request Client: the state of the Action Request Communication Channel connection between the Action Request Server and the Action Request Client.  It may exist in one of two states: [2]
  \begin{enumerate}
-     \item  \textbf{CONNECTED:} The Action Request Client can send requests since it is connected to the Action Request Server. [2]\\ 
+     \item  \textbf{CONNECTED:} The Action Request Client can send requests since it is connected to the Action Request Server. [2]
       \item   \textbf{DISCONNECTED:}  The Action Request Server is awaiting a fresh connection, as the Action Request Client is not connected to it. [2]
 
  \end{enumerate}
@@ -1315,7 +1315,7 @@ The cobot that we have used for the conveyor tracking system is a 6-axis cobot c
   \label{fig:delta_robot}
 \end{figure}
 \FloatBarrier
-
+\newpage
 \subsubsection{RobotiQ 140 Gripper}
 The RobotiQ 140 gripper is a two-finger gripper that mainly works under the principle of Modbus communication. Its 85 mm stroke, 230 N max gripping force, and 5 kg max payload make it ideal for low-volume, high-changeover settings.
 
@@ -1370,9 +1370,9 @@ The Dynamic Pick involves the process of picking the items from the moving conve
 \end{figure}
 
 
-For dynamic picking, a typical construction site is needed, and quick, real-time modeling is necessary to support decision-making.  Thus, a quick 3D data collection and processing system is required for real-time modeling of a building site.  Only high-quality, rich 3D datasets of static objects are produced using laser scanners; a typical scan has millions of points.  Furthermore, real-time modeling is not practicable due to the slowness of data collection and processing.  Nevertheless, 3D range cameras provide an additional option by enabling wide-field-of-view, low-cost, automatic tracking and detection of both static and moving objects at frame rates higher than 1 Hz in real-time.
+For dynamic picking, a typical construction site is needed, and quick, real-time modeling is necessary to support decision-making.  Thus, a quick 3D data collection and processing system is required for real-time modeling of a building site.  Only high-quality, rich 3D datasets of static objects are produced using laser scanners; a typical scan has millions of points.  Furthermore, real-time modeling is not practicable due to the slowness of data collection and processing.  Nevertheless, 3D range cameras provide an additional option by enabling wide-field-of-view, low-cost, automatic tracking and detection of both static and moving objects at frame rates higher than 1 Hz in real-time.\\
 
-The dynamic movement can be explained as follows:\\
+The dynamic movement can be explained as follows:
 
 Initially, we pass the object through the running conveyor belt and trigger the camera, where we get the initial and final coordinates. We also calculate the timestamps to get the changes in time. Then we need to find the custom velocity, which can be calculated by dividing the change in position by the change in time.
 When we pass the object through the conveyor belt, there is a change in position in the X axis, as this is a linear motion of movement. The change in the position of the object needs to be transferred to the robot so that the robot can understand where it needs to come and pick the item from the conveyor belt. This can be compensated by using the following equation: \[ X = X_0 + v\cdot t \] where X₀ is the initial position of the object \\
@@ -1384,7 +1384,7 @@ t is the change in time.
 Many applications in manufacturing, construction, and vehicle automation and autonomy depend on the availability of 3D information.  Time-of-flight (ToF) sensors are getting cheaper and more available. They offer in-depth information for every pixel at every pixel in addition to intensity. The ToF sensor provides spherically coordinated range data of the environment within its field of view.  As described in the following section, the spherical coordinates are transformed into Cartesian coordinates, with the origin of the coordinate system located at the camera's center.
  With the origin at a known reference point, the 3D point cloud in the camera coordinate system is converted to the belt coordinate system. \\
 
- The tests examine the capacity of TOF sensors to provide sensing for a robot tasked with handling goods traveling on a conveyor belt in an indoor scenario.  The range data is utilized to identify and calculate the dimensions of objects traveling along a conveyor belt.  The robot then receives the geometry and recognition data for additional action.  The findings suggest that TOF sensors have immediate potential for automating these kinds of applications.\\
+ The tests examine the capacity of ToF sensors to provide sensing for a robot tasked with handling goods traveling on a conveyor belt in an indoor scenario.  The range data is utilized to identify and calculate the dimensions of objects traveling along a conveyor belt.  The robot then receives the geometry and recognition data for additional action.  The findings suggest that ToF sensors have immediate potential for automating these kinds of applications.\\
 
  The coordinate transformation is necessary for two reasons:
  \begin{enumerate}
@@ -1394,7 +1394,7 @@ Many applications in manufacturing, construction, and vehicle automation and aut
  \end{enumerate}
 
 \subsection{Euler Angles:}\\
-Euler angles can be used to parameterize the space of orientations. A universal orientation is expressed as a sequence of rotations along three mutually orthogonal axes in space when Euler angles are applied. In a Cartesian coordinate system, the x, y, and z axes are typically utilized. The rotations are frequently referred to as x-, y-, and z-rolls. To solve differential equations, Euler initially created Euler angles. The most popular technique for parameterizing the space of orientations is now the use of Euler angles. Euler angles can be used to parameterize the space of rotations if we decide to think of a rotation as the activity carried out to achieve a specific orientation. [20]
+Euler angles can be used to parameterize the space of orientations. A universal orientation is expressed as a sequence of rotations along three mutually orthogonal axes in space when Euler angles are applied. In a Cartesian coordinate system, the x, y, and z axes are typically utilized. The rotations are frequently referred to as x, y, and z-rolls. To solve differential equations, Euler initially created Euler angles. The most popular technique for parameterizing the space of orientations is now the use of Euler angles. Euler angles can be used to parameterize the space of rotations if we decide to think of a rotation as the activity carried out to achieve a specific orientation. [20]
 
 \subsection{Disadvantages of Gimbal Lock and Ambiguity}
 
