@@ -242,7 +242,7 @@ The tracking of the conveyor using collaborative robots equipped with vision cam
 \label{introduction}
 
 \begin{justify}
-In industrial robotic applications, the conveyor's tracking is an essential part of robot manipulators.  As the target progresses down the production line, the task becomes increasingly complex.  Conveyor tracking tracks and retrieves an article from a conveyor belt using a robot.  To catch objects, robots need to know their position, orientation, velocity, size, and other characteristics.  Applications in the fields of biology, engineering, education, manufacturing, medicine, and the military all use vision sensors to identify objects.  A robot must be able to track, rearrange, and repair positioning mistakes of things on a conveyor belt when assembling electric parts into a finished product.  This information can be quickly interpreted by the visual sensor.\\
+In industrial robotic applications, the conveyor's tracking is an essential part of robot manipulators.  As the target progresses down the production line, the task becomes increasingly complex. To catch objects, robots need to know their position, orientation, velocity, size, and other characteristics.  Applications in the fields of biology, engineering, education, manufacturing, medicine, and the military all use vision sensors to identify objects.  A robot must be able to track, rearrange, and repair positioning mistakes of things on a conveyor belt when assembling electric parts into a finished product.  This information can be quickly interpreted by the visual sensor.\\
 
 Face tracking, color tracking, and object tracking are just a few of the various engineering applications that have recently made use of tracking video.  In the industrial sector, it was used to track items such as goods, factory workers, and clothing manufacturing.  The object detection techniques and image processing for mono video are the foundation of video tracking.\\
 
@@ -319,13 +319,13 @@ Parallel Structured Light parallelizes the sequential structured light using a s
 
 The Parallel Structured Light's main advantages are:
 \begin{enumerate}
- \item  Rapid motion scanning: 40 m/s motion is achieved with a single frame acquisition [15].
-\item A more effective depth coding method with accurate, per-pixel measurement that offers ten times greater resolution and accuracy than rival technologies [15]
- \item No motion blur: exposure time of 10 µs per pixel [15]
- \item Quick capture of 1068 x 800 point clouds at 60 frames per second [15]
-\item Patent-pending active ambient light rejection technology for outdoor use in direct sunlight [15]
- \item Active rejection of ambient light through interreflection suppression [15]
-\item Several devices using the same space at the same time [15]\\
+ \item  Rapid motion scanning: 40 m/s motion is achieved with a single frame acquisition[15].
+\item A more effective depth coding method with accurate, per-pixel measurement that offers ten times greater resolution and accuracy than rival technologies[15]
+ \item No motion blur: exposure time of 10 µs per pixel[15]
+ \item Quick capture of 1068 x 800 point clouds at 60 frames per second[15]
+\item Patent-pending active ambient light rejection technology for outdoor use in direct sunlight[15]
+ \item Active rejection of ambient light through interreflection suppression[15]
+\item Several devices using the same space at the same time[15]\\
 \end{enumerate}
 
 A control unit that operates in tandem with the projection is in charge of these groups. The coded patterns are inserted into the groups rather than changing the projection itself. The sensor may generate over 20 distinct virtual representations of the scene illuminated by the coded patterns injected at the end of the frame. The universal method may be modified on the fly to accommodate various materials and light sources by using any type of pattern typically used for sequential structured light. [15]\\
@@ -352,7 +352,7 @@ The figure below shows the vision controller connected to the Photoneo camera an
 \end{figure}
 The vision controller is connected to a PC through the web interface to trigger the camera and see the Web interface for communication. Gigabit Ethernet cables (Cat5e or higher) are needed to connect the 3D sensor. A gigabit switch can be used to connect several 3D sensors. The Ethernet connection from the switch or 3D sensor is linked to the scanner's physical network port in both scenarios. To visualize 3D scans, calibrate robot cameras, and establish localization settings, a well-connected connection to the 3D sensor is required. [15]\\
 
-To set up the network interface that the vision controller uses to connect to the Photoneo 3D sensor(s), enter into the Network page and select the Scanner Interface section. Both a fixed IPv6 link-local address and a programmable IPv4 address are features of Photoneo 3D sensors.
+To set up the network interface that the vision controller uses to connect to the Photoneo 3D sensor(s), enter into the Network page and select the Scanner Interface section. Both a fixed IPv6 link-local address and a programmable IPv4 address are features of Photoneo 3D sensors.[15]
 \subsection{Marker Pattern}\\
 \begin{figure}[h]
     \centering
@@ -1222,11 +1222,11 @@ There are two software components, which include
     \caption{Robot Network Interface[2]}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
- The Action Request Communication Channel is used to facilitate communication between the vision controller and the robotic controller, as explained in the Robot Communication.  The robotic controller connects to the TCP server created by the vision controller and transmits requests to it. [2]
- It is advised to keep the Action Request Server port section empty and use the default port for this TCP server.  It is necessary to use the same port on the robot side when a custom port is defined. [2]
+ The Action Request Communication Channel is used to facilitate communication between the vision controller and the robotic controller, as explained in the Robot Communication.  The robotic controller connects to the TCP server created by the vision controller and transmits requests to it.[2]
+ It is advised to keep the Action Request Server port section empty and use the default port for this TCP server.  It is necessary to use the same port on the robot side when a custom port is defined.[2]
 \newpage
 \subsubsection{Vision Controller Interface:}\\
-Gigabit Ethernet cables (Cat5e or higher category) are needed to connect the 3D sensor.  A gigabit switch can be used to connect several 3D sensors.  In all situations, the switch or the 3D sensor's Ethernet connection is attached to the scanner's network [2].
+Gigabit Ethernet cables (Cat5e or higher category) are needed to connect the 3D sensor.  A gigabit switch can be used to connect several 3D sensors.  In all situations, the switch or the 3D sensor's Ethernet connection is attached to the scanner's network[2].
 \begin{figure}[h]
     \centering
     \includegraphics[width=5cm]{Thesis-report/Figures/scanner_interface.jpeg}
@@ -1294,7 +1294,7 @@ The robot connection status is currently indicated by the following indicator:
  \end{enumerate}
 
 \subsubsection{Network (EC, HC) }\\
-The robot interface (and robot controller IP) and the vision controller's 3D sensor interface must be properly configured for the vision controller to communicate with both the robot and the 3D sensor. This is not required for marker space calibration. [2]
+The robot interface (and robot controller IP) and the vision controller's 3D sensor interface must be properly configured for the vision controller to communicate with both the robot and the 3D sensor. This is not required for marker space calibration.[2]
 \subsubsection{Vision }\\
 It is necessary to thoroughly configure the visual system that will be calibrated. Make sure the following vision system parameters are set up correctly before beginning the calibration:
 ● Scanner ID: This vision system uses a 3D sensor. The linked 3D sensors will appear in the drop-down list of available 3D sensors if the scanner interface is set up properly.
@@ -1410,13 +1410,13 @@ Euler angles can be used to parameterize the space of orientations. A universal 
   \item \textbf{Convention Dependence.} 
     There are twelve main Euler conventions, including choice of axis ordering, intrinsic vs. extrinsic, and proper Euler vs. Tait–Bryan.  In the absence of precise convention, a \((\alpha,\beta,\gamma)\) triplet is unclear. [20]
   \item \textbf{Inverse-Mapping Ambiguities.} 
-   Solving for Euler angles given a rotation matrix frequently produces two valid answers (also referred to as the "standard" and "supplementary" sets), necessitating additional reasoning to select one. [20]
+   Solving for Euler angles given a rotation matrix frequently produces two valid answers (also referred to as the "standard" and "supplementary" sets), necessitating additional reasoning to select one.[20]
 \end{itemize}
 \newpage
 \subsubsection*{Why It Matters}
 \begin{itemize}
   \item \textbf{Robustness:} Systems like VR head-tracking, robotic manipulators, and airplane autopilots can all be rendered inoperable by gimbal lock. [20]
-  \item \textbf{Maintainability:} To prevent misunderstandings, ambiguity compels programs, file formats, and APIs to explicitly state which Euler standard is being used. [20]
+  \item \textbf{Maintainability:} To prevent misunderstandings, ambiguity compels programs, file formats, and APIs to explicitly state which Euler standard is being used.[20]
 \end{itemize}
 
 \subsubsection*{Alternatives}
