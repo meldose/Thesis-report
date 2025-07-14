@@ -284,8 +284,8 @@ This camera can capture accurate point clouds and a standard intensity image of 
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 
-The camera is built with a parallel stereo charged-coupled device (CCD) camera system to accurately follow the colored region of the RGB marker. This ROI was also separated from the live stream image using blob analysis, and then the 3D coordinates in the world coordinate frame were triangulated.   The 3D coordinates of the marker were transformed into the robot frame of reference (robot stereo vision coordinate system) and used to evaluate the robot path and trajectory planning.   Consequently, our proposed model determines the real-time distance the robot needs to travel along the three axes to select and position an object.
-
+The camera is built with a parallel stereo charged-coupled device (CCD) camera system to follow the colored region of the RGB marker accurately. This ROI was also separated from the live stream image using blob analysis, and then the 3D coordinates in the world coordinate frame were triangulated.   The 3D coordinates of the marker were transformed into the robot frame of reference (robot stereo vision coordinate system) and used to evaluate the robot path and trajectory planning.   Consequently, our proposed model determines the real-time distance the robot needs to travel along the three axes to select and position an object.
+\newpage
 The camera's carbon fiber body is lightweight and guarantees the same degree of stiffness as scanners. Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU, which is used for intelligent applications.  One well-suited representative of this category is the 3D scanner range from Photoneo. This method is appropriate for dynamic scenes because it uses sequential (multi-frame) capturing.\\
 
 \subsection{3D Scanning}
