@@ -343,7 +343,7 @@ The alternative operating mode is a "scanner mode" that is intended for still im
 
 
 \subsection{Vision Controller}\\
-The figure below shows the vision controller connected to the Photoneo camera and the robotic controller using Ethernet (IPV4 address).
+The figure 3 below shows the vision controller connected to the Photoneo camera and the robotic controller using Ethernet (IPV4 address).
 \begin{figure}[h]
     \centering
     \includegraphics[width=4cm]{Thesis-report/Figures/vision controller.png}
@@ -360,7 +360,7 @@ To set up the network interface that the vision controller uses to connect to th
     \caption{Marker Pattern [2]}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-The figure above shows the S30 calibration board that helps calibrate the conveyor belt, which aligns the coordinates of the object with the conveyor belt for objects passing through the belt. The belt can be used to align the object coordinates relative to conveyor belt ,so that the robot can pick items from the moving conveyor belt. [2]
+The figure 4 above shows the S30 calibration board that helps calibrate the conveyor belt, which aligns the coordinates of the object with the conveyor belt for objects passing through the belt. The belt can be used to align the object coordinates relative to conveyor belt ,so that the robot can pick items from the moving conveyor belt. [2]
 
 \subsection{Active ambient light rejection:}\\
 The inability of all area-based 3D sensors to function in direct sunshine is a typical problem.  Direct sunshine has a maximum power output of 1120 W/m³.  High-end band-pass filters installed in all of Photoneo's sensors lower ambient light levels to around 15 W/m².  Although it can oversaturate the image or produce high shot noise, this still performs better than the majority of projection systems.
@@ -377,7 +377,7 @@ Internal interreflections between pixels are also suppressed by the same techniq
     \label{fig1.Photoneo Cmaera}
 \end{figure}\\
 
-The figure above shows the scanning distance of various cameras vs. their point size. Here, we have used the M+ Range camera.
+The figure 5 above shows the scanning distance of various cameras vs. their point size. Here, we have used the M+ Range camera.
 
 \chapter{\section{\mbox{Literature Review }}{{\normalfont\fontsize{14}{16}\bfseries}}
 
@@ -530,19 +530,19 @@ The following figures illustrate examples of the same object captured under vari
 The STL file is uploaded to the web interface, thereby helping the camera to identify the object in the moving conveyor belt tracking system. Once the object is detected, the camera helps in getting the object's position and its quaternion values.
 
 \subsection{Trajectory Planning}\\
-Using a set of predetermined points, trajectory planning aims to produce stable and fluid motion in world coordinates. A few characteristics, such as the maximum velocity, acceleration, and jerk, will be taken into account to demonstrate the continuous motion of the robot arm. The constant context of temporal movement is unique. Additionally, this function has a first derivative and a second derivative. In addition to increasing wear on the mechanism, jerky action frequently causes vibration in the robot manipulator.\\
-The fundamental path interpolation functions, such as linear and point-to-point movement, are carried out when the precondition parameters have been addressed. Interpolation, which is determined by previous factors, will produce the path segments. A self-defined function is crucial to the creation of path segments in Cartesian space. Joint command and linear command can both follow the point-to-point movement. Every joint's present condition is indicated in the joint space.\\
+Using a set of predetermined points, trajectory planning aims to produce stable and fluid motion in world coordinates. A few characteristics, such as the maximum velocity, acceleration, and jerk, will be taken into account to demonstrate the continuous motion of the robot arm. The constant context of temporal movement is unique. Additionally, this function has a first derivative and a second derivative. In addition to increasing wear on the mechanism, jerky action frequently causes vibration in the robot manipulator.[23]\\
+The fundamental path interpolation functions, such as linear and point-to-point movement, are carried out when the precondition parameters have been addressed. Interpolation, which is determined by previous factors, will produce the path segments. A self-defined function is crucial to the creation of path segments in Cartesian space. Joint command and linear command can both follow the point-to-point movement. Every joint's present condition is indicated in the joint space.[23]\\
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=5cm]{Thesis-report/Figures/new.png}
-    \caption{Coordinate system}
+    \caption{Coordinate system[23]}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 
-All joints will arrive simultaneously before approaching targets since the velocity is zero at the target point. In contrast to point-to-point motion, linear movement at the end-effector makes it easy to demonstrate the condition from the reference coordinate. The motion will only be linked to one DoF during variation if the current velocity point toward the target position is specified. To execute gripping operations, the robot arm will thereafter alter its motion via path segments. Manipulators can grab a stationary workpiece with the aid of trajectory planning and object recognition algorithms.
+All joints will arrive simultaneously before approaching targets since the velocity is zero at the target point. In contrast to point-to-point motion, linear movement at the end-effector makes it easy to demonstrate the condition from the reference coordinate. The motion will only be linked to one DoF during variation if the current velocity point toward the target position is specified. To execute gripping operations, the robot arm will thereafter alter its motion via path segments. Manipulators can grab a stationary workpiece with the aid of trajectory planning and object recognition algorithms.[23]
 
-The fundamental path interpolation functions, such as linear and point-to-point movement, are carried out when the precondition parameters have been addressed. Interpolation, which is determined by previous factors, will produce the path segments. 
+The fundamental path interpolation functions, such as linear and point-to-point movement, are carried out when the precondition parameters have been addressed. Interpolation, which is determined by previous factors, will produce the path segments.[23] 
 \subsection{Tracking Method}\\
 In the preceding part, the picking procedure was put into practice. With some dynamic adjustments, the situation is now more challenging. The robot should be updated with the object's information when it begins to move on the conveyor to use the tracing talent. The tracking technique presents certain difficulties when using a visual control system. First, we must use real-time frame-by-frame image processing to track the objects. Next, we use the average of the previous ten frames as a guide. Second, we must specify the gripper's position about the moving object. One method for determining the objects' positions is Kinects that can recognize objects can also provide us with depth information in addition to the target's color. Next, using the information gathered, we devise a method to obtain 3D coordinates and calibrate the scale to the y-axis and z-axis while taking into account the depth frame, which is the x-axis under Kinect view. Finally, the robot's reaction will complete the grabbing maneuver by following the updated data. Our tracking strategy is divided into three subsections. \\ 
 
@@ -647,7 +647,7 @@ The camera calibration is performed through an extrinsic method in which the cam
 The below figure shows how the calibration is happening by adding the point by fixing the point where the robot coordinates [X, Y, Z] rotation values will save the points (represented as a green point). Here, we need to add 9 points to get the calibration workspace. After the calibration, the average value from the 9 points is taken into consideration. (The lesser the value, the better the accuracy.) [2]\\ 
 
 \newpage
-Figure 18 shows the calibration method used in this study (extrinsic calibration) (EC), where the camera is fixed at the location, and 9 points are taken into consideration, where the average value is finally taken as the value for the calibration. [2]\\
+Figure 18 above shows the calibration method used in this study (extrinsic calibration) (EC), where the camera is fixed at the location, and 9 points are taken into consideration, where the average value is finally taken as the value for the calibration. [2]\\
 
 This kind of calibration is employed in configurations where the 3D sensor is fixedly positioned within the robotic cell, often above the bin. The 3D sensor does not have to be stationary relative to the robotic cell itself; it just needs to be stationary relative to the robot's foundation. [2]
 \begin{figure}[h]
@@ -817,10 +817,10 @@ The distance between the marker pattern positions for the camera calibration and
     \caption{Conveyor Belt setup [21]}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-In the below figure, we can see the conveyor belt having the calibration board that is used for the calibration, which determines the X, Y, and Z coordinates of the object along with the conveyor belt, where MSD means marker space displacement, TD means travel distance, and TSc means trigger to scan completion in meters, where the target position is the T[X, Y, Z, Rx, Ry, Rz], which represents the quaternion value of the object that needs to be converted into Euler values that are used to move the robot to that specified location [21] \\
+In the below figure 25, we can see the conveyor belt having the calibration board that is used for the calibration, which determines the X, Y, and Z coordinates of the object along with the conveyor belt, where MSD means marker space displacement, TD means travel distance, and TSc means trigger to scan completion in meters, where the target position is the T[X, Y, Z, Rx, Ry, Rz], which represents the quaternion value of the object that needs to be converted into Euler values that are used to move the robot to that specified location [21] \\
 
 
-In the below figure, the number represents the coordinates of the object after the scanning of the object is done after the trigger. Once these quaternion values are attained, these values are then sent to the robotic controller for the robot to move to the required target position.\\\\
+In the below figure 26, the number represents the coordinates of the object after the scanning of the object is done after the trigger. Once these quaternion values are attained, these values are then sent to the robotic controller for the robot to move to the required target position.\\\\
 \begin{figure}[h]
     \centering
     \includegraphics[width=13cm]{Thesis-report/Figures/coordinates.png} 
@@ -838,58 +838,58 @@ Calibration of the marker pattern from the camera to the conveyor belt, which is
 \subsection{Conditions for Conveyor Belt:}
 While setting up the conveyor belt with a vision camera, we need to follow certain conditions:
 
-1. \textbf{Matching the robot speed with the conveyor belt:} For the robot to pick up the object from the conveyor belt, the robot's end effector should move at the same speed as that of the conveyor belt.\\
+1. \textbf{Matching the robot speed with the conveyor belt:} For the robot to pick up the object from the conveyor belt, the robot's end effector should move at the same speed as that of the conveyor belt.[21]
 
 \[
-V_c = V_r
+V_c = V_r [21]
 \]
 
-where \( V_c \) represents the velocity of the conveyor belt and \( V_r \) represents the velocity of the robot.\\
+where \( V_c \) represents the velocity of the conveyor belt and \( V_r \) represents the velocity of the robot.[21]\\
 
 2. \textbf{Target Position Calculation:} The final position of the robot is calculated by:
 
 \[
-\text{Target} = TX + AMS \cdot \theta + TD
+\text{Target} = TX + AMS \cdot \theta + TD [21]
 \]
 
-\text{where } TX \text{ is the initial detected position, } AMS \text{ is the marker space displacement, and } TD \text{ is the tracked distance.}\\
+\text{where } TX \text{ is the initial detected position, } AMS \text{ is the marker space displacement, and } TD \text{ is the tracked distance.}[21]\\
 
 \newpage
 3. \textbf{Marker Space Displacement (AMS():} \\
 
 \[
-AMS \cdot \theta = TX - \text{Marker Pattern Origin}
+AMS \cdot \theta = TX - \text{Marker Pattern Origin}[21]
 \]
 
-\text{where } TX \text{ is the initial detected position, } AMS \text{ helps in getting the relative position to this reference, and the Marker Pattern Origin is the reference
+\text{where } TX \text{ is the initial detected position, } AMS \text{ helps in getting the relative position to this reference, and the Marker Pattern Origin is the reference[21]
 
 4. \textbf{Tracked Distance:} 
 
 \[
-TD = \Delta TSC + \Delta CTO
+TD = \Delta TSC + \Delta CTO [21]
 \]
 
 \begin{itemize}
   \item $\Delta TSC$ is the \textbf{Target Scan Completion Distance}%
-        —Distance moved by the conveyor during scan completion.
+        —Distance moved by the conveyor during scan completion.[21]
   \item $\Delta CTO$ is the \textbf{Conveyor Tracking Offset}%
-        —Distance moved while waiting for the robot to reach the pick position.
+        —Distance moved while waiting for the robot to reach the pick position.[21]
 \end{itemize}
 
 5. \textbf{Target Scan Completion Distance (TSC):} 
 
 \begin{center}
     \[
-    TSC = V_c \times t_s
+    TSC = V_c \times t_s[21]
     \]
 \end{center}
 
 6. \textbf{Final Adjusted Position:}\\
 
-After considering the conveyor motion and processing delays, the final position will be the place where the robot should pick the object.\\
+After considering the conveyor motion and processing delays, the final position will be the place where the robot should pick the object.[21]\\
 
 \[
-\text{Target} = TX + (TX - \text{Marker Pattern Origin}) + (V_c \times t_s) + (V_c \times t_r)
+\text{Target} = TX + (TX - \text{Marker Pattern Origin}) + (V_c \times t_s) + (V_c \times t_r)[21]
 \]
 \newpage
 \subsection{Manual Calibration}
@@ -934,7 +934,7 @@ Robot motion must meet certain conditions to maximize the usable performance of 
 2)  \textbf{Constraints on torque and smoothness:}The trajectory must be created so that all joint torques remain within their ranges at all times [14].\\
 3) \textbf{Settling time:}  As the robot rapidly reaches a steady state, the amount of time required for the task decreases. The settling time should be kept to a minimum while taking into account the limitations of the robot's torque and smoothness, the speed of the conveyor belt, and the initial positions of the robot and the part. [14]\\
 The joint variables in the forward kinematics issue establish the end-effector's position and orientation in Cartesian space, also known as the workspace. For rotational joints, the joint variables are the angles between the links; for prismatic joints, they are the link extensions. On the other hand, the inverse kinematics challenge is determining the values of the joint variables that enable the manipulator to arrive at the specified location given a desired end-effector position and orientation.
-The figure below illustrates the connection between joint space and Cartesian space, as well as the relationship between forward and inverse kinematics. [10]\\
+The figure 29 below illustrates the connection between joint space and Cartesian space, as well as the relationship between forward and inverse kinematics. [10]\\
 
 \begin{figure}[h]
     \centering
@@ -1107,20 +1107,20 @@ Since the Jacobian matrix is square and invertible, it is utilized in this case 
 
 \subsection{Robot Coordinate System} 
 
-We must first gain a fundamental understanding of the robot coordinate system before delving deeper into the tracking system's operation. Generally speaking, robotic systems are Cartesian coordinate systems with three axes: the X, Y, and Z axes. Additionally, there is the Rotation Coordinate System, which describes the robot's degree of rotational motion and joint function. However, as this format is more widely used in business and simpler to use and comprehend, we shall solely investigate the Cartesian coordinate system. For getting the robot coordinates, we should be  aware of the following terms used in the system:\\\\
+We must first gain a fundamental understanding of the robot coordinate system before delving deeper into the tracking system's operation. Generally speaking, robotic systems are Cartesian coordinate systems with three axes: the X, Y, and Z axes. Additionally, there is the Rotation Coordinate System, which describes the robot's degree of rotational motion and joint function. However, as this format is more widely used in business and simpler to use and comprehend, we shall solely investigate the Cartesian coordinate system. For getting the robot coordinates, we should be  aware of the following terms used in the system:[24]\\\\
  \textbf{System of World Coordinates (WCS):} \\
-A coordinate system is often specified by the user or developer, but it can exist anywhere in the world. As long as WCS makes it simpler to explain the locations of other things or items in that specific area, you can put it anywhere in your room or factory. Origin placement is typically done at the edge of a group or a room's corner.\\
+A coordinate system is often specified by the user or developer, but it can exist anywhere in the world. As long as WCS makes it simpler to explain the locations of other things or items in that specific area, you can put it anywhere in your room or factory. Origin placement is typically done at the edge of a group or a room's corner.[24]\\
 
  \textbf{Machine Coordinate System (MCS):} \\
 Robot Base Frame Coordinate System is another name for Machine Coordinate System (MCS). All other coordinate systems will be compared to this most significant coordinate system. Where developers and programmers would implement their code based on this coordinate system is equally crucial. MCS is typically positioned near the robot's base for the point of origin, though it's important to remember that different robot types have different bases.\\
 
  \textbf{Coordinate System for Parts and Workpieces (PCS):} \\
-This refers to the workpiece or tracked objects that travel along the conveyor belt. In certain applications, part orientation plays a crucial role in assembly procedures. In our application, we just want to choose or select the objects, independent of their orientation; thus, this isn't accurate.\\
+This refers to the workpiece or tracked objects that travel along the conveyor belt. In certain applications, part orientation plays a crucial role in assembly procedures. In our application, we just want to choose or select the objects, independent of their orientation; thus, this isn't accurate.[24]\\
 \newpage
  \textbf{Tool Coordinate System (TCS):} \\
- This refers to the location of the robot's end-tool tip. As you can see, a robotic hand typically has a mechanism attached to the end, with a gripper. When referring to the robot base frame, this typically requires a small amount of offset and aids the robot in completing its responsibilities.\\\\
+ This refers to the location of the robot's end-tool tip. As you can see, a robotic hand typically has a mechanism attached to the end, with a gripper. When referring to the robot base frame, this typically requires a small amount of offset and aids the robot in completing its responsibilities.[24]\\\\
  \textbf{ Coordinate Transformation Matrix:}  \\
- In essence, the coordinate transformation matrix is a matrix that depicts how a coordinate system's orientation changes from one frame to another. It describes rotation transformation and translation transformation, and is composed of a 3x3 rotation matrix and a 3x1 displacement vector. In the case of three dimensions, the matrix is 4x4. A more common and widely used name for this matrix is the homogeneous transformation matrix. Remember that this matrix can be applied to any coordinate transformation situation, including regular coordinate transformation operations and forward kinematics derivations.\\\\
+ In essence, the coordinate transformation matrix is a matrix that depicts how a coordinate system's orientation changes from one frame to another. It describes rotation transformation and translation transformation, and is composed of a 3x3 rotation matrix and a 3x1 displacement vector. In the case of three dimensions, the matrix is 4x4. A more common and widely used name for this matrix is the homogeneous transformation matrix. Remember that this matrix can be applied to any coordinate transformation situation, including regular coordinate transformation operations and forward kinematics derivations.[24]\\\\
 
 \begin{figure}[h]
     \centering
@@ -1761,9 +1761,12 @@ Camera Using a Hemispherical Calibration Board,2023 9th International Conference
 \bibitem{ref19} Robot Manipulation through Inverse Kinematics, Abdullah Aamir Hayat,Abdullah Aamir Hayat, Abdullah Aamir Hayat, Indian Institute of Technology Delhi.
 \bibitem{ref20} Quaternions, Interpolation and Animation,Erik B Dam, Martin Koch , Martin lillholm, Department of Computer Science University of Copenhagen, Denmark, 1998.
 \bibitem{ref21} Locator studio setup, Photoneo
-\bibitem{ref22} Visual Robot Guidance in Conveyor Tracking with
-Belt Variables,University Politehnica of Bucharest,Th. Borangiu1, F.D. Anton1, Anamaria Dogar1
-\bibitem{ref23} https://eur.vevor.com/belt-conveyor-c_10439 srsltid=AfmBOoqNYgY4dkBQihCa9ItoNIpgXAC6e39Atuqhn0fdtybn8S4CvWio
+\bibitem{ref22} Robotic Conveyor Tracking with Dynamic Object Fetching for
+Industrial Automation, 
+\bibitem{ref23} Visual Robot Guidance in Conveyor Tracking with
+Belt Variables, University Politehnica of Bucharest,Th. Borangiu1, F.D. Anton1, Anamaria Dogar1
+\bibitem{ref24}ROBOTICS AND AUTOMATION HANDBOOK,Thomas R. Kurfess Ph.D., P.E.
+\bibitem{ref25} https://eur.vevor.com/belt-conveyor-c_10439 srsltid=AfmBOoqNYgY4dkBQihCa9ItoNIpgXAC6e39Atuqhn0fdtybn8S4CvWio
 
 
 \end{thebibliography}
