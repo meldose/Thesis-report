@@ -2,6 +2,7 @@
 \usepackage{graphicx} % Required for inserting images
 \usepackage[a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
 
+\usepackage{parskip}
 \usepackage{babel}
 \usepackage{float}
 \usepackage{ragged2e}
@@ -383,17 +384,20 @@ The figure 5 above shows the scanning distance of various cameras vs. their poin
 
 \begin{justify}
 
+
 \subsection{Robotic Conveyor Tracking}
-Early work on visually guided conveyor tracking focused on 2D cameras and simple background-subtraction methods. Shin AUTHOR NAME Demonstrated frame-difference object detection combined with 2D template matching to locate parts on a belt in real time, but suffered from occlusion and uniform-lighting limitations: REFERENCE TO. Park and Lee formulated the conveyor-tracking problem as a constrained trajectory‐planning task for 6-DOF manipulators, minimizing steady-state tracking error and actuator torques: REFERENCE TO. More recently, Zhang AUTHOR NAME integrated time-of-flight ranging with color segmentation to classify and track parcels at higher belt speeds, achieving sub-5 mm positional accuracy at 1 m/s: REFERENCE TO \\\\ 
+Early work on visually guided conveyor tracking focused on 2D cameras and simple background-subtraction methods. Ik Sang Shin, Sang-Hyun Geun, Rodney G. Roberts, Seungbin B. Moon Demonstrated frame-difference object detection combined with 2D template matching to locate parts on a belt in real time, but suffered from occlusion and uniform-lighting limitations:Conveyor Visual Tracking using Robot Vision. Park and B. H. Lee formulated the conveyor-tracking problem as a constrained trajectory‐planning task for 6-DOF manipulators, minimizing steady-state tracking error and actuator torques:An Approach to Robot Motion Analysis and Planning for Conveyor Tracking. More recently, izhe Zhang*, Lianjun Li†, Michael Ripperger‡, Jorge Nicho‡, Malathi Veeraraghavan* and Andrea Fumagalli† integrated time-of-flight ranging with color segmentation to classify and track parcels at higher belt speeds, achieving sub-5 mm positional accuracy at 1 m/s:A Conveyor-Belt Based Pick-and-Sort
+Industrial Robotics Application. \\\\ 
 
 \subsection{3D Vision Systems and Depth Sensing}
-The shift from 2D to 3D sensing has been driven by affordable structured light and TOF cameras. Photoneo’s MotionCam 3D M+ uses Parallel Structured Light to capture 1068 × 800 depth frames at 60 Hz, merging per-pixel depth with intensity for robust object detection under ambient light: REFERENCE TO. Fernandez AUTHOR NAME showed how TOF depth data can be converted from spherical to Cartesian coordinates for conveyor-based pick-and-place, with typical z-noise under 0.5 mm at 1 m distance: REFERENCE TO. Luo AUTHOR NAME extended this by fusing stereo vision point clouds with TOF to improve tracking through partial occlusions: REFERENCE TO.\\
+The shift from 2D to 3D sensing has been driven by affordable structured light and TOF cameras. Photoneo’s MotionCam 3D M+ uses Parallel Structured Light to capture 1068 × 800 depth frames at 60 Hz, merging per-pixel depth with intensity for robust object detection under ambient light:Locator Studio Manual, Photoneo. Miguel Fernandez showed how TOF depth data can be converted from spherical to Cartesian coordinates for conveyor-based pick-and-place, with typical z-noise under 0.5 mm at 1 m distance: Scan to 3D Model and parametric data system implementation. Guor-Yieh Luo, Ming-Yang Cheng, Chia-Ling Chiang, extended this by fusing stereo vision point clouds with TOF to improve tracking through partial occlusions:Vision-Based 3-D Object Pick-and-Place Tasks of Industrial Manipulator.\\
 
 \newpage
 \subsection{Calibration Techniques (Hand–Eye and Extrinsic)}\\
-Accurate hand-eye and extrinsic calibration is critical for mapping camera coordinates into the robot base frame. Standard methods use a calibration rig (ball or checkerboard) and solve for the transform ${}^{\rm base}H_{\rm cam}$ via least‐squares on multiple correspondences: REFERENCE TO. Ge AUTHOR NAMEautomated lidar–camera extrinsic calibration with a hemispherical target, yielding sub‐millimeter accuracy over nine poses: REFERENCE TO. Photoneo’s web interface further streamlines extrinsic setup by guiding users through nine sample points and reporting an overall accuracy score in millimeters. REFERENCE TO
+Accurate hand-eye and extrinsic calibration is critical for mapping camera coordinates into the robot base frame. Standard methods use a calibration rig (ball or checkerboard) and solve for the transform ${}^{\rm base}H_{\rm cam}$ via least‐squares on multiple correspondences: Guor-Yieh Luo, Ming-Yang Cheng, Chia-Ling Chiang:Vision-Based 3-D Object Pick-and-Place Tasks of Industrial Manipulator . Locator Studio Manual, Photoneoautomated lidar–camera extrinsic calibration with a hemispherical target, yielding sub‐millimeter accuracy over nine poses:  Photoneo’s web interface further streamlines extrinsic setup by guiding users through nine sample points and reporting an overall accuracy score in millimeters:Locator Studio Manual, Photoneo.
 
-\subsection{Dynamic Object Tracking and Path Planning} Real-time tracking of moving parts requires coupling vision updates with trajectory replanning. Shahzadi AUTHOR NAME proposed a vision‐based path planning framework where each new depth frame triggers a local replanning via a fast pseudo‐inverse Jacobian update, ensuring collision‐free, smooth motion: REFERENCE TO. Wunsch and Hirzinger introduced dynamic occlusion handling in 3D by predicting object pose through Kalman filtering of multi‐view point clouds: REFERENCE TO. Agrawal AUTHOR NAME Demonstrated shadow‐casting to enhance grasp edges, reducing processing latency in high‐speed pick‐and‐place: REFERENCE TO.
+\subsection{Dynamic Object Tracking and Path Planning} Real-time tracking of moving parts requires coupling vision updates with trajectory replanning. Adil Shahzadi, Xueshan Gao , Awais Yasin, Kamran Javed, Syed Muhammad Anwar proposed a vision‐based path planning framework where each new depth frame triggers a local replanning via a fast pseudo‐inverse Jacobian update, ensuring collision‐free, smooth motion: A Vision-Based Path Planning and Object Tracking Framework for 6-DOF Robotic Manipulator. Wunsch and Hirzinger introduced dynamic occlusion handling in 3D by predicting object pose through Kalman filtering of multi‐view point clouds: Real-Time Visual Tracking of 3-D Objects with Dynamic Handling of Occlusion. Amit Agrawal, Yu Sun, John Barnwell, Ramesh Raskar Demonstrated shadow‐casting to enhance grasp edges, reducing processing latency in high‐speed pick‐and‐place: Vision-guided Robot
+System for Picking Objects by Casting Shadows.
 
 \subsection{Gaps and Research Directions}
 Despite these advances, challenges remain in  
@@ -1735,9 +1739,7 @@ CONVEYOR BELT USING TIME-OF-FLIGHT CAMERA},7th International Symposium on Automa
 \bibitem{ref6}Dong Sun, Member, IEEE, and James K. Mills\textit{Adaptive Synchronized Control for Coordination
 of Multirobot Assembly Tasks}, IEEE,2002
 \bibitem{ref7}Amit Agrawal, Yu Sun, John Barnwell, Ramesh Raskar\textit{Vision-guided Robot
-System for Picking
-Objects by Casting
-Shadows}, the International Journal of Robotics Research,2010
+System for Picking Objects by Casting Shadows}, the International Journal of Robotics Research,2010
 \bibitem{ref8}Hüseyin N. Karaca and Cüneyt Akınlar\textit{A Multi-camera Vision System for Real-Time Tracking
 of Parcels Moving on a Conveyor Belt}, Department of Computer Engineering, Anadolu University, Eskisehir, Turkey
 \bibitem{ref9}Yizhe Zhang*, Lianjun Li†, Michael Ripperger‡, Jorge Nicho‡, Malathi Veeraraghavan* and Andrea Fumagalli†\textit{Gilbreth: A Conveyor-Belt Based Pick-and-Sort
