@@ -256,7 +256,7 @@ In industrial production, the vision system is typically used to inspect the pro
 
 A robot's job in robotic conveyor tracking is to follow and retrieve goods from a conveyor belt. Robots require information about an object, like its position, orientation, velocity, size, and other characteristics, before they can take it from an automation line. The information that vision sensors can supply about an object on the conveyor belts is more than that of ultrasonic and infrared ray sensors. An object tracking system typically consists of the following steps: capturing an image, identifying an object, and retrieving data regarding the position and orientation of the object. A conveyor system's item tracking procedure needs to be quick enough to accommodate a real-time setting. This article describes a tracking system for robots that makes use of vision data that is taken from consecutive frames of images.[12]\\
 
-Many applications in manufacturing, construction, and vehicle automation and autonomy depend on the ability to access 3D information.  In addition to intensity, TOF (Time-of-Flight) sensors are becoming more commonly available and more reasonably priced. These sensors also provide depth information at each pixel. Industrial robots are often used for tasks that are hazardous, repetitive, and difficult for humans to manage. Therefore, increasing the production efficiency of industrial robot manipulators is a top priority. With an emphasis on localization and shortest path computation, machine vision and path planning approaches can accomplish this.  This is especially crucial for the manufacturing and bottle filling sectors, which heavily rely on robotic manipulators to position and move bottles both during production and after refills. Robot vision finds it extremely difficult to focus on distinguishing aspects of soft, fragile, or opaque things, making detection considerably more difficult. Many industrial robots and robotic manipulators have become increasingly complex, diverse, and particularly engineered to attain a high degree of autonomy.  This contrasts with previous ideas that viewed robots as mechanical manipulators. Furthermore, to provide accurate control mechanisms, object detection and tracking for these robotic manipulators have drawn a lot of interest[2]\\[12] Automated object detection, in particular, has helped robots become more versatile by enabling more generalized and adaptive behavior for various objects and situations. For example, DoF is important for jobs involving pick and place, welding, pelleting, painting, packing, and grinding.  The DoF is chosen based on the type of work that must be done in an industrial setting and ranges from 1 to 6 degrees of freedom.
+Many applications in manufacturing, construction, and vehicle automation and autonomy depend on the ability to access 3D information.  In addition to intensity, ToF (Time-of-Flight) sensors are becoming more commonly available and more reasonably priced. These sensors also provide depth information at each pixel. Industrial robots are often used for tasks that are hazardous, repetitive, and difficult for humans to manage. Therefore, increasing the production efficiency of industrial robot manipulators is a top priority. With an emphasis on localization and shortest path computation, machine vision and path planning approaches can accomplish this.  This is especially crucial for the manufacturing and bottle filling sectors, which heavily rely on robotic manipulators to position and move bottles both during production and after refills. Robot vision finds it extremely difficult to focus on distinguishing aspects of soft, fragile, or opaque things, making detection considerably more difficult. Many industrial robots and robotic manipulators have become increasingly complex, diverse, and particularly engineered to attain a high degree of autonomy.  This contrasts with previous ideas that viewed robots as mechanical manipulators. Furthermore, to provide accurate control mechanisms, object detection and tracking for these robotic manipulators have drawn a lot of interest[2]\\[12] Automated object detection, in particular, has helped robots become more versatile by enabling more generalized and adaptive behavior for various objects and situations. For example, DoF is important for jobs involving pick and place, welding, pelleting, painting, packing, and grinding.  The DoF is chosen based on the type of work that must be done in an industrial setting and ranges from 1 to 6 degrees of freedom.
 
  Additionally, machine learning-based techniques that make use of effective computer vision frameworks are widely adopted.  Additionally, neural networks and deep learning-based techniques are becoming more and more popular, although caution needs to be exercised regarding the generalizability and explainability of these models.[12]\\
 
@@ -313,7 +313,7 @@ A spatially encoded pattern is used in structured patterns/dots technology to en
 
 \subsection{Parallel Structured Light}
 
-Parallel Structured Light parallelizes the sequential structured light using a sophisticated sensor design, which enables it to record the scene illuminated by various patterns simultaneously. In addition to sharing many of the sequential structured light's benefits, such as resolution and accuracy, it also overcomes one of its main drawbacks: the inability to capture a dynamic environment. Photoneo's Parallel Structured Light gets around the restriction by projecting and capturing numerous encoded patterns. Pixel modulations within our proprietary CMOS sensor are used to accomplish this. Multiple groups of separately modified pixels make up the sensor itself. [15] \\\\ 
+Parallel Structured Light parallelizes the sequential structured light using a sophisticated sensor design, which enables it to record the scene illuminated by various patterns simultaneously. In addition to sharing many of the sequential structured light's benefits, such as resolution and accuracy, it also overcomes one of its main drawbacks: the inability to capture a dynamic environment. Photoneo's Parallel Structured Light gets around the restriction by projecting and capturing numerous encoded patterns. Pixel modulations within our proprietary CMOS sensor are used to accomplish this. Multiple groups of separately modified pixels make up the sensor itself. [15] \\
 
 
 The Parallel Structured Light's main advantages are:
@@ -592,8 +592,7 @@ To enable the robotic arm to know where to pick and position the target objects,
 \]
 
 where: camera Pobj: [u, v, 1]on the image plane; Pobj: the object point [EX, CY, CZ] in the camera frame.
- The calibration of the eye-to-hand stereo camera yields the intrinsic matrix K in Equation (4), and the estimation of depth based on the disparity is used to determine the depth ° Z.
- The coordinate conversion from the stereo camera frame to the robot base frame is the second operation sequence.  The transformation matrix base Hcam, which is determined from the eye-to-hand calibration, is used to do this.  Combining the first and second operation sequences yields the equation
+ The calibration of the eye-to-hand stereo camera yields the intrinsic matrix K in above equation, and the estimation of depth based on the disparity is used to determine the depth ° Z.The coordinate conversion from the stereo camera frame to the robot base frame is the second operation sequence.  The transformation matrix base Hcam, which is determined from the eye-to-hand calibration, is used to do this.  Combining the first and second operation sequences yields the equation
 
  \[
 \text{baseP}_{\text{obj}} = {}^{\text{base}}H_{\text{cam}} \cdot \text{camP}_{\text{obj}} [3]
@@ -625,9 +624,9 @@ For camera calibration, the following steps need to be followed and considered: 
     \item ● ID: the Vision system's ID [2]
     \item ● Name: the Vision system's name [2]
     \item ● Scanner ID: the ID of the 3D sensor used by the Vision system [2]
-    \item ● Scanner status: the current state of the 3D sensor used by the Vision system [2]
+    \item ● Scanner status: the current state of the 3D sensor used by the Vision system[2]
     \item ● Scanner model: the model of the 3D sensor used by the Vision system [2]
-    \item ● Calibration type: the type of calibration based on the selected 3D sensor mount position[2]
+    \item ● Calibration type: the type of calibration based on the selected 3D sensor mount position [2]
     \item ● Calibrated: whether the Vision system has already been calibrated [2]
     \item ● Accuracy of calibration [mm]: the precision of any prior calibration   [2] 
 \end{enumerate}
@@ -647,7 +646,6 @@ The camera calibration is performed through an extrinsic method in which the cam
 \end{figure}
 Figure 18 below shows how the calibration is happening by adding the point by fixing the point where the robot coordinates [X, Y, Z] rotation values will save the points (represented as a green point). Here, we need to add 9 points to get the calibration workspace. After the calibration, the average value from the 9 points is taken into consideration. (The lesser the value, the better the accuracy.) [2]\\ 
 
-\newpage
 Figure 18 above shows the calibration method used in this study (extrinsic calibration) (EC), where the camera is fixed at the location, and 9 points are taken into consideration, where the average value is finally taken as the value for the calibration. [2]\\
 
 This kind of calibration is employed in configurations where the 3D sensor is fixedly positioned within the robotic cell, often above the bin. The 3D sensor does not have to be stationary relative to the robotic cell itself; it just needs to be stationary relative to the robot's foundation. [2]
@@ -663,7 +661,7 @@ Finding a camera's intrinsic matrix, extrinsic matrix, and distortion coefficien
 {}^{cam}\!H_{cal} = {}^{cam}\!H_{base} \cdot \left( {}^{base}\!H_{tcp} \cdot {}^{tcp}\!H_{cal} \right) = {}^{cam}\!H_{base} \cdot {}^{base}\!H_{cal} [3]
 \]
 
-\newpage
+
 The transformation matrix in the above equation that must be computed for the eye-to-hand calibration is the camera H base (the pose of the robot’s base frame expressed in the camera frame.) And the Cam H cal, which can be computed using either 3D recognition of the calibration rig or camera calibration (extrinsic matrix), is the transformation matrix from the calibration rig frame to the camera frame.  Forward kinematics can be used to calculate base H cal (the pose of the calibration object’s frame cal expressed in the robot’s base frame.
 – typically obtained by detecting the calibration target from a known robot pose.) Mathematically, the transformation matrix from the calibration rig frame to the robot base frame.
 \\ The calibration matrix will become invalid, and the entire calibration process will need to be restarted if there is a change in the relative position between the 3D sensor and the robot after the calibration. In other words, after the system has been calibrated, the 3D sensor cannot be changed relative to the robot. [3]\\
@@ -763,7 +761,7 @@ Three calibration sites are needed for both the hand-eye and extrinsic calibrati
  Additionally, by assessing the location of the 3D sensor and the point cloud in the picture, the roughly accurate result (without accounting for precision) may be verified.
  The scene's origin is found in the coordinate frame of the robotic controller that was used for the calibration process.  That usually refers to the robot base's origin.  Then, the relative positions of the actual 3D sensor and the robot base in reality should be comparable to or identical to those of the model of the 3D sensor and the scene origin.
  
-\newpage
+
 \subsubsection{Calibration of Conveyor Belt}.
 
 The conveyor belt calibration can be done as follows:\\
@@ -855,7 +853,7 @@ where \( V_c \) represents the velocity of the conveyor belt and \( V_r \) repre
 
 \text{where } TX \text{ is the initial detected position, } AMS \text{ is the marker space displacement, and } TD \text{ is the tracked distance.}[21]\\
 
-\newpage
+
 3. \textbf{Marker Space Displacement (AMS():} \\
 
 \[
@@ -893,6 +891,7 @@ After considering the conveyor motion and processing delays, the final position 
 \text{Target} = TX + (TX - \text{Marker Pattern Origin}) + (V_c \times t_s) + (V_c \times t_r)[21]
 \]
 
+\newpage
 \subsection{Manual Calibration}
 Initially, before we start the calibration, we need to set the camera to a specific Mrile setup to Marker Space according to the calibration setup and save the Mrile as given below: [2]
 
@@ -943,11 +942,11 @@ Figure 29 below illustrates the connection between joint space and Cartesian spa
     \caption{Forward and Inverse Kinematics [10]}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-\newpage
+
 Finding the joint variables that allow a robot to be manipulated into the required position requires an understanding of its inverse kinematics. This is used to control the robot's position, motion, and other features. This study presents a detailed explanation and comparison of two popular approaches for manipulating robots: Jacobian inverse techniques and inverse kinematics. [10]
 Sixteen alternatives are available for a general six-DOF robot, as shown below, and it lists the number of analytical solutions for robots with varying degrees of freedom. Therefore, an accurate set of solutions among several inverse kinematic solutions is needed for the continuous motion of a robot. [10]\\
 
-\\ The benefit of analytical expression is that it provides formulas for the connection between link parameters and joint angles. The robotics controller can directly incorporate these relationships. [10]\\
+The benefit of analytical expression is that it provides formulas for the connection between link parameters and joint angles. The robotics controller can directly incorporate these relationships. [10]\\
 
 \begin{table}[h]
     \centering
@@ -1089,7 +1088,7 @@ where a1 is the joint axis direction of joint 1 and e is the vector. Likewise, d
 \[
 \Delta \theta_k = J_k^{-1} \Delta x_e [19]
 \]
-where xe represents the required increase in the EE's posture. The effective method for determining the increment was provided. Joint angles needed to get to the kth point are comparable to the joint angle's first-order Taylor series expansion, which is calculated as [19]: \\
+where xe represents the required increase in the pose of the robot’s end-effector (EE). The effective method for determining the increment was provided. Joint angles needed to get to the kth point are comparable to the joint angle's first-order Taylor series expansion, which is calculated as [19]: \\
 
 \[
 \theta k = \theta {k-1} + J_k \Delta x_e  [19]\\\\
@@ -1111,7 +1110,7 @@ Since the Jacobian matrix is square and invertible, it is utilized in this case 
 
 We must first gain a fundamental understanding of the robot coordinate system before delving deeper into the tracking system's operation. Generally speaking, robotic systems are Cartesian coordinate systems with three axes: the X, Y, and Z axes. Additionally, there is the Rotation Coordinate System, which describes the robot's degree of rotational motion and joint function. However, as this format is more widely used in business and simpler to use and comprehend, we shall solely investigate the Cartesian coordinate system. For getting the robot coordinates, we should be  aware of the following terms used in the system:[24]\\\\
  \textbf{System of World Coordinates (WCS):} \\
-A coordinate system is often specified by the user or developer, but it can exist anywhere in the world. WCS makes it simpler to explain the locations of other things or items in that specific area. we can put it anywhere in your room or factory. Origin placement is typically done at the edge of a group or a room's corner.[24]\\
+A coordinate system is often specified by the user or developer, but it can exist anywhere in the world. WCS makes it simpler to explain the locations of other things or items in that specific area. Origin placement is typically done at the edge of a group or a room's corner.[24]\\
 
  \textbf{Machine Coordinate System (MCS):} \\
 Robot Base Frame Coordinate System is another name for Machine Coordinate System (MCS). All other coordinate systems will be compared to this most significant coordinate system. Where developers and programmers would implement their code based on this coordinate system is equally crucial. MCS is typically positioned near the robot's base for the point of origin, though it's important to remember that different robot types have different bases.\\
@@ -1318,7 +1317,7 @@ The RobotiQ 140 gripper is a two-finger gripper that mainly works under the prin
 \begin{figure}[H]
   \centering
   \includegraphics[width=5cm]{Thesis-report/Figures/cobot_gripper_2F_85-ezgif.com-webp-to-jpg-converter.jpg}
-  \caption{RobotiQ 140 Gripper}
+  \caption{RobotiQ 140 Gripper[26]}
   \label{fig:robotiq_140}
 \end{figure}
 \FloatBarrier
@@ -1409,7 +1408,7 @@ To solve differential equations, Euler initially created Euler angles.The most p
 \subsubsection{2. Ambiguity (Non-Uniqueness)}
 \begin{itemize}
   \item \textbf{Multiple Angle Triples for the Same Rotation.} 
-   There are an unlimited number of those \((\alpha,\beta,\gamma)\) that produce the same rotation matrix since every rotation about an axis is periodic (modulo \(360^\circ\)) and because different sequences might arrive at the same ultimate orientation.  A "roll" of\(+360^\circ\), for example, is identical to\(0^\circ\). [20]
+   There are an unlimited number of those \((\alpha,\beta,\gamma)\) that produce the same rotation matrix since every rotation about an axis is periodic (modulo \(360^\circ\)) and because different sequences might arrive at the same ultimate orientation.[20]
   \item \textbf{Convention Dependence.} 
     There are twelve main Euler conventions, including choice of axis ordering, intrinsic vs. extrinsic, and proper Euler vs. Tait–Bryan.  In the absence of precise convention, a \((\alpha,\beta,\gamma)\) triplet is unclear. [20]
   \item \textbf{Inverse-Mapping Ambiguities.} 
@@ -1720,32 +1719,24 @@ Building on the results of this thesis, the following extensions are proposed to
 
 \begin{thebibliography}{99}
 
-\bibitem{ref1}
-Adil Shahzadi, Xueshan Gao , Awais Yasin, Kamran Javed, Syed Muhammad Anwar, \textit{A Vision-Based Path Planning and Object Tracking Framework for 6-DOF
+\bibitem{ref1}Adil Shahzadi, Xueshan Gao , Awais Yasin, Kamran Javed, Syed Muhammad Anwar, \textit{A Vision-Based Path Planning and Object Tracking Framework for 6-DOF
 Robotic Manipulator}, IEEE, 2020
 \bibitem{ref2} Locator Studio Manual, Photoneo
-\bibitem{ref3}
-Guor-Yieh Luo, Ming-Yang Cheng, Chia-Ling Chiang\textit{Vision-Based 3-D Object Pick-and-Place Tasks of Industrial Manipulator}, National Cheng Kung University,
-\bibitem{ref4}
-P. Wunsch and G. Hirzinger,\textit{Real-Time Visual Tracking of 3-D Objects with Dynamic Handling of Occlusion}, German Aerospace Research Establishment - DLR
+\bibitem{ref3}Guor-Yieh Luo, Ming-Yang Cheng, Chia-Ling Chiang\textit{Vision-Based 3-D Object Pick-and-Place Tasks of Industrial Manipulator}, National Cheng Kung University,
+\bibitem{ref4}P. Wunsch and G. Hirzinger,\textit{Real-Time Visual Tracking of 3-D Objects with Dynamic Handling of Occlusion}, German Aerospace Research Establishment - DLR
 Institute for Robotics and System Dynamics
 82230 Wessling, Germany, IEEE,1997
-\bibitem{ref5} Mar Arif, Matt Marshall, Wayne Daley, Patricio A. Vela, Jochen Teizer, Soumitry J. Ray,
-and John Stewart\textit{TRACKING AND CLASSIFYING OBJECTS ON A
+\bibitem{ref5} Mar Arif, Matt Marshall, Wayne Daley, Patricio A. Vela, Jochen Teizer, Soumitry J. Ray,and John Stewart\textit{TRACKING AND CLASSIFYING OBJECTS ON A
 CONVEYOR BELT USING TIME-OF-FLIGHT CAMERA},7th International Symposium on Automation and Robotics in Construction (ISARC 2010)
-\bibitem{ref6}Dong Sun, Member, IEEE, and James K. Mills\textit{Adaptive Synchronized Control for Coordination
-of Multirobot Assembly Tasks}, IEEE,2002
+\bibitem{ref6}Dong Sun, Member, IEEE, and James K. Mills\textit{Adaptive Synchronized Control for Coordination of Multirobot Assembly Tasks}, IEEE,2002
 \bibitem{ref7}Amit Agrawal, Yu Sun, John Barnwell, Ramesh Raskar\textit{Vision-guided Robot
 System for Picking Objects by Casting Shadows}, the International Journal of Robotics Research,2010
-\bibitem{ref8}Hüseyin N. Karaca and Cüneyt Akınlar\textit{A Multi-camera Vision System for Real-Time Tracking
-of Parcels Moving on a Conveyor Belt}, Department of Computer Engineering, Anadolu University, Eskisehir, Turkey
+\bibitem{ref8}Hüseyin N. Karaca and Cüneyt Akınlar\textit{A Multi-camera Vision System for Real-Time Tracking of Parcels Moving on a Conveyor Belt}, Department of Computer Engineering, Anadolu University, Eskisehir, Turkey
 \bibitem{ref9}Yizhe Zhang*, Lianjun Li†, Michael Ripperger‡, Jorge Nicho‡, Malathi Veeraraghavan* and Andrea Fumagalli†\textit{Gilbreth: A Conveyor-Belt Based Pick-and-Sort
 Industrial Robotics Application}, IEEE,2018
-\bibitem{ref10}Adrian-Vasile Duka*\textit{Neural network based inverse kinematics solution for trajectory
-Tracking of a robotic arm}, The 7th International Conference Interdisciplinarity in Engineering (INTER-ENG 2013)
+\bibitem{ref10}Adrian-Vasile Duka*\textit{Neural network based inverse kinematics solution for trajectory Tracking of a robotic arm}, The 7th International Conference Interdisciplinarity in Engineering (INTER-ENG 2013)
 \bibitem{ref11}Wisam T. Abbood1, Hiba K. Hussein1 and Oday I. Abdullah\textit{INDUSTRIAL TRACKING CAMERA AND PRODUCT VISION DETECTION SYSTEM}, Journal of Mechanical Engineering Research and Developments (JMERD: 1024-1752,2019
-\bibitem{ref12}Ik Sang Shin1, 3, Sang-Hyun Nam2
-, Hyun Geun Yu3, Rodney G. Roberts, Seungbin B. Moon\textit{Conveyor Visual Tracking using Robot Vision}, ResearchGate, 2006
+\bibitem{ref12}Ik Sang Shin1, 3, Sang-Hyun Nam2, Hyun Geun Yu3, Rodney G. Roberts, Seungbin B. Moon\textit{Conveyor Visual Tracking using Robot Vision}, ResearchGate, 2006
 \bibitem{ref13}Chen-yu Wang\textit{Conveyor tracking using adept robot with vision guidance system}, 1996
 \bibitem{ref14}T. H. Park and B. H. Lee\textit{An Approach to Robot Motion Analysis and
 Planning for Conveyor Tracking}, IEEE,1992
@@ -1764,8 +1755,7 @@ Industrial Automation,
 Belt Variables, University Politehnica of Bucharest,Th. Borangiu1, F.D. Anton1, Anamaria Dogar1
 \bibitem{ref24}ROBOTICS AND AUTOMATION HANDBOOK,Thomas R. Kurfess Ph.D., P.E.
 \bibitem{ref25}Y. K. Chen, T. Yoshimi, and M. Tomizuka, “Vision-Guided Robotic System for Pick-and-Place on Conveyor Lines Using Coordinate Transformation,” IEEE Trans. Autom. Sci. Eng., vol. 17, no. 3, pp. 1211–1223, Jul. 2020.
-\bibitem{ref26} https://eur.vevor.com/belt-conveyor-c_10439 srsltid=AfmBOoqNYgY4dkBQihCa9ItoNIpgXAC6e39Atuqhn0fdtybn8S4CvWio
-
+\bibitem{ref26}RobotiQ gripper 140: https://www.google.com/search?vsrid=CMacjYi-oqqrWBACGAEiJDA5OGVjNDA1LWQ0NzktNDVjMS1iMjdhLTAyYzcxNzJhNjg1MDIGIgJlaCgNOIm70_nDzI4D&vsint=CAIqDAoCCAcSAggKGAEgATojChYNAAAAPxUAAAA_HQAAgD8lAACAPzABENwGGPUDJQAAgD8&udm=26&lns_mode=un&source=lns.web.gsbubb&vsdim=860,501&gsessionid=toTtRujwHhMW7JuHgPcCf7SZKgAG5klXeK_1TVRoGlGz7kJRUmdoRA&lsessionid=Nyg4DLMKtQQHSOCWWw3LsS5DfjPyie5IDuBCWdL7PU78C8Kn31AAVA&lns_surface=26&authuser=0&lns_vfs=e&qsubts=1753052092139&biw=1920&bih=1079&hl=en-DE#vhid=nvlIn872YHR55M&vssid=mosaic
 
 \end{thebibliography}
 
