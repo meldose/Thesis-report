@@ -1672,49 +1672,46 @@ Figure 54 below contrasts the robot's picking performance under bright and dim l
 \label{Literature}
 
 \subsection{Conclusion}
+\begin{justify}
+    
+This thesis demonstrates the design and implementation of a vision-guided conveyor-tracking pick-and-place system for industrial robots, leveraging a Photoneo Motion-Cam 3D M+ camera, extrinsic hand–eye calibration, real-time coordinate transformations, and inverse kinematics. The key achievements are\\
 
+Robust Calibration & Coordinate Transformation: By using a ball-based extrinsic calibration over nine poses, the system established a reliable transform between the camera and robot base frames, enabling sub-millimeter positional accuracy\\
+.
 
-The smooth movement of items through several stages of manufacturing, storage, and distribution is made possible by conveyor tracking systems, which are now essential parts of contemporary industrial and logistical processes.  Technological developments throughout time have greatly increased these systems' precision, dependability, and efficiency.  Among the major advancements in conveyor tracking are:
+Real-Time Dynamic Tracking: The integrated vision pipeline—combining depth and texture maps—enabled continuous object detection and pose estimation on a moving belt, with the robot’s Tool Center Point (TCP) speed scaling linearly from 0.08 m/s  to 0.31 m/s as belt speed increased from 1.0 m/s  to 2.0 m/s. \\
+.
 
-\begin{itemize}
+High Picking Performance: Dynamic picking tests achieved up to 90 percent success on trapezoidal parts at 1.0 m/s, with average pick times rising from 0.5 s to 1.5 s as belt speed increased 
+. Under dim lighting, success rates remained above 60 percent, demonstrating good but lighting-sensitive robustness\\
 
-\item Improved Automation and Integration: Conveyor tracking has expedited processes, decreased manual intervention, and minimized errors when integrated with other automated systems, such as Enterprise Resource Planning (ERP) software and Warehouse Management Systems (WMS).
-
- \item Real-Time Monitoring and Data Analytics: To give real-time information on the flow of items, contemporary conveyor tracking systems make use of sensors, Internet of Things devices, and sophisticated analytics.  Proactive decision-making, predictive maintenance, and efficient resource allocation are made possible by this skill.
-
-\item Increased Efficiency and Accuracy: Advances in tracking technology, such as barcode scanners, RFID tags, and machine vision, have greatly increased the precision of item identification and tracking, which has decreased product theft, loss, and misplacement.
-
-\item Flexibility and Scalability: Modern conveyor systems are made to be extremely flexible and scalable, enabling companies to modify their operations in response to shifting market conditions and demand without having to make significant infrastructural changes.
-
-\item Sustainability & Energy Efficiency: Energy-saving motors, regenerative braking systems, and environmentally friendly materials have all been included in conveyor technology advancements to lessen the environmental impact of conveyor operations.
-\end{itemize}
+Together, these results confirm the feasibility of deploying vision‑guided robots for adaptive pick‑and‑place on moving conveyors, achieving a balance of speed, accuracy, and flexibility suitable for modern automated production lines.
+\end{justify}
 \newpage
 \subsubsection{Future Scope }
-
-The future of conveyor tracking is poised to be shaped by continued technological innovations and evolving industry demands. Potential developments and areas for growth include:
-
-\begin{itemize}
-
-\item Artificial Intelligence and Machine Learning: Combining AI and ML algorithms can improve system intelligence overall, optimize routing, and strengthen predictive maintenance.  Large volumes of data may be analyzed by these technologies to spot trends, forecast breakdowns, and suggest real-time operational changes.
-
-\item Advanced IoT Integration: As IoT devices proliferate, conveyor tracking systems' connectivity and interoperability will be further improved.  More detailed monitoring, better data collecting, and smooth communication between various systems and devices will all be made possible by enhanced IoT integration.
-
-\item Virtual reality (VR) and augmented reality (AR) have the potential to completely transform maintenance, training, and operational planning.  In order to decrease downtime and increase productivity, maintenance workers can, for example, wear AR glasses to receive real-time guidance and overlays when servicing conveyor systems.
-
-\item Blockchain for Improved Security and Transparency: By putting blockchain technology into practice, it is possible to create unchangeable records of product handling and movement, which will improve supply chain traceability, security, and transparency.
-
-\item Automation and Robotic Integration: Material handling procedures can be further automated by combining robotics with conveyor tracking systems.  Conveyor systems and collaborative robots (cobots) can work together to complete activities like sorting, packaging, and inspection more quickly and precisely.
-
-\item Green technologies and sustainability: In the future, conveyor systems will progressively integrate sustainable practices like energy-efficient designs, recyclable materials, and the utilization of renewable energy sources.  Waste reduction and environmental effect reduction innovations will become critical.
-
-\item Improved user interfaces and human-machine interaction: Operators and conveyor tracking systems will communicate more effectively as a result of the creation of more intuitive and user-friendly interfaces.  Touchless controls, voice-activated interfaces, and sophisticated visualization tools will increase the efficiency and accessibility of system management.
-
-\item Edge Computing and Improved Processing Capabilities: By putting edge computing into practice, data processing may take place closer to the source, which lowers latency and boosts conveyor tracking systems' responsiveness.  This will be especially helpful for areas with poor connectivity and real-time applications.
-
-\item Customization and Modular Designs: More customization and flexibility will be available in future conveyor tracking systems, enabling companies to adapt systems to their unique requirements without having to completely redesign them.  It is simple to add, delete, or reorganize modular components to accommodate shifting operational needs.
-
-\item Improved cybersecurity measures: It will be crucial to have strong cybersecurity as conveyor tracking systems grow more interconnected and dependent on digital technologies.  In order to defend against cyber dangers, future advances will concentrate on putting improved security protocols, encryption techniques, and intrusion detection systems into place.
-\end{itemize}
+Building on the results of this thesis, the following extensions are proposed to enhance applicability and performance:
+\begin{justify}
+    
+\begin{enumerate}
+  \item \textbf{Multi‐Shape \& Multi-Shapet Handling:}  
+    Incorporate learning-based descriptors (e.g., deep point-cloud networks) to generalize beyond trapezoidal parts and handle pipes, cylinders, and arbitrary geometries in real time.\\
+  
+  \item \textbf{Enhanced Lighting \& Material Robustness:}  
+    Fuse HDR imaging or polarization‐bapolarization-basedto mitigate errors when sensing reflective, transparent, or very dark surfaces under varying ambient light conditions.\\
+  
+  \item \textbf{Predictive Motion \& Latency Compensation:}  
+    Integrate Kalman filter or model‐predictive control algorithms to forecast object trajectories on the conveyor, reducing pick latency at higher belt speeds (above 2 m/s).\\
+  
+  \item \textbf{Multi‐Sensor Fusion:}  
+    Combine data from multiple Photoneo cameras, stereo rigs, or LiDAR scanners to handle occlusions, expand the field of view, and improve pose estimation accuracy beyond the current 1–2 m range.\\
+  
+  \item \textbf{Collaborative Multi‐Robot CooMulti-Robot}  
+    Explore distributed vision architectures and synchronous task allocation among multiple cobots sharing the conveyor to boost system throughput and resilience.\\
+  
+  \item \textbf{Safety, Reliability \& Industry 4.0 Integration:}  
+    Embed real-time collaborative time-dance, formal safety verification methods, and IIoT connectivity for remote monitoring, predictive maintenance, and seamless integration into smart factory frameworks.\\
+\end{enumerate}
+\end{justify}
 
 \newpage
 
