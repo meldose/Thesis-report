@@ -237,29 +237,7 @@ Identifying objects in an image and determining their positions is the primary g
 \end{enumerate}\\
 It is more difficult for robotic arms to do complex operations like object pick-and-place independently.  Integrating machine vision into the robotic arm system is one potential remedy for the issues previously highlighted. This research uses the eye-to-hand camera arrangement to construct vision-based autonomous pick-and-place systems for 3-D objects. Object coordinate transformations, machine vision system calibration, and object identi-fication are the three main parts of the vision-based autonomous pick-and-place system developed in this study.   Experimental results show that the vision-based automated pick-and-place system developed in this study can perform an autonomous pick-and-place job for 3-D objects.\cite{ref12}
 
-\subsection{Photoneo Camera}
-\begin{justify}
 
-The camera we have used to track the moving object's motion through the conveyor belt is a 
-MotionCam 3D M+, which has advanced settings that can capture and detect the object's position. The Photoneo camera mainly consists of 3D sensing technology, which contains parallel structured light that helps provide the light source to detect objects.\cite{ref2}\\
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=5cm]{Thesis-report/Figures/CAMERA.png}
-    \caption{Photoneo Camera \cite{ref2}} 
-    \label{fig1.Photoneo Cmaera}
-\end{figure}
-
-Accurate point clouds and a standard intensity image of the object can be captured by this camera.  Its foundation is a customized CMOS image sensor that utilizes Photoneo's patented Parallel Structured Light technology.\cite{ref15}\\
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=4cm]{Thesis-report/Figures/camera.jpeg}
-    \caption{Camera-mounted setup}
-    \label{fig1.Photoneo Cmaera}
-\end{figure}
-
-The camera is built with a parallel stereo charged-coupled device (CCD) camera system to follow the colored region of the RGB marker accurately. This ROI was also separated from the live stream image using blob analysis, and then the 3D coordinates in the world coordinate frame were triangulated.   The 3D coordinates of the marker were transformed into the robot frame of reference (robot stereo vision coordinate system) and used to evaluate the robot path and trajectory planning.   Consequently, our proposed model determines the real-time distance the robot needs to travel along the three axes to select and position an object.\cite{ref15}
-
-The camera's carbon fiber body is lightweight and guarantees the same degree of stiffness as scanners. Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU, which is used for intelligent applications.  One well-suited representative of this category is the 3D scanner range from Photoneo. This method is appropriate for dynamic scenes because it uses sequential (multi-frame) capturing.\cite{ref15}\\
 
 
 
@@ -501,7 +479,7 @@ The same method significantly reduces internal reflections between pixels at the
 \begin{figure}[h]
     \centering
     \includegraphics[width=12cm]{Thesis-report/Figures/scanningdistance.jpg}
-    \caption{Point Size vs. Scanning Distance}
+    \caption{Point Size vs. Scanning Distance \cite{ref15}}
     \label{fig1.Photoneo Cmaera}
 \end{figure}\\
 
@@ -785,6 +763,13 @@ With the Movelinear controller, the camera scans the objects to deliver the quat
 
 Static pick-up is the process of picking items from the conveyor belt when it is not moving. Initially, we keep the object on the conveyor belt and then trigger the camera, which helps in getting the object coordinates to the robotic controller. When the robot receives the data, the robot moves to the target position to pick the required target.
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=6.5cm]{Thesis-report/Figures/static_flowchart.png}
+    \caption{Static Picking Flowchart}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
+
 
 \subsection{Dynamic Picking:}\\
 The Dynamic Pick involves the process of picking the items from the moving conveyor belt. Here, the object is passed through the moving conveyor belt, where the camera gets object poses that are passed to the robotic controller, which helps the robot move to the required position.\\
@@ -913,7 +898,7 @@ We often write a quaternion as
   q = [\,s,\;\mathbf{v}\,],\quad s\in\mathbb{R},\;\mathbf{v}\in\mathbb{R}^3.\cite{ref20}
 \]
 This four-dimensional algebra provides a compact, non-singular representation of 3D rotations.
-\newpage
+
 \subsection{Object for picking}
 We have used a trapezoid for object picking 
 
@@ -1170,6 +1155,30 @@ Pseudo-inverse is used to solve the joint:\cite{ref19}\\
 \begin{justify}
 Velocity for the linear velocity in Cartesian space. First, FK is used to determine the manipulator's pose. Next, the IK solver uses a pseudo-inverse calculation to update the joint angles. Until the end tip reaches the desired posture with an acceptable error, these two stages are repeated. If the starting value and changing rate are appropriately calibrated, the dynamic gain causes the speed to reach its maximum and minimum quickly. Joint angles have an impact on the inaccuracy during the iteration process. Inappropriate angles cause the gain to drop dynamically, and vice versa.\cite{ref19}
 \end{justify}
+\subsection{Photoneo Camera}
+\begin{justify}
+
+The camera we have used to track the moving object's motion through the conveyor belt is a 
+MotionCam 3D M+, which has advanced settings that can capture and detect the object's position. The Photoneo camera mainly consists of 3D sensing technology, which contains parallel structured light that helps provide the light source to detect objects.\cite{ref2}\\
+
+Accurate point clouds and a standard intensity image of the object can be captured by this camera.  Its foundation is a customized CMOS image sensor that utilizes Photoneo's patented Parallel Structured Light technology.\cite{ref15}\\
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=5cm]{Thesis-report/Figures/CAMERA.png}
+    \caption{Photoneo Camera \cite{ref2}} 
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=4cm]{Thesis-report/Figures/camera.jpeg}
+    \caption{Camera-mounted setup}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
+
+The camera is built with a parallel stereo charged-coupled device (CCD) camera system to follow the colored region of the RGB marker accurately. This ROI was also separated from the live stream image using blob analysis, and then the 3D coordinates in the world coordinate frame were triangulated.   The 3D coordinates of the marker were transformed into the robot frame of reference (robot stereo vision coordinate system) and used to evaluate the robot path and trajectory planning.   Consequently, our proposed model determines the real-time distance the robot needs to travel along the three axes to select and position an object.\cite{ref15}
+
+The camera's carbon fiber body is lightweight and guarantees the same degree of stiffness as scanners. Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU, which is used for intelligent applications.  One well-suited representative of this category is the 3D scanner range from Photoneo. This method is appropriate for dynamic scenes because it uses sequential (multi-frame) capturing.\cite{ref15}\\
 \subsection{Position of Camera}\\
 \begin{justify}
 When mounting a camera for vision operation, it is best to keep it stable and as close to the robot's work envelope as feasible, without interfering with or restricting the movement of the robot arm. The longer the part must travel from the camera's location into the robot's reachable workspace, the more errors the encoder counts will produce, since the accuracy of conveyor tracking with vision depends on the coordinate transformation between the camera's picture-taking location and the robot's work envelope. The camera must be oriented downwards since the components are positioned on the conveyor belt's surface, and vision recognition is done on the parts' upper surface. For the camera's 25 mm lens to cover the entire visible portion of the conveyor belt, a camera fixture was constructed to hold the camera directly above the upstream sensor. The upstream sensor is also used to activate the camera to take a photo when parts are presented at this point, so the picture-taking location is placed at the top of the upstream sensor. Following their placement in fixed locations, the camera and conveyor must be calibrated using the calibration program on the robot controller to configure the camera's properties and determine how the locations of the camera and conveyor relate to the robot's world coordinate.\cite{ref19}\
@@ -1577,7 +1586,7 @@ Additionally, there are several electromechanical technologies, including
     \item Capacitive
     \item Laser 
 \end{enumerate}
-\newpage
+
 The controller receives counts as the encoder rotates. Assume that the count range is between 0 and 10,000. Since this is an incremental encoder, we know that a full rotation of the shaft records a count of 10,000, but we do not know the exact location. When the entrance photo-eye sensor recognizes the object after it has been placed on the conveyor, the current encoder count will be noted. Assume that $5232$ is the number.\cite{ref26}
 \begin{justify}
     
