@@ -258,7 +258,7 @@ Accurate point clouds and a standard intensity image of the object can be captur
 \end{figure}
 
 The camera is built with a parallel stereo charged-coupled device (CCD) camera system to follow the colored region of the RGB marker accurately. This ROI was also separated from the live stream image using blob analysis, and then the 3D coordinates in the world coordinate frame were triangulated.   The 3D coordinates of the marker were transformed into the robot frame of reference (robot stereo vision coordinate system) and used to evaluate the robot path and trajectory planning.   Consequently, our proposed model determines the real-time distance the robot needs to travel along the three axes to select and position an object.\cite{ref15}
-\newpage
+
 The camera's carbon fiber body is lightweight and guarantees the same degree of stiffness as scanners. Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU, which is used for intelligent applications.  One well-suited representative of this category is the 3D scanner range from Photoneo. This method is appropriate for dynamic scenes because it uses sequential (multi-frame) capturing.\cite{ref15}\\
 
 \subsection{3D Scanning}
@@ -314,7 +314,7 @@ The sensor produces outputs with a resolution of 1068 x 800 when in "one frame" 
 The "scanner mode," which is designed for still photos, is the alternate operating mode.
  The sensor's raw sensoric output in this mode is 1602 × 1200 individual measurements. This is recorded in three consecutive frames. A laser that has been deflected by a mirror illuminates the scene.  The projection's 10 µs per pixel exposure may guarantee constant, motion-blur-free data (benefit 4).\cite{ref15}
 
-\newpage
+
 \subsection{Vision Controller}\\
 The figure 3 below shows the vision controller connected to the Photoneo camera and the robotic controller using Ethernet (IPV4 address).
 \begin{figure}[h]
@@ -654,9 +654,9 @@ where
 \end{description}
 where the 3x6 matrices J ω and J v relate the joint velocities or rates θ to the end-effector angular velocity ω e and velocity v e, respectively. Also, J ω and J v are where J  J (JJ) is the function of θ and the pseudo-inverse of the J matrix. It is possible to rewrite as:\cite{ref19}
 
-\begin{equation}
+  \[
     \Delta x_e = J(\theta) \, \Delta \theta \cite{ref19}
-\end{equation}
+  \]
 
 This is a first-order Taylor expansion and is valid for small $\Delta \theta$.\cite{ref19}
 
@@ -664,23 +664,23 @@ This is a first-order Taylor expansion and is valid for small $\Delta \theta$.\c
 
 If the Jacobian $J(\theta)$ is square and invertible (e.g., for a 6-DOF manipulator), then:\cite{ref19}
 
-\begin{equation}
-    \Delta \theta_k = J_k^{-1} \Delta x_e \cite{ref19}
-\end{equation}
+  \[
+    \Delta \theta_k = J_k^{-1} \Delta x_e ,\cite{ref19}
+  \]
 
 And the joint update becomes:
 
-\begin{equation}
-    \theta_k = \theta_{k-1} + J_k^{-1} \Delta x_e \cite{ref19}
-\end{equation}
+  \[
+    \theta_k = \theta_{k-1} + J_k^{-1} \Delta x_e  \cite{ref19}
+  \]
 
 \section*{Redundant Manipulators and Pseudoinverse Solution}
 
 For manipulators where $J$ is not square (e.g., redundant robots with $n > 6$), we use the Moore–Penrose pseudoinverse $J^\dagger$:\cite{ref19}
 
-\begin{equation}
+  \[
     \theta_k = \theta_{k-1} + J^\dagger \Delta x + (I - J^\dagger J)\Delta \phi \cite{ref19}
-\end{equation}
+  \]
 
 where:
 \begin{itemize}
