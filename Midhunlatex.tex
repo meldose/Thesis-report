@@ -188,7 +188,7 @@ Signature of the student:
 \begin{justify}
 \begin{abstract}{\normalfont\fontsize{14}{16}\bfseries}
 
-The tracking of the conveyor using collaborative robots equipped with vision cameras represents a significant advancement in modern production. This innovative approach enables robots to dynamically interact with moving goods on conveyor belts, enhancing efficiency, precision, and adaptability. Using vision cameras, cobots can accurately detect, locate, and track objects in real-time, accommodating changes in shape, speed, and orientation. With the incorporation of vision technology, robots can now perform tasks such as sorting, assembling, and pick-and-place operations with minimal human assistance. This thesis examines the technical aspects of cobot conveyor tracking, emphasizing the role of vision systems in enhancing automation capabilities, reducing error rates, and facilitating flexible manufacturing environments. The work involves establishing a collaborative environment using cobots for conveyor tracking experiments, which utilizes a vision camera. The primary objective is to enhance the tracking accuracy of objects and capture various shapes on the conveyor belt. The setup includes a cobot, a conveyor belt, one gripper, and an object to be picked up. As the conveyor belt moves these objects, the vision camera captures their images and poses, along with their part coordinate system (PCS). The robot then synchronizes with the objects in a designated capture zone, picking them up and placing them into user-defined locations. 
+The tracking of the conveyor using collaborative robots equipped with vision cameras represents a significant advancement in modern production. This innovative approach enables robots to dynamically interact with moving goods on conveyor belts, enhancing efficiency, precision, and adaptability. Using vision cameras, cobots can accurately detect, locate, and track objects in real-time, accommodating changes in shape, speed, and orientation. With the incorporation of vision technology, robots can now perform tasks such as sorting, assembling, and pick-and-place operations with minimal human assistance. This thesis examines the technical aspects of cobot conveyor tracking, emphasizing the role of vision systems in enhancing automation capabilities, reducing error rates, and facilitating flexible manufacturing environ-ments. The work involves establishing a collaborative environment using cobots for conveyor tracking experiments, which utilizes a vision camera. The primary objective is to enhance the tracking accuracy of objects and capture various shapes on the conveyor belt. The setup includes a cobot, a conveyor belt, one gripper, and an object to be picked up. As the conveyor belt moves these objects, the vision camera captures their images and poses, along with their part coordinate system (PCS). The robot then synchronizes with the objects in a designated capture zone, picking them up and placing them into user-defined locations. 
 \end{justify}
 \newpage
 \chapter{\section{\mbox{Introduction}}{\normalfont\fontsize{14}{16}\bfseries}}
@@ -713,7 +713,7 @@ The workpiece or monitored items that move along the conveyor belt are referred 
 \begin{figure}[h]
     \centering
     \includegraphics[width=15cm]{Thesis-report/Figures/transform.png} 
-    \caption{Homogenous transform}
+    \caption{Homogenous transform \cite{ref25}}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 
@@ -809,6 +809,29 @@ The availability of 3D data is essential for numerous applications in the fields
 
     \item In the belt coordinate system, the z-axis is normal to the belt plane.  By referring to points above the belt plane ($z >= 0$) and inside the belt limits, this alignment of the coordinate axis makes it easier to extract item point clouds on the belt.\cite{ref5}
  \end{enumerate}
+ \subsection{Robotic Motion}\\\\
+Given a point in the world coordinate, the angle of each joint is calculated based on an inverse kinematics (IK) equation. In general, there may be no analytic IK solution from a manipulator for the configurations of each joint. The numerical method is introduced to solve the problem for
+general manipulators. The velocity of the joint can be mapped to Cartesian space with the Jacobian linearization method.\cite{ref19}
+\\
+
+\begin{document}
+
+\[
+v = J(q) \dot{q} \cite{ref19}
+\]
+
+Pseudo-inverse is used to solve the joint:\cite{ref19}\\
+
+\begin{document}
+
+\[
+\dot{q} = J^\dagger \dot{x}, \quad J^\dagger = (J^T J)^{-1} J^T[19]
+\]
+\begin{justify}
+Velocity for the linear velocity in Cartesian space. First, FK is used to determine the manipulator's pose. Next, the IK solver uses a pseudo-inverse calculation to update the joint angles. Until the end tip reaches the desired posture with an acceptable error, these two stages are repeated. If the starting value and changing rate are appropriately calibrated, the dynamic gain causes the speed to reach its maximum and minimum quickly. Joint angles have an impact on the inaccuracy during the iteration process. Inappropriate angles cause the gain to drop dynamically, and vice versa.\cite{ref19}
+
+
+
 
 \subsection{Euler Angles:}\\
 One way to parameterize the space of orientations is with Euler angles.  Euler angles are used to express a universal orientation as a series of rotations along three mutually orthogonal axes in space.  The three axes—x, y, and z—are commonly used in a Cartesian coordinate system.  It is usual to refer to the rotations as "x, y, and z-rolls".
@@ -1134,26 +1157,6 @@ Surface imaging and geometry estimation are the two primary subtasks that compri
 
 
 \label{Literature}
-\subsection{Robotic Motion}\\\\
-Given a point in the world coordinate, the angle of each joint is calculated based on an inverse kinematics (IK) equation. In general, there may be no analytic IK solution from a manipulator for the configurations of each joint. The numerical method is introduced to solve the problem for
-general manipulators. The velocity of the joint can be mapped to Cartesian space with the Jacobian linearization method.\cite{ref19}
-\\
-
-\begin{document}
-
-\[
-v = J(q) \dot{q} \cite{ref19}
-\]
-
-Pseudo-inverse is used to solve the joint:\cite{ref19}\\
-
-\begin{document}
-
-\[
-\dot{q} = J^\dagger \dot{x}, \quad J^\dagger = (J^T J)^{-1} J^T[19]
-\]
-\begin{justify}
-Velocity for the linear velocity in Cartesian space. First, FK is used to determine the manipulator's pose. Next, the IK solver uses a pseudo-inverse calculation to update the joint angles. Until the end tip reaches the desired posture with an acceptable error, these two stages are repeated. If the starting value and changing rate are appropriately calibrated, the dynamic gain causes the speed to reach its maximum and minimum quickly. Joint angles have an impact on the inaccuracy during the iteration process. Inappropriate angles cause the gain to drop dynamically, and vice versa.\cite{ref19}
 \end{justify}
 \subsection{Photoneo Camera}
 \begin{justify}
@@ -1195,86 +1198,7 @@ When mounting a camera for vision operation, it is best to keep it stable and as
 
 The STL file is uploaded to the web interface, thereby helping the camera to identify object in the moving conveyor belt tracking system. Once the object is detected, the camera helps in getting the object's position and its quaternion values.
 
-\subsection{Trajectory Planning}\\
-\begin{justify}
-Using a set of predetermined points, trajectory planning aims to produce stable and fluid motion in world coordinates. A few characteristics, such as the maximum velocity, acceleration, and jerk, will be taken into account to demonstrate the continuous motion of the robot arm. Temporal mobility in a continuous context is distinct.  There are also first and second derivatives for this function. The robot manipulator often vibrates as a result of jerky activity, which also increases wear on the system.\cite{ref23}\\\\
-The fundamental path interpolation functions, such as linear and point-to-point movement, are carried out when the precondition parameters have been addressed. Interpolation, which is determined by previous factors, will produce the path segments. A self-defined function is crucial to the creation of path segments in Cartesian space. Joint command and linear command can both follow the point-to-point movement. Every joint's present condition is indicated in the joint space.\cite{ref23}\\
-\end{justify}
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=5cm]{Thesis-report/Figures/new.png}
-    \caption{Coordinate system\cite{ref23}}
-    \label{fig1.Photoneo Cmaera}
-\end{figure}
-\begin{justify}
-All joints will arrive simultaneously before approaching targets since the velocity is zero at the target point. In contrast to point-to-point motion, linear movement at the end-effector makes it easy to demonstrate the condition from the reference coordinate. The motion will only be linked to one DoF during variation if the current velocity point toward the target position is specified. To execute gripping operations, the robot arm will thereafter alter its motion via path segments. The fundamental path interpolation functions, such as linear and point-to-point movement, are executed when the precondition parameters have been met. Interpolation, which is determined by previous factors, will produce the path segments.\cite{ref23}
-\end{justify}
-\subsection{Tracking Method}\\
-\begin{justify}
-In the preceding part, the picking procedure was put into practice. The robot should be updated with the object's information when it begins to move on the conveyor to use the tracing talent. The tracking technique presents certain difficulties when using a visual control system. First, we must use real-time frame-by-frame image processing to track the objects. Next, we use the average of the previous ten frames as a guide. Second, we must specify the gripper's position about the moving object. Kinects that can identify things and give us depth information in addition to the target’s color are one way to find the locations of the items.   Then, with the data acquired, we develop a technique to acquire 3D coordinates and adjust the scale to the y- and z-axes while accounting for the depth frame, which is the x-axis in Kinect view. Finally, the robot's reaction will complete the grabbing maneuver by following the updated data. Our tracking strategy is divided into three subsections.\cite{ref23}\\ 
 
-By calibrating the y and z axes, we may create a prospective viewpoint to enhance object location after obtaining the past 10 frames as a reference to compare with the present frame. The tracker would ultimately follow the target by the predicted trajectory after we had the position of the tracker and the target.\cite{ref23}\\
-
-Initially, obtain the instantaneous positions of the tracker's (gripper) and the target's (workpiece) instantaneous positions independently once the camera has determined the outlines of objects. First, the contour is the difference between the color frame and the reference and current frames. The coordinates of the items in the depth frame are then obtained. The situation along the x and z axes in the depth frame and the y and z axes from the Kinect color frame are among the desired data.\cite{ref23} \\
-
-The tracker and target belong to different x-y planes; thus, we may utilize a threshold regarding the data along the z-axis in the color frame in the Kinect view to separate the objects. It is referred to as the robot palm if the coordinate along the z-axis is more than the threshold.\cite{ref23}
-\subsection{Position Calibration}\\
-Static pose recognition will end when the tracking approach is activated. The positions of the end effector and object on the conveyor are among the data. The workpiece will proceed through the conveyor in a straight line. Therefore, only the workpieces' positions will be changed, and their orientation will remain unchanged. It is important to keep in mind that the end-effector may follow the following instructions, depending on the tracking approach. This doesn't assist with grabbing articles, though. The gripper should take aim-off into account when doing object tracking to ensure that the entire gripping process is complete. Thus, proper gripping position by the tracking method turns out to be an important point. Without additional indication, the arm might not be aware of some issues that arise on the conveyor.\cite{ref23}
-
-\subsection{Encoder offsets}\\
-The main method for defining robot movements about a conveyor belt is to model the belt using a unique kind of position data called belt variables. The position of a reference frame fixed to the moving belt conveyor is determined by a belt variable, which may be viewed of as a relative transformation with a component variable in time.  Such a belt variable can be used to characterize the relationship between a belt encoder and the position and speed of the reference frame, which maintains a fixed location and orientation for the belt.  The definition of a belt variable is:\cite{ref22}
-
-\[
-\text{DEFBELT} \, \% \text{belt-variable} = \text{nominal-trans}, \, \text{scale factor}\cite{ref22}
-\]
-Belt-variable is the name of the belt variable that needs to be defined; nominal-trans is the value in R6 of the (simple or composed) relative transformation that specifies the position and orientation of the conveyor belt; and the scale factor is a calibrating constant that shows the ratio between the belt's elementary displacement and one encoder pulse. The nominal transformation specifies a position (X, Y, Z) that points to the approximate center of the belt with respect to the robot's base frame, the X axis of the transformation indicates the direction of motion of the belt, and the XY plane defined by this transformation is parallel to the conveyor belt surface.\cite{ref22}\\
-\[
-\text{XYZ-instantaneous} =
-\text{XYZ-nominal} + \text{belt-distance} \cdot \text{vers}(X_{l,\sim,\text{minal\_rrarrv}})\cite{ref22}
-\]
-
-\[
-\text{with} \quad \text{belt-distance} =
-(\text{encoder-count} - \text{encoder-offset}) \cdot \text{scale-factor}
-\]
-Where encoder-count is the encoder's read contents, and encoder-offset is used to determine the belt's reference frame's instantaneous location (x, y) about its nominal location (x, y). Specifically, a displacement carried out by the conveyor can be nullified by using the offset of the belt (by setting the offset value to the current value of the encoder's counter). The conveyor's visual robot tracking system takes into consideration fluctuating belt offsets, which are often altered by software operations.\cite{ref22}
-\[
-\text{SETBELT} \ \% \text{belt-variable} = \text{expression}\cite{ref22}
-\]
-
-For picking-on-the-fly robot tasks, dynamic robot-vision synchronization based on the "look-and-move" cooperation principle is initiated by a fast digital input that detects the occurrence of an external event of the type "an object has completely entered, the conveyor belt window" (and hence is completely visible). A photocell detects this event and uses it to determine whether to take an image of the moving item.\cite{ref22}
-
-\subsection{Moving Calibration Board through Conveyor belt}\\
-The trajectory follows the instructions produced from trajectory planning and eye-in-hand vision each time the robot arm's palm begins to perform a moving task. The border of the conveyor will show up on the top side of the image when viewed through a camera. Because the conveyor's moving path is linear, the robot's motion can be corrected by following the conveyor's edge slope. The line equation in polar coordinates is used to determine the conveyor's line edge. The polar parametric form has the advantage of having no singular condition in the domain of sinusoidal functions.\cite{ref12}
-
-\[
-r = x\cos\theta + y\sin\theta\cite{ref12}
-\]
-\subsection{Transformation of Coordinates:}\\
-To enable the robotic arm to know where to pick and position the target objects, the primary objective of the object coordinate transformations is to convert the target objects' coordinates from the image plane coordinates to the robot base coordinates. The chain of coordinate transformations for a robotic system with eye-to-hand configuration is created by combining the pinhole camera model with the transformation chain for the robotic system with eye-to-hand configuration.\cite{ref3}
-
-\[
-\mathbf{P}_{\text{cam}} = Z \cdot K^{-1} \cdot \mathbf{p}  \cite{ref3}
-\]
-
-where: camera Pobj: [u, v, 1]on the image plane; Pobj: the object point [EX, CY, CZ] in the camera frame.
- The calibration of the eye-to-hand stereo camera yields the intrinsic matrix K in the above equation, and the estimation of depth based on the disparity is used to determine the depth ° Z. The coordinate conversion from the stereo camera frame to the robot base frame is the second operation sequence.  The transformation matrix base Hcam, which is determined from the eye-to-hand calibration, is used to do this.  Combining the first and second operation sequences yields the equation
-
- \[
-\mathbf{P}_{\text{base}} = {}^{\text{base}}T_{\text{cam}} \cdot \mathbf{P}_{\text{cam}} \cite{ref3}
-\]
-
-where: base Pobj: The robot base frame's object point; base  Hcam: The matrix used to convert the robot base frame from the stereo camera frame. Ultimately, the total transformation equation for the entire system is obtained by combining the two equations above. For a robotic system with an eye-to-hand arrangement, the equation below shows the series of coordinate transformations from the image plane to the robot base frame. \cite{ref3}
-
- \[
-\mathbf{P}_{\text{base}} = {}^{\text{base}}T_{\text{cam}} \cdot Z \cdot K^{-1} \cdot \mathbf{p}  \cite{ref3}
-\] 
-
-\\
-
- \[
-\mathbf{P}_{\text{base}} = {}^{\text{base}}T_{\text{cam}} \cdot Z \cdot K^{-1} \cdot \mathbf{p}  \cite{ref3}
-\]
 
 \subsection{Calibration for camera}\\\\
 
@@ -1331,7 +1255,52 @@ The transformation matrix in the equation above that must be computed for the ey
 \end{figure}
 
 The calibration matrix specifies the transformation straight to the robot base coordinate system because the 3D sensor is fixed. With this configuration, the robot's mobility is unrestricted, and it doesn't need to halt during the scan acquisition, unlike with the hand-eye approach.\cite{ref2}
+\subsection{Static Picking:}\\
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=10cm]{Thesis-report/Figures/static.jpeg}
+    \caption{Static Picking}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
 
+Static pick-up is the process of picking items from the conveyor belt when it is not moving. Initially, we keep the object on the conveyor belt and then trigger the camera, which helps in getting the object coordinates to the robotic controller. When the robot receives the data, the robot moves to the target position to pick the required target.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=6.5cm]{Thesis-report/Figures/static_flowchart.png}
+    \caption{Static Picking Flowchart}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
+
+
+\subsection{Dynamic Picking:}\\
+The Dynamic Pick involves the process of picking the items from the moving conveyor belt. Here, the object is passed through the moving conveyor belt, where the camera gets object poses that are passed to the robotic controller, which helps the robot move to the required position.\\
+\begin{figure}[h]
+  \centering
+  \begin{minipage}{0.45\textwidth}
+    \centering
+    \includegraphics[width=4cm]{Thesis-report/Figures/pick.jpeg}
+
+  \end{minipage}%
+  \hspace{5mm}% ← adjust this (or make it negative: e.g. \hspace{-3mm})
+  \begin{minipage}{0.45\textwidth}
+    \centering
+    \includegraphics[width=5cm]{Thesis-report/Figures/picking.jpeg}
+
+  \end{minipage}
+  \caption{Dynamic picking}
+  \label{fig:gripper-combined}
+\end{figure}
+
+For dynamic picking, a typical construction site is needed, and quick, real-time modeling is necessary to support decision-making.  Thus, a quick 3D data collection and processing system is required for real-time modeling of a building site.  Only high-quality, rich 3D datasets of static objects are produced using laser scanners; a typical scan has millions of points.  Furthermore, real-time modeling is not practicable due to the slowness of data collection and processing.  Nevertheless, 3D range cameras provide an additional option by enabling wide-field-of-view, low-cost, automatic tracking and detection of both static and moving objects at frame rates higher than 1 Hz in real-time.\\
+
+The dynamic movement can be explained as follows:
+
+Initially, we pass the object through the running conveyor belt and trigger the camera, where we get the initial and final coordinates. We also calculate the timestamps to get the changes in time. The custom velocity must then be determined, which can be done by dividing the position change by the time change.
+When we pass the object through the conveyor belt, there is a change in position in the X axis, as this is a linear motion of movement. For the robot to know where to go and get the item from the conveyor belt, it must be notified when the object's position changes.  The following formula can be used to adjust for this:: \[ X = X_0 + v\cdot t \] where X₀ where X is the object's starting position.\\
+where X represents the object's starting position\\
+X represents its ending position.\\
+t is the change in time. 
 
 \subsubsection{Calibration Ball}\\\\
 
@@ -1615,6 +1584,7 @@ The fraction of a full revolution is:
 \[
 L_{\text{rev}} = \frac{\Delta C}{N} = \frac{1079}{10{,}000} \cite{ref26}
 \]
+\newpage
 The corresponding angular displacement is:
 
 \[
