@@ -863,7 +863,7 @@ Many applications prefer other orientation representations to avoid both gimbal 
 \begin{itemize}
   \item \textbf{Quaternions.}  It is unique up to a sign, free of singularities, and provides smooth spherical linear interpolation (slerp). \cite{ref20}
   \item \textbf{Rotation Vectors/Axis-Angle.}  One-to-one mapping (except for periodicity and sign and \(2\pi\). \cite{ref20}
-  \item \textbf{Rotation Matrices.}  Despite being over-parameterized (9 integers with 6 restrictions), it is clear and globally non-singular. \cite{ref20}
+  \item \textbf{Rotation Matrices.}  Despite being over-parameterized (9 integers with 6 restr-ictions), it is clear and globally non-singular. \cite{ref20}
 \end{itemize}
 
 \subsubsection{Rotation matrices}\\
@@ -930,7 +930,7 @@ The trapezoid  is:\\
 \centering
 \begin{minipage}{0.38\textwidth} % Adjust width as needed
     \centering
-    \includegraphics[width=4cm]{Thesis-report/Figures/trapezoid_stl.jpg} 
+    \includegraphics[width=6.5cm]{Thesis-report/Figures/trapezoid_stl.jpg} 
     \caption{STL file for Trapezoid object}
     \label{fig:trapezoid_stl}
 \end{minipage}
@@ -1625,7 +1625,8 @@ After the object leaves and is picked up by the exit photo-eye, we record $C_{\m
 \newpage
 \chapter{\section{\mbox{Results and Discussions }}{{\normalfont\fontsize{14}{16}\bfseries}}
 \subsection{Robot TCP Speed vs Conveyor Speed}
-The robot's tool-center-point (TCP) speed is plotted against the belt speed in the red circles, which show the measured TCP speeds, whereas the blue line represents the identity (conveyor speed). The robot's mean TCP speed increases approximately linearly from 0.08\,m/s to 0.31\,m/s as the belt speed increases from 1.00\,m/s to 2.00\,m/s, constantly trailing the conveyor.
+The tool-center-point (TCP) speed of the robot is compared to the belt speed.
+ The solid blue line indicates the 1:1 identity line, or flawless conveyor tracking, while the red circles plot the average TCP speed over several passes of the robot's end effector.  The robot's average TCP speed increases nearly linearly from 0.08 m/s to 0.31 m/s while the belt speed is scaled from 1.00 m/s to 2.00 m/s, continuously trailing the conveyor by 0.20 to 0.25 m/s.The TCP speed only increases by roughly 0.26 m/s for every 1 m/s increase in belt speed, according to a linear fit (dashed gray) that produces a slope of roughly 0.26 (R2 = 0.995).  When trying to match the belt's high-speed motion, the robot's dynamic limits—inertia, joint acceleration limitations, and control bandwidth—are the main cause of this systematic shortfall.  Comprehending this lag is essential for organizing pick-and-place tasks in high-throughput environments since it establishes a maximum allowable belt speed for dependable part movement.
 \begin{figure}[h]
     \centering
     \includegraphics[width=9cm]{Thesis-report/Figures/conveyor_speed vs Robot tcp speed.png}
@@ -1635,8 +1636,9 @@ The robot's tool-center-point (TCP) speed is plotted against the belt speed in t
 
 
 \subsection{Success Rate vs Conveyor Speed}
-Figure 52 below shows the success rate for dynamic picking of trapezoid and pipe objects(for future test) at belt speeds between 1.0\,m/s and 2.0\,m/s. During the dynamic picking tests, the robot maintained a higher success rate on trapezoid objects compared to pipes.
-
+\begin{justify}
+Figure 52 compares how effectively our robotic arm picks two shapes—trapezoidal blocks and cylindrical pipes—from a conveyor belt moving between 1.0 m/s and 2.0 m/s. As the belt speeds up, both success rates steadily drop: trapezoid grasps fall from 90 percent at 1.0 m/s to 85 percent at 2.0 m/s, while pipe grasps decline more sharply from 70 percent down to 60 percent. Throughout the range, trapezoids outperform pipes by about 20–25 perc-entage points, thanks to their flat faces and edges that give the gripper firm, predictable contact—whereas smooth, round pipes tend to slip or roll under slight misalignments.
+\end{justify
 \begin{figure}[h]
     \centering
     \includegraphics[width=9cm]{Thesis-report/Figures/conveyor_speed vs success_rates.png}
@@ -1645,7 +1647,7 @@ Figure 52 below shows the success rate for dynamic picking of trapezoid and pipe
 \end{figure}
 
 \subsection{Average Pick Time vs Conveyor Speed}
-The average pick time per item is plotted in Figure 53 below. The red line with circular markers shows that pick times increase from approximately 0.5\,s at 1.0\,m/s to 1.5\,s at 2.0\,m/s, indicating that higher belt speeds result in longer pick durations.
+Conveyor belt speed and the amount of time it takes an operator (or automated picker) to grab and remove a single item are related, as shown in Figure 53.  Belt speed, which we varied in discrete increments from 1.0 m/s to 2.0 m/s, is plotted along the horizontal axis. The corresponding average pick time, calculated over 50 trials at each speed setting to assure statistical reliability, is plotted on the vertical axis.The average pick time is about 0.5 s at the slowest tested speed of 1.0 m/s.  Pick time grows nearly linearly with belt speed: at 1.2 m/s, it rises to around 0.7 s, at 1.4 m/s, it reaches 0.9 s, and so on, until the average pick time reaches approximately 1.5 s at the top speed of 2.0 m/s.  The kinematic demands of reaching for, gripping, and safely removing things become significantly more difficult as the belt moves faster, as evidenced by the continuous, almost one-second rise in pick time for every 1 m/s of additional belt speed.
 
 \begin{figure}[h]
     \centering
@@ -1655,8 +1657,8 @@ The average pick time per item is plotted in Figure 53 below. The red line with 
 \end{figure}
 
 
-\subsections{Average Pick Time vs Lighting Condition}
-Figure 54 below contrasts the robot's picking performance under bright and dim lighting for pipes and trapezoids. Under bright light, the success rates are 80\% for pipes and 90\% for trapezoids. In dim light, success drops to 60\% for pipes and 80\% for trapezoids, showing that dimmed illumination affects pipe handling more severely.
+\subsection{Average Pick Time vs Lighting Condition}
+The robot's capacity to select two distinct part geometries—pipes and trapezoidal blo-cks under two lighting conditions—bright and dim—is contrasted in Figure 54.  The technology obtains an 80 percent pick success rate on cylindrical pipe segments and a 90 percent success rate on trapezoidal sections when the workcell is saturated with uniform, high-intensity illumination.  However, both rates decrease and the effect is noticeably worse for the pipes when the overhead lights are turned down to mimic low-illumination or "after-hours" conditions. The trapezoid rate barely decreases by 10 percentage points (from 90 to 80 percent) in low light, whereas the pipe pick rate decreases by 20 percentage points (from 80 to 60 percent).  This asymmetric degradation implies that the grasping method or vision algorithms employed for cylindrical objects are less contrasted, more susceptible to glare, and more sensitive to shadows than those calibrated for flat-faced parts.  Adaptive lighting control targeted at critical regions or more robust edge-detection under low contrast are two examples of future improvements that could help close the performance gap and guarantee consistently high pick rates across all part types. The results also highlight two important insights: first, adequate and evenly distributed lighting is essential for reliable handling of round objects.
 
 \begin{figure}[h]
     \centering
