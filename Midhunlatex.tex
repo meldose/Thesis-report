@@ -261,97 +261,7 @@ The camera is built with a parallel stereo charged-coupled device (CCD) camera s
 
 The camera's carbon fiber body is lightweight and guarantees the same degree of stiffness as scanners. Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU, which is used for intelligent applications.  One well-suited representative of this category is the 3D scanner range from Photoneo. This method is appropriate for dynamic scenes because it uses sequential (multi-frame) capturing.\cite{ref15}\\
 
-\subsection{3D Scanning}
-The act of gathering data from an object's surface and turning it into data points is known as 3D scanning. These data points are utilized for a digital replication of the scanned object or for a dimension analysis.\cite{ref17}\\
 
-\subsection{Types of 3D scanning}
-
-\subsubsection {Laser Scanning}
-Two devices are often used in laser scanning; one directs a laser beam onto a surface, and the other records the precise spot where the object contacts the beam. The angle of reflection and the distance between the surface and the scanner can be determined via triangulation.  Time of flight measurement, structured light scanning, stereophoto-grammetry, laser interferometry, and many other techniques are comparable to the Train-gulation method.\cite{ref17}.
-
-\subsubsection {Structure Light Scanning}
-This technology projects structured light patterns, such as simple geometric patterns or parallel lines, onto a surface.  The object's shape will cause the patterns to distort.  It is feasible to rebuild the scanned surface using a camera to analyze these deformations, distinguish edges, and determine the separation between the item and the scanner \cite{ref17}.
-
-\subsection {Photogrammetry}
-Triangulation is used in photogrammetry to intersect particular points within 2D images based on the angles at which those points can be found. The size, quantity, and quality of the item's images all have a big impact on creating an appropriate 3D model. \cite{ref15}
-
-\subsection{Time fo Flight}
-The time of flight is a measure of how long it takes light to move from an illumination source to a scene and back. The main barrier in this case is the speed of light itself.  Time is typically measured using a modulated signal's phase shift. High pixel modulation frequencies must be used to achieve a respectable level of depth accuracy. The primary drawback in this case is physics, since a greater frequency results in less charge transfer, which lowers contrast and Signal‑to‑Noise Ratio. The restriction suggests an accuracy level that ToF systems can achieve. Usually, it falls within the centimeter range. Another issue is interreflections, which can significantly bend the surface.\cite{ref15}
-
-\subsection{Active stereo}
-By projecting a synthetic texture onto an object, active stereo addresses the unreliable passive stereo. Nevertheless, it still has to resolve the computationally demanding picture correspondence matching problem. Because of the complexity of the matching problem, the projected texture can be either high frequency, which can satisfy a higher resolution but usually has poor reliability, or low frequency, which typically uses random laser dots and can provide higher reliability but poor resolution (the features 15 are sparse).\cite{ref15}
-
-\subsection{Structured patterns/dots}
-A spatially encoded pattern is used in structured patterns/dots technology to encode depth disparity information into pattern patches, which are usually projected through a laser diffraction grating in the form of a carefully planned dot collection. The camera needs to be able to see enough of the patch in order to properly record the depth information and reconstruct the code. This produces artifacts on the surfaces' edges and tiny objects. To reconstitute individual dots in the projection (and hence 3D measurements), the Nyquist-Shannon theorem necessitates an order of magnitude better camera resolution. Modern systems use about 25 camera pixels for each 3D measurement, producing about 70k 3D points. \cite{ref15}
-
-\subsection{Parallel Structured Light}
-
-Parallel Structured Light parallelizes the sequential structured light using a sophisticated sensor design, which enables it to record the scene illuminated by various patterns. In addition to sharing many of the sequential structured light's benefits, such as resolution and accuracy, it also overcomes one of its main drawbacks: the inability to capture a dynamic environment. Photoneo's Parallel Structured Light gets around the restriction by projecting and capturing numerous encoded patterns. Pixel modulations within our proprietary CMOS sensor are used to accomplish this. Multiple groups of separately modified pixels make up the sensor itself. \cite{ref15} \\
-
-
-The Parallel Structured Light's main advantages are:
-\begin{enumerate}
- \item  Rapid motion scanning: 40 m/s motion is achieved with single frame acquisition [15].
-\item A more effective depth coding method with accurate, per-pixel measurement that offers ten times greater resolution and accuracy than rival technologies\cite{ref15}
- \item No motion blur: exposure time of 10 µs per pixel\cite{ref15}
- \item Quick capture of 1068 x 800 point clouds at 60 frames per second\cite{ref15}
-\item Patent-pending active ambient light rejection technology for outdoor use in direct sunlight\cite{ref15}
- \item Active rejection of ambient light through interreflection suppression\cite{ref15}
-\item Several devices using the same space at the same time\cite{ref15}\\
-\end{enumerate}
-
-A control unit that operates in tandem with the projection is in charge of these groups. The coded patterns are inserted into the groups rather than changing the projection itself. The coded patterns injected at the end of the frame may cause the sensor to produce more than 20 different virtual representations of the scene.  Any pattern commonly used for sequential structured light can be utilized to adapt the universal approach on the fly to suit different materials and light sources. \cite{ref15}\\
-
-After undergoing embedded processing, these virtual images are sent via gigabit Ethernet to a client PC.  Three types of outputs are provided by the sensor: \cite{ref15}
-\begin{enumerate}
-    \item Point Cloud: 32 bits per channel  XYZ \cite{ref15}
-    \item 32 bits per channel is the normal map.  XYZ \cite{ref15}
-    \item Texture: Grayscale, 10/12 bits \cite{ref15}
-\end{enumerate}
-
-The sensor produces outputs with a resolution of 1068 x 800 when in "one frame" camera mode.  Approximately 500k individual measurements were used to interpolate these positions. The typical z-noise standard deviation at a distance of one meter is less than 0.5 mm (key advantage 1).  Because of the pixel design, each photon makes the best possible contribution to the 3D measurement.  The technology surpasses its rivals and offers the best XYZ resolution thanks to sub-pixel accuracy coding (high z-precision) and an efficiency of just 4.5 pixels per 3D measurement (benefit 2). \cite{ref15}\\
-
-The "scanner mode," which is designed for still photos, is the alternate operating mode.
- The sensor's raw sensoric output in this mode is 1602 × 1200 individual measurements. This is recorded in three consecutive frames. A laser that has been deflected by a mirror illuminates the scene.  The projection's 10 µs per pixel exposure may guarantee constant, motion-blur-free data (benefit 4).\cite{ref15}
-
-
-\subsection{Vision Controller}\\
-The figure 3 below shows the vision controller connected to the Photoneo camera and the robotic controller using Ethernet (IPV4 address).
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=4cm]{Thesis-report/Figures/vision controller.png}
-    \caption{Vision Controller \cite{ref2}}
-    \label{fig1.Photoneo Cmaera}
-\end{figure}
-The vision controller is connected to a PC through the web interface to trigger the camera and see the Web interface for communication.To connect the 3D sensor, gigabit Ethernet connections of Cat5e or above are needed.  Multiple 3D sensors can be connected using a gigabit switch.  Multiple 3D sensors can be connected using a gigabit switch. The Ethernet connection from the switch or 3D sensor is linked to the scanner's physical network port in both scenarios. To visualize 3D scans, calibrate robot cameras, and establish localization settings, a connection to the 3D sensor is required.\cite{ref15\\
-
-To set up the network interface that the vision controller uses to connect to the Photoneo 3D sensor(s), enter the Network page and select the Scanner Interface section. Both a fixed IPv6 link-local address and a programmable IPv4 address are features of Photoneo 3D sensors.\cite{ref15
-\newpage
-\subsection{Marker Pattern}\\
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=4cm]{Thesis-report/Figures/marker_pattern.png}
-    \caption{Marker Pattern \cite{ref2}
-    \label{fig1.Photoneo Cmaera}
-\end{figure}
-Figure 4 above shows the S30 calibration board that helps calibrate the conveyor belt, which aligns the coordinates of the object with the conveyor belt for objects passing through the belt. To enable the robot to retrieve objects from the moving conveyor belt, the belt can be used to align the object coordinates with the conveyor belt. \cite{ref2}
-
-\subsection{Active ambient light rejection:}\\
-The inability of all area-based 3D sensors to function in direct sunshine is a typical problem.  Direct sunshine has a maximum power output of 1120 W/m³.  High-end band-pass filters installed in all of Photoneo's sensors lower ambient light levels to around 15 W/m².  Although it can oversaturate the image or produce high shot noise, this still performs better than the majority of projection systems.
- Delivering active lighting as a brief pulse, which raises the projection's optical power output and shortens the system's exposure time overall, is one way to lessen the impact of ambient light.  This method has drawbacks, such as limited parts availability, complicated power supply management, hazards to eye safety, or problems with heat control.\cite{ref15}\\
-
-The sensor and projection can cooperate to regulate the light sensitivity of the sensor surface through active ambient light suppression. The direct reflection of the projection at any one time during the acquisition may only reveal about 1 percent of the sensor surface due to geometrical constraints.  The remaining 99 percent of the sensor can be turned off by the camera's control circuit, preventing any photoelectrons from being collected.  Scanning in direct sunshine is made possible by the technology's efficient 1:100 suppression of ambient light from any source (key benefit 5). \cite{ref15}\\
-
-The same method significantly reduces internal reflections between pixels at the same 1:100 ratio (important advantage 6).  The technique rejects the second scanner's projection in 99 percent of the image when two sensors are working in the same area at the same time, affecting only 1 percent of the pixels. It is simple to recognize and remove these pixels from the output (key advantage 7). \cite{ref15}
- 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=12cm]{Thesis-report/Figures/scanningdistance.jpg}
-    \caption{Point Size vs. Scanning Distance}
-    \label{fig1.Photoneo Cmaera}
-\end{figure}\\
-
-Figure 5 above shows the scanning distance of various cameras vs. their point size. The M+ Range camera has been utilized in this instance. \cite{ref15}
 
 \chapter{\section{\mbox{Literature Review }}{{\normalfont\fontsize{14}{16}\bfseries}}
 
@@ -361,17 +271,17 @@ Figure 5 above shows the scanning distance of various cameras vs. their point si
 
 \subsection{Robotic Conveyor Tracking}
 
-Early work on visually guided conveyor tracking focused on 2D cameras and simple background-subtraction methods. Ik Sang Shin, Sang-Hyun Geun, Rodney G. Roberts, Seungbin B. Moon Demonstrated frame-difference object detection combined with 2D template matching to locate parts on a belt in real time, but had issues with homogeneous lighting and occlusion: Conveyor Visual Tracking using Robot Vision. Park and B. H. Lee formulated the conveyor-tracking problem as a constrained trajectory‐planning task for 6-DOF manipulators, minimizing steady-state tracking error and actuator torques: An Approach to Robot Motion Analysis and Planning for Conveyor Tracking. More recently, Izhe Zhang, Lianjun Li†, Michael Ripperger, Jorge Nicho, Malathi Veeraraghavan, and Andrea Fumagalli integrated time-of-flight ranging with color segmentation to classify and track parcels at higher belt speeds, achieving sub-5 mm positional accuracy at 1 m/s: A Conveyor-Belt Based Pick-and-Sort
-Industrial Robotics Application. \\\\ 
-
+Early work on visually guided conveyor tracking focused on 2D cameras and simple background-subtraction methods.\cite{ref12} Ik Sang Shin, Sang-Hyun Geun, Rodney G. Roberts, Seungbin B. Moon Demonstrated frame-difference object detection combined with 2D template matching to locate parts on a belt in real time, but had issues with homogeneous lighting and occlusion: Conveyor Visual Tracking using Robot Vision.\cite{ref14} Park and B. H. Lee formulated the conveyor-tracking problem as a constrained trajectory‐planning task for 6-DOF manipulators, minimizing steady-state tracking error and actuator torques: An Approach to Robot Motion Analysis and Planning for Conveyor Tracking. More recently,\cite{ref9} Izhe Zhang, Lianjun Li†, Michael Ripperger, Jorge Nicho, Malathi Veeraraghavan, and Andrea Fumagalli integrated time-of-flight ranging with color segmentation to classify and track parcels at higher belt speeds, achieving sub-5 mm positional accuracy at 1 m/s: A Conveyor-Belt Based Pick-and-Sort
+Industrial Robotics Application. \\
+\end{justify}
 \subsection{3D Vision Systems and Depth Sensing}
-The shift from 2D to 3D sensing has been driven by affordable structured light and ToF cameras. Photoneo’s MotionCam 3D M+ uses Parallel Structured Light to capture 1068 × 800 depth frames at 60 Hz, merging per-pixel depth with intensity for robust object detection under ambient light: Locator Studio Manual, Photoneo. Miguel Fernandez showed how ToF depth data can be converted from spherical to Cartesian coordinates for conveyor-based pick-and-place, with typical z-noise under 0.5 mm at 1 m distance: Scan to 3D Model and parametric data system implementation. Guor-Yieh Luo, Ming-Yang Cheng, Chia-Ling Chiang, extended this by fusing stereo vision point clouds with ToF to improve tracking through partial occlusions, Object Pick-and-Place Tasks of Industrial-Manipulator.\\
+The shift from 2D to 3D sensing has been driven by affordable structured light and ToF cameras.\cite{ref2} Photoneo’s MotionCam 3D M+ uses Parallel Structured Light to capture 1068 × 800 depth frames at 60 Hz, merging per-pixel depth with intensity for robust object detection under ambient light: Locator Studio Manual, Photoneo. Miguel Fernandez showed how ToF depth data can be converted from spherical to Cartesian coordinates for conveyor-based pick-and-place, with typical z-noise under 0.5 mm at 1 m distance: Scan to 3D Model and parametric data system implementation.\cite{ref3} Guor-Yieh Luo, Ming-Yang Cheng, Chia-Ling Chiang, extended this by fusing stereo vision point clouds with ToF to improve tracking through partial occlusions, Object Pick-and-Place Tasks of Industrial-Manipulator.\\
 
 
 \subsection{Calibration Techniques (Hand–Eye and Extrinsic)}\\
-Accurate hand-eye and extrinsic calibration is critical for mapping camera coordinates into the robot base frame. Standard methods use a calibration rig (ball or checkerboard) and solve for the transform ${}^{\rm base}H_{\rm cam}$ via least‐squares on multiple correspondences: Guor-Yieh Luo, Ming-Yang Cheng, Chia-Ling Chiang: Vision-Based 3-D Object Pick-and-Place Tasks of Industrial Manipulator. Locator Studio Manual, Photoneo-automated lidar–camera extrinsic calibration with a hemispherical target, yielding sub‐millimeter accuracy over nine poses:  Photoneo’s web interface further streamlines extrinsic setup by guiding users through nine sample points and reporting an overall accuracy score in millimeters: Locator Studio Manual, Photoneo.
+Accurate hand-eye and extrinsic calibration is critical for mapping camera coordinates into the robot base frame. Standard methods use a calibration rig (ball or checkerboard) and solve for the transform ${}^{\rm base}H_{\rm cam}$ via least‐squares on multiple correspondences: \cite{ref3} Guor-Yieh Luo, Ming-Yang Cheng, Chia-Ling Chiang: Vision-Based 3-D Object Pick-and-Place Tasks of Industrial Manipulator. Locator Studio Manual, Photoneo-automated lidar–camera extrinsic calibration with a hemispherical target, yielding sub‐millimeter accuracy over nine poses:\cite{ref2}  Photoneo’s web interface further streamlines extrinsic setup by guiding users through nine sample points and reporting an overall accuracy score in millimeters: Locator Studio Manual, Photoneo.
 
-\subsection{Dynamic Object Tracking and Path Planning} Real-time tracking of moving parts requires coupling vision updates with trajectory replanning. Adil Shahzadi, Xueshan Gao, Awais Yasin, Kamran Javed, and Syed-Muhammad Anwar proposed a vision‐based path planning framework where each new depth frame triggers a local replanning via a fast pseudo‐inverse Jacobian update, ensuring collision‐free, smooth motion: A Vision-Based Path Planning and Object Tracking Framework for 6-DOF Robotic Manipulator. Wunsch and Hirzinger introduced dynamic occlusion handling in 3D by predicting object pose through Kalman filtering of multi‐view point clouds: Real-Time Visual Tracking of 3-D Objects with Dynamic Handling of Occlusion. Amit Agrawal, Yu Sun, John Barnwell, Ramesh Raskar Demonstrated shadow‐casting to enhance grasp edges, reducing processing latency in high‐speed pick‐and‐place: Vision-guided-Robot
+\subsection{Dynamic Object Tracking and Path Planning} Real-time tracking of moving parts requires coupling vision updates with trajectory replanning.\cite{ref1}  Adil Shahzadi, Xueshan Gao, Awais Yasin, Kamran Javed, and Syed-Muhammad Anwar proposed a vision‐based path planning framework where each new depth frame triggers a local replanning via a fast pseudo‐inverse Jacobian update, ensuring collision‐free, smooth motion: A Vision-Based Path Planning and Object Tracking Frame-work for 6-DOF Robotic Manipulator. \cite{ref4}Wunsch and Hirzinger introduced dynamic occlusion handling in 3D by predicting object pose through Kalman filtering of multi‐view point clouds: Real-Time Visual Tracking of 3-D Objects with Dynamic Handling of Occlusion.\cite{ref7} Amit Agrawal, Yu Sun, John Barnwell, Ramesh Raskar Demonstrated shadow‐casting to enhance grasp edges, reducing processing latency in high‐speed pick‐and‐place: Vision-guided-Robot
 System for Picking Objects by Casting Shadows.
 
 \subsection{Gaps and Research Directions}
@@ -505,6 +415,97 @@ The RobotiQ 140 gripper is a two-finger gripper that mainly works under the prin
   \label{fig:robotiq_140}
 \end{figure}
 \FloatBarrier
+\subsection{3D Scanning}
+The act of gathering data from an object's surface and turning it into data points is known as 3D scanning. These data points are utilized for a digital replication of the scanned object or for a dimension analysis.\cite{ref17}\\
+
+\subsection{Types of 3D scanning}
+
+\subsubsection {Laser Scanning}
+Two devices are often used in laser scanning; one directs a laser beam onto a surface, and the other records the precise spot where the object contacts the beam. The angle of reflection and the distance between the surface and the scanner can be determined via triangulation.  Time of flight measurement, structured light scanning, stereophoto-grammetry, laser interferometry, and many other techniques are comparable to the Train-gulation method.\cite{ref17}.
+
+\subsubsection {Structure Light Scanning}
+This technology projects structured light patterns, such as simple geometric patterns or parallel lines, onto a surface.  The object's shape will cause the patterns to distort.  It is feasible to rebuild the scanned surface using a camera to analyze these deformations, distinguish edges, and determine the separation between the item and the scanner \cite{ref17}.
+
+\subsection {Photogrammetry}
+Triangulation is used in photogrammetry to intersect particular points within 2D images based on the angles at which those points can be found. The size, quantity, and quality of the item's images all have a big impact on creating an appropriate 3D model. \cite{ref15}
+
+\subsection{Time fo Flight}
+The time of flight is a measure of how long it takes light to move from an illumination source to a scene and back. The main barrier in this case is the speed of light itself.  Time is typically measured using a modulated signal's phase shift. High pixel modulation frequencies must be used to achieve a respectable level of depth accuracy. The primary drawback in this case is physics, since a greater frequency results in less charge transfer, which lowers contrast and Signal‑to‑Noise Ratio. The restriction suggests an accuracy level that ToF systems can achieve. Usually, it falls within the centimeter range. Another issue is interreflections, which can significantly bend the surface.\cite{ref15}
+
+\subsection{Active stereo}
+By projecting a synthetic texture onto an object, active stereo addresses the unreliable passive stereo. Nevertheless, it still has to resolve the computationally demanding picture correspondence matching problem. Because of the complexity of the matching problem, the projected texture can be either high frequency, which can satisfy a higher resolution but usually has poor reliability, or low frequency, which typically uses random laser dots and can provide higher reliability but poor resolution (the features 15 are sparse).\cite{ref15}
+
+\subsection{Structured patterns/dots}
+A spatially encoded pattern is used in structured patterns/dots technology to encode depth disparity information into pattern patches, which are usually projected through a laser diffraction grating in the form of a carefully planned dot collection. The camera needs to be able to see enough of the patch in order to properly record the depth information and reconstruct the code. This produces artifacts on the surfaces' edges and tiny objects. To reconstitute individual dots in the projection (and hence 3D measurements), the Nyquist-Shannon theorem necessitates an order of magnitude better camera resolution. Modern systems use about 25 camera pixels for each 3D measurement, producing about 70k 3D points. \cite{ref15}
+
+\subsection{Parallel Structured Light}
+
+Parallel Structured Light parallelizes the sequential structured light using a sophisticated sensor design, which enables it to record the scene illuminated by various patterns. In addition to sharing many of the sequential structured light's benefits, such as resolution and accuracy, it also overcomes one of its main drawbacks: the inability to capture a dynamic environment. Photoneo's Parallel Structured Light gets around the restriction by projecting and capturing numerous encoded patterns. Pixel modulations within our proprietary CMOS sensor are used to accomplish this. Multiple groups of separately modified pixels make up the sensor itself. \cite{ref15} \\
+
+
+The Parallel Structured Light's main advantages are:
+\begin{enumerate}
+ \item  Rapid motion scanning: 40 m/s motion is achieved with single frame acquisition [15].
+\item A more effective depth coding method with accurate, per-pixel measurement that offers ten times greater resolution and accuracy than rival technologies\cite{ref15}
+ \item No motion blur: exposure time of 10 µs per pixel\cite{ref15}
+ \item Quick capture of 1068 x 800 point clouds at 60 frames per second\cite{ref15}
+\item Patent-pending active ambient light rejection technology for outdoor use in direct sunlight\cite{ref15}
+ \item Active rejection of ambient light through interreflection suppression\cite{ref15}
+\item Several devices using the same space at the same time\cite{ref15}\\
+\end{enumerate}
+
+A control unit that operates in tandem with the projection is in charge of these groups. The coded patterns are inserted into the groups rather than changing the projection itself. The coded patterns injected at the end of the frame may cause the sensor to produce more than 20 different virtual representations of the scene.  Any pattern commonly used for sequential structured light can be utilized to adapt the universal approach on the fly to suit different materials and light sources. \cite{ref15}\\
+
+After undergoing embedded processing, these virtual images are sent via gigabit Ethernet to a client PC.  Three types of outputs are provided by the sensor: \cite{ref15}
+\begin{enumerate}
+    \item Point Cloud: 32 bits per channel  XYZ \cite{ref15}
+    \item 32 bits per channel is the normal map.  XYZ \cite{ref15}
+    \item Texture: Grayscale, 10/12 bits \cite{ref15}
+\end{enumerate}
+
+The sensor produces outputs with a resolution of 1068 x 800 when in "one frame" camera mode.  Approximately 500k individual measurements were used to interpolate these positions. The typical z-noise standard deviation at a distance of one meter is less than 0.5 mm (key advantage 1).  Because of the pixel design, each photon makes the best possible contribution to the 3D measurement.  The technology surpasses its rivals and offers the best XYZ resolution thanks to sub-pixel accuracy coding (high z-precision) and an efficiency of just 4.5 pixels per 3D measurement (benefit 2). \cite{ref15}\\
+
+The "scanner mode," which is designed for still photos, is the alternate operating mode.
+ The sensor's raw sensoric output in this mode is 1602 × 1200 individual measurements. This is recorded in three consecutive frames. A laser that has been deflected by a mirror illuminates the scene.  The projection's 10 µs per pixel exposure may guarantee constant, motion-blur-free data (benefit 4).\cite{ref15}
+
+
+\subsection{Vision Controller}\\
+The figure 3 below shows the vision controller connected to the Photoneo camera and the robotic controller using Ethernet (IPV4 address).
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=4cm]{Thesis-report/Figures/vision controller.png}
+    \caption{Vision Controller \cite{ref2}}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
+The vision controller is connected to a PC through the web interface to trigger the camera and see the Web interface for communication.To connect the 3D sensor, gigabit Ethernet connections of Cat5e or above are needed.  Multiple 3D sensors can be connected using a gigabit switch.  Multiple 3D sensors can be connected using a gigabit switch. The Ethernet connection from the switch or 3D sensor is linked to the scanner's physical network port in both scenarios. To visualize 3D scans, calibrate robot cameras, and establish localization settings, a connection to the 3D sensor is required.\cite{ref15\\
+
+To set up the network interface that the vision controller uses to connect to the Photoneo 3D sensor(s), enter the Network page and select the Scanner Interface section. Both a fixed IPv6 link-local address and a programmable IPv4 address are features of Photoneo 3D sensors.\cite{ref15
+\newpage
+\subsection{Marker Pattern}\\
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=4cm]{Thesis-report/Figures/marker_pattern.png}
+    \caption{Marker Pattern \cite{ref2}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
+Figure 4 above shows the S30 calibration board that helps calibrate the conveyor belt, which aligns the coordinates of the object with the conveyor belt for objects passing through the belt. To enable the robot to retrieve objects from the moving conveyor belt, the belt can be used to align the object coordinates with the conveyor belt. \cite{ref2}
+
+\subsection{Active ambient light rejection:}\\
+The inability of all area-based 3D sensors to function in direct sunshine is a typical problem.  Direct sunshine has a maximum power output of 1120 W/m³.  High-end band-pass filters installed in all of Photoneo's sensors lower ambient light levels to around 15 W/m².  Although it can oversaturate the image or produce high shot noise, this still performs better than the majority of projection systems.
+ Delivering active lighting as a brief pulse, which raises the projection's optical power output and shortens the system's exposure time overall, is one way to lessen the impact of ambient light.  This method has drawbacks, such as limited parts availability, complicated power supply management, hazards to eye safety, or problems with heat control.\cite{ref15}\\
+
+The sensor and projection can cooperate to regulate the light sensitivity of the sensor surface through active ambient light suppression. The direct reflection of the projection at any one time during the acquisition may only reveal about 1 percent of the sensor surface due to geometrical constraints.  The remaining 99 percent of the sensor can be turned off by the camera's control circuit, preventing any photoelectrons from being collected.  Scanning in direct sunshine is made possible by the technology's efficient 1:100 suppression of ambient light from any source (key benefit 5). \cite{ref15}\\
+
+The same method significantly reduces internal reflections between pixels at the same 1:100 ratio (important advantage 6).  The technique rejects the second scanner's projection in 99 percent of the image when two sensors are working in the same area at the same time, affecting only 1 percent of the pixels. It is simple to recognize and remove these pixels from the output (key advantage 7). \cite{ref15}
+ 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=12cm]{Thesis-report/Figures/scanningdistance.jpg}
+    \caption{Point Size vs. Scanning Distance}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}\\
+
+Figure 5 above shows the scanning distance of various cameras vs. their point size. The M+ Range camera has been utilized in this instance. \cite{ref15}
 \chapter{\section{\mbox{Inverse Kinematics }}{{\normalfont\fontsize{14}{16}\bfseries}}
 The system model includes a non-redundant robot manipulator with n degrees of freedom and a conveyor belt system. The following attributes are assumed to be present in the system model: \cite{ref14}\\
 1) The conveyor belt system runs at constant velocity, and the
