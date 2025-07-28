@@ -506,7 +506,7 @@ The same method significantly reduces internal reflections between pixels at the
 \end{figure}\\
 
 Figure 5 above shows the scanning distance of various cameras vs. their point size. The M+ Range camera has been utilized in this instance. \cite{ref15}
-\chapter{\section{\mbox{Inverse Kinematics }}{{\normalfont\fontsize{14}{16}\bfseries}}
+\chapter{\subsection{\mbox{Inverse Kinematics }}{{\normalfont\fontsize{14}{16}\bfseries}}
 The system model includes a non-redundant robot manipulator with n degrees of freedom and a conveyor belt system. The following attributes are assumed to be present in the system model: \cite{ref14}\\
 1) The conveyor belt system runs at constant velocity, and the
 part is stationary relative to the conveyor belt system. \cite{ref14}\\
@@ -661,7 +661,7 @@ where the 3x6 matrices J ω and J v relate the joint velocities or rates θ to t
 
 This is a first-order Taylor expansion and is valid for small $\Delta \theta$.\cite{ref19}
 
-\section*{Inverse Kinematics Using Jacobian}
+\subsection{Inverse Kinematics Using Jacobian}
 
 If the Jacobian $J(\theta)$ is square and invertible (e.g., for a 6-DOF manipulator), then:\cite{ref19}
 
@@ -675,7 +675,7 @@ And the joint update becomes:
     \theta_k = \theta_{k-1} + J_k^{-1} \Delta x_e  \cite{ref19}
   \]
 
-\section*{Redundant Manipulators and Pseudoinverse Solution}
+\subsection{Redundant Manipulators and Pseudoinverse Solution}
 
 For manipulators where $J$ is not square (e.g., redundant robots with $n > 6$), we use the Moore–Penrose pseudoinverse $J^\dagger$:\cite{ref19}
 
@@ -690,7 +690,7 @@ where:
     \item $\Delta \phi$ is a secondary objective function direction (e.g., for obstacle avoidance or joint limit avoidance).\cite{ref19}
 \end{itemize}
 
-\section*{Jacobian Construction}
+\subsection{Jacobian Construction}
 
 Every column in the Jacobian matrix represents a joint's contribution to the motion of the end-effector:
 \begin{itemize}
@@ -763,7 +763,7 @@ For this part, it is quite simple. This transformation is about the movement of 
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 \newpage
-\section{Robotic Movement:}
+\subsection{Robotic Movement:}
 The robotic movement can be performed with 3 methods called Servo X, Servo J, and Movelinear.\
 \begin{itemize}
     \item ServoX
@@ -789,22 +789,21 @@ Static pick-up is the process of picking items from the conveyor belt when it is
 \subsection{Dynamic Picking:}\\
 The Dynamic Pick involves the process of picking the items from the moving conveyor belt. Here, the object is passed through the moving conveyor belt, where the camera gets object poses that are passed to the robotic controller, which helps the robot move to the required position.\\
 \begin{figure}[h]
+  \centering
+  \begin{minipage}{0.45\textwidth}
     \centering
-    \begin{minipage}{0.45\textwidth}
-        \centering
-        \includegraphics[width=4cm]{Thesis-report/Figures/pick.jpeg}
-        \label{fig:pick}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.45\textwidth}
-        \centering
-        \includegraphics[width=6cm]{Thesis-report/Figures/picking.jpeg}
-        \label{fig:picking}
-    \end{minipage}
-    \caption{Dynamic picking}
-    \label{fig:gripper-combined}
-\end{figure}
+    \includegraphics[width=4cm]{Thesis-report/Figures/pick.jpeg}
 
+  \end{minipage}%
+  \hspace{5mm}% ← adjust this (or make it negative: e.g. \hspace{-3mm})
+  \begin{minipage}{0.45\textwidth}
+    \centering
+    \includegraphics[width=5cm]{Thesis-report/Figures/picking.jpeg}
+
+  \end{minipage}
+  \caption{Dynamic picking}
+  \label{fig:gripper-combined}
+\end{figure}
 
 For dynamic picking, a typical construction site is needed, and quick, real-time modeling is necessary to support decision-making.  Thus, a quick 3D data collection and processing system is required for real-time modeling of a building site.  Only high-quality, rich 3D datasets of static objects are produced using laser scanners; a typical scan has millions of points.  Furthermore, real-time modeling is not practicable due to the slowness of data collection and processing.  Nevertheless, 3D range cameras provide an additional option by enabling wide-field-of-view, low-cost, automatic tracking and detection of both static and moving objects at frame rates higher than 1 Hz in real-time.\\
 
@@ -852,7 +851,7 @@ To solve differential equations, Euler initially created Euler angles. The most 
   \item \textbf{Inverse-Mapping Ambiguities.} 
    Solving for Euler angles given a rotation matrix frequently produces two valid answers (referred to as the "standard" and "suppl-ementary" sets), necessitating additional reasoning to select one.\cite{ref20}
 \end{itemize}
-\newpage
+
 \subsubsection*{Why It Matters}
 \begin{itemize}
   \item \textbf{Robustness:} Systems like VR head-tracking, robotic manipulators, and airplane autopilots can all be rendered inoperable by gimbal lock. \cite{ref20}
@@ -914,7 +913,7 @@ We often write a quaternion as
   q = [\,s,\;\mathbf{v}\,],\quad s\in\mathbb{R},\;\mathbf{v}\in\mathbb{R}^3.\cite{ref20}
 \]
 This four-dimensional algebra provides a compact, non-singular representation of 3D rotations.
-
+\newpage
 \subsection{Object for picking}
 We have used a trapezoid for object picking 
 
@@ -1112,7 +1111,7 @@ The web interface shows the image of the object being detected; initially, we lo
 \end{justify}
 \begin{figure}[h]
     \centering
-    \includegraphics[width=12cm]{Thesis-report/Figures/web_interface.png} 
+    \includegraphics[width=9cm]{Thesis-report/Figures/web_interface.png} 
     \caption{Camera web interface}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
@@ -1625,7 +1624,7 @@ After the object leaves and is picked up by the exit photo-eye, we record $C_{\m
 
 \newpage
 \chapter{\section{\mbox{Results and Discussions }}{{\normalfont\fontsize{14}{16}\bfseries}}
-\section{Robot TCP Speed vs Conveyor Speed}
+\subsection{Robot TCP Speed vs Conveyor Speed}
 The robot's tool-center-point (TCP) speed is plotted against the belt speed in the red circles, which show the measured TCP speeds, whereas the blue line represents the identity (conveyor speed). The robot's mean TCP speed increases approximately linearly from 0.08\,m/s to 0.31\,m/s as the belt speed increases from 1.00\,m/s to 2.00\,m/s, constantly trailing the conveyor.
 \begin{figure}[h]
     \centering
@@ -1635,7 +1634,7 @@ The robot's tool-center-point (TCP) speed is plotted against the belt speed in t
 \end{figure}
 
 
-\section{Success Rate vs Conveyor Speed}
+\subsection{Success Rate vs Conveyor Speed}
 Figure 52 below shows the success rate for dynamic picking of trapezoid and pipe objects(for future test) at belt speeds between 1.0\,m/s and 2.0\,m/s. During the dynamic picking tests, the robot maintained a higher success rate on trapezoid objects compared to pipes.
 
 \begin{figure}[h]
@@ -1645,7 +1644,7 @@ Figure 52 below shows the success rate for dynamic picking of trapezoid and pipe
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 
-\section{Average Pick Time vs Conveyor Speed}
+\subsection{Average Pick Time vs Conveyor Speed}
 The average pick time per item is plotted in Figure 53 below. The red line with circular markers shows that pick times increase from approximately 0.5\,s at 1.0\,m/s to 1.5\,s at 2.0\,m/s, indicating that higher belt speeds result in longer pick durations.
 
 \begin{figure}[h]
@@ -1656,7 +1655,7 @@ The average pick time per item is plotted in Figure 53 below. The red line with 
 \end{figure}
 
 
-\section{Average Pick Time vs Lighting Condition}
+\subsections{Average Pick Time vs Lighting Condition}
 Figure 54 below contrasts the robot's picking performance under bright and dim lighting for pipes and trapezoids. Under bright light, the success rates are 80\% for pipes and 90\% for trapezoids. In dim light, success drops to 60\% for pipes and 80\% for trapezoids, showing that dimmed illumination affects pipe handling more severely.
 
 \begin{figure}[h]
@@ -1687,7 +1686,7 @@ High Picking Performance: Dynamic picking tests achieved up to 90 percent succes
 Together, these results confirm the feasibility of deploying vision‑guided robots for adaptive pick‑and‑place on moving conveyors, achieving a balance of speed, accuracy, and flexibility suitable for modern automated production lines.
 \end{justify}
 \newpage
-\subsubsection{Future Scope }
+\subsection{Future Scope }
 To improve performance and applicability, the following extensions are suggested based on the findings of this thesis:
 \begin{justify}
     
