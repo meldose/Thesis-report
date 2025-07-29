@@ -752,53 +752,6 @@ The robotic movement can be performed with 3 methods called Servo X, Servo J, an
 3. \textbf{Movelinear:}
 With the Movelinear controller, the camera scans the objects to deliver the quaternion values, which are then used to immediately determine the target position for the robot to pick up the object. Here, we specify the top speed and acceleration.  Through a servo interface, quaternion values are sent to the robot as the target position in order to move it to the desired location.
 
-\subsection{Static Picking:}\\
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=10cm]{Thesis-report/Figures/static.jpeg}
-    \caption{Static Picking}
-    \label{fig1.Photoneo Cmaera}
-\end{figure}
-
-Static pick-up is the process of picking items from the conveyor belt when it is not moving. Initially, we keep the object on the conveyor belt and then trigger the camera, which helps in getting the object coordinates to the robotic controller. When the robot receives the data, the robot moves to the target position to pick the required target.
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=6.5cm]{Thesis-report/Figures/static_flowchart.png}
-    \caption{Static Picking Flowchart}
-    \label{fig1.Photoneo Cmaera}
-\end{figure}
-
-\newpage
-\subsection{Dynamic Picking:}\\
-The Dynamic Pick involves the process of picking the items from the moving conveyor belt. Here, the object is passed through the moving conveyor belt, where the camera gets object poses that are passed to the robotic controller, which helps the robot move to the required position.\\
-\begin{figure}[h]
-  \centering
-  \begin{minipage}{0.45\textwidth}
-    \centering
-    \includegraphics[width=4cm]{Thesis-report/Figures/pick.jpeg}
-
-  \end{minipage}%
-  \hspace{5mm}% ← adjust this (or make it negative: e.g. \hspace{-3mm})
-  \begin{minipage}{0.45\textwidth}
-    \centering
-    \includegraphics[width=5cm]{Thesis-report/Figures/picking.jpeg}
-
-  \end{minipage}
-  \caption{Dynamic picking}
-  \label{fig:gripper-combined}
-\end{figure}
-
-For dynamic picking, a typical construction site is needed, and quick, real-time modeling is necessary to support decision-making.  Thus, a quick 3D data collection and processing system is required for real-time modeling of a building site.  Only high-quality, rich 3D datasets of static objects are produced using laser scanners; a typical scan has millions of points.  Furthermore, real-time modeling is not practicable due to the slowness of data collection and processing.  Nevertheless, 3D range cameras provide an additional option by enabling wide-field-of-view, low-cost, automatic tracking and detection of both static and moving objects at frame rates higher than 1 Hz in real-time.\\
-
-The dynamic movement can be explained as follows:
-
-Initially, we pass the object through the running conveyor belt and trigger the camera, where we get the initial and final coordinates. We also calculate the timestamps to get the changes in time. The custom velocity must then be determined, which can be done by dividing the position change by the time change.
-When we pass the object through the conveyor belt, there is a change in position in the X axis, as this is a linear motion of movement. For the robot to know where to go and get the item from the conveyor belt, it must be notified when the object's position changes.  The following formula can be used to adjust for this:: \[ X = X_0 + v\cdot t \] where X₀ where X is the object's starting position.\\
-where X represents the object's starting position\\
-X represents its ending position.\\
-t is the change in time. 
-
 \subsection{Coordinate Transformation:}
 The availability of 3D data is essential for numerous applications in the fields of vehicle automation ,manufacturing and autonomy.  Time-of-flight (ToF) sensors are getting cheaper and more available. They offer in-depth information for every pixel at every pixel in addition to intensity. Within its field of vision, the ToF sensor gives spherically coordinated range data about the surrounding environment. The spherical coordinates are transformed into Cartesian coordinates, as described in the following section, with the origin of the coordinate system located at the center of the camera.  With the origin at a known reference point, the 3D point cloud in the camera coordinate system is converted to the belt coordinate system. The tests examine the capacity of ToF sensors to provide sensing for a robot tasked with handling goods traveling on a conveyor belt in an indoor scenario. The range data is utilized to identify and calculate the dimensions of objects traveling along a conveyor belt.  The robot then receives the geometry and recognition data for additional action.  The findings suggest that ToF sensors have immediate potential for automating these kinds of applications \cite{ref5}.\\
 
