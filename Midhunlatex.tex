@@ -20,6 +20,7 @@
 \usepackage{array}
 \usepackage{wrapfig}
 \usepackage{changepage}
+\usepackage[hidelinks]{hyperref}
 \usepackage{enumitem}
 \usepackage[colorlinks=true,linkcolor=blue]{hyperref}
 
@@ -271,216 +272,99 @@ Despite these advances, challenges remain in
 \end{itemize}
 
 \end{justify}
-
+\newpage
 \chapter{\section{\mbox{Working Principle }}{{\normalfont\fontsize{14}{16}\bfseries}}
-\subsubsection{Steps for Conveyor Tracking Visual System:}\\
-Two steps are necessary for conveyor visual tracking: \cite{ref12}
+
+\subsection{Euler Angles:}\\
+Euler angles are one method of parameterizing the space of alignments.  A global orientation can be expressed as a sequence of rotations along three mutually orthogonal axes in space using Euler angles.
+
+To solve differential equations, Euler initially created Euler angles. The most popular technique for parameterizing the space of orientations is now the use of Euler angles. If we choose to consider a rotation as the action performed to attain a particular orientation, we can use Euler angles to parameterize the space of rotations\cite{ref20}.
+
+\subsection{Disadvantages of Gimbal Lock and Ambiguity}
+
+\subsubsection*{1. Gimbal Lock}
 \begin{itemize}
-\item Item detection
-\item Object tracking.
+  \item \textbf{Loss of One Degree of Freedom.} 
+   One "gimbal" loses its capacity to rotate on its own when two of the three rotation axes align (for instance, the X′ axis aligns with Z in a Z–X′–Z sequence).  As a result, the three-dimensional local parameter space shrinks to two dimensions\cite{ref20}.
+  \item \textbf{Numerical Instability.} 
+    Small orientation changes necessitate huge swings in two of the Euler angles, which amplifies floating-point mistakes, especially near the unique alignment (e.g., a pitch of \(\ pm90^\circ \) in a Z–Y′–X sequence)\cite{ref20}.
+  \item \textbf{Control \& Interpolation Problems.} 
+    Smoothly interpolating through a gimbal-lock singularity might result in abrupt flips or unpredictable motion in applications like animation or flight control\cite{ref20}.
 \end{itemize}
-There are several ways to identify items. Some potential limitations are, however,info-based recognition, self-organizing maps, template matching, and the temporal difference between two consecutive image samples. Due to their slowness, self-organizing maps cannot function in real time. To match objects, template matching necessitates prior object information knowledge.  Unfortunately, this approach cannot be employed in real time due to the required processing load. The color information solution overcomes the first two limitations; however, it is not compatible with binary images. The object recognition method that leverages the difference between two photographs can be useful when the environment does not change quickly over time\cite{ref12}.
-\subsubsection{Photoneo Camera}
-The main Vision camera we have used to track the moving object's motion through the conveyor belt is a Photoneo camera (MotionCam 3D M+), which has advanced settings that can capture and detect the object's position.The photoneo camera mainly consists of 3D sensing technology, which contains parallel structured light that helps provide the light source to detect objects. This camera is capable of capturing conventional intensity images of the object as well as precise point clouds.[2]. Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU that acts as the brain behind intelligent applications. A sequential structured light, which is utilized in numerous meteorological applications, is the primary technological driver in the first group. One well-suited representative of this category is the 3D scanner range from Photoneo \cite{ref2}. \
 
-\subsubsection{Robot Interface:}\\
-There are two software components, which include
-\begin{enumerate}
-    \item  ● Robot interface: utilized to configure the vision controller's Ethernet port on the network\cite{ref2}.
-    \item  ● Robot controller: utilized to determine the robot controller's IP address\cite{ref2}.
-\end{enumerate}
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=5cm]{Thesis-report/Figures/network_interface.jpeg}
-    \caption{Robot Network Interface\cite{ref2}}
-    \label{fig1.Photoneo Cmaera}
-\end{figure}
- As outlined in the Robot Communication, the Action Request Communication Channel helps the visual controller and the robotic controller communicate with one another.  The vision controller creates a TCP server, which the robotic controller connects to and sends requests to.
- It is advised to keep the Action Request Server port section empty and use the default port for this TCP server.  It is necessary to use the same port on the robot side when a custom port is defined \cite{ref2}.
+\subsubsection{2. Ambiguity (Non-Uniqueness)}
+\begin{itemize}
+  \item \textbf{Multiple Angle Triples for the Same Rotation.} 
+   There are an unlimited number of those \((\alpha,\beta,\gamma)\) that produce the same rotation matrix since every rotation about an axis is periodic (modulo \(360^\circ\)) and because different sequences might arrive at the same ultimate orientation\cite{ref20}.
+  \item \textbf{Convention Dependence.} 
+    There are twelve main Euler conventions, including choice of axis ordering, intrinsic vs. extrinsic, and proper Euler vs. Tait–Bryan.  In the absence of precise convention, a \((\alpha,\beta,\gamma)\) triplet is unclear\cite{ref20}.
+  \item \textbf{Inverse-Mapping Ambiguities.} 
+   Solving for Euler angles given a rotation matrix frequently produces two valid answers (referred to as the "standard" and "suppl-ementary" sets), necessitating additional reasoning to select one\cite{ref20}.
+\end{itemize}
 
-\subsubsection{Vision Controller Interface:}\\
-To connect the 3D sensor, gigabit Ethernet cables (Cat5e or higher category) are required.  Multiple 3D sensors can be connected using a gigabit switch.  The switch or Ethernet connection of the 3D sensor is always connected to the network of the scanner \cite{ref2}.
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=5cm]{Thesis-report/Figures/scanner_interface.jpeg}
-    \caption{Robot Network Interface \cite{ref2}}
-    \label{fig1.Photoneo Cmaera}
-\end{figure}
+\subsubsection*{Why It Matters}
+\begin{itemize}
+  \item \textbf{Robustness:} Systems like VR head-tracking, robotic manipulators, and airplane autopilots can all be rendered inoperable by gimbal lock\cite{ref20}.
+  \item \textbf{Maintainability:} To prevent misunderstandings, ambiguity compels programs, file formats, and APIs to explicitly state which Euler standard is being used\cite{ref20}.
+\end{itemize}
 
- Setting up localization settings, calibrating the robot camera, and seeing 3D scans all require a well-configured connection to the 3DSensor. To set up the network interface that the vision controller uses to connect to the Photoneo 3D Sensor, select the Scanner Interface section under the Network tab\cite{ref2}.\\
+\subsubsection*{Alternatives}
+Many applications prefer other orientation representations to avoid both gimbal lock and ambiguity:
+\begin{itemize}
+  \item \textbf{Quaternions.}  It is unique up to a sign, free of singularities, and provides smooth spherical linear interpolation (slerp)\cite{ref20}. 
+  \item \textbf{Rotation Vectors/Axis-Angle.}  One-to-one mapping (except for periodicity and sign and \(2\pi\) \cite{ref20}. 
+  \item \textbf{Rotation Matrices.}  Despite being over-parameterized (9 integers with 6 restr-ictions), it is clear and globally non-singular\cite{ref20}. 
+\end{itemize}
 
- Photoneo 3D Sensors have both a programmable IPv4 address and a fixed IPv6 link-local address. IPv6 connections are better than IPv4 ones. However, in the event that the IPv6 connection is blocked or fails, the IPv4 address is used.  It is therefore recommended to have a valid IPv4 network configuration. We use the proper IP address settings on the sensor side using the PhoXi Control program in all scenarios. The interface can be configured to run a DHCP server or to use any random static IP address\cite{ref2}.\\
+\subsubsection{Rotation matrices}\\
+Euler angles are usually implemented using rotation matrices. There is an x rotation matrix, a y rotation matrix, and a z rotation matrix for every kind of roll. The matrices are multiplied by the position vector for a point in space to generate the position vector for the rotated point.  Despite being a 3 × 3 matrix, a rotation matrix is usually replaced by a homogeneous 4 × 4 matrix. The three roll matrices corresponding to the three Euler angles are multiplied to produce a general rotation. The generated matrix can be applied to the locations that need to be rotated and represents the general rotation. In most cases, matrix multiplication is not commutative.This is consistent with rotations in space not commuting.
+ Lastly, it should be mentioned that the only way to effectively incorporate all common
+transformations, such as translation, scaling, shearing, and different projections
+transformations, is to use homogeneous transformation matrices\cite{ref20}.
 
-\subsubsection{Communication of Robot With Vision Camera}\\
-Communication between the vision controller and the robot controller is made possible via the robot interface on the vision controller and the robot module running on the robot controller\cite{ref2}.\\
+\subsection{Quaternions:}\\
+The second rotational modality uses quaternions and is defined by Euler's theorem. Since there isn't a thorough introduction to the subject and quaternions aren't nearly as well-known as transformation matrices, we will give a brief history before going into great detail into quaternion mathematics.\cite{ref20}.\\
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=14cm]{Thesis-report/Figures/communication.png}
-    \caption{Communication with camera \cite{ref2}}
-    \label{fig1.Photoneo Cmaera}
-\end{figure}
+\subsubsection{Rotations and Euler’s Theorem}
+Rotations in 3D can be implemented using Euler’s theorem combined with quaternions, an extension of complex numbers\cite{ref20}.
 
-The Vision Controller's scanner port is directly attached to a single Photoneo 3D sensor. 
-●The vision controller's network port is directly connected to a desktop PC for remote control.
-●The robot controller is directly attached to the vision controller's robot port\cite{ref2}.
+\subsubsection{Impossibility of 3D ``Complex'' Numbers}
+The following equation are taken from this journal : \cite{ref20}\\\\
+Hamilton originally attempted to define three-dimensional complex numbers of the form\\
+\[
+  a + i\,b + j\,c,\quad i^2 = j^2 = -1,
+\]
+closed under multiplication.  Kenneth O.~May (1966) showed by contradiction that no such 3D system exists:
+\[
+  \text{Assume }i\,j = a + i\,b + j\,c,\quad
+  i^2 = j^2 = -1.
+\]
+A brief outline of the contradiction leads to
+\[
+  c^2 + 1 = 0,\quad c\in\mathbb{R},
+\]
+which is impossible.
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=12cm]{Thesis-report/Figures/connection.png}
-    \caption{Whole camera with Robotic controller setup\cite{ref2}}
-    \label{fig1.Photoneo Cmaera}
-\end{figure}
+\subsubsection{Hamilton’s Discovery of Quaternions (1843)}
+Hamilton discovered that four elements are required to depict a rotation followed by scaling in three dimensions while strolling by Dublin's Royal Canal: \cite{ref20}
+\[
+  q = s + x\,i + y\,j + z\,k,
+  \quad
+  i^2 = j^2 = k^2 = ijk = -1.
+\]
+Here:
+\begin{itemize}
+  \item $s\in\mathbb{R}$ is the \emph{scalar part} (encoding uniform scaling).
+  \item $\mathbf{v} = (x,y,z)\in\mathbb{R}^3$ is the \emph{vector part} (encoding rotation axis and angle).
+\end{itemize}
 
-\newpage
- \subsubsection{Protocol TCP/IP}\\
-The robot controller and the vision controller communicate via the TCP/IP protocol. Network connectivity is an optional feature that some robot controllers do not come with by default\cite{ref2}.
+\subsubsection{Quaternion Notation}
+We often write a quaternion as
+\[
+  q = [\,s,\;\mathbf{v}\,],\quad s\in\mathbb{R},\;\mathbf{v}\in\mathbb{R}^3.
+\]
+This four-dimensional algebra provides a compact, non-singular representation of 3D rotations.
 
-\subsubsection{Channel of communication}\\
-The robot module functions as a TCP client, while the vision controller establishes a TCP server. The client is called the Action Request Client, while the server is called the Action Request Server. The Action Request Client communicates with the Action Request Server over this channel. After receiving the action request, the vision controller carries it out and replies to the robotic controller\cite{ref2}.\\\\
-
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=14cm]{Thesis-report/Figures/channel.png}
-    \caption{Channel Communication \cite{ref2}}
-    \label{fig1.Photoneo Camera}
-\end{figure}
-
-The robot connection status is currently indicated by the following indicator:
-
- Action Request Client: The condition of the Action Request Server and the Action Request Client's connection via the Action Request Communication Channel. It may exist in one of two states: \cite{ref2}
- \begin{enumerate}
-     \item  \textbf{CONNECTED:} Due to its connection to the Action Request Server, the Action Request Client can send requests\cite{ref2}.
-      \item   \textbf{DISCONNECTED:} The Action Request Client is awaiting a fresh connection because it is not currently linked to the Action Request Server\cite{ref2}.
-
- \end{enumerate}
-
- Every vision system has a status indication that shows the current status of the connection to the related Photoneo 3D Sensor.
-
- \\ Each indicator bears the identification number of the vision system to which it belongs.
-  \begin{enumerate}
-  \item  \textbf{CONNECTED:} The vision system's 3D sensor is connected\cite{ref2}.
-  \item   \textbf{DISCONNECTED:}  There is no connection to the 3D sensor linked to vision system 2\cite{ref2}.
- \end{enumerate}
-
-\subsubsection{Network (EC, HC) }\\
-For the vision controller to connect with the robot and the 3D sensor, the robot interface (and robot controller IP) and the vision controller's 3D sensor interface need to be set up correctly. This is not required for marker space calibration\cite{ref2}.
-\subsubsection{Vision }\\
-It is necessary to thoroughly configure the visual system that will be calibrated. Make sure the following vision system parameters are set up correctly before beginning the calibration:
-● Scanner ID: This vision system uses a 3D sensor. If the scanner interface is configured correctly, the linked 3D sensors will show up in the drop-down list of accessible 3D sensors.
-The calibration space and scanner position specify the 3D sensor's mount point and, consequently, the calibration type. The scanner model is automatically calculated based on the selected 3D sensor\cite{ref2}.
-
-\subsubsection{6-Axis Cobot-Delta}
-The cobot that we have used for the conveyor tracking system is a 6-axis cobot called a Delta robot. The robot mainly moves towards its target position by getting the values from the camera in the form of quaternion values\cite{ref2}.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=3.5cm]{Thesis-report/Figures/robot.jpeg}
-  \caption{Delta Robot}
-  \label{fig:delta_robot}
-\end{figure}
-\FloatBarrier
-
-\subsubsection{RobotiQ 140 Gripper}
-The RobotiQ 140 gripper is a two-finger gripper that mainly works under the principle of Modbus communication. Its 85 mm stroke, 230 N max gripping force, and 5 kg max payload make it ideal for low-volume, high-changeover settings.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=5cm]{Thesis-report/Figures/cobot_gripper_2F_85-ezgif.com-webp-to-jpg-converter.jpg}
-  \caption{RobotiQ 140 Gripper \cite{ref27}}
-  \label{fig:robotiq_140}
-\end{figure}
-\FloatBarrier
-\subsection{3D Scanning}
-The act of gathering data from an object's surface and turning it into data points is known as 3D scanning. These data points are utilized for a digital replication of the scanned object or for a dimension analysis\cite{ref17}.\\
-
-\subsection{Types of 3D scanning}
-
-\subsubsection {Laser Scanning}
-Two devices are often used in laser scanning; one directs a laser beam onto a surface, and the other records the precise spot where the object contacts the beam. The angle of reflection and the distance between the surface and the scanner can be determined via triangulation.  Time of flight measurement, structured light scanning, stereophoto-grammetry, laser interferometry, and many other techniques are comparable to the Train-gulation method\cite{ref17}.
-
-\subsubsection {Structure Light Scanning}
-This technology projects structured light patterns, such as simple geometric patterns or parallel lines, onto a surface.  The object's shape will cause the patterns to distort.  It is feasible to rebuild the scanned surface using a camera to analyze these deformations, distinguish edges, and determine the separation between the item and the scanner \cite{ref17}.
-
-\subsection {Photogrammetry}
-Triangulation is used in photogrammetry to intersect particular points within 2D images based on the angles at which those points can be found. The size, quantity, and quality of the item's images all have a big impact on creating an appropriate 3D model\cite{ref17}. 
-
-\subsection{Time fo Flight}
-The time of flight is a measure of how long it takes light to move from an illumination source to a scene and back. The main barrier in this case is the speed of light itself.  Time is typically measured using a modulated signal's phase shift. High pixel modulation frequencies must be used to achieve a respectable level of depth accuracy. The primary drawback in this case is physics, since a greater frequency results in less charge transfer, which lowers contrast and Signal‑to‑Noise Ratio. The restriction suggests an accuracy level that ToF systems can achieve. Usually, it falls within the centimeter range. Another issue is interreflections, which can significantly bend the surface\cite{ref15}.
-
-\subsection{Active stereo}
-By projecting a synthetic texture onto an object, active stereo addresses the unreliable passive stereo. Nevertheless, it still has to resolve the computationally demanding picture correspondence matching problem. Because of the complexity of the matching problem, the projected texture can be either high frequency, which can satisfy a higher resolution but usually has poor reliability, or low frequency, which typically uses random laser dots and can provide higher reliability but poor resolution (the features 15 are sparse)\cite{ref15}.
-
-\subsection{Structured patterns/dots}
-A spatially encoded pattern is used in structured patterns/dots technology to encode depth disparity information into pattern patches, which are usually projected through a laser diffraction grating in the form of a carefully planned dot collection. The camera needs to be able to see enough of the patch in order to properly record the depth information and reconstruct the code. This produces artifacts on the surfaces' edges and tiny objects. To reconstitute individual dots in the projection (and hence 3D measurements), the Nyquist-Shannon theorem necessitates an order of magnitude better camera resolution. Modern systems use about 25 camera pixels for each 3D measurement, producing about 70k 3D points \cite{ref15}. 
-
-\subsection{Parallel Structured Light}
-
-Parallel Structured Light parallelizes the sequential structured light using a sophisticated sensor design, which enables it to record the scene illuminated by various patterns. In addition to sharing many of the sequential structured light's benefits, such as resolution and accuracy, it also overcomes one of its main drawbacks: the inability to capture a dynamic environment. Photoneo's Parallel Structured Light gets around the restriction by projecting and capturing numerous encoded patterns. Pixel modulations within our proprietary CMOS sensor are used to accomplish this. Multiple groups of separately modified pixels make up the sensor itself \cite{ref15}.  \\
-
-
-The Parallel Structured Light's main advantages are:
-\begin{enumerate}
- \item  Rapid motion scanning: 40 m/s motion is achieved with single frame acquisition \cite{ref15}.
-\item A more effective depth coding method with accurate, per-pixel measurement that offers ten times greater resolution and accuracy than rival technologies\cite{ref15}
- \item No motion blur: exposure time of 10 µs per pixel\cite{ref15}
- \item Quick capture of 1068 x 800 point clouds at 60 frames per second\cite{ref15}
-\item Patent-pending active ambient light rejection technology for outdoor use in direct sunlight\cite{ref15}
- \item Active rejection of ambient light through interreflection suppression\cite{ref15}
-\item Several devices using the same space at the same time\cite{ref15}\\
-\end{enumerate}
-
-A control unit that operates in tandem with the projection is in charge of these groups. The coded patterns are inserted into the groups rather than changing the projection itself. The coded patterns injected at the end of the frame may cause the sensor to produce more than 20 different virtual representations of the scene.  Any pattern commonly used for sequential structured light can be utilized to adapt the universal approach on the fly to suit different materials and light sources\cite{ref15}. \\
-
-After undergoing embedded processing, these virtual images are sent via gigabit Ethernet to a client PC.  Three types of outputs are provided by the sensor: \cite{ref15}
-\begin{enumerate}
-    \item Point Cloud: 32 bits per channel  XYZ \cite{ref15}
-    \item 32 bits per channel is the normal map.  XYZ \cite{ref15}
-    \item Texture: Grayscale, 10/12 bits \cite{ref15}
-\end{enumerate}
-
-The sensor produces outputs with a resolution of 1068 x 800 when in "one frame" camera mode.  Approximately 500k individual measurements were used to interpolate these positions. The typical z-noise standard deviation at a distance of one meter is less than 0.5 mm (key advantage 1).  Because of the pixel design, each photon makes the best possible contribution to the 3D measurement.  The technology surpasses its rivals and offers the best XYZ resolution thanks to sub-pixel accuracy coding (high z-precision) and an efficiency of just 4.5 pixels per 3D measurement (benefit 2)\cite{ref15}. \\
-
-The "scanner mode," which is designed for still photos, is the alternate operating mode.
- The sensor's raw sensoric output in this mode is 1602 × 1200 individual measurements. This is recorded in three consecutive frames. A laser that has been deflected by a mirror illuminates the scene.  The projection's 10 µs per pixel exposure may guarantee constant, motion-blur-free data (benefit 4)\cite{ref15}.
-
-
-\subsection{Vision Controller}\\
-\cite{ref15}The figure 3 below shows the vision controller connected to the Photoneo camera and the robotic controller using Ethernet (IPV4 address).
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=4cm]{Thesis-report/Figures/vision controller.png}
-    \caption{Vision Controller \cite{ref2}}
-    \label{fig1.Photoneo Cmaera}
-\end{figure}
-The vision controller is connected to a PC through the web interface to trigger the camera and see the Web interface for communication.To connect the 3D sensor, gigabit Ethernet connections of Cat5e or above are needed.  Multiple 3D sensors can be connected using a gigabit switch.  Multiple 3D sensors can be connected using a gigabit switch. The Ethernet connection from the switch or 3D sensor is linked to the scanner's physical network port in both scenarios. To visualize 3D scans, calibrate robot cameras, and establish localization settings, a connection to the 3D sensor is required.To set up the network interface that the vision controller uses to connect to the Photoneo 3D sensor(s), enter the Network page and select the Scanner Interface section. Both a fixed IPv6 link-local address and a programmable IPv4 address are features of Photoneo 3D sensors.\cite{ref15
-\newpage
-\subsection{Marker Pattern}\\
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=4cm]{Thesis-report/Figures/marker_pattern.png}
-    \caption{Marker Pattern \cite{ref2}
-    \label{fig1.Photoneo Cmaera}
-\end{figure}
-Figure 4 above shows the S30 calibration board that helps calibrate the conveyor belt, which aligns the coordinates of the object with the conveyor belt for objects passing through the belt. To enable the robot to retrieve objects from the moving conveyor belt, the belt can be used to align the object coordinates with the conveyor belt\cite{ref2}.
-\
-\subsection{Active ambient light rejection:}\\
-The inability of all area-based 3D sensors to function in direct sunshine is a typical problem.  Direct sunshine has a maximum power output of 1120 W/m³.  High-end band-pass filters installed in all of Photoneo's sensors lower ambient light levels to around 15 W/m².  Although it can oversaturate the image or produce high shot noise, this still performs better than the majority of projection systems.
- Delivering active lighting as a brief pulse, which raises the projection's optical power output and shortens the system's exposure time overall, is one way to lessen the impact of ambient light.  This method has drawbacks, such as limited parts availability, complicated power supply management, hazards to eye safety, or problems with heat control\cite{ref15}.\\
-
-The sensor and projection can cooperate to regulate the light sensitivity of the sensor surface through active ambient light suppression. The direct reflection of the projection at any one time during the acquisition may only reveal about 1 percent of the sensor surface due to geometrical constraints.  The remaining 99 percent of the sensor can be turned off by the camera's control circuit, preventing any photoelectrons from being collected.  Scanning in direct sunshine is made possible by the technology's efficient 1:100 suppression of ambient light from any source (key benefit 5)\cite{ref15}. \\
-
-The same method significantly reduces internal reflections between pixels at the same 1:100 ratio (important advantage 6).  The technique rejects the second scanner's projection in 99 percent of the image when two sensors are working in the same area at the same time, affecting only 1 percent of the pixels. It is simple to recognize and remove these pixels from the output (key advantage 7)\cite{ref15}.
- 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=12cm]{Thesis-report/Figures/scanningdistance.jpg}
-    \caption{Point Size vs. Scanning Distance \cite{ref15}}
-    \label{fig1.Photoneo Cmaera}
-\end{figure}\\
-
-Figure 9 above shows the scanning distance of various cameras vs. their point size. The M+ Range camera has been utilized in this instance \cite{ref15}. 
 \chapter{\subsection{\mbox{Inverse Kinematics }}{{\normalfont\fontsize{14}{16}\bfseries}}
 The system model includes a non-redundant robot manipulator with n degrees of freedom and a conveyor belt system. The following attributes are assumed to be present in the system model: \cite{ref14}\\
 1) The conveyor belt system runs at constant velocity, and the
@@ -530,37 +414,6 @@ Greater than 6 & 16\\
     \caption{DOF vs. Number of Solutions \cite{ref19}}
     \label{tab:dof_solutions}
 \end{table}
-\newpage
-\subsection{Working Flowchart:}
-\begin{enumerate}
-    \item Start
-    \item Initially, check if the operation type is OBJECT POSE
-    \item If not, raise a problem to demonstrate that there is an unforeseen problem.
-    \item If yes: Receive object pose data
-    \item Then unpack the object pose and set them as ([X,Y,Z,ex,ey,ez])
-    \item Convert the first three elements to meters ([X.Y, Z])
-    \item Set the velocity and timeout for picking
-    \item Record the start time
-    \item Calculate the current time and update the position X with the equation \[  
-X = X_0 + v\,t
-\]
-
-    \item Create the target position with the quaternion values received from the camera
-    \item Check the condition where the object needs to be picked; if the distance is less than 700, then do the motion of move linear ()
-    \item If not successful,  break the loop and print that the target is too far
-    \item Get the current joint angles and TCP pose, and calculate the distance to the object.
-    \item If the distance to the object is less than 5, then send the signal to the gripper and pick the object.
-    \item If the timeout to pick is greater compared to the given input, then break the loop.
-\end{enumerate}
-\newpage
-The following figure shows the flowchart for the dynamic picking:\\
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=10.3cm]{Thesis-report/Figures/flowchart.png}  
-    \caption{flowchart}
-    \label{fig1.Photoneo Cmaera}
-\end{figure}
-\newpage
 \subsection{Jacobian inverse method :}\\
 The time derivative of the kinematic equations that connect the end-effector's velocity to the joint rates is known as the Jacobian in robotics. The following is the phrase for the Jacobian \cite{ref19}.
 \subsubsection{Kinematic Velocity Equations}
@@ -696,7 +549,7 @@ where:
 We must first gain a fundamental understanding of the robot coordinate system before delving deeper into the tracking system's operation. Generally speaking, robotic systems are Cartesian coordinate systems with three axes: the X, Y, and Z axes. Additionally, there is the Rotation Coordinate System, which describes the robot's degree of rotational motion and joint function. However, as this format is more widely used in business and simpler to use and comprehend, we shall solely investigate the Cartesian coordinate system. The following terms used in the system should be understood to obtain the robot's coordinates:\cite{ref24}\\\\
  \textbf{System of World Coordinates (WCS):} \\
 A coordinate system is often specified by the user or developer, but it can exist anywhere in the world. WCS makes it simpler to explain the locations of other things or items in that specific area. Origin placement is typically done at the edge of a group or a room's corner \cite{ref24}.\\
-\newpage
+
  \textbf{Machine Coordinate System (MCS):} \\
 Robot Base Frame Coordinate System is another name for Machine Coordinate System (MCS). All other coordinate systems will be compared to this most significant coordinate system. Where developers and programmers would implement their code based on this coordinate system is equally crucial. For the point of origin, MCS is usually placed close to the robot's base, though it's crucial to keep in mind that different robot types have different bases \cite{ref24}.\\
 
@@ -714,6 +567,38 @@ The workpiece or monitored items that move along the conveyor belt are referred 
     \caption{Homogenous transform \cite{ref25}}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
+\newpage
+\subsection{Working Flowchart:}
+\begin{enumerate}
+    \item Start
+    \item Initially, check if the operation type is OBJECT POSE
+    \item If not, raise a problem to demonstrate that there is an unforeseen problem.
+    \item If yes: Receive object pose data
+    \item Then unpack the object pose and set them as ([X,Y,Z,ex,ey,ez])
+    \item Convert the first three elements to meters ([X.Y, Z])
+    \item Set the velocity and timeout for picking
+    \item Record the start time
+    \item Calculate the current time and update the position X with the equation \[  
+X = X_0 + v\,t
+\]
+
+    \item Create the target position with the quaternion values received from the camera
+    \item Check the condition where the object needs to be picked; if the distance is less than 700, then do the motion of move linear ()
+    \item If not successful,  break the loop and print that the target is too far
+    \item Get the current joint angles and TCP pose, and calculate the distance to the object.
+    \item If the distance to the object is less than 5, then send the signal to the gripper and pick the object.
+    \item If the timeout to pick is greater compared to the given input, then break the loop.
+\end{enumerate}
+\newpage
+The following figure shows the flowchart for the dynamic picking:\\
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=10.3cm]{Thesis-report/Figures/flowchart.png}  
+    \caption{flowchart}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
+\newpage
+
 
 \newpage
 \textbf{ Operations Needed to Develop the Tracking System:} \\
@@ -752,6 +637,7 @@ The robotic movement can be performed with 3 methods called Servo X, Servo J, an
 3. \textbf{Movelinear:}
 With the Movelinear controller, the camera scans the objects to deliver the quaternion values, which are then used to immediately determine the target position for the robot to pick up the object. Here, we specify the top speed and acceleration.  Through a servo interface, quaternion values are sent to the robot as the target position in order to move it to the desired location.
 
+\newpage
 \subsection{Coordinate Transformation:}
 The availability of 3D data is essential for numerous applications in the fields of vehicle automation ,manufacturing and autonomy.  Time-of-flight (ToF) sensors are getting cheaper and more available. They offer in-depth information for every pixel at every pixel in addition to intensity. Within its field of vision, the ToF sensor gives spherically coordinated range data about the surrounding environment. The spherical coordinates are transformed into Cartesian coordinates, as described in the following section, with the origin of the coordinate system located at the center of the camera.  With the origin at a known reference point, the 3D point cloud in the camera coordinate system is converted to the belt coordinate system. The tests examine the capacity of ToF sensors to provide sensing for a robot tasked with handling goods traveling on a conveyor belt in an indoor scenario. The range data is utilized to identify and calculate the dimensions of objects traveling along a conveyor belt.  The robot then receives the geometry and recognition data for additional action.  The findings suggest that ToF sensors have immediate potential for automating these kinds of applications \cite{ref5}.\\
 
@@ -785,96 +671,218 @@ Velocity for the linear velocity in Cartesian space. First, FK is used to determ
 
 
 
-\subsection{Euler Angles:}\\
-Euler angles are one method of parameterizing the space of alignments.  A global orientation can be expressed as a sequence of rotations along three mutually orthogonal axes in space using Euler angles.
 
-To solve differential equations, Euler initially created Euler angles. The most popular technique for parameterizing the space of orientations is now the use of Euler angles. If we choose to consider a rotation as the action performed to attain a particular orientation, we can use Euler angles to parameterize the space of rotations\cite{ref20}.
+\subsubsection{Steps for Conveyor Tracking Visual System:}\\
 
-\subsection{Disadvantages of Gimbal Lock and Ambiguity}
-
-\subsubsection*{1. Gimbal Lock}
+Two steps are necessary for conveyor visual tracking: \cite{ref12}
 \begin{itemize}
-  \item \textbf{Loss of One Degree of Freedom.} 
-   One "gimbal" loses its capacity to rotate on its own when two of the three rotation axes align (for instance, the X′ axis aligns with Z in a Z–X′–Z sequence).  As a result, the three-dimensional local parameter space shrinks to two dimensions\cite{ref20}.
-  \item \textbf{Numerical Instability.} 
-    Small orientation changes necessitate huge swings in two of the Euler angles, which amplifies floating-point mistakes, especially near the unique alignment (e.g., a pitch of \(\ pm90^\circ \) in a Z–Y′–X sequence)\cite{ref20}.
-  \item \textbf{Control \& Interpolation Problems.} 
-    Smoothly interpolating through a gimbal-lock singularity might result in abrupt flips or unpredictable motion in applications like animation or flight control\cite{ref20}.
+\item Item detection
+\item Object tracking.
 \end{itemize}
+There are several ways to identify items. Some potential limitations are, however,info-based recognition, self-organizing maps, template matching, and the temporal difference between two consecutive image samples. Due to their slowness, self-organizing maps cannot function in real time. To match objects, template matching necessitates prior object information knowledge.  Unfortunately, this approach cannot be employed in real time due to the required processing load. The color information solution overcomes the first two limitations; however, it is not compatible with binary images. The object recognition method that leverages the difference between two photographs can be useful when the environment does not change quickly over time\cite{ref12}.
+\subsubsection{Photoneo Camera}
+The main Vision camera we have used to track the moving object's motion through the conveyor belt is a Photoneo camera (MotionCam 3D M+), which has advanced settings that can capture and detect the object's position.The photoneo camera mainly consists of 3D sensing technology, which contains parallel structured light that helps provide the light source to detect objects. This camera is capable of capturing conventional intensity images of the object as well as precise point clouds.[2]. Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU that acts as the brain behind intelligent applications. A sequential structured light, which is utilized in numerous meteorological applications, is the primary technological driver in the first group. One well-suited representative of this category is the 3D scanner range from Photoneo \cite{ref2}. \
 
-\subsubsection{2. Ambiguity (Non-Uniqueness)}
-\begin{itemize}
-  \item \textbf{Multiple Angle Triples for the Same Rotation.} 
-   There are an unlimited number of those \((\alpha,\beta,\gamma)\) that produce the same rotation matrix since every rotation about an axis is periodic (modulo \(360^\circ\)) and because different sequences might arrive at the same ultimate orientation\cite{ref20}.
-  \item \textbf{Convention Dependence.} 
-    There are twelve main Euler conventions, including choice of axis ordering, intrinsic vs. extrinsic, and proper Euler vs. Tait–Bryan.  In the absence of precise convention, a \((\alpha,\beta,\gamma)\) triplet is unclear\cite{ref20}.
-  \item \textbf{Inverse-Mapping Ambiguities.} 
-   Solving for Euler angles given a rotation matrix frequently produces two valid answers (referred to as the "standard" and "suppl-ementary" sets), necessitating additional reasoning to select one\cite{ref20}.
-\end{itemize}
+\subsubsection{Robot Interface:}\\
+There are two software components, which include
+\begin{enumerate}
+    \item  ● Robot interface: utilized to configure the vision controller's Ethernet port on the network\cite{ref2}.
+    \item  ● Robot controller: utilized to determine the robot controller's IP address\cite{ref2}.
+\end{enumerate}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=5cm]{Thesis-report/Figures/network_interface.jpeg}
+    \caption{Robot Network Interface\cite{ref2}}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
+ As outlined in the Robot Communication, the Action Request Communication Channel helps the visual controller and the robotic controller communicate with one another.  The vision controller creates a TCP server, which the robotic controller connects to and sends requests to.
+ It is advised to keep the Action Request Server port section empty and use the default port for this TCP server.  It is necessary to use the same port on the robot side when a custom port is defined \cite{ref2}.
 
-\subsubsection*{Why It Matters}
-\begin{itemize}
-  \item \textbf{Robustness:} Systems like VR head-tracking, robotic manipulators, and airplane autopilots can all be rendered inoperable by gimbal lock\cite{ref20}.
-  \item \textbf{Maintainability:} To prevent misunderstandings, ambiguity compels programs, file formats, and APIs to explicitly state which Euler standard is being used\cite{ref20}.
-\end{itemize}
+\subsubsection{Vision Controller Interface:}\\
+To connect the 3D sensor, gigabit Ethernet cables (Cat5e or higher category) are required.  Multiple 3D sensors can be connected using a gigabit switch.  The switch or Ethernet connection of the 3D sensor is always connected to the network of the scanner \cite{ref2}.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=5cm]{Thesis-report/Figures/scanner_interface.jpeg}
+    \caption{Robot Network Interface \cite{ref2}}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
 
-\subsubsection*{Alternatives}
-Many applications prefer other orientation representations to avoid both gimbal lock and ambiguity:
-\begin{itemize}
-  \item \textbf{Quaternions.}  It is unique up to a sign, free of singularities, and provides smooth spherical linear interpolation (slerp)\cite{ref20}. 
-  \item \textbf{Rotation Vectors/Axis-Angle.}  One-to-one mapping (except for periodicity and sign and \(2\pi\) \cite{ref20}. 
-  \item \textbf{Rotation Matrices.}  Despite being over-parameterized (9 integers with 6 restr-ictions), it is clear and globally non-singular\cite{ref20}. 
-\end{itemize}
+ Setting up localization settings, calibrating the robot camera, and seeing 3D scans all require a well-configured connection to the 3DSensor. To set up the network interface that the vision controller uses to connect to the Photoneo 3D Sensor, select the Scanner Interface section under the Network tab\cite{ref2}.\\
 
-\subsubsection{Rotation matrices}\\
-Euler angles are usually implemented using rotation matrices. There is an x rotation matrix, a y rotation matrix, and a z rotation matrix for every kind of roll. The matrices are multiplied by the position vector for a point in space to generate the position vector for the rotated point.  Despite being a 3 × 3 matrix, a rotation matrix is usually replaced by a homogeneous 4 × 4 matrix. The three roll matrices corresponding to the three Euler angles are multiplied to produce a general rotation. The generated matrix can be applied to the locations that need to be rotated and represents the general rotation. In most cases, matrix multiplication is not commutative.This is consistent with rotations in space not commuting.
- Lastly, it should be mentioned that the only way to effectively incorporate all common
-transformations, such as translation, scaling, shearing, and different projections
-transformations, is to use homogeneous transformation matrices\cite{ref20}.
+ Photoneo 3D Sensors have both a programmable IPv4 address and a fixed IPv6 link-local address. IPv6 connections are better than IPv4 ones. However, in the event that the IPv6 connection is blocked or fails, the IPv4 address is used.  It is therefore recommended to have a valid IPv4 network configuration. We use the proper IP address settings on the sensor side using the PhoXi Control program in all scenarios. The interface can be configured to run a DHCP server or to use any random static IP address\cite{ref2}.\\
 
-\subsection{Quaternions:}\\
-The second rotational modality uses quaternions and is defined by Euler's theorem. Since there isn't a thorough introduction to the subject and quaternions aren't nearly as well-known as transformation matrices, we will give a brief history before going into great detail into quaternion mathematics.\cite{ref20}.\\
+\subsubsection{Communication of Robot With Vision Camera}\\
+Communication between the vision controller and the robot controller is made possible via the robot interface on the vision controller and the robot module running on the robot controller\cite{ref2}.\\
 
-\subsubsection{Rotations and Euler’s Theorem}
-Rotations in 3D can be implemented using Euler’s theorem combined with quaternions, an extension of complex numbers\cite{ref20}.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=14cm]{Thesis-report/Figures/communication.png}
+    \caption{Communication with camera \cite{ref2}}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
 
-\subsubsection{Impossibility of 3D ``Complex'' Numbers}
-The following equation are taken from this journal : \cite{ref20}\\\\
-Hamilton originally attempted to define three-dimensional complex numbers of the form\\
-\[
-  a + i\,b + j\,c,\quad i^2 = j^2 = -1,
-\]
-closed under multiplication.  Kenneth O.~May (1966) showed by contradiction that no such 3D system exists:
-\[
-  \text{Assume }i\,j = a + i\,b + j\,c,\quad
-  i^2 = j^2 = -1.
-\]
-A brief outline of the contradiction leads to
-\[
-  c^2 + 1 = 0,\quad c\in\mathbb{R},
-\]
-which is impossible.
+The Vision Controller's scanner port is directly attached to a single Photoneo 3D sensor. 
+●The vision controller's network port is directly connected to a desktop PC for remote control.
+●The robot controller is directly attached to the vision controller's robot port\cite{ref2}.
 
-\subsubsection{Hamilton’s Discovery of Quaternions (1843)}
-Hamilton discovered that four elements are required to depict a rotation followed by scaling in three dimensions while strolling by Dublin's Royal Canal: \cite{ref20}
-\[
-  q = s + x\,i + y\,j + z\,k,
-  \quad
-  i^2 = j^2 = k^2 = ijk = -1.
-\]
-Here:
-\begin{itemize}
-  \item $s\in\mathbb{R}$ is the \emph{scalar part} (encoding uniform scaling).
-  \item $\mathbf{v} = (x,y,z)\in\mathbb{R}^3$ is the \emph{vector part} (encoding rotation axis and angle).
-\end{itemize}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=12cm]{Thesis-report/Figures/connection.png}
+    \caption{Whole camera with Robotic controller setup\cite{ref2}}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
 
-\subsubsection{Quaternion Notation}
-We often write a quaternion as
-\[
-  q = [\,s,\;\mathbf{v}\,],\quad s\in\mathbb{R},\;\mathbf{v}\in\mathbb{R}^3.
-\]
-This four-dimensional algebra provides a compact, non-singular representation of 3D rotations.
+\newpage
+ \subsubsection{Protocol TCP/IP}\\
+The robot controller and the vision controller communicate via the TCP/IP protocol. Network connectivity is an optional feature that some robot controllers do not come with by default\cite{ref2}.
 
+\subsubsection{Channel of communication}\\
+The robot module functions as a TCP client, while the vision controller establishes a TCP server. The client is called the Action Request Client, while the server is called the Action Request Server. The Action Request Client communicates with the Action Request Server over this channel. After receiving the action request, the vision controller carries it out and replies to the robotic controller\cite{ref2}.\\\\
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=14cm]{Thesis-report/Figures/channel.png}
+    \caption{Channel Communication \cite{ref2}}
+    \label{fig1.Photoneo Camera}
+\end{figure}
+
+The robot connection status is currently indicated by the following indicator:
+
+ Action Request Client: The condition of the Action Request Server and the Action Request Client's connection via the Action Request Communication Channel. It may exist in one of two states: \cite{ref2}
+ \begin{enumerate}
+     \item  \textbf{CONNECTED:} Due to its connection to the Action Request Server, the Action Request Client can send requests\cite{ref2}.
+      \item   \textbf{DISCONNECTED:} The Action Request Client is awaiting a fresh connection because it is not currently linked to the Action Request Server\cite{ref2}.
+
+ \end{enumerate}
+
+ Every vision system has a status indication that shows the current status of the connection to the related Photoneo 3D Sensor.
+
+ \\ Each indicator bears the identification number of the vision system to which it belongs.
+  \begin{enumerate}
+  \item  \textbf{CONNECTED:} The vision system's 3D sensor is connected\cite{ref2}.
+  \item   \textbf{DISCONNECTED:}  There is no connection to the 3D sensor linked to vision system 2\cite{ref2}.
+ \end{enumerate}
+
+\subsubsection{Network (EC, HC) }\\
+For the vision controller to connect with the robot and the 3D sensor, the robot interface (and robot controller IP) and the vision controller's 3D sensor interface need to be set up correctly. This is not required for marker space calibration\cite{ref2}.
+\subsubsection{Vision }\\
+It is necessary to thoroughly configure the visual system that will be calibrated. Make sure the following vision system parameters are set up correctly before beginning the calibration:
+● Scanner ID: This vision system uses a 3D sensor. If the scanner interface is configured correctly, the linked 3D sensors will show up in the drop-down list of accessible 3D sensors.
+The calibration space and scanner position specify the 3D sensor's mount point and, consequently, the calibration type. The scanner model is automatically calculated based on the selected 3D sensor\cite{ref2}.
+
+\subsubsection{6-Axis Cobot-Delta}
+The cobot that we have used for the conveyor tracking system is a 6-axis cobot called a Delta robot. The robot mainly moves towards its target position by getting the values from the camera in the form of quaternion values\cite{ref2}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=3.5cm]{Thesis-report/Figures/robot.jpeg}
+  \caption{Delta Robot}
+  \label{fig:delta_robot}
+\end{figure}
+\FloatBarrier
+
+\subsubsection{RobotiQ 140 Gripper}
+The RobotiQ 140 gripper is a two-finger gripper that mainly works under the principle of Modbus communication. Its 85 mm stroke, 230 N max gripping force, and 5 kg max payload make it ideal for low-volume, high-changeover settings.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=5cm]{Thesis-report/Figures/cobot_gripper_2F_85-ezgif.com-webp-to-jpg-converter.jpg}
+  \caption{RobotiQ 140 Gripper\cite{ref26}}
+  \label{fig:robotiq_140}
+\end{figure}
+\FloatBarrier
+\subsection{3D Scanning}
+The act of gathering data from an object's surface and turning it into data points is known as 3D scanning. These data points are utilized for a digital replication of the scanned object or for a dimension analysis\cite{ref17}.\\
+
+\subsection{Types of 3D scanning}
+
+\subsubsection {Laser Scanning}
+Two devices are often used in laser scanning; one directs a laser beam onto a surface, and the other records the precise spot where the object contacts the beam. The angle of reflection and the distance between the surface and the scanner can be determined via triangulation.  Time of flight measurement, structured light scanning, stereophoto-grammetry, laser interferometry, and many other techniques are comparable to the Train-gulation method\cite{ref17}.
+
+\subsubsection {Structure Light Scanning}
+This technology projects structured light patterns, such as simple geometric patterns or parallel lines, onto a surface.  The object's shape will cause the patterns to distort.  It is feasible to rebuild the scanned surface using a camera to analyze these deformations, distinguish edges, and determine the separation between the item and the scanner \cite{ref17}.
+
+\subsection {Photogrammetry}
+Triangulation is used in photogrammetry to intersect particular points within 2D images based on the angles at which those points can be found. The size, quantity, and quality of the item's images all have a big impact on creating an appropriate 3D model\cite{ref17}. 
+
+\subsection{Time fo Flight}
+The time of flight is a measure of how long it takes light to move from an illumination source to a scene and back. The main barrier in this case is the speed of light itself.  Time is typically measured using a modulated signal's phase shift. High pixel modulation frequencies must be used to achieve a respectable level of depth accuracy. The primary drawback in this case is physics, since a greater frequency results in less charge transfer, which lowers contrast and Signal‑to‑Noise Ratio. The restriction suggests an accuracy level that ToF systems can achieve. Usually, it falls within the centimeter range. Another issue is interreflections, which can significantly bend the surface\cite{ref15}.
+
+\subsection{Active stereo}
+By projecting a synthetic texture onto an object, active stereo addresses the unreliable passive stereo. Nevertheless, it still has to resolve the computationally demanding picture correspondence matching problem. Because of the complexity of the matching problem, the projected texture can be either high frequency, which can satisfy a higher resolution but usually has poor reliability, or low frequency, which typically uses random laser dots and can provide higher reliability but poor resolution (the features 15 are sparse)\cite{ref15}.
+
+\subsection{Structured patterns/dots}
+A spatially encoded pattern is used in structured patterns/dots technology to encode depth disparity information into pattern patches, which are usually projected through a laser diffraction grating in the form of a carefully planned dot collection. The camera needs to be able to see enough of the patch in order to properly record the depth information and reconstruct the code. This produces artifacts on the surfaces' edges and tiny objects. To reconstitute individual dots in the projection (and hence 3D measurements), the Nyquist-Shannon theorem necessitates an order of magnitude better camera resolution. Modern systems use about 25 camera pixels for each 3D measurement, producing about 70k 3D points \cite{ref15}. 
+
+\subsection{Parallel Structured Light}
+
+Parallel Structured Light parallelizes the sequential structured light using a sophisticated sensor design, which enables it to record the scene illuminated by various patterns. In addition to sharing many of the sequential structured light's benefits, such as resolution and accuracy, it also overcomes one of its main drawbacks: the inability to capture a dynamic environment. Photoneo's Parallel Structured Light gets around the restriction by projecting and capturing numerous encoded patterns. Pixel modulations within our proprietary CMOS sensor are used to accomplish this. Multiple groups of separately modified pixels make up the sensor itself \cite{ref15}.  \\
+
+
+The Parallel Structured Light's main advantages are:
+\begin{enumerate}
+ \item  Rapid motion scanning: 40 m/s motion is achieved with single frame acquisition \cite{ref15}.
+\item A more effective depth coding method with accurate, per-pixel measurement that offers ten times greater resolution and accuracy than rival technologies\cite{ref15}
+ \item No motion blur: exposure time of 10 µs per pixel\cite{ref15}
+ \item Quick capture of 1068 x 800 point clouds at 60 frames per second\cite{ref15}
+\item Patent-pending active ambient light rejection technology for outdoor use in direct sunlight\cite{ref15}
+ \item Active rejection of ambient light through interreflection suppression\cite{ref15}
+\item Several devices using the same space at the same time\cite{ref15}\\
+\end{enumerate}
+
+A control unit that operates in tandem with the projection is in charge of these groups. The coded patterns are inserted into the groups rather than changing the projection itself. The coded patterns injected at the end of the frame may cause the sensor to produce more than 20 different virtual representations of the scene.  Any pattern commonly used for sequential structured light can be utilized to adapt the universal approach on the fly to suit different materials and light sources\cite{ref15}. \\
+
+After undergoing embedded processing, these virtual images are sent via gigabit Ethernet to a client PC.  Three types of outputs are provided by the sensor: \cite{ref15}
+\begin{enumerate}
+    \item Point Cloud: 32 bits per channel  XYZ \cite{ref15}
+    \item 32 bits per channel is the normal map.  XYZ \cite{ref15}
+    \item Texture: Grayscale, 10/12 bits \cite{ref15}
+\end{enumerate}
+
+The sensor produces outputs with a resolution of 1068 x 800 when in "one frame" camera mode.  Approximately 500k individual measurements were used to interpolate these positions. The typical z-noise standard deviation at a distance of one meter is less than 0.5 mm (key advantage 1).  Because of the pixel design, each photon makes the best possible contribution to the 3D measurement.  The technology surpasses its rivals and offers the best XYZ resolution thanks to sub-pixel accuracy coding (high z-precision) and an efficiency of just 4.5 pixels per 3D measurement (benefit 2)\cite{ref15}. \\
+
+The "scanner mode," which is designed for still photos, is the alternate operating mode.
+ The sensor's raw sensoric output in this mode is 1602 × 1200 individual measurements. This is recorded in three consecutive frames. A laser that has been deflected by a mirror illuminates the scene.  The projection's 10 µs per pixel exposure may guarantee constant, motion-blur-free data (benefit 4)\cite{ref15}.
+
+
+\subsection{Vision Controller}\\
+\cite{ref15}The figure 3 below shows the vision controller connected to the Photoneo camera and the robotic controller using Ethernet (IPV4 address).
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=4cm]{Thesis-report/Figures/vision controller.png}
+    \caption{Vision Controller \cite{ref2}}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
+The vision controller is connected to a PC through the web interface to trigger the camera and see the Web interface for communication.To connect the 3D sensor, gigabit Ethernet connections of Cat5e or above are needed.  Multiple 3D sensors can be connected using a gigabit switch.  Multiple 3D sensors can be connected using a gigabit switch. The Ethernet connection from the switch or 3D sensor is linked to the scanner's physical network port in both scenarios. To visualize 3D scans, calibrate robot cameras, and establish localization settings, a connection to the 3D sensor is required.To set up the network interface that the vision controller uses to connect to the Photoneo 3D sensor(s), enter the Network page and select the Scanner Interface section. Both a fixed IPv6 link-local address and a programmable IPv4 address are features of Photoneo 3D sensors.\cite{ref15
+\newpage
+\subsection{Marker Pattern}\\
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=4cm]{Thesis-report/Figures/marker_pattern.png}
+    \caption{Marker Pattern \cite{ref2}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
+Figure 4 above shows the S30 calibration board that helps calibrate the conveyor belt, which aligns the coordinates of the object with the conveyor belt for objects passing through the belt. To enable the robot to retrieve objects from the moving conveyor belt, the belt can be used to align the object coordinates with the conveyor belt\cite{ref2}.
+\
+\subsection{Active ambient light rejection:}\\
+The inability of all area-based 3D sensors to function in direct sunshine is a typical problem.  Direct sunshine has a maximum power output of 1120 W/m³.  High-end band-pass filters installed in all of Photoneo's sensors lower ambient light levels to around 15 W/m².  Although it can oversaturate the image or produce high shot noise, this still performs better than the majority of projection systems.
+ Delivering active lighting as a brief pulse, which raises the projection's optical power output and shortens the system's exposure time overall, is one way to lessen the impact of ambient light.  This method has drawbacks, such as limited parts availability, complicated power supply management, hazards to eye safety, or problems with heat control\cite{ref15}.\\
+
+The sensor and projection can cooperate to regulate the light sensitivity of the sensor surface through active ambient light suppression. The direct reflection of the projection at any one time during the acquisition may only reveal about 1 percent of the sensor surface due to geometrical constraints.  The remaining 99 percent of the sensor can be turned off by the camera's control circuit, preventing any photoelectrons from being collected.  Scanning in direct sunshine is made possible by the technology's efficient 1:100 suppression of ambient light from any source (key benefit 5)\cite{ref15}. \\
+
+The same method significantly reduces internal reflections between pixels at the same 1:100 ratio (important advantage 6).  The technique rejects the second scanner's projection in 99 percent of the image when two sensors are working in the same area at the same time, affecting only 1 percent of the pixels. It is simple to recognize and remove these pixels from the output (key advantage 7)\cite{ref15}.
+ 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=12cm]{Thesis-report/Figures/scanningdistance.jpg}
+    \caption{Point Size vs. Scanning Distance \cite{ref15}}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}\\
+
+Figure 15 below shows the scanning distance of various cameras vs. their point size. The M+ Range camera has been utilized in this instance \cite{ref15}. 
+
+\newpage
 \subsection{Object for picking}
 We have used a trapezoid for object picking 
 
@@ -958,7 +966,7 @@ The following figures illustrate examples of the same object captured under vari
 \noindent\textbf{6. Normals:} Surface normals are essential for realistic rendering and understanding object orientation. They describe how surfaces interact with light, which is crucial in graphics and computer vision.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=5cm]{Thesis-report/Figures/new_Normals.png}
+    \includegraphics[width=6cm]{Thesis-report/Figures/new_Normals.png}
     \caption{Normals}
     \label{fig:normals}
 \end{figure}
@@ -1044,6 +1052,62 @@ Function: The rubber feet steady the conveyor system and assist in absorbing vib
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 \newpage
+
+\chapter{\section{\mbox{Methodology }}{{\normalfont\fontsize{14}{16}\bfseries}}
+
+This approach uses an interactive route planning solution for a fixed-based manipulator from an initial to a final configuration, along with a camera system for 3D detection.  Two characteristics of the ideal path should be collision-free and metric minimization.\\
+The flowchart below represents the basic topics that we are going to discuss:
+\begin{figure}[H]  % requires \usepackage{float}
+  \centering
+  \includegraphics[width=8cm]{Thesis-report/Figures/Methodology.png}
+  \caption{Methodology Flowchart \cite{ref18}}
+  \label{fig:photoneo-scanning-volume}
+\end{figure}
+
+Surface imaging and geometry estimation are the two primary subtasks that comprise imaging of the item to be inspected. There are numerous ways to implement automated optical inspection systems in the field of optical inspection. The choice of an efficient set of tactics should be guided by the task at hand. Improving the contrast between an object's flawed and perfect areas is crucial for dependable and robust automated detection systems in the field of optical surface inspection.
+
+
+\label{Literature}
+\end{justify}
+\subsection{Photoneo Camera}
+\begin{justify}
+
+The camera we have used to track the moving object's motion through the conveyor belt is a 
+MotionCam 3D M+, which has advanced settings that can capture and detect the object's position. The Photoneo camera mainly consists of 3D sensing technology, which contains parallel structured light that helps provide the light source to detect objects \cite{ref2}.\\
+
+Accurate point clouds and a standard intensity image of the object can be captured by this camera.  Its foundation is a customized CMOS image sensor that utilizes Photoneo's patented Parallel Structured Light technology\cite{ref15}.\\
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=5cm]{Thesis-report/Figures/CAMERA.png}
+    \caption{Photoneo Camera \cite{ref2}} 
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=4cm]{Thesis-report/Figures/camera.jpeg}
+    \caption{Camera-mounted setup}
+    \label{fig1.Photoneo Cmaera}
+\end{figure}
+
+The camera is built with a parallel stereo charged-coupled device (CCD) camera system to follow the colored region of the RGB marker accurately. This ROI was also separated from the live stream image using blob analysis, and then the 3D coordinates in the world coordinate frame were triangulated.   The 3D coordinates of the marker were transformed into the robot frame of reference (robot stereo vision coordinate system) and used to evaluate the robot path and trajectory planning.   Consequently, our proposed model determines the real-time distance the robot needs to travel along the three axes to select and position an object\cite{ref15}.
+
+The camera's carbon fiber body is lightweight and guarantees the same degree of stiffness as scanners. Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU, which is used for intelligent applications.  One well-suited representative of this category is the 3D scanner range from Photoneo. This method is appropriate for dynamic scenes because it uses sequential (multi-frame) capturing\cite{ref15}.\\
+\subsection{Position of Camera}\\
+\begin{justify}
+When mounting a camera for vision operation, it is best to keep it stable and as close to the robot's work envelope as feasible, without interfering with or restricting the movement of the robot arm. The longer the part must travel from the camera's location into the robot's reachable workspace, the more errors the encoder counts will produce, since the accuracy of conveyor tracking with vision depends on the coordinate transformation between the camera's picture-taking location and the robot's work envelope. The camera must be oriented downwards since the components are positioned on the conveyor belt's surface, and vision recognition is done on the parts' upper surface. For the camera's 25 mm lens to cover the entire visible portion of the conveyor belt, a camera fixture was constructed to hold the camera directly above the upstream sensor. The upstream sensor is also used to activate the camera to take a photo when parts are presented at this point, so the picture-taking location is placed at the top of the upstream sensor. Following their placement in fixed locations, the camera and conveyor must be calibrated using the calibration program on the robot controller to configure the camera's properties and determine how the locations of the camera and conveyor relate to the robot's world coordinate \cite{ref19}.\
+\end{justify}
+
+\subsection{Object Identification}\\
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=8cm]{Thesis-report/Figures/Trapezoid web.jpeg}
+    \caption{Object Identification in Web Interface}
+    \label{fig:web_interface}
+\end{figure}
+
+
+The STL file is uploaded to the web interface, thereby helping the camera to identify object in the moving conveyor belt tracking system. Once the object is detected, the camera helps in getting the object's position and its quaternion values.
 \subsection{Photoneo Camera-Web Interface}\\
 
 For running the Solution request, after verifying that the environment complies with all necessary safety rules, Button Deploy launches the solution \cite{ref2}.\\
@@ -1095,62 +1159,6 @@ The web interface shows the image of the object being detected; initially, we lo
 \begin{justify}
 The above figure shows the volume/area in which the Photoneo Camera can scan items and determine object poses. The top view shows the maximum field of view (FOV) reachable by the camera for object coordinate acquisition, which extends up to 15 m. The camera sits around 350 mm tall and projects a pyramidal field of view with colored ones. The Depth lanes at 630 mm,907mm, and 1574 mm from the sensor; at each distance, the intersection of the FOV with the flat plane is a rectangle that grows with distance. Moreover, the blue trapezoid is the maximum rectangular cross-section of the scan volume with sensor horizontal, vertical, and diagonal field of view limits \cite{ref2}.
 \end{justify}
-\chapter{\section{\mbox{Methodology }}{{\normalfont\fontsize{14}{16}\bfseries}}
-
-This approach uses an interactive route planning solution for a fixed-based manipulator from an initial to a final configuration, along with a camera system for 3D detection.  Two characteristics of the ideal path should be collision-free and metric minimization.\\
-The flowchart below represents the basic topics that we are going to discuss:
-\begin{figure}[H]  % requires \usepackage{float}
-  \centering
-  \includegraphics[width=6cm]{Thesis-report/Figures/Methodology.png}
-  \caption{Methodology Flowchart \cite{ref18}}
-  \label{fig:photoneo-scanning-volume}
-\end{figure}
-
-Surface imaging and geometry estimation are the two primary subtasks that comprise imaging of the item to be inspected. There are numerous ways to implement automated optical inspection systems in the field of optical inspection. The choice of an efficient set of tactics should be guided by the task at hand. Improving the contrast between an object's flawed and perfect areas is crucial for dependable and robust automated detection systems in the field of optical surface inspection.
-
-
-\label{Literature}
-\end{justify}
-\subsection{Photoneo Camera}
-\begin{justify}
-
-The camera we have used to track the moving object's motion through the conveyor belt is a 
-MotionCam 3D M+, which has advanced settings that can capture and detect the object's position. The Photoneo camera mainly consists of 3D sensing technology, which contains parallel structured light that helps provide the light source to detect objects \cite{ref2}.\\
-
-Accurate point clouds and a standard intensity image of the object can be captured by this camera.  Its foundation is a customized CMOS image sensor that utilizes Photoneo's patented Parallel Structured Light technology\cite{ref15}.\\
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=5cm]{Thesis-report/Figures/CAMERA.png}
-    \caption{Photoneo Camera \cite{ref2}} 
-    \label{fig1.Photoneo Cmaera}
-\end{figure}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=4cm]{Thesis-report/Figures/camera.jpeg}
-    \caption{Camera-mounted setup}
-    \label{fig1.Photoneo Cmaera}
-\end{figure}
-
-The camera is built with a parallel stereo charged-coupled device (CCD) camera system to follow the colored region of the RGB marker accurately. This ROI was also separated from the live stream image using blob analysis, and then the 3D coordinates in the world coordinate frame were triangulated.   The 3D coordinates of the marker were transformed into the robot frame of reference (robot stereo vision coordinate system) and used to evaluate the robot path and trajectory planning.   Consequently, our proposed model determines the real-time distance the robot needs to travel along the three axes to select and position an object\cite{ref15}.
-
-The camera's carbon fiber body is lightweight and guarantees the same degree of stiffness as scanners. Three parts comprise the 3D camera: a camera unit with our proprietary Mosaic Shutter CMOS image sensor, a laser projection unit, and a processor unit with a GPU, which is used for intelligent applications.  One well-suited representative of this category is the 3D scanner range from Photoneo. This method is appropriate for dynamic scenes because it uses sequential (multi-frame) capturing\cite{ref15}.\\
-\subsection{Position of Camera}\\
-\begin{justify}
-When mounting a camera for vision operation, it is best to keep it stable and as close to the robot's work envelope as feasible, without interfering with or restricting the movement of the robot arm. The longer the part must travel from the camera's location into the robot's reachable workspace, the more errors the encoder counts will produce, since the accuracy of conveyor tracking with vision depends on the coordinate transformation between the camera's picture-taking location and the robot's work envelope. The camera must be oriented downwards since the components are positioned on the conveyor belt's surface, and vision recognition is done on the parts' upper surface. For the camera's 25 mm lens to cover the entire visible portion of the conveyor belt, a camera fixture was constructed to hold the camera directly above the upstream sensor. The upstream sensor is also used to activate the camera to take a photo when parts are presented at this point, so the picture-taking location is placed at the top of the upstream sensor. Following their placement in fixed locations, the camera and conveyor must be calibrated using the calibration program on the robot controller to configure the camera's properties and determine how the locations of the camera and conveyor relate to the robot's world coordinate \cite{ref19}.\
-\end{justify}
-
-\subsection{Object Identification}\\
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=8cm]{Thesis-report/Figures/Trapezoid web.jpeg}
-    \caption{Object Identification in Web Interface}
-    \label{fig:web_interface}
-\end{figure}
-
-
-The STL file is uploaded to the web interface, thereby helping the camera to identify object in the moving conveyor belt tracking system. Once the object is detected, the camera helps in getting the object's position and its quaternion values.
-
 
 
 \subsection{Calibration for camera}\\\\
@@ -1254,7 +1262,7 @@ When we pass the object through the conveyor belt, there is a change in position
 where X represents the object's starting position\\
 X represents its ending position.\\
 t is the change in time. 
-
+\newpage
 \subsubsection{Calibration Ball}\\\\
 
 
@@ -1511,10 +1519,10 @@ Additionally, there are several electromechanical technologies, including
     \item Laser 
 \end{enumerate}
 
-The controller receives counts as the encoder rotates. Assume that the count range is between 0 and 10,000. Since this is an incremental encoder, we know that a full rotation of the shaft records a count of 10,000, but we do not know the exact location. When the entrance photo-eye sensor recognizes the object after it has been placed on the conveyor, the current encoder count will be noted. Assume that $5232$ is the number.\cite{ref26}
+The controller receives counts as the encoder rotates. Assume that the count range is between 0 and 10,000. Since this is an incremental encoder, we know that a full rotation of the shaft records a count of 10,000, but we do not know the exact location. When the entrance photo-eye sensor recognizes the object after it has been placed on the conveyor, the current encoder count will be noted. Assume that $5232$ is the number\cite{ref27}.
 \begin{justify}
 
-The below equation are taken from this journal: \cite{ref26}
+The below equation are taken from this journal: \cite{ref27}
 \begin{align} 
 \[
 C_{\text{in}} = 5232 \quad \text{(encoder count at entry)}
@@ -1540,7 +1548,7 @@ The fraction of a full revolution is:
 \[
 L_{\text{rev}} = \frac{\Delta C}{N} = \frac{1079}{10{,}000} 
 \]
-\newpage
+
 The corresponding angular displacement is:
 
 \[
@@ -1548,10 +1556,10 @@ The corresponding angular displacement is:
 \]
 
 \noindent
-Therefore, the object moved a distance equivalent to 1079 encoder counts, or approximately $38.844^\circ$ of the encoder shaft's rotation, between the entry and exit sensors.\cite{ref26}
+Therefore, the object moved a distance equivalent to 1079 encoder counts, or approximately $38.844^\circ$ of the encoder shaft's rotation, between the entry and exit sensors\cite{ref27}.
 \end{align}
 \end{justify}
-After the object leaves and is picked up by the exit photo-eye, we record $C_{\mathrm{out}}=6311$.  Deducting $C_{\mathrm{in}}=5232$ gives $\Delta C=1079$ counts.  This tells us the object traversed 1079 encoder counts from entrance to exit, though its exact position on the shaft remains unknown.\cite{ref26}
+After the object leaves and is picked up by the exit photo-eye, we record $C_{\mathrm{out}}=6311$.  Deducting $C_{\mathrm{in}}=5232$ gives $\Delta C=1079$ counts.  This tells us the object traversed 1079 encoder counts from entrance to exit, though its exact position on the shaft remains unknown.\cite{ref27}.
 
 \newpage
 
@@ -1689,9 +1697,12 @@ Industrial Automation,
 Belt Variables, University Politehnica of Bucharest,Th. Borangiu1, F.D. Anton1, Anamaria Dogar1
 \bibitem{ref24}ROBOTICS AND AUTOMATION HANDBOOK,Thomas R. Kurfess Ph.D., P.E.
 \bibitem{ref25}Y. K. Chen, T. Yoshimi, and M. Tomizuka, “Vision-Guided Robotic System for Pick-and-Place on Conveyor Lines Using Coordinate Transformation,” IEEE Trans. Autom. Sci. Eng., vol. 17, no. 3, pp. 1211–1223, Jul. 2020.
-\bibitem{ref26}Introduction to RoboticsMechanics and Control
+\bibitem{ref26}Word Robotiq 140 gripper: 
+\href{https://www.google.com/search?sca_esv=dc1c1c43a06ff8c9&hl=en&sxsrf=AE3TifPcnCgfQCDGAP8AtxV99p5dIOoUoA:1753830953352&udm=2&fbs=AIIjpHxU7SXXniUZfeShr2fp4giZ1Y6MJ25_tmWITc7uy4KIegMOm3ItDJ-cT-Q5w0bTw0abzB3EO0mSt2qBJsQVdDzs4ujqvVHxeaxaYFSnVryj5sSY9vXC_sePK8d2-INJMip9ktuq_rZLxzjcNb9p_QvpMGqwlBfjCGcNeUKVoAd37xOpETuMBN53BJlZB2QSDUUWpRe4&q=robotiq&sa=X&ved=2ahUKEwjL3eG3meOOAxVR9bsIHee6HiwQtKgLegQIGBAB&biw=1920&bih=848&dpr=1}{Robotiq}
+
+\bibitem{ref27}Introduction to RoboticsMechanics and Control
 Third Edition,John J. Craig
-\bibitem{ref26}RobotiQ gripper 140: https://www.google.com/search?vsrid=CMacjYi-oqqrWBACGAEiJDA5OGVjNDA1LWQ0NzktNDVjMS1iMjdhLTAyYzcxNzJhNjg1MDIGIgJlaCgNOIm70_nDzI4D&vsint=CAIqDAoCCAcSAggKGAEgATojChYNAAAAPxUAAAA_HQAAgD8lAACAPzABENwGGPUDJQAAgD8&udm=26&lns_mode=un&source=lns.web.gsbubb&vsdim=860,501&gsessionid=toTtRujwHhMW7JuHgPcCf7SZKgAG5klXeK_1TVRoGlGz7kJRUmdoRA&lsessionid=Nyg4DLMKtQQHSOCWWw3LsS5DfjPyie5IDuBCWdL7PU78C8Kn31AAVA&lns_surface=26&authuser=0&lns_vfs=e&qsubts=1753052092139&biw=1920&bih=1079&hl=en-DE#vhid=nvlIn872YHR55M&vssid=mosaic}
+
 
 
 
