@@ -1074,13 +1074,13 @@ The conveyor belt is the main belt where we have to place the object, thereby pu
 
 The conveyor belt specification includes\\
 \begin{enumerate}
-    \item The item model has Belt size: 59x7.8 in/1498.6x198 mm \cite{ref22}
-    \item Table Width: 9.9 in/252mm \cite{ref22}
-    \item Load Capacity Limit: 82.67 lbs/37.5 kg \cite{ref22}
-    \item material: 201 Stainless Steel \cite{ref22}
-    \item product Weight: 40.79/18.5 kg \cite{ref22}
-    \item Conveyor belt speed: Bi-directional Variable speed, 28 m/min \cite{ref22}
-    \item product Size: 58.86 x 14.17 x 35.91 in/1495 x 360 x 912 mm \cite{ref22}
+    \item The item model has Belt size: 59x7.8 in/1498.6x198 mm 
+    \item Table Width: 9.9 in/252mm 
+    \item Load Capacity Limit: 82.67 lbs/37.5 kg 
+    \item material: 201 Stainless Steel 
+    \item product Weight: 40.79/18.5 kg 
+    \item Conveyor belt speed: Bi-directional Variable speed, 28 m/min 
+    \item product Size: 58.86 x 14.17 x 35.91 in/1495 x 360 x 912 mm 
 \end{enumerate}
 
 \begin{figure}[h]
@@ -1273,12 +1273,46 @@ The calibration method employed in this study (extrinsic calibration) (EC) is de
     \caption{Calibration for the camera relative to the Robot frame}
     \label{fig:extrinsic_ball.jpeg}
 \end{figure}
-In contrast to the intrinsic matrix, which explains the relationship between the camera and the image plane, the extrinsic matrix shows the relationship between the camera and the chessboard frame. Establishing the transformation relationship between the cameras and the robotic arm is the goal of hand-eye calibration.  Once the transformation link is established, the location of an object in the camera frame may be translated into its location in the robot base frame. Then the robotic arm can locate it and grab it.During an eye-to-hand calibration, the base H cam and robot base's associated transformation matrix should be determined\cite{ref3}.  The following equation is derived from\\
+In contrast to the intrinsic matrix, which explains the relationship between the camera and the image plane, the extrinsic matrix shows the relationship between the camera and the chessboard frame. Establishing the transformation relationship between the cameras and the robotic arm is the goal of hand-eye calibration.  Once the transformation link is established, the location of an object in the camera frame may be translated into its location in the robot base frame. Then the robotic arm can locate it and grab it.During an eye-to-hand calibration, the base H cam and robot base's associated transformation matrix should be determined\cite{ref3}.  The following equation is derived from
 
  \[
-{}^{\text{cam}}\mathbf{H}_{\text{cal}} = {}^{\text{cam}}\mathbf{H}_{\text{base}} \cdot {}^{\text{base}}\mathbf{H}_{\text{tcp}} \cdot {}^{\text{tcp}}\mathbf{H}_{\text{cal}} = {}^{\text{cam}}\mathbf{H}_{\text{base}} \cdot {}^{\text{base}}\mathbf{H}_{\text{cal}} \tag{3}
+{}^{\text{cam}}\mathbf{H}_{\text{cal}} = {}^{\text{cam}}\mathbf{H}_{\text{base}} \cdot {}^{\text{base}}\mathbf{H}_{\text{tcp}} \cdot {}^{\text{tcp}}\mathbf{H}_{\text{cal}} = {}^{\text{cam}}\mathbf{H}_{\text{base}} \cdot {}^{\text{base}}\mathbf{H}_{\text{cal}}
 \]
+\begin{description}
+  \item[$\mathrm{camHcal}$]
+    The $4\times4$ homogeneous transform of the calibration‐target frame “cal” 
+    expressed in the camera frame “cam.” It maps a point $\mathbf{p}_{\mathrm{cal}}$ 
+    in the calibration target coordinates to $\mathbf{p}_{\mathrm{cam}}$:
+    \[
+      \mathbf{p}_{\mathrm{cam}}
+      = \mathrm{camHcal}\;
+        \begin{pmatrix}\mathbf{p}_{\mathrm{cal}} \\ 1\end{pmatrix}.
+    \]
 
+  \item[$\mathrm{camHbase}$]
+    The $4\times4$ homogeneous transform of the robot‐base frame “base” 
+    expressed in the camera frame. It maps \cite{ref3}
+    $\mathbf{p}_{\mathrm{base}}$ to $\mathbf{p}_{\mathrm{cam}}$.
+
+  \item[$\mathrm{baseHtcp}$]
+    The $4\times4$ homogeneous transform of the tool‐center‐point frame “tcp” \cite{ref3}
+    expressed in the robot‐base frame. It maps 
+    $\mathbf{p}_{\mathrm{tcp}}$ to $\mathbf{p}_{\mathrm{base}}$.
+
+  \item[$\mathrm{tcpHcal}$]
+    The $4\times4$ homogeneous transform of the calibration‐target frame “cal” 
+    expressed in the TCP frame. It maps 
+    $\mathbf{p}_{\mathrm{cal}}$ to $\mathbf{p}_{\mathrm{tcp}}$.
+
+  \item[$\mathrm{baseHcal}$]
+    Defined as the composite
+    \[
+      \mathrm{baseHcal}
+      = \mathrm{baseHtcp}\,\mathrm{tcpHcal},
+    \]
+    This is the transform of the calibration‐target frame “cal” 
+    expressed in the robot‐base frame.\cite{ref3}
+\end{description}
 
 The transformation matrix in the equation above that must be computed for the eye-to-hand calibration is the camera H base, or the position of the robot's base frame, as shown in the camera frame. Also, either the 3D recognition of the calibration rig or the camera calibration (extrinsic matrix) can be used to generate the Cam H cal, which is the transformation matrix from the calibration rig frame to the camera frame.   For a calibration object, forward kinematics allows one to calculate base H cal, which is the pose of the object's frame cal expressed in the robot's base frame. This is usually accomplished by identifying the calibration target from a known robot pose. A matrix representing the mathematical modifications performed between the frames of the calibration rig and the robot framework.  Any change in the relative positions of the robot and the 3D sensor after calibration will render the calibration matrix invalid and require re-calibration of the entire system.In other words, after the system has been calibrated, the 3D sensor cannot be moved around the robot \cite{ref3}.\\
 
@@ -1457,24 +1491,46 @@ TD = \Delta TSC + \Delta CTO
   \item $\Delta CTO$ is the \textbf{Conveyor Tracking Offset}%
         —Conveyor tracking offset, or $\Delta CTO$, is the distance traveled while awaiting the robot to arrive at the pick place\cite{ref21}.
 \end{itemize}
-
+\newpage
 5. \textbf{Target Scan Completion Distance (TSC)} 
 
 \begin{center}
     \[
     TSC = V_c \times t_s 
     \]
+    \begin{description}
+    \item[\(\mathrm{TSC}\)] \textbf{Target Scan Completion Distance}: The distance (e.g., in meters) that the target (or the sensor-to-target line) moves during one complete scan cycle.
+    \item[\(V_{c}\)] \textbf{Closing Velocity}: The relative speed between sensor and target along the scan axis (m/s), representing how fast they move toward (or away from) each other during the scan.
+    \item[\(t_{s}\)] \textbf{Scan Time}: The duration of a single scan cycle or dwell (in seconds), i.e., the time it takes the sensor to sweep or sample the target once.
+\end{description}
+
 \end{center}
 
 6. \textbf{Final Adjusted position}\\
 
-After considering the conveyor motion and processing delays, the final position will be the place where the robot should pick the object \cite{ref21}.\\
+After considering the conveyor motion and processing delays, the final position will be the place where the robot should pick the object \cite{ref21}.
 
 \[
 \text{Target} = TX + (TX - \text{MPO}) + (V_c \times t_s) + (V_c \times t_r)\
 \]
+\begin{description}
+  \item[\textbf{Target}] 
+    The final \(X\)-coordinate in the robot’s world frame, where the gripper must arrive to pick the object.
+  \item[\(T_X\)]
+    The \(X\)-coordinate of the object as measured by the vision system at the instant of detection (in world coordinates).
+  \item[\(V_c\)] 
+    The conveyor belt speed (e.g.\ in \(\mathrm{m/s}\)).
+  \item[\(t_s\)] 
+    Sensor delay: the time between image capture and when the position \(T_X\) is available to the controller.
+  \item[\(t_r\)] 
+    Robot delay: the time between issuing the pick command and the robot beginning its pick motion.
+  \item[\(V_c \, t_s\)] 
+    Distance traveled by the object during the sensor delay.
+  \item[\(V_c \, t_r\)] 
+    Distance traveled by the object during the robot reaction delay.
+    where MPO=Marker pattern Origin
+\end{description}
 
-where MPO=Marker pattern Origin
 \subsubsection{Calibration of Conveyor Belt}
 It is possible to calibrate the conveyor belt using the following methods:   In the \autoref{fig:conveyor_belt with cmaera.jpg} below, labeled "conveyor belt with camera," the inputs and outputs are displayed.  Here are the inputs:
 
