@@ -1157,7 +1157,7 @@ The web interface shows the image of the object being detected; initially, we lo
   \label{fig:photoneo-scanning-volume}
 \end{figure}
 \begin{justify}
-The above figure shows the volume/area in which the Photoneo Camera can scan items and determine object poses. The top view shows the maximum field of view (FOV) reachable by the camera for object coordinate acquisition, which extends up to 15 m. The camera sits around 350 mm tall and projects a pyramidal field of view with colored ones. The Depth lanes at 630 mm,907mm, and 1574 mm from the sensor; at each distance, the intersection of the FOV with the flat plane is a rectangle that grows with distance. Moreover, the blue trapezoid is the maximum rectangular cross-section of the scan volume with sensor horizontal, vertical, and diagonal field of view limits \cite{ref2}.
+The above figure 35 shows the volume/area in which the Photoneo Camera can scan items and determine object poses. The top view shows the maximum field of view (FOV) reachable by the camera for object coordinate acquisition, which extends up to 15 m. The camera sits around 350 mm tall and projects a pyramidal field of view with colored ones. The Depth lanes at 630 mm,907mm, and 1574 mm from the sensor; at each distance, the intersection of the FOV with the flat plane is a rectangle that grows with distance. Moreover, the blue trapezoid is the maximum rectangular cross-section of the scan volume with sensor horizontal, vertical, and diagonal field of view limits \cite{ref2}.
 \end{justify}
 
 
@@ -1188,9 +1188,9 @@ The camera is set in place, and the calibration ball is fixed at the end of the 
     \caption{Calibration for camera relative to the robot frame\cite{ref2}} 
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-Figure 18 below shows how the calibration is happening by adding the point by fixing the point where the robot coordinates [X, Y, Z] rotation values will save the points (represented as a green point). Here, we need to add 9 points to get the calibration workspace. After the calibration, the average value from the 9 points is taken into consideration. (The lesser the value, the better the accuracy) \cite{ref2}.\\ 
+Figure 37 below shows how the calibration is happening by adding the point by fixing the point where the robot coordinates [X, Y, Z] rotation values will save the points (represented as a green point). Here, we need to add 9 points to get the calibration workspace. After the calibration, the average value from the 9 points is taken into consideration. (The lesser the value, the better the accuracy) \cite{ref2}.\\ 
 
-The calibration method employed in this study (extrinsic calibration) (EC) is depicted in Figure 18 above. The camera is fixed in the site, and nine points are considered before the average value is ultimately chosen as the calibration value.  [2]  In configurations where the 3D sensor is fixedly positioned within the robotic cell, frequently above the bin, this type of calibration is used.  The 3D sensor just needs to be stationary concerning the robot's base; it is not required to be stationary concerning the robotic cell itself.  [2]  Finding a camera's intrinsic matrix, extrinsic matrix, and distortion coefficients is the aim of camera calibration \cite{ref2}.\\ 
+The calibration method employed in this study (extrinsic calibration) (EC) is depicted in Figure 38 below. The camera is fixed in the site, and nine points are considered before the average value is ultimately chosen as the calibration value.  [2]  In configurations where the 3D sensor is fixedly positioned within the robotic cell, frequently above the bin, this type of calibration is used.  The 3D sensor just needs to be stationary concerning the robot's base; it is not required to be stationary concerning the robotic cell itself.  [2]  Finding a camera's intrinsic matrix, extrinsic matrix, and distortion coefficients is the aim of camera calibration \cite{ref2}.\\ 
 
 \begin{figure}[h]
     \centering
@@ -1456,10 +1456,10 @@ The distance between the marker pattern positions for the camera calibration and
     \caption{Conveyor Belt setup \cite{ref21}}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
-Figure 25 below depicts the calibration board, which is used to ascertain the object's X, Y, and Z coordinates in conjunction with the conveyor belt.The target position is T[X, Y, Z, Rx, Ry, Rz], which represents the quaternion value of the object that needs to be converted into Euler values that are used to move the robot to that specified location. MSD stands for marker space displacement, TD for travel distance, and TSc for trigger to scan completion in meters \cite{ref21}. \\
+Figure 47 above depicts the calibration board, which is used to ascertain the object's X, Y, and Z coordinates in conjunction with the conveyor belt.The target position is T[X, Y, Z, Rx, Ry, Rz], which represents the quaternion value of the object that needs to be converted into Euler values that are used to move the robot to that specified location. MSD stands for marker space displacement, TD for travel distance, and TSc for trigger to scan completion in meters \cite{ref21}. \\
 
 
-In Figure 26 below, the number represents the coordinates of the object after the scanning of the object is done, after the trigger. Once these quaternion values are attained, these values are then sent to the robotic controller for the robot to move to the required target position.\\\\
+In Figure 48 below, the number represents the coordinates of the object after the scanning of the object is done, after the trigger. Once these quaternion values are attained, these values are then sent to the robotic controller for the robot to move to the required target position.\\\\
 \begin{figure}[h]
     \centering
     \includegraphics[width=13cm]{Thesis-report/Figures/coordinates.png} 
@@ -1581,8 +1581,8 @@ The tool-center-point (TCP) speed of the robot is compared to the belt speed.
 
 \subsection{Success Rate vs Conveyor Speed}
 \begin{justify}
-Figure 52 compares how effectively our robotic arm picks two shapes—trapezoidal blocks and cylindrical pipes—from a conveyor belt moving between 1.0 m/s and 2.0 m/s. As the belt speeds up, both success rates steadily drop: trapezoid grasps fall from 90 percent at 1.0 m/s to 85 percent at 2.0 m/s, while pipe grasps decline more sharply from 70 percent down to 60 percent. Throughout the range, trapezoids outperform pipes by about 20–25 perc-entage points, thanks to their flat faces and edges that give the gripper firm, predictable contact—whereas smooth, round pipes tend to slip or roll under slight misalignments.
-\end{justify
+Figure 51 compares how effectively our robotic arm picks two shapes—trapezoidal blocks and cylindrical pipes—from a conveyor belt moving between 1.0 m/s and 2.0 m/s. As the belt speeds up, both success rates steadily drop: trapezoid grasps fall from 90 percent at 1.0 m/s to 85 percent at 2.0 m/s, while pipe grasps decline more sharply from 70 percent down to 60 percent. Throughout the range, trapezoids outperform pipes by about 20–25 perc-entage points, thanks to their flat faces and edges that give the gripper firm, predictable contact—whereas smooth, round pipes tend to slip or roll under slight misalignments.
+\end{justify}
 \begin{figure}[h]
     \centering
     \includegraphics[width=9cm]{Thesis-report/Figures/conveyor_speed vs success_rates.png}
@@ -1591,7 +1591,7 @@ Figure 52 compares how effectively our robotic arm picks two shapes—trapezoi
 \end{figure}
 
 \subsection{Average Pick Time vs Conveyor Speed}
-Conveyor belt speed and the amount of time it takes an operator (or automated picker) to grab and remove a single item are related, as shown in Figure 53.  Belt speed, which we varied in discrete increments from 1.0 m/s to 2.0 m/s, is plotted along the horizontal axis. The corresponding average pick time, calculated over 50 trials at each speed setting to assure statistical reliability, is plotted on the vertical axis.The average pick time is about 0.5 s at the slowest tested speed of 1.0 m/s.  Pick time grows nearly linearly with belt speed: at 1.2 m/s, it rises to around 0.7 s, at 1.4 m/s, it reaches 0.9 s, and so on, until the average pick time reaches approximately 1.5 s at the top speed of 2.0 m/s.  The kinematic demands of reaching for, gripping, and safely removing things become significantly more difficult as the belt moves faster, as evidenced by the continuous, almost one-second rise in pick time for every 1 m/s of additional belt speed.
+Conveyor belt speed and the amount of time it takes an operator (or automated picker) to grab and remove a single item are related, as shown in Figure 52.  Belt speed, which we varied in discrete increments from 1.0 m/s to 2.0 m/s, is plotted along the horizontal axis. The corresponding average pick time, calculated over 50 trials at each speed setting to assure statistical reliability, is plotted on the vertical axis.The average pick time is about 0.5 s at the slowest tested speed of 1.0 m/s.  Pick time grows nearly linearly with belt speed: at 1.2 m/s, it rises to around 0.7 s, at 1.4 m/s, it reaches 0.9 s, and so on, until the average pick time reaches approximately 1.5 s at the top speed of 2.0 m/s.  The kinematic demands of reaching for, gripping, and safely removing things become significantly more difficult as the belt moves faster, as evidenced by the continuous, almost one-second rise in pick time for every 1 m/s of additional belt speed.
 
 \begin{figure}[h]
     \centering
@@ -1602,7 +1602,7 @@ Conveyor belt speed and the amount of time it takes an operator (or automated pi
 
 
 \subsection{Average Pick Time vs Lighting Condition}
-The robot's capacity to select two distinct part geometries—pipes and trapezoidal blo-cks under two lighting conditions—bright and dim—is contrasted in Figure 54.  The technology obtains an 80 percent pick success rate on cylindrical pipe segments and a 90 percent success rate on trapezoidal sections when the workcell is saturated with uniform, high-intensity illumination.  However, both rates decrease and the effect is noticeably worse for the pipes when the overhead lights are turned down to mimic low-illumination or "after-hours" conditions. The trapezoid rate barely decreases by 10 percentage points (from 90 to 80 percent) in low light, whereas the pipe pick rate decreases by 20 percentage points (from 80 to 60 percent).  This asymmetric degradation implies that the grasping method or vision algorithms employed for cylindrical objects are less contrasted, more susceptible to glare, and more sensitive to shadows than those calibrated for flat-faced parts.  Adaptive lighting control targeted at critical regions or more robust edge-detection under low contrast are two examples of future improvements that could help close the performance gap and guarantee consistently high pick rates across all part types. The results also highlight two important insights: first, adequate and evenly distributed lighting is essential for reliable handling of round objects.
+The robot's capacity to select two distinct part geometries—pipes and trapezoidal blo-cks under two lighting conditions—bright and dim—is contrasted in Figure 53.  The technology obtains an 80 percent pick success rate on cylindrical pipe segments and a 90 percent success rate on trapezoidal sections when the workcell is saturated with uniform, high-intensity illumination.  However, both rates decrease and the effect is noticeably worse for the pipes when the overhead lights are turned down to mimic low-illumination or "after-hours" conditions. The trapezoid rate barely decreases by 10 percentage points (from 90 to 80 percent) in low light, whereas the pipe pick rate decreases by 20 percentage points (from 80 to 60 percent).  This asymmetric degradation implies that the grasping method or vision algorithms employed for cylindrical objects are less contrasted, more susceptible to glare, and more sensitive to shadows than those calibrated for flat-faced parts.  Adaptive lighting control targeted at critical regions or more robust edge-detection under low contrast are two examples of future improvements that could help close the performance gap and guarantee consistently high pick rates across all part types. The results also highlight two important insights: first, adequate and evenly distributed lighting is essential for reliable handling of round objects.
 
 \begin{figure}[h]
     \centering
