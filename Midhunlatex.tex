@@ -154,10 +154,10 @@ Signature of the student:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \tableofcontents
 \newpage
-\listoffigures
+\lisToFfigures
 \addcontentsline{toc}{section}{List of Figures}
 \newpage
-\listoftables
+\lisToFtables
 \addcontentsline{toc}{section}{List of Tables}
 \newpage
 
@@ -201,7 +201,7 @@ Face tracking, color tracking, and object tracking are just a few of the various
 
 A vast array of tasks may be carried out by autonomous robots thanks to intelligent sensing systems.The camera is the most often used sensor in the perception system because of its low cost and large data capacity. RGB and depth cameras are the two primary categories into which camera sensors fall.  RGB and depth cameras are the two primary categories into which camera sensors fall.  RGB can only gather information about the appearance of the surrounding area; depth cameras can gather both texture and depth information at the same time \cite{ref12}.\\
 
-The three types of depth cameras are binocular stereo depth cameras, time of flight (TOF) cameras, and structured light cameras.Structured light camera technology is quite mature, with excellent accuracy but a restricted measuring range; binocular stereo cameras are inexpensive but highly influenced by the surroundings; and TOF measurement distance is long, ideal for dynamic situations.  Structured light cameras have a two to three-meter range, but given the wealth of environmental data that can be gathered within this range, this is adequate. Due to its excellent accuracy and great range, Lidar is another sensor that is frequently used in intelligent perception systems.  Since the surroundings have less impact on LiDAR's point cloud, robot perception systems frequently use it\cite{ref12}.\\
+The three types of depth cameras are binocular stereo depth cameras, time of flight (ToF) cameras, and structured light cameras.Structured light camera technology is quite mature, with excellent accuracy but a restricted measuring range; binocular stereo cameras are inexpensive but highly influenced by the surroundings; and ToFmeasurement distance is long, ideal for dynamic situations.  Structured light cameras have a two to three-meter range, but given the wealth of environmental data that can be gathered within this range, this is adequate. Due to its excellent accuracy and great range, Lidar is another sensor that is frequently used in intelligent perception systems.  Since the surroundings have less impact on LiDAR's point cloud, robot perception systems frequently use it\cite{ref12}.\\
 
 Numerous methods have been investigated in the study of vision-driven conveyor tracking.  Real-time operation is difficult with template-matching and model-based appr-oaches because they involve complex computations and require prior knowledge of object geometry.  motion estimates can be obtained using Kalman-filter frameworks and optical flow, but they frequently falter when backdrop textures create noise or when several objects have identical velocities.  While color-segmentation techniques are faster, they are less effective in low-contrast or monochromatic environments.  When conveyor backgrounds are relatively constant, the differential-image method—which subtracts sequential frames to identify moving regions—emerges as a convincing compromise, successfully suppressing static background and lowering computing complexity\cite{ref12}.\\
 
@@ -214,7 +214,7 @@ In industrial production, the vision system is typically used to inspect the pro
 
 A robot's job in robotic conveyor tracking is to follow and retrieve goods from a conveyor belt. Robots require information about an object, like its position, orientation, velocity, size, and other characteristics, before they can take it from an automation line. Compared to ultrasonic and infrared sensors, vision sensors are able to provide more information about an object on the conveyor belts. Typically, an object tracking system includes the following steps: taking a picture, recognizing an object, and getting information about the object's orientation and position.. A conveyor system's item tracking procedure needs to be quick enough to accommodate a real-time setting. This article describes a tracking system for robots that makes use of vision data that is taken from consecutive frames of images\cite{ref12}.\\
 
-Many applications in the domains of construction, manufacturing, and vehicle automation and autonomy require access to 3D data. In addition to intensity, ToF (Time-of-Flight) sensors are getting more widely accessible and less expensive.. These sensors also provide depth information at each pixel.Tasks that are repetitive, dangerous, and challenging for humans to handle are frequently performed by industrial robots. Therefore, increasing the production efficiency of industrial robot manipulators is a top priority. By focusing on localisation and calculating the shortest path, image processing and path planning approaches can achieve this goal.  
+Many applications in the domains of construction, manufacturing, and vehicle automation and autonomy require access to 3D data. In addition to intensity, ToF(Time-of-Flight) sensors are getting more widely accessible and less expensive.. These sensors also provide depth information at each pixel.Tasks that are repetitive, dangerous, and challenging for humans to handle are frequently performed by industrial robots. Therefore, increasing the production efficiency of industrial robot manipulators is a top priority. By focusing on localisation and calculating the shortest path, image processing and path planning approaches can achieve this goal.  
 
 This is especially crucial for the manufacturing and bottle-filling sectors, which heavily rely on robotic manipulators to position and move bottles both during production and after refills. Robot vision finds it extremely difficult to focus on distinguishing aspects of soft, fragile, or opaque things, making detection considerably more difficult. many industrial robots and robotic manipulators have become increasingly complex, diverse, and particularly engineered to attain a high degree of autonomy. Furthermore, to provide accurate control mechanisms, object detection and tracking for these robotic manipulators have drawn a lot of interest\cite{ref2, ref12}.
 
@@ -253,7 +253,7 @@ It is more difficult for robotic arms to do complex operations like object pick-
 Early work on visually guided conveyor tracking focused on 2D cameras and simple background-subtraction methods\cite{ref12} demonstrated frame-difference object detection com-bined with 2D template matching to locate parts on a belt in real time, but had issues with homogeneous lighting and occlusion.\cite{ref14} formulated the conveyor-tracking problem as a constrained trajectory‐planning task for 6-DOF manipulators, minimizing steady-state tracking error and actuator torques: more recently,\cite{ref9} integrated time-of-flight ranging with color segmentation to classify and track parcels at higher belt speeds, achieving sub-5 mm positional accuracy at 1 m/s.\\
 
 \subsection{3D Vision Systems and Depth Sensing}
-The shift from 2D to 3D sensing has been driven by affordable structured light and ToF cameras\cite{ref2}. photoneo’s motionCam 3D m+ uses parallel Structured Light to capture 1068 × 800 depth frames at 60 Hz, merging per-pixel depth with intensity for robust object detection under ambient light. \cite{ref17} showed how ToF depth data can be converted from spherical to Cartesian coordinates for conveyor-based pick-and-place, with typical z-noise under 0.5 mm at 1 m distance.\ \cite{ref3} extended this by fusing stereo vision point clouds with ToF to improve tracking through partial occlusions.\\
+The shift from 2D to 3D sensing has been driven by affordable structured light and ToFcameras\cite{ref2}. photoneo’s motionCam 3D m+ uses parallel Structured Light to capture 1068 × 800 depth frames at 60 Hz, merging per-pixel depth with intensity for robust object detection under ambient light. \cite{ref17} showed how ToFdepth data can be converted from spherical to Cartesian coordinates for conveyor-based pick-and-place, with typical z-noise under 0.5 mm at 1 m distance.\ \cite{ref3} extended this by fusing stereo vision point clouds with ToFto improve tracking through partial occlusions.\\
 
 
 \subsection{Calibration Techniques (Hand–Eye and Extrinsic)}
@@ -378,10 +378,11 @@ conveyor belt system \cite{ref14}.
 \end{figure}
 
 Robot motion must meet certain conditions to maximize the usable performance of the manipulator on conveyor tracks, including \cite{ref14}:
-
-1) \textbf{Steady-state error}  The task's accuracy may be reduced due to location and velocity errors in the steady state. Therefore, the steady-state error in the conveyor tracking trajectory must be as low as possible \cite{ref14}.
-2)  \textbf{Constraints on torque and smoothness}The trajectory must be created so that all joint torques remain within their ranges at all times\cite{ref14}.
-3) \textbf{Settling time}  Settling time: The time needed for the task gets less as the robot quickly reaches a steady state.The robot's torque and smoothness restrictions, the conveyor belt speed, and the initial positions of the robot and the part should all be considered for minimizing the settling time\cite{ref14}.
+\begin{enumerate}
+    \item \textbf{Steady-state error} : The task's accuracy may be reduced due to location and velocity errors in the steady state. Therefore, the steady-state error in the conveyor tracking trajectory must be as low as possible \cite{ref14}.
+    \item \textbf{Constraints on torque and smoothness}: The trajectory must be created so that all joint torques remain within their ranges at all times\cite{ref14}.
+    \item \textbf{Settling time}The time needed for the task gets less as the robot quickly reaches a steady state.The robot's torque and smoothness restrictions, the conveyor belt speed, and the initial positions of the robot and the part should all be considered for minimizing the settling time\cite{ref14}.
+\end{enumerate}
 The joint variables in the forward kinematics issue establish the end-effector's position and orientation in Cartesian space, also known as the workspace. The link extensions for prismatic joints and the angles between the links for rotational joints are the joint variables. Finding the values of the joint variables that allow the manipulator to reach the designated location, given a desired end-effector position and orientation, is the challenge of inverse kinematics.  Figure 2 below shows the connection between joint space, Cartesian space, and forward and inverse kinematics\cite{ref10}.\\
 
 \begin{figure}[h]
@@ -411,6 +412,7 @@ Greater than 6 & 16\\
     \caption{DOF vs. Number of Solutions \cite{ref19}}
     \label{tab:dof_solutions}
 \end{table}
+\newpage
 \subsection{Jacobian inverse method}
 The time derivative of the kinematic equations that connect the end-effector's velocity to the joint rates is known as the Jacobian in robotics. The following is the phrase for the Jacobian \cite{ref19}.
 \subsubsection{Kinematic Velocity Equations}
@@ -484,7 +486,7 @@ where the $3\times6$ matrices $J_\omega$ and $J_v$ relate the joint velocities o
   \]
 
 This is a first-order Taylor expansion and is valid for small $\Delta \theta$
-
+\newpage
 \subsection{Inverse Kinematics Using Jacobian}
 
 If the Jacobian $J(\theta)$ is square and invertible (e.g., for a 6-DOF manipulator), then:\cite{ref19}
@@ -632,7 +634,7 @@ The robot can be operated with 3 motion modes, namely \textit{ServoX}, \textit{S
 
 \newpage
 \subsection{Coordinate Transformation}
-The availability of 3D data is essential for numerous applications in the fields of vehicle automation ,manufacturing and autonomy.  Time-of-flight (ToF) sensors are getting cheaper and more available. They offer in-depth information for every pixel at every pixel in addition to intensity. Within its field of vision, the ToF sensor gives spherically coordinated range data about the surrounding environment. The spherical coordinates are transformed into Cartesian coordinates, as described in the following section, with the origin of the coordinate system located at the center of the camera.  With the origin at a known reference point, the 3D point cloud in the camera coordinate system is converted to the belt coordinate system. The tests examine the capacity of ToF sensors to provide sensing for a robot tasked with handling goods traveling on a conveyor belt in an indoor scenario. The range data is utilized to identify and calculate the dimensions of objects traveling along a conveyor belt.  The robot then receives the geometry and recognition data for additional action.  The findings suggest that ToF sensors have immediate potential for automating these kinds of applications \cite{ref5}.\\
+The availability of 3D data is essential for numerous applications in the fields of vehicle automation ,manufacturing and autonomy.  Time-of-flight (ToF) sensors are getting cheaper and more available. They offer in-depth information for every pixel at every pixel in addition to intensity. Within its field of vision, the ToF sensor gives spherically coordinated range data about the surrounding environment. The spherical coordinates are transformed into Cartesian coordinates, as described in the following section, with the origin of the coordinate system located at the center of the camera.  With the origin at a known reference point, the 3D point cloud in the camera coordinate system is converted to the belt coordinate system. The tests examine the capacity of ToFsensors to provide sensing for a robot tasked with handling goods traveling on a conveyor belt in an indoor scenario. The range data is utilized to identify and calculate the dimensions of objects traveling along a conveyor belt.  The robot then receives the geometry and recognition data for additional action.  The findings suggest that ToFsensors have immediate potential for automating these kinds of applications \cite{ref5}.\\
 
  The coordinate transformation is necessary for two reasons:\cite{ref5}
  \begin{enumerate}
@@ -796,7 +798,7 @@ This technology projects structured light patterns, such as simple geometric pat
 Triangulation is used in photogrammetry to intersect particular points within 2D images based on the angles at which those points can be found. The size, quantity, and quality of the item's images all have a big impact on creating an appropriate 3D model\cite{ref17}. 
 
 \subsection{Time of Flight}
-The time of flight is a measure of how long it takes light to move from an illumination source to a scene and back. The main barrier in this case is the speed of light itself.  Time is typically measured using a modulated signal's phase shift. High pixel modulation frequencies must be used to achieve a respectable level of depth accuracy. The primary drawback in this case is physics, since a greater frequency results in less charge transfer, which lowers contrast and Signal‑to‑Noise Ratio. The restriction suggests an accuracy level that ToF systems can achieve. Usually, it falls within the centimeter range. Another issue is interreflections, which can significantly bend the surface\cite{ref15}.
+The time of flight is a measure of how long it takes light to move from an illumination source to a scene and back. The main barrier in this case is the speed of light itself.  Time is typically measured using a modulated signal's phase shift. High pixel modulation frequencies must be used to achieve a respectable level of depth accuracy. The primary drawback in this case is physics, since a greater frequency results in less charge transfer, which lowers contrast and Signal‑to‑Noise Ratio. The restriction suggests an accuracy level that ToFsystems can achieve. Usually, it falls within the centimeter range. Another issue is interreflections, which can significantly bend the surface\cite{ref15}.
 
 \subsection{Active stereo}
 By projecting a synthetic texture onto an object, active stereo addresses the unreliable passive stereo. Nevertheless, it still has to resolve the computationally demanding picture correspondence matching problem. Because of the complexity of the matching problem, the projected texture can be either high frequency, which can satisfy a higher resolution but usually has poor reliability, or low frequency, which typically uses random laser dots and can provide higher reliability but poor resolution (the features 15 are sparse)\cite{ref15}.
