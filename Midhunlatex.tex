@@ -844,7 +844,7 @@ The figure 3 below shows the vision controller connected to the photoneo camera 
     \label{fig:vision-controller}
 \end{figure}
 The vision controller is connected to a pC through the web interface to trigger the camera and see the Web interface for communication.To connect the 3D sensor, gigabit Ethernet connections of Cat5e or above are needed.  multiple 3D sensors can be connected using a gigabit switch.  multiple 3D sensors can be connected using a gigabit switch. The Ethernet connection from the switch or 3D sensor is linked to the scanner's physical network port in both scenarios. To visualize 3D scans, calibrate robot cameras, and establish localization settings, a connection to the 3D sensor is required.To set up the network interface that the vision controller uses to connect to the photoneo 3D sensor(s), enter the Network page and select the Scanner Interface section. Both a fixed IPv6 link-local address and a programmable IPv4 address are features of photoneo 3D sensors.\cite{ref15}
-\newpage
+
 \subsection{Marker pattern}
 \begin{figure}[h]
     \centering
@@ -1035,7 +1035,6 @@ Function: The rubber feet steady the conveyor system and assist in absorbing vib
     \caption{Conveyor belt with Dimensions\cite{ref22}}
     \label{fig:cv-dimension}
 \end{figure}
-\newpage
 
 \section{Methodology}
 
@@ -1043,7 +1042,7 @@ This approach uses an interactive route planning solution for a fixed-based mani
 The flowchart below represents the basic topics that we are going to discuss:
 \begin{figure}[H]  % requires \usepackage{float}
   \centering
-  \includegraphics[width=8cm]{Thesis-report/Figures/Methodology.png}
+  \includegraphics[width=6cm]{Thesis-report/Figures/Methodology.png}
   \caption{Methodology Flowchart \cite{ref18}}
   \label{fig:methodology}
 \end{figure}
@@ -1130,7 +1129,6 @@ The web interface shows the image of the object being detected; initially, we lo
 
  The \autoref{fig:object-det-with-pipe}represents the web interface that includes the camera triggering the object placed in the workspace.The red region is the thing that the robot is supposed to pick up, and the green section is the workspace. Using a TCP/IP client, request a connection in which the robot and camera connections are being established. For setting up the connection, the robotic controller and camera IP address (subnet) are made into the same, which helps in communication through a web interface.
  
- \newpage
 \begin{figure}[h]
   \centering
   \includegraphics[width=8cm]{Thesis-report/Figures/scanning volume.png}
@@ -1243,7 +1241,7 @@ where X represents the object's starting position\\
 X represents its ending position.\\
 t is the change in time. 
 
-\newpage
+
 \subsubsection{Calibration Ball}
 A calibration ball serves as the calibration object. It is also possible to replace the calibration ball with a specially designed ball that has the proper properties; the ball must be precisely round and made of a surface that is suitable for scanning (smooth and not very reflective). The ball needs to be attached to the gripper or the flange, which are the robot's endpoints. During the calibration process, make sure the ball is securely attached and stays in place. Verify that the ball can be seen clearly by the 3D sensor\cite{ref2}. \\
 \begin{figure}[h]
@@ -1297,7 +1295,6 @@ Three calibration sites are needed for both the hand-eye and extrinsic calibrati
  Location of point clouds and 3D sensors: When the fourth point is added during extrinsic calibration and the fifth point is added during hand-eye calibration, the model of the 3D sensor of the currently calibrated vision system starts to mirror the pose of the real 3D sensor.  At the same time, the point cloud is displayed \cite{ref2}.\\
  Every calibration point that has been successfully inserted has an ID and a unique accuracy score that is measured in millimeters.  The confidence level in correctness increases as the accuracy score decreases.  The Delete option can be used to eliminate a point from the dataset if its accuracy score is excessively high \cite{ref2}.
 
-\newpage
 \subsection{Extrinsic Calibration Results}
 \begin{table}[h!]
 \centering
@@ -1383,13 +1380,13 @@ After considering the conveyor motion and processing delays, the final position 
 
 where mPO=Marker pattern Origin
 \subsubsection{Calibration of Conveyor Belt}
-The following methods can be used to calibrate the conveyor belt:  The inputs and outputs are shown in the below figure. The inputs include:\\
+The following methods can be used to calibrate the conveyor belt:  The inputs and outputs are shown in the below \autoref{fig:conveyor_belt with cmaera} The inputs include:\\
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=13cm]{Thesis-report/Figures/conveyor_belt with cmaera.jpg} 
     \caption{Conveyor tracking setup}
-    \label{fig:Photoneo Cmaera}
+    \label{fig:conveyor_belt with cmaera}
 \end{figure}
 
 \begin{itemize}
