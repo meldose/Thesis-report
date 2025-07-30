@@ -24,7 +24,6 @@
 \usepackage{enumitem}
 \usepackage[colorlinks=true,linkcolor=blue]{hyperref}
 
-
 \newcommand\AtPageUpperRight[1]{\AtPageUpperLeft{
    \makebox[\paperwidth][r]{#1}}}
 
@@ -197,13 +196,13 @@ The tracking of the conveyor using collaborative robots equipped with vision cam
 \label{introduction}
 
 \begin{justify}
-In industrial robot applications, conveyor belt tracking is an essential component of robot manipulators.  As the target progresses down the production line, the task becomes increasingly complex. To catch objects, robots need to know their position, orientation, velocity, size, and other characteristics.  Applications in the fields of biology, engineering, education, manufacturing, medicine, and the military all use vision sensors to identify objects.  A robot must be able to track, rearrange, and repair positioning mistakes of things on a conveyor belt when assembling electric parts into a finished product.  This information can be quickly interpreted by the visual sensor \cite{ref12}.\\
+In industrial robot applications, conveyor belt tracking is an essential component of robot manipulators.  As the target progresses down the production line, the task becomes increasingly complex. Robots must be aware of an object's position, orientation, velocity, size, and other characteristics.  Applications in the fields of biology, engineering, education, manufacturing, medicine, and the military all use vision sensors to identify objects.  A robot must be able to track, rearrange, and repair positioning mistakes of things on a conveyor belt when assembling electric parts into a finished product.  This information can be quickly interpreted by the visual sensor \cite{ref12}.\\
 
 Face tracking, color tracking, and object tracking are just a few of the various engineering applications that have recently made use of tracking video.  In the industrial sector, it was used to track items such as goods, factory workers, and clothing manufacturing.  Object detection techniques and image processing for monocular video are the foundation of video tracking \cite{ref12}.\\
 
-Autonomous robots rely on intelligent perception systems to handle a variety of tasks.  Furthermore, the kind of sensor and the precision of the sensor data have a greater impact on how well these intelligent systems operate. The camera is the most widely used sensor in the perception system because of its large amount of data and low cost.  RGB and depth cameras are the two primary categories into which camera sensors fall.  RGB and depth cameras are the two primary categories into which camera sensors fall.  RGB can only gather information about the appearance of the surrounding area; depth cameras can gather both texture and depth information at the same time \cite{ref12}.\\
+A vast array of tasks may be carried out by autonomous robots thanks to intelligent sensing systems.The camera is the most often used sensor in the perception system because of its low cost and large data capacity. RGB and depth cameras are the two primary categories into which camera sensors fall.  RGB and depth cameras are the two primary categories into which camera sensors fall.  RGB can only gather information about the appearance of the surrounding area; depth cameras can gather both texture and depth information at the same time \cite{ref12}.\\
 
-Structured light cameras, time of flight (TOF) cameras, and binocular stereo depth cameras are the three types of depth cameras.  Structured light camera technology is quite mature, with excellent accuracy but a restricted measuring range; binocular stereo cameras are inexpensive but highly influenced by the surroundings; and TOF measurement distance is long, ideal for dynamic situations.  Structured light cameras have a two to three-meter range, but given the wealth of environmental data that can be gathered within this range, this is adequate. Due to its excellent accuracy and great range, Lidar is another sensor that is frequently used in intelligent perception systems.  Since the surroundings have less impact on LiDAR's point cloud, robot perception systems frequently use it\cite{ref12}.\\
+The three types of depth cameras are binocular stereo depth cameras, time of flight (TOF) cameras, and structured light cameras.Structured light camera technology is quite mature, with excellent accuracy but a restricted measuring range; binocular stereo cameras are inexpensive but highly influenced by the surroundings; and TOF measurement distance is long, ideal for dynamic situations.  Structured light cameras have a two to three-meter range, but given the wealth of environmental data that can be gathered within this range, this is adequate. Due to its excellent accuracy and great range, Lidar is another sensor that is frequently used in intelligent perception systems.  Since the surroundings have less impact on LiDAR's point cloud, robot perception systems frequently use it\cite{ref12}.\\
 
 Numerous methods have been investigated in the study of vision-driven conveyor tracking.  Real-time operation is difficult with template-matching and model-based appr-oaches because they involve complex computations and require prior knowledge of object geometry.  Motion estimates can be obtained using Kalman-filter frameworks and optical flow, but they frequently falter when backdrop textures create noise or when several objects have identical velocities.  While color-segmentation techniques are faster, they are less effective in low-contrast or monochromatic environments.  When conveyor backgrounds are relatively constant, the differential-image method—which subtracts sequential frames to identify moving regions—emerges as a convincing compromise, successfully suppressing static background and lowering computing complexity\cite{ref12}.\\
 
@@ -330,7 +329,7 @@ The second rotational modality uses quaternions and is defined by Euler's theore
 Rotations in 3D can be implemented using Euler’s theorem combined with quaternions, an extension of complex numbers\cite{ref20}.
 
 \subsubsection{Impossibility of 3D ``Complex'' Numbers}
-The following equation are taken from this journal : \cite{ref20}\\\\
+The following equation are taken from \cite{ref20}\\\\
 Hamilton originally attempted to define three-dimensional complex numbers of the form\\
 \[
   a + i\,b + j\,c,\quad i^2 = j^2 = -1,
@@ -419,7 +418,7 @@ Greater than 6 & 16\\
 The time derivative of the kinematic equations that connect the end-effector's velocity to the joint rates is known as the Jacobian in robotics. The following is the phrase for the Jacobian \cite{ref19}.
 \subsubsection{Kinematic Velocity Equations}
 
-The following equations are taken from this journal: \cite{ref19}:\\\\
+The following equations are taken from: \cite{ref19}:\\\\
 The end-effector angular and linear velocities are given by
 \begin{align}
   \omega_e &= J_{\omega}(\theta)\,\dot{\theta}, \\
@@ -1350,7 +1349,7 @@ While setting up the conveyor belt with a vision camera, we need to follow certa
 
 1. \textbf{Matching the robot speed with the conveyor belt:} For the robot to pick up the object from the conveyor belt, the robot's end effector should move at the same speed as that of the conveyor belt \cite{ref21}.
 
-The below eqautions are taken from this journal: \cite{ref21}
+The below eqautions are taken from : \cite{ref21}
 \[
 V_c = V_r 
 \]
@@ -1523,8 +1522,7 @@ Additionally, there are several electromechanical technologies, including
 The controller receives counts as the encoder rotates. Assume that the count range is between 0 and 10,000. Since this is an incremental encoder, we know that a full rotation of the shaft records a count of 10,000, but we do not know the exact location. When the entrance photo-eye sensor recognizes the object after it has been placed on the conveyor, the current encoder count will be noted. Assume that $5232$ is the number\cite{ref27}.
 \begin{justify}
 
-The below equation are taken from this journal: \cite{ref27}
-\begin{align} 
+The below equation are taken from: \cite{ref27}
 \[
 C_{\text{in}} = 5232 \quad \text{(encoder count at entry)}
 \]
@@ -1561,6 +1559,42 @@ Therefore, the object moved a distance equivalent to 1079 encoder counts, or app
 \end{align}
 \end{justify}
 After the object leaves and is picked up by the exit photo-eye, we record $C_{\mathrm{out}}=6311$.  Deducting $C_{\mathrm{in}}=5232$ gives $\Delta C=1079$ counts.  This tells us the object traversed 1079 encoder counts from entrance to exit, though its exact position on the shaft remains unknown.\cite{ref27}.
+\subsection*{Linking Encoder Counts to \(v\)}
+
+From your encoder you measured \(\Delta C\) counts over an interval \(\Delta t\). Since one revolution (10\,000 counts) corresponds to moving the belt by one pulley‐circumference \(L_{\mathrm{circ}}\), you get
+\[
+\text{distance traveled in }\Delta t
+\;=\;\frac{\Delta C}{N}\,L_{\mathrm{circ}}
+\;\Longrightarrow\;
+v
+\;=\;\frac{\displaystyle\frac{\Delta C}{N}\,L_{\mathrm{circ}}}{\Delta t}
+\;=\;\frac{\Delta C}{N}\,\frac{L_{\mathrm{circ}}}{\Delta t}.
+\]
+Once you know \(v\), you can predict the object’s future position without waiting for the exit sensor\cite{ref27}.
+
+\subsubsection*{Using \(X = X_0 + v\,t\) for the Pick‑and‑Place Robot}
+
+As soon as the entry photo‑eye trips, record
+\[
+X_0 = 0
+\]
+(or whatever your belt‑coordinate zero is) and start a timer.
+
+Continuously compute
+\[
+X(t) = X_0 + v\,t.
+\]
+
+When \(X(t)\) reaches the robot’s pickup location, command the robot to grab.
+
+\subsubsection*{Why It’s Helpful}
+\begin{itemize}
+  \item \textbf{Predictive:} Only time and speed are now required at the pick point, eliminating the need for a second sensor.
+  \item \textbf{Smooth motion:} The robot's arm is synchronized with the belt because it may begin moving into position beforehand.
+
+\end{itemize}
+
+
 
 \newpage
 
