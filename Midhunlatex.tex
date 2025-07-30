@@ -326,18 +326,67 @@ Rotations in 3D can be implemented using Euler’s theorem combined with quatern
 \subsubsection{Impossibility of 3D ``Complex'' Numbers}
 The following equation are taken from \cite{ref20}
 Hamilton originally attempted to define three-dimensional complex numbers of the form\\
+We consider the formal expression \cite{ref20}
 \[
-  a + i\,b + j\,c,\quad i^2 = j^2 = -1,
+z \;=\; a + i\,b + j\,c,
 \]
-closed under multiplication. Jones Kenneth\cite{jones1984kenneth} showed by contradiction that no such 3D system exists:
+subject to the rules
 \[
-  \text{Assume }i\,j = a + i\,b + j\,c,\quad
-  i^2 = j^2 = -1.
+i^2 = -1,
+\qquad
+j^2 = -1.
+\]
+
+\begin{itemize}
+  \item[\(a\)] 
+    A real number, the “real part” of \(z\).
+  \item[\(b\)] 
+    A real number, the coefficient of the first imaginary unit \(i\).
+  \item[\(c\)] 
+    A real number, the coefficient of the second imaginary unit \(j\).
+  \item[\(i\)] 
+    An imaginary unit satisfying
+    \[
+      i^2 = -1.
+    \]
+  \item[\(j\)] 
+    A second imaginary unit, formally independent of \(i\), satisfying \cite{ref20}
+    \[
+      j^2 = -1.
+    \]
+\end{itemize}
+
+\medskip
+
+\noindent
+\textbf{Remark:}  Hamilton showed that to obtain a consistent division algebra one must introduce a third unit \(k\) and define non‐commutative multiplication as in the quaternion algebra:\cite{ref20}
+\[
+i\,j = k,\quad
+j\,k = i,\quad
+k\,i = j,
+\quad
+k^2 = -1.
 \]
 A brief outline of the contradiction leads to
+
 \[
-  c^2 + 1 = 0,\quad c\in\mathbb{R},
+c^2 + 1 = 0,\quad c \in \mathbb{R}.
 \]
+
+\bigskip
+
+\noindent Here is a breakdown of each term:
+\begin{align*}
+c &\quad\text{a variable, }c \in \mathbb{R},\\
+{}^2 &\quad\text{the exponent “2” indicating }c^2 = c \times c,\\
++ &\quad\text{addition},\\
+1 &\quad\text{the multiplicative identity in }\mathbb{R},\\
+= &\quad\text{the equality relation},\\
+0 &\quad\text{the additive identity in }\mathbb{R},\\
+\in &\quad\text{“element of” relation},\\
+\mathbb{R} &\quad\text{the set of all real numbers}.
+\end{align*}
+
 
 
 \subsubsection{Hamilton’s Discovery of Quaternions}
@@ -425,7 +474,7 @@ where,
   \item[$\theta$]%
     Joint coordinate vector of size $n$.
     \begin{itemize}
-      \item 0i is the i-th joint displacement for prismatic joints, and 0i is the i-th joint angle for revolute joints.
+      \item 0i is the i-th joint displacement for prismatic joints, and 0i is the i-th joint angle for revolute joints.\cite{ref19}
     \end{itemize}
 
   \item[$\dot{\theta}$]%
@@ -438,7 +487,7 @@ where,
     with units: rad/s for revolute and m/s for prismatic joints.
 
   \item[$J(\theta)$]%
-    Geometric Jacobian, a $6\times n$ matrix mapping $\dot\theta$ to the end-effector twist.
+    Geometric Jacobian, a $6\times n$ matrix mapping $\dot\theta$ to the end-effector twist.\cite{ref19}
     \[
       J(\theta) = 
       \begin{bmatrix}
@@ -465,7 +514,7 @@ where,
       \;\in\; \mathbb{R}^3.
     \]
 
-  \item[$v_e$] the end‐effector linear velocity vector in the base/world frame:
+  \item[$v_e$] the end‐effector linear velocity vector in the base/world frame:\cite{ref19}
     \[
       v_e = \begin{bmatrix} \dot{x} \\ \dot{y} \\ \dot{z} \end{bmatrix},
     \]
@@ -490,6 +539,16 @@ If the Jacobian $J(\theta)$ is square and invertible (e.g., for a 6-DOF manipula
   \[
     \Delta \theta_k = J_k^{-1} \Delta x_e ,
   \]
+  where
+\[
+  \Delta x_{e} \;=\;
+  \begin{bmatrix}
+    \Delta p \\[4pt]
+    \Delta \phi
+  \end{bmatrix}
+  \in \mathbb{R}^{n}
+\]
+is the desired end–effector pose increment.
 
 And the joint update becomes:
 
@@ -507,8 +566,8 @@ For manipulators where $J$ is not square (e.g., redundant robots with $n > 6$), 
 
 where:
 \begin{itemize}
-    \item The pseudoinverse of $J$ is $J^\dagger$.\cite{ref19}. 
-    \item $(I - J^\dagger J)$ projects into the null space of $J$\cite{ref19}.
+    \item The pseudoinverse of $J$ is $J^\dagger$.
+    \item $(I - J^\dagger J)$ projects into the null space of $J$
     \item $\Delta \phi$ is a secondary objective function direction (e.g., for obstacle avoidance or joint limit avoidance)\cite{ref19}.
 \end{itemize}
 
@@ -583,11 +642,10 @@ X = X_0 + v\,t
     \item If the distance to the object is less than 5, then send the signal to the gripper and pick the object.
     \item If the timeout to pick is greater compared to the given input, then break the loop.
 \end{enumerate}
-\newpage
 The following figure shows the flowchart for the dynamic picking:\\
 \begin{figure}[h]
     \centering
-    \includegraphics[width=10.3cm]{Thesis-report/Figures/flowchart.png}  
+    \includegraphics[width=10.1cm]{Thesis-report/Figures/flowchart.png}  
     \caption{Working principle flowchart}
     \label{fig:working-principle}
 \end{figure}
@@ -646,12 +704,54 @@ general manipulators. The Jacobian linearization approach can be used to map the
 v = J(q) \dot{q} 
 \]
 
+\noindent where
+\begin{description}[leftmargin=1.5em,labelsep=0.5em]
+  \item[$\mathbf{q} = [q_1,\dots,q_n]^{T}$]
+    Joint configuration (angles or displacements).
+
+  \item[$\dot{\mathbf{q}} = [\dot q_1,\dots,\dot q_n]^{T}$]
+    Joint‐rate (velocity) vector.
+
+  \item[$J(\mathbf{q})\in\mathbb{R}^{m\times n}$]
+    Jacobian matrix, mapping joint velocities to Cartesian velocities.
+
+  \item[$\mathbf{v}\in\mathbb{R}^{m}$]
+    Cartesian velocity of the end‐effector (or twist).
+
+  \item[$\dot{\mathbf{x}}\in\mathbb{R}^{m}$]
+    Desired Cartesian velocity (sometimes denoted $\mathbf{v}$).
+
+  \item[$J^{\dagger}$]
+    Moore–Penrose pseudo‐inverse of $J$, providing the least‐squares
+    solution for $\dot{\mathbf{q}}$ when $J$ is non‐square or rank‐deficient.
+\end{description}
+
 Pseudo-inverse is used to solve the joint:\cite{ref19}
 
 
 \[
 \dot{q} = J^\dagger \dot{x}, \quad J^\dagger = (J^T J)^{-1} J^T
 \]
+\begin{description}
+  \item[$q \in \mathbb{R}^n$] Joint‐coordinates vector (e.g.\ joint angles or prismatic displacements).
+  \item[$\dot q \in \mathbb{R}^n$] Joint‐velocity vector, i.e.\ the time derivative of \(q\).
+  \item[$x \in \mathbb{R}^m$] Task‐space coordinates (e.g.\ end‐effector Cartesian position and orientation).
+  \item[$\dot x \in \mathbb{R}^m$] Task‐space velocity vector, i.e.\ the time derivative of \(x\).
+  \item[$J \in \mathbb{R}^{m \times n}$] Jacobian matrix, mapping joint velocities to task‐space velocities\cite{ref19}:
+    \[
+      \dot x = J\,\dot q,
+      \quad
+      J_{ij} = \frac{\partial x_i}{\partial q_j}.
+    \]
+  \item[$J^T \in \mathbb{R}^{n \times m}$] Transpose of the Jacobian.
+  \item[$J^T J \in \mathbb{R}^{n \times n}$] Gram matrix of \(J\), which is invertible if \(\mathrm{rank}(J)=n\).
+  \item[$(J^T J)^{-1}$] Inverse of the Gram matrix.
+  \item[$J^\dagger \in \mathbb{R}^{n \times m}$] Moore–Penrose pseudo‐inverse of \(J\); for full‐column‐rank \(J\),
+    \[
+      J^\dagger = (J^T J)^{-1} \, J^T,
+    \]
+    yielding the minimum‐norm solution for \(\dot q\).
+\end{description}
 
 Velocity for the linear velocity in Cartesian space. First, FK is used to determine the manipulator's pose. Next, the IK solver uses a pseudo-inverse calculation to update the joint angles. Until the end tip reaches the desired posture with an acceptable error, these two stages are repeated. If the starting value and changing rate are appropriately calibrated, the dynamic gain causes the speed to reach its maximum and minimum quickly. Joint angles have an impact on the inaccuracy during the iteration process. Inappropriate angles cause the gain to drop dynamically, and vice versa \cite{ref19}.
 
