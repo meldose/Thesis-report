@@ -386,7 +386,7 @@ Robot motion must meet certain conditions to maximize the usable performance of 
 1) \textbf{Steady-state error:}  The task's accuracy may be reduced due to location and velocity errors in the steady state. Therefore, the steady-state error in the conveyor tracking trajectory must be as low as possible \cite{ref14}.\\\\
 2)  \textbf{Constraints on torque and smoothness:}The trajectory must be created so that all joint torques remain within their ranges at all times\cite{ref14}.\\\\
 3) \textbf{Settling time:}  Settling time: The time needed for the task gets less as the robot quickly reaches a steady state.The robot's torque and smoothness restrictions, the conveyor belt speed, and the initial positions of the robot and the part should all be considered for minimizing the settling time\cite{ref14}.\\\\
-The joint variables in the forward kinematics issue establish the end-effector's position and orientation in Cartesian space, also known as the workspace. The link extensions for prismatic joints and the angles between the links for rotational joints are the joint variables. Finding the values of the joint variables that allow the manipulator to reach the designated location, given a desired end-effector position and orientation, is the challenge of inverse kinematics.  Figure 29 below shows the connection between joint space, Cartesian space, and forward and inverse kinematics\cite{ref10}.\\
+The joint variables in the forward kinematics issue establish the end-effector's position and orientation in Cartesian space, also known as the workspace. The link extensions for prismatic joints and the angles between the links for rotational joints are the joint variables. Finding the values of the joint variables that allow the manipulator to reach the designated location, given a desired end-effector position and orientation, is the challenge of inverse kinematics.  Figure 2 below shows the connection between joint space, Cartesian space, and forward and inverse kinematics\cite{ref10}.\\
 
 \begin{figure}[h]
     \centering
@@ -1404,9 +1404,8 @@ After considering the conveyor motion and processing delays, the final position 
 \]
 
 where MPO=Marker Pattern Origin
-\subsubsection{Calibration of Conveyor Belt}.
-
-The following methods can be used to calibrate the conveyor belt:  The inputs and outputs are shown in the above figure. The inputs include:\\
+\subsubsection{Calibration of Conveyor Belt}
+The following methods can be used to calibrate the conveyor belt:  The inputs and outputs are shown in the below figure. The inputs include:\\
 
 \begin{figure}[h]
     \centering
