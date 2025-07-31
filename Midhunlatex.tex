@@ -605,15 +605,15 @@ We must first gain a fundamental understanding of the robot coordinate system be
 \subsubsection{System of World Coordinates (WCS):}
 A coordinate system is often specified by the user or developer, but it can exist anywhere in the world. WCS makes it simpler to explain the locations of other things or items in that specific area. Origin placement is typically done at the edge of a group or a room's corner \cite{ref24}.\\
 
-\subsubsection{Machine Coordinate System (MCS):}
+ \textbf{Machine Coordinate System (MCS):}
 Robot Base Frame Coordinate System is another name for machine Coordinate System (MCS). All other coordinate systems will be compared to this most significant coordinate system. Where developers and programmers would implement their code based on this coordinate system is equally crucial. For the point of origin, mCS is usually placed close to the robot's base, though it's crucial to keep in mind that different robot types have different bases \cite{ref24}.\\
 
-\subsubsection{Coordinate System for parts and Workpieces (PCS):}
+ \textbf{Coordinate System for parts and Workpieces (PCS):}
 The workpiece or monitored items that move along the conveyor belt are referred to here. In certain applications, part orientation plays a crucial role in assembly procedures. In our application, we just want to choose or select the objects, independent of their orientation; thus, this isn't accurate\cite{ref24}.\\
 
- \subsubsection{Tool Coordinate System (TCS):}
+ \textbf{Tool Coordinate System (TCS):}
  This refers to the location of the robot's end-tip. As you can see, a robotic hand typically has a mechanism attached to the end with a gripper. When referring to the robot base frame, this typically requires a small amount of offset and aids the robot in completing its responsibilities\cite{ref24}.\\\\
-\subsubsection{ Coordinate Transformation matrix}  \\
+ \textbf{ Coordinate Transformation matrix}  \\
  In essence, the coordinate transformation matrix is a matrix that depicts how a coordinate system's orientation changes from one frame to another. It describes both rotation and translation transformation and is composed of a 3x3 rotation matrix and a 3x1 displacement vector.  In the case of three dimensions, the matrix is 4x4.  The homogeneous transformation matrix is a more popular and often used term for this matrix.  Keep in mind that this matrix can be used for forward kinematics calculations and standard coordinate transformation procedures, among other coordinate transformation scenarios\cite{ref24}.
 
 \begin{figure}[h]
@@ -683,10 +683,11 @@ For this part, it is quite simple. This transformation is about the movement of 
 \subsection{Robot Motion Modes}
 The robot can be operated with 3 motion modes, namely \textit{ServoX}, \textit{ServoJ}, and \textit{MoveLinear}.\
 
-\subsubsection{ServoX:} The Servo X motion involves moving the robot in Cartesian motion, using the quaternion poses $[X, Y, Z, Q_x, Q_y, Q_z, Q_w]$ as a representation of the coordinates we receive from the camera.These are already in Cartesian poses, which can be directly passed to the robotic controller, giving these values as the target position and moving the robot to the desired location. During motion, the camera coordinates were not in the correct order as those of the robotic movement, so initially, the target position had to be changed as in this form [X, Y, Z, W, Qx, Qy, Qz].
-\subsubsection{ServoJ:} When using ServoJ, the robot moves with the joint movements rather than Cartesian. The object coordinates that we get from the camera are in Cartesian form; they need to be converted into joint form and given as the target position. The final orientation values of the coordinates when providing the target position will differ from the robot's TCP coordinates. To set this, we have to implement the method of inverse kinematics.
-\subsubsection{MoveLinear:} With the movelinear controller, the camera scans the objects to deliver the quaternion values, which are then used to immediately determine the target position for the robot to pick up the object. Through a servo interface, quaternion values are sent to the robot as the target position in order to move it to the desired location.
-
+\begin{enumerate}
+    \item \textbf{ServoX:} The Servo X motion involves moving the robot in Cartesian motion, using the quaternion poses $[X, Y, Z, Q_x, Q_y, Q_z, Q_w]$ as a representation of the coordinates we receive from the camera.These are already in Cartesian poses, which can be directly passed to the robotic controller, giving these values as the target position and moving the robot to the desired location. During motion, the camera coordinates were not in the correct order as those of the robotic movement, so initially, the target position had to be changed as in this form [X, Y, Z, W, Qx, Qy, Qz].
+    \item \textbf{ServoJ:} When using ServoJ, the robot moves with the joint movements rather than Cartesian. The object coordinates that we get from the camera are in Cartesian form; they need to be converted into joint form and given as the target position. The final orientation values of the coordinates when providing the target position will differ from the robot's TCP coordinates. To set this, we have to implement the method of inverse kinematics.
+    \item \textbf{MoveLinear:} With the movelinear controller, the camera scans the objects to deliver the quaternion values, which are then used to immediately determine the target position for the robot to pick up the object. Through a servo interface, quaternion values are sent to the robot as the target position in order to move it to the desired location.
+\end{enumerate}
 
 \newpage
 \subsection{Coordinate Transformation}
@@ -1624,7 +1625,7 @@ The conveyor belt can also be calibrated using this technique.  Among the steps 
     \item \textbf{Fourth step:} The fourth stage involves calculating the change in position for \(X\), \(Y\), and \(Z\), respectively. This comprises calculating \((\Delta X, \Delta Y, \Delta Z)\). Furthermore, we must obtain the change in time \(\Delta t\)\cite{ref2}.
     \item \textbf{Sixth step:} In order to obtain a change in position as linear motion and transmit it to the robotic controller that assists the robot in picking up items from the conveyor belt, we must lastly multiply the custom velocity by the time and position changes along the X position\cite{ref2}.
 \end{enumerate}
-
+F
 
 
 \subsection{Encoder offset}
