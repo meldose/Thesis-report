@@ -154,11 +154,14 @@ Signature of the student:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \tableofcontents
 \newpage
-\lisToFfigures
+\cleardoublepage
 \addcontentsline{toc}{section}{List of Figures}
-\newpage
-\lisToFtables
+\listoffigures
+
+\cleardoublepage
 \addcontentsline{toc}{section}{List of Tables}
+\listoftables
+
 \newpage
 
 \newpage
@@ -602,15 +605,15 @@ We must first gain a fundamental understanding of the robot coordinate system be
 \subsubsection{System of World Coordinates (WCS):}
 A coordinate system is often specified by the user or developer, but it can exist anywhere in the world. WCS makes it simpler to explain the locations of other things or items in that specific area. Origin placement is typically done at the edge of a group or a room's corner \cite{ref24}.\\
 
- \textbf{Machine Coordinate System (MCS):}
+\subsubsection{Machine Coordinate System (MCS):}
 Robot Base Frame Coordinate System is another name for machine Coordinate System (MCS). All other coordinate systems will be compared to this most significant coordinate system. Where developers and programmers would implement their code based on this coordinate system is equally crucial. For the point of origin, mCS is usually placed close to the robot's base, though it's crucial to keep in mind that different robot types have different bases \cite{ref24}.\\
 
- \textbf{Coordinate System for parts and Workpieces (PCS):}
+\subsubsection{Coordinate System for parts and Workpieces (PCS):}
 The workpiece or monitored items that move along the conveyor belt are referred to here. In certain applications, part orientation plays a crucial role in assembly procedures. In our application, we just want to choose or select the objects, independent of their orientation; thus, this isn't accurate\cite{ref24}.\\
 
- \textbf{Tool Coordinate System (TCS):}
+ \subsubsection{Tool Coordinate System (TCS):}
  This refers to the location of the robot's end-tip. As you can see, a robotic hand typically has a mechanism attached to the end with a gripper. When referring to the robot base frame, this typically requires a small amount of offset and aids the robot in completing its responsibilities\cite{ref24}.\\\\
- \textbf{ Coordinate Transformation matrix}  \\
+\subsubsection{ Coordinate Transformation matrix}  \\
  In essence, the coordinate transformation matrix is a matrix that depicts how a coordinate system's orientation changes from one frame to another. It describes both rotation and translation transformation and is composed of a 3x3 rotation matrix and a 3x1 displacement vector.  In the case of three dimensions, the matrix is 4x4.  The homogeneous transformation matrix is a more popular and often used term for this matrix.  Keep in mind that this matrix can be used for forward kinematics calculations and standard coordinate transformation procedures, among other coordinate transformation scenarios\cite{ref24}.
 
 \begin{figure}[h]
@@ -680,11 +683,10 @@ For this part, it is quite simple. This transformation is about the movement of 
 \subsection{Robot Motion Modes}
 The robot can be operated with 3 motion modes, namely \textit{ServoX}, \textit{ServoJ}, and \textit{MoveLinear}.\
 
-\begin{enumerate}
-    \item \textbf{ServoX:} The Servo X motion involves moving the robot in Cartesian motion, using the quaternion poses $[X, Y, Z, Q_x, Q_y, Q_z, Q_w]$ as a representation of the coordinates we receive from the camera.These are already in Cartesian poses, which can be directly passed to the robotic controller, giving these values as the target position and moving the robot to the desired location. During motion, the camera coordinates were not in the correct order as those of the robotic movement, so initially, the target position had to be changed as in this form [X, Y, Z, W, Qx, Qy, Qz].
-    \item \textbf{ServoJ:} When using ServoJ, the robot moves with the joint movements rather than Cartesian. The object coordinates that we get from the camera are in Cartesian form; they need to be converted into joint form and given as the target position. The final orientation values of the coordinates when providing the target position will differ from the robot's TCP coordinates. To set this, we have to implement the method of inverse kinematics.
-    \item \textbf{MoveLinear:} With the movelinear controller, the camera scans the objects to deliver the quaternion values, which are then used to immediately determine the target position for the robot to pick up the object. Through a servo interface, quaternion values are sent to the robot as the target position in order to move it to the desired location.
-\end{enumerate}
+\subsubsection{ServoX:} The Servo X motion involves moving the robot in Cartesian motion, using the quaternion poses $[X, Y, Z, Q_x, Q_y, Q_z, Q_w]$ as a representation of the coordinates we receive from the camera.These are already in Cartesian poses, which can be directly passed to the robotic controller, giving these values as the target position and moving the robot to the desired location. During motion, the camera coordinates were not in the correct order as those of the robotic movement, so initially, the target position had to be changed as in this form [X, Y, Z, W, Qx, Qy, Qz].
+\subsubsection{ServoJ:} When using ServoJ, the robot moves with the joint movements rather than Cartesian. The object coordinates that we get from the camera are in Cartesian form; they need to be converted into joint form and given as the target position. The final orientation values of the coordinates when providing the target position will differ from the robot's TCP coordinates. To set this, we have to implement the method of inverse kinematics.
+\subsubsection{MoveLinear:} With the movelinear controller, the camera scans the objects to deliver the quaternion values, which are then used to immediately determine the target position for the robot to pick up the object. Through a servo interface, quaternion values are sent to the robot as the target position in order to move it to the desired location.
+
 
 \newpage
 \subsection{Coordinate Transformation}
@@ -889,13 +891,13 @@ Two devices are often used in laser scanning; one directs a laser beam onto a su
 \subsubsection {Structure Light Scanning}
 This technology projects structured light patterns, such as simple geometric patterns or parallel lines, onto a surface.  The object's shape will cause the patterns to distort.  It is feasible to rebuild the scanned surface using a camera to analyze these deformations, distinguish edges, and determine the separation between the item and the scanner \cite{ref17}.
 
-\subsection {Photogrammetry}
+\subsubsection {Photogrammetry}
 Triangulation is used in photogrammetry to intersect particular points within 2D images based on the angles at which those points can be found. The size, quantity, and quality of the item's images all have a big impact on creating an appropriate 3D model\cite{ref17}. 
 
-\subsection{Time of Flight}
+\subsubsection{Time of Flight}
 The time of flight is a measure of how long it takes light to move from an illumination source to a scene and back. The main barrier in this case is the speed of light itself.  Time is typically measured using a modulated signal's phase shift. High pixel modulation frequencies must be used to achieve a respectable level of depth accuracy. The primary drawback in this case is physics, since a greater frequency results in less charge transfer, which lowers contrast and Signal‑to‑Noise Ratio. The restriction suggests an accuracy level that ToF systems can achieve. Usually, it falls within the centimeter range. Another issue is interreflections, which can significantly bend the surface\cite{ref15}.
 
-\subsection{Active stereo}
+\subsubsection{Active stereo}
 By projecting a synthetic texture onto an object, active stereo addresses the unreliable passive stereo. Nevertheless, it still has to resolve the computationally demanding picture correspondence matching problem. Because of the complexity of the matching problem, the projected texture can be either high frequency, which can satisfy a higher resolution but usually has poor reliability, or low frequency, which typically uses random laser dots and can provide higher reliability but poor resolution (the features 15 are sparse)\cite{ref15}.
 
 \subsection{Structured patterns/dots}
@@ -1372,7 +1374,7 @@ X represents its ending position.\\
 t is the change in time. 
 
 
-\subsubsection{Calibration Ball}
+\subsection{Calibration Ball}
 A calibration ball serves as the calibration object. It is also possible to replace the calibration ball with a specially designed ball that has the proper properties; the ball must be precisely round and made of a surface that is suitable for scanning (smooth and not very reflective). Connecting the ball to the robot's endpoints—the gripper or the flange—is essential.  Make sure the ball stays put and is firmly fastened while you calibrate. Verify that the ball can be seen clearly by the 3D sensor\cite{ref2}. \\
 \begin{figure}[h]
     \centering
@@ -1531,7 +1533,7 @@ After considering the conveyor motion and processing delays, the final position 
     where MPO=Marker pattern Origin
 \end{description}
 
-\subsubsection{Calibration of Conveyor Belt}
+\subsection{Calibration of Conveyor Belt}
 It is possible to calibrate the conveyor belt using the following methods:   In the \autoref{fig:conveyor_belt with cmaera.jpg} below, labeled "conveyor belt with camera," the inputs and outputs are displayed.  Here are the inputs:
 
 \begin{figure}[h]
@@ -1625,7 +1627,7 @@ The conveyor belt can also be calibrated using this technique.  Among the steps 
 
 
 
-\subsubsection{Encoder offset}
+\subsection{Encoder offset}
 Types and Technologies of Encoders
 Although encoders come in a wide variety of forms, they essentially fall into two primary sensing categories. These include:
 
@@ -1746,10 +1748,8 @@ The speed of the robot's tool center point (TCP) is compared to the speed of the
     \caption{Success rate of dynamic picking versus conveyor belt speed. \cite{ref22}}
     \label{fig:conveyor_speed vs success_rates.png}
 \end{figure}
-
+\newpage
 \subsection{Average pick Time vs Conveyor Speed}
-
-Conveyor belt speed and the amount of time it takes an operator to grab and remove a single item are related, as shown in \autoref{fig:conveyor_speed vs avg pick_up_time.png}.  Belt speed, which we varied in discrete increments from 1.0 m/s to 2.0 m/s, is plotted along the horizontal axis. The corresponding average pick time, calculated over 30 trials at each speed setting to assure statistical reliability, is plotted on the vertical axis.The average pick time is about 0.5 s at the slowest tested speed of 1.0 m/s.  pick time grows nearly linearly with belt speed: at 1.2 m/s, it rises to around 0.7 s, at 1.4 m/s, it reaches 0.9 s, and so on, until the average pick time reaches approximately 1.5 s at the top speed of 2.0 m/s.  The kinematic demands of reaching for, gripping, and safely removing things become significantly more difficult as the belt moves faster, as evidenced by the continuous, almost one-second rise in pick time for every 1 m/s of additional belt speed.
 \begin{figure}[h]
     \centering
     \includegraphics[width=13cm]{Thesis-report/Figures/conveyor_speed vs avg pick_up_time.png}
@@ -1757,6 +1757,8 @@ Conveyor belt speed and the amount of time it takes an operator to grab and remo
     \label{fig:conveyor_speed vs avg pick_up_time.png}
 \end{figure}
 
+
+Conveyor belt speed and the amount of time it takes an operator to grab and remove a single item are related, as shown in \autoref{fig:conveyor_speed vs avg pick_up_time.png}.  Belt speed, which we varied in discrete increments from 1.0 m/s to 2.0 m/s, is plotted along the horizontal axis. The corresponding average pick time, calculated over 30 trials at each speed setting to assure statistical reliability, is plotted on the vertical axis.The average pick time is about 0.5 s at the slowest tested speed of 1.0 m/s.  pick time grows nearly linearly with belt speed: at 1.2 m/s, it rises to around 0.7 s, at 1.4 m/s, it reaches 0.9 s, and so on, until the average pick time reaches approximately 1.5 s at the top speed of 2.0 m/s.  The kinematic demands of reaching for, gripping, and safely removing things become significantly more difficult as the belt moves faster, as evidenced by the continuous, almost one-second rise in pick time for every 1 m/s of additional belt speed.
 
 
 \subsection{Average pick Time vs Lighting Condition}
@@ -1780,7 +1782,7 @@ A vision-guided conveyor-tracking pick-and-place system for industrial robots wa
 Robust Calibration \& Coordinate Transformation: By using a ball-based extrinsic calibration over nine poses, the system established a reliable transform between the camera and robot base frames, enabling sub-millimeter positional accuracy\\
 
 
-Real-Time Dynamic Tracking: The integrated vision pipeline—combining depth and texture maps—enabled continuous object detection and pose estimation on a moving belt, with the robot’s Tool Center point (TCP) speed scaling linearly from 0.08 m/s to 0.31 m/s as belt speed increased from 1.0 m/s to 2.0 m/s.\\
+Real-Time Dynamic Tracking: The integrated vision pipeline combining depth and texture maps enabled continuous object detection and pose estimation on a moving belt, with the robot’s Tool Center point (TCP) speed scaling linearly from 0.08 m/s to 0.31 m/s as belt speed increased from 1.0 m/s to 2.0 m/s.\\
 
 
 High picking performance: Dynamic picking tests achieved up to 90 percent success on trapezoidal parts at 1.0 m/s, with average pick times rising from 0.5 s to 1.5 s as belt speed increased 
