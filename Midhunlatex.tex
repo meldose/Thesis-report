@@ -1725,40 +1725,38 @@ When \(X(t)\) reaches the robot’s pickup location, command the robot to grab.
 
 \newpage
 
-
-
-\newpage
 \section{Results and Discussions}
 \subsection{Robot TCP Speed vs Conveyor Speed}
 The speed of the robot's tool center point (TCP) is compared to the speed of the belt.
- The solid blue line indicates the 1:1 identity line, or flawless conveyor tracking, while the red circles plot the average TCP speed over several passes of the robot's end effector.  The robot's average TCP speed increases nearly linearly from 0.08 m/s to 0.31 m/s while the belt speed is scaled from 1.00 m/s to 2.00 m/s, continuously trailing the conveyor by 0.20 to 0.25 m/s.The TCP speed only increases by roughly 0.26 m/s for every 1 m/s increase in belt speed, according to a linear fit (dashed gray) that produces a slope of roughly 0.26 (R2 = 0.995).  When trying to match the belt's high-speed motion, the robot's dynamic limits—inertia, joint acceleration limitations, and control bandwidth—are the main cause of this systematic shortfall.
+ The solid blue line indicates the 1:1 identity line, or flawless conveyor tracking, while the red circles plot the average TCP speed over several passes of the robot's end effector.  The robot's average TCP speed increases nearly linearly from 0.08 m/s to 0.31 m/s while the belt speed is scaled from 1.00 m/s to 2.00 m/s, continuously trailing the conveyor by 0.20 to 0.25 m/s.The TCP speed only increases by roughly 0.26 m/s for every 1 m/s increase in belt speed.
  
 \begin{figure}[h]
     \centering
-    \includegraphics[width=11cm]{Thesis-report/Figures/conveyor_speed vs Robot tcp speed.png}
+    \includegraphics[width=13cm]{Thesis-report/Figures/conveyor_speed vs Robot tcp speed.png}
     \caption{Robot TCP speed and Conveyor speed \cite{ref22}}
     \label{fig1.Photoneo Cmaera}
 \end{figure}
 
 
 \subsection{Success Rate vs Conveyor Speed}
- \autoref{fig:conveyor_speed vs success_rates.png} compares how effectively our robotic arm picks two shapes—trapezoidal blocks and cylindrical pipes—from a conveyor belt moving between 1.0 m/s and 2.0 m/s. As the belt speeds up, both success rates steadily drop: trapezoid grasps fall from 90 percent at 1.0 m/s to 85 percent at 2.0 m/s, while pipe grasps decline more sharply from 70 percent down to 60 percent. Throughout the range, trapezoids outperform pipes by about 20–25 percentage points, due to their flat faces and edges that give the gripper firm, predictable contact—whereas smooth, round pipes tend to slip or roll under slight misalignments.
+ \autoref{fig:conveyor_speed vs success_rates.png} compares how effectively our robotic arm picks two shapes—trapezoidal blocks and cylindrical pipes—from a conveyor belt moving between 1.0 m/s and 2.0 m/s. As the belt speeds up, both success rates steadily drop: trapezoid grasps fall from 90 percent at 1.0 m/s to 85 percent at 2.0 m/s, while pipe grasps decline more sharply from 70 percent down to 60 percent. Throughout the range, trapezoids outperform pipes by about 20–25 percentage points, due to their flat faces and edges that give the gripper firm, predictable contact whereas smooth, round pipes tend to slip or roll under slight misalignments.
 \begin{figure}[h]
     \centering
-    \includegraphics[width=11cm]{Thesis-report/Figures/conveyor_speed vs success_rates.png}
+    \includegraphics[width=13cm]{Thesis-report/Figures/conveyor_speed vs success_rates.png}
     \caption{Success rate of dynamic picking versus conveyor belt speed. \cite{ref22}}
     \label{fig:conveyor_speed vs success_rates.png}
 \end{figure}
 
 \subsection{Average pick Time vs Conveyor Speed}
-Conveyor belt speed and the amount of time it takes an operator to grab and remove a single item are related, as shown in \autoref{fig:conveyor_speed vs avg pick_up_time.png}.  Belt speed, which we varied in discrete increments from 1.0 m/s to 2.0 m/s, is plotted along the horizontal axis. The corresponding average pick time, calculated over 50 trials at each speed setting to assure statistical reliability, is plotted on the vertical axis.The average pick time is about 0.5 s at the slowest tested speed of 1.0 m/s.  pick time grows nearly linearly with belt speed: at 1.2 m/s, it rises to around 0.7 s, at 1.4 m/s, it reaches 0.9 s, and so on, until the average pick time reaches approximately 1.5 s at the top speed of 2.0 m/s.  The kinematic demands of reaching for, gripping, and safely removing things become significantly more difficult as the belt moves faster, as evidenced by the continuous, almost one-second rise in pick time for every 1 m/s of additional belt speed.
 
+Conveyor belt speed and the amount of time it takes an operator to grab and remove a single item are related, as shown in \autoref{fig:conveyor_speed vs avg pick_up_time.png}.  Belt speed, which we varied in discrete increments from 1.0 m/s to 2.0 m/s, is plotted along the horizontal axis. The corresponding average pick time, calculated over 30 trials at each speed setting to assure statistical reliability, is plotted on the vertical axis.The average pick time is about 0.5 s at the slowest tested speed of 1.0 m/s.  pick time grows nearly linearly with belt speed: at 1.2 m/s, it rises to around 0.7 s, at 1.4 m/s, it reaches 0.9 s, and so on, until the average pick time reaches approximately 1.5 s at the top speed of 2.0 m/s.  The kinematic demands of reaching for, gripping, and safely removing things become significantly more difficult as the belt moves faster, as evidenced by the continuous, almost one-second rise in pick time for every 1 m/s of additional belt speed.
 \begin{figure}[h]
     \centering
-    \includegraphics[width=11cm]{Thesis-report/Figures/conveyor_speed vs avg pick_up_time.png}
+    \includegraphics[width=13cm]{Thesis-report/Figures/conveyor_speed vs avg pick_up_time.png}
     \caption{Avg. pickup time vs the conveyor speed \cite{ref22}}
     \label{fig:conveyor_speed vs avg pick_up_time.png}
 \end{figure}
+
 
 
 \subsection{Average pick Time vs Lighting Condition}
@@ -1766,7 +1764,7 @@ The robot's capacity to select two distinct part geometries—pipes and trapezoi
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=11cm]{Thesis-report/Figures/Picking_time vs item_type.png}
+    \includegraphics[width=13cm]{Thesis-report/Figures/Picking_time vs item_type.png}
     \caption{Avg. pickup up time vs the lighting conditions \cite{ref22}}
     \label{fig:Picking_time vs item_type.png}
 \end{figure}
